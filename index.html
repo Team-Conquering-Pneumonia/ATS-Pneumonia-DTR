@@ -11,200 +11,73 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #f8f9fa;
       color: #212529;
-      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.25rem;
     }
 
-    header {
-      background: #003366;
-      color: #fff;
-      padding: 2.5rem 1.5rem 2rem;
+    .container {
+      max-width: 680px;
+      width: 100%;
       text-align: center;
     }
 
-    header .conference {
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
+    .conference {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #a8c4e0;
-      margin-bottom: 0.6rem;
+      color: #6c757d;
+      margin-bottom: 1rem;
     }
 
-    header h1 {
-      font-size: clamp(1.4rem, 4vw, 2rem);
+    h1 {
+      font-size: clamp(1.3rem, 4vw, 1.85rem);
       font-weight: 700;
-      max-width: 720px;
-      margin: 0 auto 1rem;
-    }
-
-    header .authors {
-      font-size: 0.95rem;
-      color: #c8ddf0;
-    }
-
-    main {
-      max-width: 780px;
-      margin: 2.5rem auto;
-      padding: 0 1.25rem;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .card h2 {
-      font-size: 1.15rem;
-      font-weight: 600;
       color: #003366;
-      margin-bottom: 0.75rem;
-      border-bottom: 2px solid #e8eef5;
-      padding-bottom: 0.5rem;
+      line-height: 1.3;
+      margin-bottom: 1.25rem;
     }
 
-    .card p {
-      font-size: 0.97rem;
+    .authors {
+      font-size: 0.92rem;
       color: #444;
-      margin-bottom: 0.6rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
     }
 
     .cta {
       display: inline-block;
-      margin-top: 0.75rem;
       background: #003366;
       color: #fff;
-      padding: 0.65rem 1.4rem;
+      padding: 0.75rem 1.75rem;
       border-radius: 6px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 1rem;
       transition: background 0.2s;
     }
 
     .cta:hover { background: #00509e; }
-
-    .cta-secondary {
-      display: inline-block;
-      margin-top: 0.5rem;
-      color: #003366;
-      text-decoration: underline;
-      font-size: 0.92rem;
-    }
-
-    .methods-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem 1.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .methods-grid dt {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #003366;
-    }
-
-    .methods-grid dd {
-      font-size: 0.9rem;
-      color: #555;
-      margin-bottom: 0.25rem;
-    }
-
-    .author-list {
-      list-style: none;
-      padding: 0;
-      margin-top: 0.25rem;
-    }
-
-    .author-list li {
-      font-size: 0.95rem;
-      color: #444;
-      padding: 0.3rem 0;
-      border-bottom: 1px solid #f0f2f5;
-    }
-
-    .author-list li:last-child { border-bottom: none; }
-
-    .author-name { font-weight: 600; }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: #888;
-    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <div class="conference">ATS International Conference 2026</div>
 
-<header>
-  <div class="conference">ATS International Conference 2026</div>
-  <h1>Tree-Based Dynamic Treatment Regimes for Antibiotic Selection in Community-Acquired Pneumonia</h1>
-  <div class="authors">Jones BE &middot; Xu Y &middot; Chapman AB</div>
-</header>
+    <h1>Empiric Antibiotics and 30-day mortality in Community-Acquired Pneumonia: A Decision Tree Analysis of 124 U.S. Veterans Affairs Medical Centers</h1>
 
-<main>
+    <div class="authors">
+      Barbara Jones, MD MS &middot; Yizhen Xu, PhD &middot; Alec Chapman, MS<br>
+      McKenna Nevers, MS &middot; Teressa Ju, MD &middot; Jian Ying, PhD<br>
+      Makoto Jones, MD MS &middot; Kristina Crothers, MD &middot; Daniel Scharfstein, ScD
+    </div>
 
-  <div class="card">
-    <h2>Interactive Decision Trees</h2>
-    <p>
-      Explore the treatment decision trees for each pneumonia severity level
-      (mild / moderate / severe) and virus subgroup. The trees show antibiotic
-      recommendations with posterior estimates of 30-day mortality under each treatment arm.
-    </p>
     <a class="cta" href="https://yizhenxu.github.io/Interactive-Trees/" target="_blank" rel="noopener">
-      Open Interactive Trees &rarr;
+      View Interactive Decision Trees &rarr;
     </a>
   </div>
-
-  <div class="card">
-    <h2>About This Work</h2>
-    <p>
-      Dynamic treatment regimes (DTRs) personalize antibiotic selection based on a patient's
-      pneumonia severity, viral etiology, and comorbidity profile. We used outcome-weighted
-      learning on a large VA pneumonia cohort to estimate tree-based DTRs optimizing 30-day survival.
-    </p>
-
-    <dl class="methods-grid">
-      <dt>Design</dt>
-      <dd>Target trial emulation</dd>
-      <dt>Cohort</dt>
-      <dd>VA pneumonia (VINCI)</dd>
-      <dt>Method</dt>
-      <dd>Outcome-weighted learning</dd>
-      <dt>Outcome</dt>
-      <dd>30-day all-cause mortality</dd>
-      <dt>Treatments</dt>
-      <dd>Monotherapy vs. combination</dd>
-      <dt>Subgroups</dt>
-      <dd>Severity × virus</dd>
-    </dl>
-  </div>
-
-  <div class="card">
-    <h2>Authors</h2>
-    <ul class="author-list">
-      <li><span class="author-name">Barbara E. Jones, MD, MSc</span> &mdash; PI &mdash; VA Salt Lake City / University of Utah</li>
-      <li><span class="author-name">Yizhen Xu, PhD</span> &mdash; Lead Statistician</li>
-      <li><span class="author-name">Alec B. Chapman, PhD</span> &mdash; Data Science, University of Utah / VA</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>Code &amp; Data</h2>
-    <p>Analysis code and aggregate summaries are available in the GitHub repository.</p>
-    <a class="cta-secondary" href="https://github.com/Team-Conquering-Pneumonia/ATS-Pneumonia-DTR" target="_blank" rel="noopener">
-      GitHub Repository &rarr;
-    </a>
-  </div>
-
-</main>
-
-<footer>
-  VA Informatics and Computing Infrastructure (VINCI) data. Results represent aggregate summaries only.
-</footer>
-
 </body>
 </html>
