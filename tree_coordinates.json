@@ -1,0 +1,5804 @@
+{
+  "states": {
+    "severity=mild_outcome=30day_depth=0": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 1080
+      },
+      "nodes": [
+        {
+          "node_id": "mild pneumonia (30-day mortality)",
+          "slug": "mild__root",
+          "is_terminal_in_view": true,
+          "is_root": true,
+          "bbox_px": {
+            "x": 317,
+            "y": 5,
+            "w": 1221,
+            "h": 1031
+          },
+          "label": "Mild Pneumonia",
+          "N": 44497,
+          "abx_pct": 0.791,
+          "ate": -0.002,
+          "ate_abx": 0.006,
+          "ate_no_abx": 0.007
+        }
+      ]
+    },
+    "severity=mild_outcome=30day_depth=1": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 1274
+      },
+      "nodes": [
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease",
+          "slug": "mild__no_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 820,
+            "w": 450,
+            "h": 397
+          },
+          "label": "No Lung Disease",
+          "N": 29542,
+          "abx_pct": 0.779,
+          "ate": -0.001,
+          "ate_abx": 0.005,
+          "ate_no_abx": 0.007
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > Lung Disease",
+          "slug": "mild__lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 18,
+            "w": 450,
+            "h": 397
+          },
+          "label": "Lung Disease",
+          "N": 14955,
+          "abx_pct": 0.815,
+          "ate": -0.003,
+          "ate_abx": 0.007,
+          "ate_no_abx": 0.009
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality)",
+          "slug": "mild__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 258,
+            "y": 419,
+            "w": 450,
+            "h": 397
+          },
+          "label": "Mild Pneumonia",
+          "N": 44497,
+          "abx_pct": 0.791,
+          "ate": -0.002,
+          "ate_abx": 0.006,
+          "ate_no_abx": 0.007
+        }
+      ]
+    },
+    "severity=mild_outcome=30day_depth=2": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 2736
+      },
+      "nodes": [
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease",
+          "slug": "mild__no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 731,
+            "y": 2226,
+            "w": 267,
+            "h": 191
+          },
+          "label": "No Lung Disease",
+          "N": 29542,
+          "abx_pct": 0.779,
+          "ate": -0.001,
+          "ate_abx": 0.005,
+          "ate_no_abx": 0.007
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > Lung Disease",
+          "slug": "mild__lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 731,
+            "y": 878,
+            "w": 267,
+            "h": 191
+          },
+          "label": "Lung Disease",
+          "N": 14955,
+          "abx_pct": 0.815,
+          "ate": -0.003,
+          "ate_abx": 0.007,
+          "ate_no_abx": 0.009
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > Lung Disease > COVID",
+          "slug": "mild__lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1217,
+            "y": 1648,
+            "w": 267,
+            "h": 191
+          },
+          "label": "COVID",
+          "N": 1325,
+          "abx_pct": 0.641,
+          "ate": -0.002,
+          "ate_abx": 0.015,
+          "ate_no_abx": 0.017
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > Lung Disease > Influenza",
+          "slug": "mild__lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1217,
+            "y": 1263,
+            "w": 267,
+            "h": 191
+          },
+          "label": "Influenza",
+          "N": 344,
+          "abx_pct": 0.753,
+          "ate": -0.002,
+          "ate_abx": 0.003,
+          "ate_no_abx": 0.005
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > Lung Disease > None",
+          "slug": "mild__lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1217,
+            "y": 878,
+            "w": 267,
+            "h": 191
+          },
+          "label": "No virus",
+          "N": 12683,
+          "abx_pct": 0.835,
+          "ate": -0.003,
+          "ate_abx": 0.006,
+          "ate_no_abx": 0.009
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > Lung Disease > Other Viruses",
+          "slug": "mild__lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1217,
+            "y": 492,
+            "w": 267,
+            "h": 191
+          },
+          "label": "Other Viruses",
+          "N": 401,
+          "abx_pct": 0.835,
+          "ate": -0.003,
+          "ate_abx": 0.006,
+          "ate_no_abx": 0.009
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > Lung Disease > RSV",
+          "slug": "mild__lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1217,
+            "y": 107,
+            "w": 267,
+            "h": 191
+          },
+          "label": "RSV",
+          "N": 202,
+          "abx_pct": 0.757,
+          "ate": -0.002,
+          "ate_abx": 0.005,
+          "ate_no_abx": 0.007
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > No Comorbidity",
+          "slug": "mild__no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1217,
+            "y": 2419,
+            "w": 267,
+            "h": 191
+          },
+          "label": "No Comorbidity",
+          "N": 15428,
+          "abx_pct": 0.778,
+          "ate": -0.002,
+          "ate_abx": 0.003,
+          "ate_no_abx": 0.006
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > Other Comorbidities",
+          "slug": "mild__no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1217,
+            "y": 2034,
+            "w": 267,
+            "h": 191
+          },
+          "label": "Other Comorbidities",
+          "N": 14114,
+          "abx_pct": 0.781,
+          "ate": -0.001,
+          "ate_abx": 0.007,
+          "ate_no_abx": 0.007
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality)",
+          "slug": "mild__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 244,
+            "y": 1552,
+            "w": 267,
+            "h": 191
+          },
+          "label": "Mild Pneumonia",
+          "N": 44497,
+          "abx_pct": 0.791,
+          "ate": -0.002,
+          "ate_abx": 0.006,
+          "ate_no_abx": 0.007
+        }
+      ]
+    },
+    "severity=mild_outcome=30day_depth=3": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 4824
+      },
+      "nodes": [
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease",
+          "slug": "mild__no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 592,
+            "y": 2844,
+            "w": 194,
+            "h": 174
+          },
+          "label": "No Lung Disease",
+          "N": 29542,
+          "abx_pct": 0.779,
+          "ate": -0.001,
+          "ate_abx": 0.005,
+          "ate_no_abx": 0.007
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > Lung Disease",
+          "slug": "mild__lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 592,
+            "y": 908,
+            "w": 194,
+            "h": 174
+          },
+          "label": "Lung Disease",
+          "N": 14955,
+          "abx_pct": 0.815,
+          "ate": -0.003,
+          "ate_abx": 0.007,
+          "ate_no_abx": 0.009
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > Lung Disease > COVID",
+          "slug": "mild__lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 1612,
+            "w": 194,
+            "h": 174
+          },
+          "label": "COVID",
+          "N": 1325,
+          "abx_pct": 0.641,
+          "ate": -0.002,
+          "ate_abx": 0.015,
+          "ate_no_abx": 0.017
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > Lung Disease > Influenza",
+          "slug": "mild__lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 1260,
+            "w": 194,
+            "h": 174
+          },
+          "label": "Influenza",
+          "N": 344,
+          "abx_pct": 0.753,
+          "ate": -0.002,
+          "ate_abx": 0.003,
+          "ate_no_abx": 0.005
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > Lung Disease > None",
+          "slug": "mild__lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 908,
+            "w": 194,
+            "h": 174
+          },
+          "label": "No virus",
+          "N": 12683,
+          "abx_pct": 0.835,
+          "ate": -0.003,
+          "ate_abx": 0.006,
+          "ate_no_abx": 0.009
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > Lung Disease > Other Viruses",
+          "slug": "mild__lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 556,
+            "w": 194,
+            "h": 174
+          },
+          "label": "Other Viruses",
+          "N": 401,
+          "abx_pct": 0.835,
+          "ate": -0.003,
+          "ate_abx": 0.006,
+          "ate_no_abx": 0.009
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > Lung Disease > RSV",
+          "slug": "mild__lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 204,
+            "w": 194,
+            "h": 174
+          },
+          "label": "RSV",
+          "N": 202,
+          "abx_pct": 0.757,
+          "ate": -0.002,
+          "ate_abx": 0.005,
+          "ate_no_abx": 0.007
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > No Comorbidity",
+          "slug": "mild__no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 3724,
+            "w": 194,
+            "h": 174
+          },
+          "label": "No Comorbidity",
+          "N": 15428,
+          "abx_pct": 0.778,
+          "ate": -0.002,
+          "ate_abx": 0.003,
+          "ate_no_abx": 0.006
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > Other Comorbidities",
+          "slug": "mild__no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 1964,
+            "w": 194,
+            "h": 174
+          },
+          "label": "Other Comorbidities",
+          "N": 14114,
+          "abx_pct": 0.781,
+          "ate": -0.001,
+          "ate_abx": 0.007,
+          "ate_no_abx": 0.007
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > No Comorbidity > COVID",
+          "slug": "mild__no_lung_disease_no_comorbidity_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 4429,
+            "w": 194,
+            "h": 174
+          },
+          "label": "COVID",
+          "N": 2416,
+          "abx_pct": 0.546,
+          "ate": -0.002,
+          "ate_abx": 0.008,
+          "ate_no_abx": 0.011
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > No Comorbidity > Influenza",
+          "slug": "mild__no_lung_disease_no_comorbidity_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 4077,
+            "w": 194,
+            "h": 174
+          },
+          "label": "Influenza",
+          "N": 532,
+          "abx_pct": 0.739,
+          "ate": -0.002,
+          "ate_abx": 0.001,
+          "ate_no_abx": 0.003
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > No Comorbidity > None",
+          "slug": "mild__no_lung_disease_no_comorbidity_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 3724,
+            "w": 194,
+            "h": 174
+          },
+          "label": "No virus",
+          "N": 11896,
+          "abx_pct": 0.827,
+          "ate": -0.002,
+          "ate_abx": 0.003,
+          "ate_no_abx": 0.005
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > No Comorbidity > Other Viruses",
+          "slug": "mild__no_lung_disease_no_comorbidity_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 3372,
+            "w": 194,
+            "h": 174
+          },
+          "label": "Other Viruses",
+          "N": 402,
+          "abx_pct": 0.821,
+          "ate": -0.002,
+          "ate_abx": 0.003,
+          "ate_no_abx": 0.005
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > No Comorbidity > RSV",
+          "slug": "mild__no_lung_disease_no_comorbidity_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 3020,
+            "w": 194,
+            "h": 174
+          },
+          "label": "RSV",
+          "N": 182,
+          "abx_pct": 0.709,
+          "ate": -0.001,
+          "ate_abx": 0.002,
+          "ate_no_abx": 0.003
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > Other Comorbidities > COVID",
+          "slug": "mild__no_lung_disease_other_comorbidities_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 2668,
+            "w": 194,
+            "h": 174
+          },
+          "label": "COVID",
+          "N": 1808,
+          "abx_pct": 0.579,
+          "ate": 0.002,
+          "ate_abx": 0.015,
+          "ate_no_abx": 0.014
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > Other Comorbidities > Influenza",
+          "slug": "mild__no_lung_disease_other_comorbidities_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 2316,
+            "w": 194,
+            "h": 174
+          },
+          "label": "Influenza",
+          "N": 441,
+          "abx_pct": 0.757,
+          "ate": -0.002,
+          "ate_abx": 0.003,
+          "ate_no_abx": 0.005
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > Other Comorbidities > None",
+          "slug": "mild__no_lung_disease_other_comorbidities_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 1964,
+            "w": 194,
+            "h": 174
+          },
+          "label": "No virus",
+          "N": 11260,
+          "abx_pct": 0.812,
+          "ate": -0.001,
+          "ate_abx": 0.006,
+          "ate_no_abx": 0.007
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > Other Comorbidities > Other Viruses",
+          "slug": "mild__no_lung_disease_other_comorbidities_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 1612,
+            "w": 194,
+            "h": 174
+          },
+          "label": "Other Viruses",
+          "N": 390,
+          "abx_pct": 0.826,
+          "ate": 0,
+          "ate_abx": 0.007,
+          "ate_no_abx": 0.007
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > Other Comorbidities > RSV",
+          "slug": "mild__no_lung_disease_other_comorbidities_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 1260,
+            "w": 194,
+            "h": 174
+          },
+          "label": "RSV",
+          "N": 215,
+          "abx_pct": 0.791,
+          "ate": 0,
+          "ate_abx": 0.005,
+          "ate_no_abx": 0.005
+        },
+        {
+          "node_id": "mild pneumonia (30-day mortality)",
+          "slug": "mild__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 239,
+            "y": 1876,
+            "w": 194,
+            "h": 174
+          },
+          "label": "Mild Pneumonia",
+          "N": 44497,
+          "abx_pct": 0.791,
+          "ate": -0.002,
+          "ate_abx": 0.006,
+          "ate_no_abx": 0.007
+        }
+      ]
+    },
+    "severity=moderate_outcome=30day_depth=0": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 1080
+      },
+      "nodes": [
+        {
+          "node_id": "moderate pneumonia (30-day mortality)",
+          "slug": "moderate__root",
+          "is_terminal_in_view": true,
+          "is_root": true,
+          "bbox_px": {
+            "x": 317,
+            "y": 5,
+            "w": 1221,
+            "h": 1031
+          },
+          "label": "Moderate Pneumonia",
+          "N": 106115,
+          "abx_pct": 0.836,
+          "ate": -0.011,
+          "ate_abx": 0.07,
+          "ate_no_abx": 0.081
+        }
+      ]
+    },
+    "severity=moderate_outcome=30day_depth=1": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 1692
+      },
+      "nodes": [
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia",
+          "slug": "moderate__no_sepsis_no_hypoxemia",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 1393,
+            "w": 450,
+            "h": 220
+          },
+          "label": "No Sepsis / No Hypoxemia",
+          "N": 21987,
+          "abx_pct": 0.793,
+          "ate": -0.004,
+          "ate_abx": 0.05,
+          "ate_no_abx": 0.054
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia)",
+          "slug": "moderate__sepsis_no_hypoxemia",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 947,
+            "w": 450,
+            "h": 220
+          },
+          "label": "Sepsis (No Hypoxemia)",
+          "N": 41131,
+          "abx_pct": 0.844,
+          "ate": -0.011,
+          "ate_abx": 0.064,
+          "ate_no_abx": 0.075
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis)",
+          "slug": "moderate__hypoxemia_no_sepsis",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 502,
+            "w": 450,
+            "h": 220
+          },
+          "label": "Hypoxemia (No Sepsis)",
+          "N": 17166,
+          "abx_pct": 0.804,
+          "ate": -0.005,
+          "ate_abx": 0.062,
+          "ate_no_abx": 0.067
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis",
+          "slug": "moderate__hypoxemia_and_sepsis",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 56,
+            "w": 450,
+            "h": 220
+          },
+          "label": "Hypoxemia and Sepsis",
+          "N": 25831,
+          "abx_pct": 0.884,
+          "ate": -0.02,
+          "ate_abx": 0.102,
+          "ate_no_abx": 0.122
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality)",
+          "slug": "moderate__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 258,
+            "y": 725,
+            "w": 450,
+            "h": 220
+          },
+          "label": "Moderate Pneumonia",
+          "N": 106115,
+          "abx_pct": 0.836,
+          "ate": -0.011,
+          "ate_abx": 0.07,
+          "ate_no_abx": 0.081
+        }
+      ]
+    },
+    "severity=moderate_outcome=30day_depth=2": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 3362
+      },
+      "nodes": [
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia",
+          "slug": "moderate__no_sepsis_no_hypoxemia",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 746,
+            "y": 2800,
+            "w": 276,
+            "h": 203
+          },
+          "label": "No Sepsis / No Hypoxemia",
+          "N": 21987,
+          "abx_pct": 0.793,
+          "ate": -0.004,
+          "ate_abx": 0.05,
+          "ate_no_abx": 0.054
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia)",
+          "slug": "moderate__sepsis_no_hypoxemia",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 746,
+            "y": 1980,
+            "w": 276,
+            "h": 203
+          },
+          "label": "Sepsis (No Hypoxemia)",
+          "N": 41131,
+          "abx_pct": 0.844,
+          "ate": -0.011,
+          "ate_abx": 0.064,
+          "ate_no_abx": 0.075
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis)",
+          "slug": "moderate__hypoxemia_no_sepsis",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 746,
+            "y": 1159,
+            "w": 276,
+            "h": 203
+          },
+          "label": "Hypoxemia (No Sepsis)",
+          "N": 17166,
+          "abx_pct": 0.804,
+          "ate": -0.005,
+          "ate_abx": 0.062,
+          "ate_no_abx": 0.067
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis",
+          "slug": "moderate__hypoxemia_and_sepsis",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 746,
+            "y": 339,
+            "w": 276,
+            "h": 203
+          },
+          "label": "Hypoxemia and Sepsis",
+          "N": 25831,
+          "abx_pct": 0.884,
+          "ate": -0.02,
+          "ate_abx": 0.102,
+          "ate_no_abx": 0.122
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1248,
+            "y": 1364,
+            "w": 276,
+            "h": 203
+          },
+          "label": "No Lung Disease",
+          "N": 7349,
+          "abx_pct": 0.749,
+          "ate": -0.003,
+          "ate_abx": 0.07,
+          "ate_no_abx": 0.073
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease",
+          "slug": "moderate__hypoxemia_no_sepsis_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1248,
+            "y": 954,
+            "w": 276,
+            "h": 203
+          },
+          "label": "Lung Disease",
+          "N": 9817,
+          "abx_pct": 0.845,
+          "ate": -0.007,
+          "ate_abx": 0.056,
+          "ate_no_abx": 0.063
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1248,
+            "y": 544,
+            "w": 276,
+            "h": 203
+          },
+          "label": "No Lung Disease",
+          "N": 11742,
+          "abx_pct": 0.847,
+          "ate": -0.014,
+          "ate_abx": 0.117,
+          "ate_no_abx": 0.131
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease",
+          "slug": "moderate__hypoxemia_and_sepsis_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1248,
+            "y": 134,
+            "w": 276,
+            "h": 203
+          },
+          "label": "Lung Disease",
+          "N": 14089,
+          "abx_pct": 0.914,
+          "ate": -0.025,
+          "ate_abx": 0.09,
+          "ate_no_abx": 0.116
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1248,
+            "y": 3005,
+            "w": 276,
+            "h": 203
+          },
+          "label": "No Lung Disease",
+          "N": 14266,
+          "abx_pct": 0.779,
+          "ate": -0.003,
+          "ate_abx": 0.052,
+          "ate_no_abx": 0.055
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease",
+          "slug": "moderate__no_sepsis_no_hypoxemia_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1248,
+            "y": 2595,
+            "w": 276,
+            "h": 203
+          },
+          "label": "Lung Disease",
+          "N": 7721,
+          "abx_pct": 0.817,
+          "ate": -0.006,
+          "ate_abx": 0.047,
+          "ate_no_abx": 0.052
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1248,
+            "y": 2185,
+            "w": 276,
+            "h": 203
+          },
+          "label": "No Lung Disease",
+          "N": 25791,
+          "abx_pct": 0.833,
+          "ate": -0.009,
+          "ate_abx": 0.067,
+          "ate_no_abx": 0.076
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease",
+          "slug": "moderate__sepsis_no_hypoxemia_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1248,
+            "y": 1775,
+            "w": 276,
+            "h": 203
+          },
+          "label": "Lung Disease",
+          "N": 15340,
+          "abx_pct": 0.862,
+          "ate": -0.014,
+          "ate_abx": 0.06,
+          "ate_no_abx": 0.074
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality)",
+          "slug": "moderate__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 245,
+            "y": 1570,
+            "w": 276,
+            "h": 203
+          },
+          "label": "Moderate Pneumonia",
+          "N": 106115,
+          "abx_pct": 0.836,
+          "ate": -0.011,
+          "ate_abx": 0.07,
+          "ate_no_abx": 0.081
+        }
+      ]
+    },
+    "severity=moderate_outcome=30day_depth=3": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 6048
+      },
+      "nodes": [
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia",
+          "slug": "moderate__no_sepsis_no_hypoxemia",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 601,
+            "y": 5221,
+            "w": 199,
+            "h": 99
+          },
+          "label": "No Sepsis / No Hypoxemia",
+          "N": 21987,
+          "abx_pct": 0.793,
+          "ate": -0.004,
+          "ate_abx": 0.05,
+          "ate_no_abx": 0.054
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia)",
+          "slug": "moderate__sepsis_no_hypoxemia",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 601,
+            "y": 3820,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Sepsis (No Hypoxemia)",
+          "N": 41131,
+          "abx_pct": 0.844,
+          "ate": -0.011,
+          "ate_abx": 0.064,
+          "ate_no_abx": 0.075
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis)",
+          "slug": "moderate__hypoxemia_no_sepsis",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 601,
+            "y": 2419,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Hypoxemia (No Sepsis)",
+          "N": 17166,
+          "abx_pct": 0.804,
+          "ate": -0.005,
+          "ate_abx": 0.062,
+          "ate_no_abx": 0.067
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis",
+          "slug": "moderate__hypoxemia_and_sepsis",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 601,
+            "y": 1018,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Hypoxemia and Sepsis",
+          "N": 25831,
+          "abx_pct": 0.884,
+          "ate": -0.02,
+          "ate_abx": 0.102,
+          "ate_no_abx": 0.122
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 962,
+            "y": 2769,
+            "w": 199,
+            "h": 99
+          },
+          "label": "No Lung Disease",
+          "N": 7349,
+          "abx_pct": 0.749,
+          "ate": -0.003,
+          "ate_abx": 0.07,
+          "ate_no_abx": 0.073
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease",
+          "slug": "moderate__hypoxemia_no_sepsis_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 962,
+            "y": 2069,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Lung Disease",
+          "N": 9817,
+          "abx_pct": 0.845,
+          "ate": -0.007,
+          "ate_abx": 0.056,
+          "ate_no_abx": 0.063
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > COVID",
+          "slug": "moderate__hypoxemia_no_sepsis_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 2469,
+            "w": 199,
+            "h": 99
+          },
+          "label": "COVID",
+          "N": 1117,
+          "abx_pct": 0.687,
+          "ate": -0.01,
+          "ate_abx": 0.068,
+          "ate_no_abx": 0.077
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > Influenza",
+          "slug": "moderate__hypoxemia_no_sepsis_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 2269,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Influenza",
+          "N": 239,
+          "abx_pct": 0.854,
+          "ate": -0.015,
+          "ate_abx": 0.029,
+          "ate_no_abx": 0.044
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > None",
+          "slug": "moderate__hypoxemia_no_sepsis_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 2069,
+            "w": 199,
+            "h": 99
+          },
+          "label": "No virus",
+          "N": 8057,
+          "abx_pct": 0.864,
+          "ate": -0.006,
+          "ate_abx": 0.056,
+          "ate_no_abx": 0.062
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > Other Viruses",
+          "slug": "moderate__hypoxemia_no_sepsis_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 1869,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Other Viruses",
+          "N": 277,
+          "abx_pct": 0.921,
+          "ate": -0.015,
+          "ate_abx": 0.027,
+          "ate_no_abx": 0.042
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > RSV",
+          "slug": "moderate__hypoxemia_no_sepsis_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 1669,
+            "w": 199,
+            "h": 99
+          },
+          "label": "RSV",
+          "N": 127,
+          "abx_pct": 0.85,
+          "ate": -0.014,
+          "ate_abx": 0.035,
+          "ate_no_abx": 0.049
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 2869,
+            "w": 199,
+            "h": 99
+          },
+          "label": "No Comorbidity",
+          "N": 2423,
+          "abx_pct": 0.714,
+          "ate": -0.001,
+          "ate_abx": 0.058,
+          "ate_no_abx": 0.059
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 2669,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Other Comorbidities",
+          "N": 4926,
+          "abx_pct": 0.766,
+          "ate": -0.003,
+          "ate_abx": 0.076,
+          "ate_no_abx": 0.079
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 962,
+            "y": 1368,
+            "w": 199,
+            "h": 99
+          },
+          "label": "No Lung Disease",
+          "N": 11742,
+          "abx_pct": 0.847,
+          "ate": -0.014,
+          "ate_abx": 0.117,
+          "ate_no_abx": 0.131
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease",
+          "slug": "moderate__hypoxemia_and_sepsis_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 962,
+            "y": 668,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Lung Disease",
+          "N": 14089,
+          "abx_pct": 0.914,
+          "ate": -0.025,
+          "ate_abx": 0.09,
+          "ate_no_abx": 0.116
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > COVID",
+          "slug": "moderate__hypoxemia_and_sepsis_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 1068,
+            "w": 199,
+            "h": 99
+          },
+          "label": "COVID",
+          "N": 1443,
+          "abx_pct": 0.793,
+          "ate": -0.024,
+          "ate_abx": 0.11,
+          "ate_no_abx": 0.134
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > Influenza",
+          "slug": "moderate__hypoxemia_and_sepsis_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 868,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Influenza",
+          "N": 367,
+          "abx_pct": 0.886,
+          "ate": -0.025,
+          "ate_abx": 0.044,
+          "ate_no_abx": 0.069
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > None",
+          "slug": "moderate__hypoxemia_and_sepsis_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 668,
+            "w": 199,
+            "h": 99
+          },
+          "label": "No virus",
+          "N": 11613,
+          "abx_pct": 0.928,
+          "ate": -0.025,
+          "ate_abx": 0.092,
+          "ate_no_abx": 0.117
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > Other Viruses",
+          "slug": "moderate__hypoxemia_and_sepsis_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 468,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Other Viruses",
+          "N": 455,
+          "abx_pct": 0.963,
+          "ate": -0.03,
+          "ate_abx": 0.047,
+          "ate_no_abx": 0.077
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > RSV",
+          "slug": "moderate__hypoxemia_and_sepsis_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 268,
+            "w": 199,
+            "h": 99
+          },
+          "label": "RSV",
+          "N": 211,
+          "abx_pct": 0.91,
+          "ate": -0.036,
+          "ate_abx": 0.052,
+          "ate_no_abx": 0.088
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 1468,
+            "w": 199,
+            "h": 99
+          },
+          "label": "No Comorbidity",
+          "N": 3364,
+          "abx_pct": 0.818,
+          "ate": -0.014,
+          "ate_abx": 0.092,
+          "ate_no_abx": 0.105
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 1268,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Other Comorbidities",
+          "N": 8378,
+          "abx_pct": 0.859,
+          "ate": -0.014,
+          "ate_abx": 0.127,
+          "ate_no_abx": 0.141
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 962,
+            "y": 5571,
+            "w": 199,
+            "h": 99
+          },
+          "label": "No Lung Disease",
+          "N": 14266,
+          "abx_pct": 0.779,
+          "ate": -0.003,
+          "ate_abx": 0.052,
+          "ate_no_abx": 0.055
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease",
+          "slug": "moderate__no_sepsis_no_hypoxemia_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 962,
+            "y": 4871,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Lung Disease",
+          "N": 7721,
+          "abx_pct": 0.817,
+          "ate": -0.006,
+          "ate_abx": 0.047,
+          "ate_no_abx": 0.052
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > COVID",
+          "slug": "moderate__no_sepsis_no_hypoxemia_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 5271,
+            "w": 199,
+            "h": 99
+          },
+          "label": "COVID",
+          "N": 676,
+          "abx_pct": 0.691,
+          "ate": -0.007,
+          "ate_abx": 0.054,
+          "ate_no_abx": 0.061
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > Influenza",
+          "slug": "moderate__no_sepsis_no_hypoxemia_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 5071,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Influenza",
+          "N": 106,
+          "abx_pct": 0.83,
+          "ate": -0.007,
+          "ate_abx": 0.027,
+          "ate_no_abx": 0.034
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > None",
+          "slug": "moderate__no_sepsis_no_hypoxemia_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 4871,
+            "w": 199,
+            "h": 99
+          },
+          "label": "No virus",
+          "N": 6660,
+          "abx_pct": 0.83,
+          "ate": -0.005,
+          "ate_abx": 0.047,
+          "ate_no_abx": 0.052
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > Other Viruses",
+          "slug": "moderate__no_sepsis_no_hypoxemia_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 4671,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Other Viruses",
+          "N": 204,
+          "abx_pct": 0.858,
+          "ate": -0.012,
+          "ate_abx": 0.023,
+          "ate_no_abx": 0.035
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > RSV",
+          "slug": "moderate__no_sepsis_no_hypoxemia_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 4471,
+            "w": 199,
+            "h": 99
+          },
+          "label": "RSV",
+          "N": 75,
+          "abx_pct": 0.64,
+          "ate": -0.011,
+          "ate_abx": 0.035,
+          "ate_no_abx": 0.046
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 5671,
+            "w": 199,
+            "h": 99
+          },
+          "label": "No Comorbidity",
+          "N": 3709,
+          "abx_pct": 0.778,
+          "ate": 0.001,
+          "ate_abx": 0.052,
+          "ate_no_abx": 0.051
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 5471,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Other Comorbidities",
+          "N": 10557,
+          "abx_pct": 0.78,
+          "ate": -0.004,
+          "ate_abx": 0.052,
+          "ate_no_abx": 0.056
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 962,
+            "y": 4170,
+            "w": 199,
+            "h": 99
+          },
+          "label": "No Lung Disease",
+          "N": 25791,
+          "abx_pct": 0.833,
+          "ate": -0.009,
+          "ate_abx": 0.067,
+          "ate_no_abx": 0.076
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease",
+          "slug": "moderate__sepsis_no_hypoxemia_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 962,
+            "y": 3470,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Lung Disease",
+          "N": 15340,
+          "abx_pct": 0.862,
+          "ate": -0.014,
+          "ate_abx": 0.06,
+          "ate_no_abx": 0.074
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > COVID",
+          "slug": "moderate__sepsis_no_hypoxemia_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 3870,
+            "w": 199,
+            "h": 99
+          },
+          "label": "COVID",
+          "N": 1502,
+          "abx_pct": 0.729,
+          "ate": -0.012,
+          "ate_abx": 0.068,
+          "ate_no_abx": 0.08
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > Influenza",
+          "slug": "moderate__sepsis_no_hypoxemia_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 3670,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Influenza",
+          "N": 343,
+          "abx_pct": 0.813,
+          "ate": -0.012,
+          "ate_abx": 0.023,
+          "ate_no_abx": 0.035
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > None",
+          "slug": "moderate__sepsis_no_hypoxemia_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 3470,
+            "w": 199,
+            "h": 99
+          },
+          "label": "No virus",
+          "N": 12892,
+          "abx_pct": 0.876,
+          "ate": -0.014,
+          "ate_abx": 0.061,
+          "ate_no_abx": 0.075
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > Other Viruses",
+          "slug": "moderate__sepsis_no_hypoxemia_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 3270,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Other Viruses",
+          "N": 419,
+          "abx_pct": 0.936,
+          "ate": -0.018,
+          "ate_abx": 0.031,
+          "ate_no_abx": 0.049
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > RSV",
+          "slug": "moderate__sepsis_no_hypoxemia_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 3070,
+            "w": 199,
+            "h": 99
+          },
+          "label": "RSV",
+          "N": 184,
+          "abx_pct": 0.848,
+          "ate": -0.016,
+          "ate_abx": 0.038,
+          "ate_no_abx": 0.054
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 4270,
+            "w": 199,
+            "h": 99
+          },
+          "label": "No Comorbidity",
+          "N": 8319,
+          "abx_pct": 0.834,
+          "ate": -0.008,
+          "ate_abx": 0.043,
+          "ate_no_abx": 0.05
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1324,
+            "y": 4070,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Other Comorbidities",
+          "N": 17472,
+          "abx_pct": 0.833,
+          "ate": -0.009,
+          "ate_abx": 0.079,
+          "ate_no_abx": 0.088
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality)",
+          "slug": "moderate__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 239,
+            "y": 3120,
+            "w": 199,
+            "h": 99
+          },
+          "label": "Moderate Pneumonia",
+          "N": 106115,
+          "abx_pct": 0.836,
+          "ate": -0.011,
+          "ate_abx": 0.07,
+          "ate_no_abx": 0.081
+        }
+      ]
+    },
+    "severity=moderate_outcome=30day_depth=4": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 6048
+      },
+      "nodes": [
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia",
+          "slug": "moderate__no_sepsis_no_hypoxemia",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 519,
+            "y": 4834,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No Sepsis / No Hypoxemia",
+          "N": 21987,
+          "abx_pct": 0.793,
+          "ate": -0.004,
+          "ate_abx": 0.05,
+          "ate_no_abx": 0.054
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia)",
+          "slug": "moderate__sepsis_no_hypoxemia",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 519,
+            "y": 3505,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Sepsis (No Hypoxemia)",
+          "N": 41131,
+          "abx_pct": 0.844,
+          "ate": -0.011,
+          "ate_abx": 0.064,
+          "ate_no_abx": 0.075
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis)",
+          "slug": "moderate__hypoxemia_no_sepsis",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 519,
+            "y": 2175,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Hypoxemia (No Sepsis)",
+          "N": 17166,
+          "abx_pct": 0.804,
+          "ate": -0.005,
+          "ate_abx": 0.062,
+          "ate_no_abx": 0.067
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis",
+          "slug": "moderate__hypoxemia_and_sepsis",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 519,
+            "y": 846,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Hypoxemia and Sepsis",
+          "N": 25831,
+          "abx_pct": 0.884,
+          "ate": -0.02,
+          "ate_abx": 0.102,
+          "ate_no_abx": 0.122
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 801,
+            "y": 2508,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No Lung Disease",
+          "N": 7349,
+          "abx_pct": 0.749,
+          "ate": -0.003,
+          "ate_abx": 0.07,
+          "ate_no_abx": 0.073
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease",
+          "slug": "moderate__hypoxemia_no_sepsis_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 801,
+            "y": 1843,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Lung Disease",
+          "N": 9817,
+          "abx_pct": 0.845,
+          "ate": -0.007,
+          "ate_abx": 0.056,
+          "ate_no_abx": 0.063
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > COVID",
+          "slug": "moderate__hypoxemia_no_sepsis_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 2085,
+            "w": 155,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 1117,
+          "abx_pct": 0.687,
+          "ate": -0.01,
+          "ate_abx": 0.068,
+          "ate_no_abx": 0.077
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > Influenza",
+          "slug": "moderate__hypoxemia_no_sepsis_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 1964,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 239,
+          "abx_pct": 0.854,
+          "ate": -0.015,
+          "ate_abx": 0.029,
+          "ate_no_abx": 0.044
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > None",
+          "slug": "moderate__hypoxemia_no_sepsis_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 1843,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 8057,
+          "abx_pct": 0.864,
+          "ate": -0.006,
+          "ate_abx": 0.056,
+          "ate_no_abx": 0.062
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > Other Viruses",
+          "slug": "moderate__hypoxemia_no_sepsis_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 1722,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 277,
+          "abx_pct": 0.921,
+          "ate": -0.015,
+          "ate_abx": 0.027,
+          "ate_no_abx": 0.042
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > RSV",
+          "slug": "moderate__hypoxemia_no_sepsis_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 1601,
+            "w": 155,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 127,
+          "abx_pct": 0.85,
+          "ate": -0.014,
+          "ate_abx": 0.035,
+          "ate_no_abx": 0.049
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 2810,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No Comorbidity",
+          "N": 2423,
+          "abx_pct": 0.714,
+          "ate": -0.001,
+          "ate_abx": 0.058,
+          "ate_no_abx": 0.059
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 2206,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Comorbidities",
+          "N": 4926,
+          "abx_pct": 0.766,
+          "ate": -0.003,
+          "ate_abx": 0.076,
+          "ate_no_abx": 0.079
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity > COVID",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 3052,
+            "w": 155,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 839,
+          "abx_pct": 0.474,
+          "ate": -0.003,
+          "ate_abx": 0.061,
+          "ate_no_abx": 0.065
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity > Influenza",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 2931,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 89,
+          "abx_pct": [null],
+          "ate": -0.011,
+          "ate_abx": 0.028,
+          "ate_no_abx": 0.038
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity > None",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 2810,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 1391,
+          "abx_pct": 0.835,
+          "ate": 0.001,
+          "ate_abx": 0.061,
+          "ate_no_abx": 0.059
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity > Other Viruses",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 2689,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 71,
+          "abx_pct": [null],
+          "ate": -0.009,
+          "ate_abx": 0.021,
+          "ate_no_abx": 0.03
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity > RSV",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 2568,
+            "w": 155,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 33,
+          "abx_pct": [null],
+          "ate": -0.003,
+          "ate_abx": 0.035,
+          "ate_no_abx": 0.038
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities > COVID",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 2447,
+            "w": 155,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 1059,
+          "abx_pct": 0.577,
+          "ate": -0.006,
+          "ate_abx": 0.087,
+          "ate_no_abx": 0.093
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities > Influenza",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 2326,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 128,
+          "abx_pct": 0.797,
+          "ate": -0.013,
+          "ate_abx": 0.027,
+          "ate_no_abx": 0.039
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities > None",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 2206,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 3516,
+          "abx_pct": 0.819,
+          "ate": -0.001,
+          "ate_abx": 0.076,
+          "ate_no_abx": 0.078
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities > Other Viruses",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 2085,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 143,
+          "abx_pct": 0.839,
+          "ate": -0.013,
+          "ate_abx": 0.035,
+          "ate_no_abx": 0.048
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities > RSV",
+          "slug": "moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 1964,
+            "w": 155,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 80,
+          "abx_pct": 0.762,
+          "ate": -0.011,
+          "ate_abx": 0.048,
+          "ate_no_abx": 0.059
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 801,
+            "y": 1178,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No Lung Disease",
+          "N": 11742,
+          "abx_pct": 0.847,
+          "ate": -0.014,
+          "ate_abx": 0.117,
+          "ate_no_abx": 0.131
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease",
+          "slug": "moderate__hypoxemia_and_sepsis_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 801,
+            "y": 514,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Lung Disease",
+          "N": 14089,
+          "abx_pct": 0.914,
+          "ate": -0.025,
+          "ate_abx": 0.09,
+          "ate_no_abx": 0.116
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > COVID",
+          "slug": "moderate__hypoxemia_and_sepsis_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 755,
+            "w": 155,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 1443,
+          "abx_pct": 0.793,
+          "ate": -0.024,
+          "ate_abx": 0.11,
+          "ate_no_abx": 0.134
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > Influenza",
+          "slug": "moderate__hypoxemia_and_sepsis_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 634,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 367,
+          "abx_pct": 0.886,
+          "ate": -0.025,
+          "ate_abx": 0.044,
+          "ate_no_abx": 0.069
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > None",
+          "slug": "moderate__hypoxemia_and_sepsis_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 514,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 11613,
+          "abx_pct": 0.928,
+          "ate": -0.025,
+          "ate_abx": 0.092,
+          "ate_no_abx": 0.117
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > Other Viruses",
+          "slug": "moderate__hypoxemia_and_sepsis_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 393,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 455,
+          "abx_pct": 0.963,
+          "ate": -0.03,
+          "ate_abx": 0.047,
+          "ate_no_abx": 0.077
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > RSV",
+          "slug": "moderate__hypoxemia_and_sepsis_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 272,
+            "w": 155,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 211,
+          "abx_pct": 0.91,
+          "ate": -0.036,
+          "ate_abx": 0.052,
+          "ate_no_abx": 0.088
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 1480,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No Comorbidity",
+          "N": 3364,
+          "abx_pct": 0.818,
+          "ate": -0.014,
+          "ate_abx": 0.092,
+          "ate_no_abx": 0.105
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 876,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Comorbidities",
+          "N": 8378,
+          "abx_pct": 0.859,
+          "ate": -0.014,
+          "ate_abx": 0.127,
+          "ate_no_abx": 0.141
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity > COVID",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 1722,
+            "w": 155,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 943,
+          "abx_pct": 0.566,
+          "ate": -0.006,
+          "ate_abx": 0.095,
+          "ate_no_abx": 0.101
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity > Influenza",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 1601,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 121,
+          "abx_pct": [null],
+          "ate": -0.024,
+          "ate_abx": 0.038,
+          "ate_no_abx": 0.062
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity > None",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 1480,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 2145,
+          "abx_pct": 0.918,
+          "ate": -0.016,
+          "ate_abx": 0.096,
+          "ate_no_abx": 0.112
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity > Other Viruses",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 1360,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 104,
+          "abx_pct": [null],
+          "ate": -0.022,
+          "ate_abx": 0.047,
+          "ate_no_abx": 0.069
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity > RSV",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 1239,
+            "w": 155,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 51,
+          "abx_pct": [null],
+          "ate": -0.034,
+          "ate_abx": 0.049,
+          "ate_no_abx": 0.082
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities > COVID",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 1118,
+            "w": 155,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 1552,
+          "abx_pct": 0.698,
+          "ate": -0.009,
+          "ate_abx": 0.143,
+          "ate_no_abx": 0.153
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities > Influenza",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 997,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 248,
+          "abx_pct": 0.927,
+          "ate": -0.019,
+          "ate_abx": 0.059,
+          "ate_no_abx": 0.078
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities > None",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 876,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 6151,
+          "abx_pct": 0.893,
+          "ate": -0.014,
+          "ate_abx": 0.13,
+          "ate_no_abx": 0.143
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities > Other Viruses",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 755,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 288,
+          "abx_pct": [null],
+          "ate": -0.027,
+          "ate_abx": 0.064,
+          "ate_no_abx": 0.092
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities > RSV",
+          "slug": "moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 634,
+            "w": 155,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 139,
+          "abx_pct": 0.863,
+          "ate": -0.028,
+          "ate_abx": 0.078,
+          "ate_no_abx": 0.105
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 801,
+            "y": 5166,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No Lung Disease",
+          "N": 14266,
+          "abx_pct": 0.779,
+          "ate": -0.003,
+          "ate_abx": 0.052,
+          "ate_no_abx": 0.055
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease",
+          "slug": "moderate__no_sepsis_no_hypoxemia_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 801,
+            "y": 4502,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Lung Disease",
+          "N": 7721,
+          "abx_pct": 0.817,
+          "ate": -0.006,
+          "ate_abx": 0.047,
+          "ate_no_abx": 0.052
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > COVID",
+          "slug": "moderate__no_sepsis_no_hypoxemia_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 4743,
+            "w": 155,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 676,
+          "abx_pct": 0.691,
+          "ate": -0.007,
+          "ate_abx": 0.054,
+          "ate_no_abx": 0.061
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > Influenza",
+          "slug": "moderate__no_sepsis_no_hypoxemia_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 4623,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 106,
+          "abx_pct": 0.83,
+          "ate": -0.007,
+          "ate_abx": 0.027,
+          "ate_no_abx": 0.034
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > None",
+          "slug": "moderate__no_sepsis_no_hypoxemia_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 4502,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 6660,
+          "abx_pct": 0.83,
+          "ate": -0.005,
+          "ate_abx": 0.047,
+          "ate_no_abx": 0.052
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > Other Viruses",
+          "slug": "moderate__no_sepsis_no_hypoxemia_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 4381,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 204,
+          "abx_pct": 0.858,
+          "ate": -0.012,
+          "ate_abx": 0.023,
+          "ate_no_abx": 0.035
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > RSV",
+          "slug": "moderate__no_sepsis_no_hypoxemia_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 4260,
+            "w": 155,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 75,
+          "abx_pct": 0.64,
+          "ate": -0.011,
+          "ate_abx": 0.035,
+          "ate_no_abx": 0.046
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 5469,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No Comorbidity",
+          "N": 3709,
+          "abx_pct": 0.778,
+          "ate": 0.001,
+          "ate_abx": 0.052,
+          "ate_no_abx": 0.051
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 4864,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Comorbidities",
+          "N": 10557,
+          "abx_pct": 0.78,
+          "ate": -0.004,
+          "ate_abx": 0.052,
+          "ate_no_abx": 0.056
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity > COVID",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 5710,
+            "w": 155,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 615,
+          "abx_pct": 0.587,
+          "ate": 0,
+          "ate_abx": 0.059,
+          "ate_no_abx": 0.058
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity > Influenza",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 5589,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 75,
+          "abx_pct": 0.787,
+          "ate": -0.007,
+          "ate_abx": 0.024,
+          "ate_no_abx": 0.031
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity > None",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 5469,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 2907,
+          "abx_pct": 0.817,
+          "ate": 0.001,
+          "ate_abx": 0.052,
+          "ate_no_abx": 0.051
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity > Other Viruses",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 5348,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 66,
+          "abx_pct": [null],
+          "ate": -0.013,
+          "ate_abx": 0.027,
+          "ate_no_abx": 0.041
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity > RSV",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 5227,
+            "w": 155,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 46,
+          "abx_pct": [null],
+          "ate": -0.009,
+          "ate_abx": 0.046,
+          "ate_no_abx": 0.055
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities > COVID",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 5106,
+            "w": 155,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 1312,
+          "abx_pct": 0.63,
+          "ate": -0.004,
+          "ate_abx": 0.064,
+          "ate_no_abx": 0.068
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities > Influenza",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 4985,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 203,
+          "abx_pct": 0.842,
+          "ate": -0.007,
+          "ate_abx": 0.025,
+          "ate_no_abx": 0.032
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities > None",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 4864,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 8622,
+          "abx_pct": 0.799,
+          "ate": -0.003,
+          "ate_abx": 0.052,
+          "ate_no_abx": 0.055
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities > Other Viruses",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 4743,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 272,
+          "abx_pct": 0.842,
+          "ate": -0.011,
+          "ate_abx": 0.028,
+          "ate_no_abx": 0.039
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities > RSV",
+          "slug": "moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 4623,
+            "w": 155,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 148,
+          "abx_pct": 0.77,
+          "ate": -0.011,
+          "ate_abx": 0.036,
+          "ate_no_abx": 0.047
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 801,
+            "y": 3837,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No Lung Disease",
+          "N": 25791,
+          "abx_pct": 0.833,
+          "ate": -0.009,
+          "ate_abx": 0.067,
+          "ate_no_abx": 0.076
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease",
+          "slug": "moderate__sepsis_no_hypoxemia_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 801,
+            "y": 3172,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Lung Disease",
+          "N": 15340,
+          "abx_pct": 0.862,
+          "ate": -0.014,
+          "ate_abx": 0.06,
+          "ate_no_abx": 0.074
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > COVID",
+          "slug": "moderate__sepsis_no_hypoxemia_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 3414,
+            "w": 155,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 1502,
+          "abx_pct": 0.729,
+          "ate": -0.012,
+          "ate_abx": 0.068,
+          "ate_no_abx": 0.08
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > Influenza",
+          "slug": "moderate__sepsis_no_hypoxemia_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 3293,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 343,
+          "abx_pct": 0.813,
+          "ate": -0.012,
+          "ate_abx": 0.023,
+          "ate_no_abx": 0.035
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > None",
+          "slug": "moderate__sepsis_no_hypoxemia_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 3172,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 12892,
+          "abx_pct": 0.876,
+          "ate": -0.014,
+          "ate_abx": 0.061,
+          "ate_no_abx": 0.075
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > Other Viruses",
+          "slug": "moderate__sepsis_no_hypoxemia_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 3052,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 419,
+          "abx_pct": 0.936,
+          "ate": -0.018,
+          "ate_abx": 0.031,
+          "ate_no_abx": 0.049
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > RSV",
+          "slug": "moderate__sepsis_no_hypoxemia_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 2931,
+            "w": 155,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 184,
+          "abx_pct": 0.848,
+          "ate": -0.016,
+          "ate_abx": 0.038,
+          "ate_no_abx": 0.054
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 4139,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No Comorbidity",
+          "N": 8319,
+          "abx_pct": 0.834,
+          "ate": -0.008,
+          "ate_abx": 0.043,
+          "ate_no_abx": 0.05
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1084,
+            "y": 3535,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Comorbidities",
+          "N": 17472,
+          "abx_pct": 0.833,
+          "ate": -0.009,
+          "ate_abx": 0.079,
+          "ate_no_abx": 0.088
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity > COVID",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 4381,
+            "w": 155,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 1469,
+          "abx_pct": 0.564,
+          "ate": -0.005,
+          "ate_abx": 0.047,
+          "ate_no_abx": 0.052
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity > Influenza",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 4260,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 312,
+          "abx_pct": 0.776,
+          "ate": -0.006,
+          "ate_abx": 0.014,
+          "ate_no_abx": 0.021
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity > None",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 4139,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 6248,
+          "abx_pct": 0.899,
+          "ate": -0.008,
+          "ate_abx": 0.044,
+          "ate_no_abx": 0.052
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity > Other Viruses",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 4018,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 201,
+          "abx_pct": 0.896,
+          "ate": -0.008,
+          "ate_abx": 0.015,
+          "ate_no_abx": 0.023
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity > RSV",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 3897,
+            "w": 155,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 89,
+          "abx_pct": 0.798,
+          "ate": -0.013,
+          "ate_abx": 0.025,
+          "ate_no_abx": 0.038
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities > COVID",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 3777,
+            "w": 155,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 2323,
+          "abx_pct": 0.684,
+          "ate": -0.008,
+          "ate_abx": 0.09,
+          "ate_no_abx": 0.098
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities > Influenza",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 3656,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 425,
+          "abx_pct": 0.798,
+          "ate": -0.011,
+          "ate_abx": 0.033,
+          "ate_no_abx": 0.044
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities > None",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 3535,
+            "w": 155,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 14073,
+          "abx_pct": 0.857,
+          "ate": -0.009,
+          "ate_abx": 0.08,
+          "ate_no_abx": 0.089
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities > Other Viruses",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 3414,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 454,
+          "abx_pct": 0.894,
+          "ate": -0.016,
+          "ate_abx": 0.036,
+          "ate_no_abx": 0.052
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities > RSV",
+          "slug": "moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1366,
+            "y": 3293,
+            "w": 155,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 197,
+          "abx_pct": 0.812,
+          "ate": -0.023,
+          "ate_abx": 0.049,
+          "ate_no_abx": 0.072
+        },
+        {
+          "node_id": "moderate pneumonia (30-day mortality)",
+          "slug": "moderate__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 236,
+            "y": 2840,
+            "w": 155,
+            "h": 60
+          },
+          "label": "Moderate Pneumonia",
+          "N": 106115,
+          "abx_pct": 0.836,
+          "ate": -0.011,
+          "ate_abx": 0.07,
+          "ate_no_abx": 0.081
+        }
+      ]
+    },
+    "severity=severe_outcome=30day_depth=0": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 1080
+      },
+      "nodes": [
+        {
+          "node_id": "severe pneumonia (30-day mortality)",
+          "slug": "severe__root",
+          "is_terminal_in_view": true,
+          "is_root": true,
+          "bbox_px": {
+            "x": 317,
+            "y": 5,
+            "w": 1221,
+            "h": 1031
+          },
+          "label": "Severe Pneumonia",
+          "N": 20247,
+          "abx_pct": 0.881,
+          "ate": 0.017,
+          "ate_abx": 0.202,
+          "ate_no_abx": 0.185
+        }
+      ]
+    },
+    "severity=severe_outcome=30day_depth=1": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 1692
+      },
+      "nodes": [
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia",
+          "slug": "severe__no_shock_no_s_hypoxemia",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1044,
+            "y": 1393,
+            "w": 433,
+            "h": 220
+          },
+          "label": "No Shock / No S.Hyp",
+          "N": 4367,
+          "abx_pct": 0.833,
+          "ate": 0,
+          "ate_abx": 0.174,
+          "ate_no_abx": 0.174
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia)",
+          "slug": "severe__shock_no_s_hypoxemia",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1044,
+            "y": 947,
+            "w": 433,
+            "h": 220
+          },
+          "label": "Shock (No S.Hyp)",
+          "N": 2193,
+          "abx_pct": 0.946,
+          "ate": 0.06,
+          "ate_abx": 0.251,
+          "ate_no_abx": 0.191
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock)",
+          "slug": "severe__severe_hypoxemia_no_shock",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1044,
+            "y": 502,
+            "w": 433,
+            "h": 220
+          },
+          "label": "Severe Hypoxemia (No Shock)",
+          "N": 12067,
+          "abx_pct": 0.874,
+          "ate": 0.01,
+          "ate_abx": 0.18,
+          "ate_no_abx": 0.17
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock",
+          "slug": "severe__severe_hypoxemia_and_shock",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1044,
+            "y": 56,
+            "w": 433,
+            "h": 220
+          },
+          "label": "Severe Hypoxemia and Shock",
+          "N": 1620,
+          "abx_pct": 0.972,
+          "ate": 0.057,
+          "ate_abx": 0.371,
+          "ate_no_abx": 0.314
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality)",
+          "slug": "severe__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 257,
+            "y": 725,
+            "w": 433,
+            "h": 220
+          },
+          "label": "Severe Pneumonia",
+          "N": 20247,
+          "abx_pct": 0.881,
+          "ate": 0.017,
+          "ate_abx": 0.202,
+          "ate_no_abx": 0.185
+        }
+      ]
+    },
+    "severity=severe_outcome=30day_depth=2": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 3362
+      },
+      "nodes": [
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia",
+          "slug": "severe__no_shock_no_s_hypoxemia",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 739,
+            "y": 2800,
+            "w": 272,
+            "h": 203
+          },
+          "label": "No Shock / No S.Hyp",
+          "N": 4367,
+          "abx_pct": 0.833,
+          "ate": 0,
+          "ate_abx": 0.174,
+          "ate_no_abx": 0.174
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia)",
+          "slug": "severe__shock_no_s_hypoxemia",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 739,
+            "y": 1980,
+            "w": 272,
+            "h": 203
+          },
+          "label": "Shock (No S.Hyp)",
+          "N": 2193,
+          "abx_pct": 0.946,
+          "ate": 0.06,
+          "ate_abx": 0.251,
+          "ate_no_abx": 0.191
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock)",
+          "slug": "severe__severe_hypoxemia_no_shock",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 739,
+            "y": 1159,
+            "w": 272,
+            "h": 203
+          },
+          "label": "Severe Hypoxemia (No Shock)",
+          "N": 12067,
+          "abx_pct": 0.874,
+          "ate": 0.01,
+          "ate_abx": 0.18,
+          "ate_no_abx": 0.17
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock",
+          "slug": "severe__severe_hypoxemia_and_shock",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 739,
+            "y": 339,
+            "w": 272,
+            "h": 203
+          },
+          "label": "Severe Hypoxemia and Shock",
+          "N": 1620,
+          "abx_pct": 0.972,
+          "ate": 0.057,
+          "ate_abx": 0.371,
+          "ate_no_abx": 0.314
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1234,
+            "y": 3005,
+            "w": 272,
+            "h": 203
+          },
+          "label": "No Lung Disease",
+          "N": 2206,
+          "abx_pct": 0.807,
+          "ate": 0.021,
+          "ate_abx": 0.199,
+          "ate_no_abx": 0.178
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease",
+          "slug": "severe__no_shock_no_s_hypoxemia_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1234,
+            "y": 2595,
+            "w": 272,
+            "h": 203
+          },
+          "label": "Lung Disease",
+          "N": 2161,
+          "abx_pct": 0.86,
+          "ate": -0.02,
+          "ate_abx": 0.148,
+          "ate_no_abx": 0.168
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1234,
+            "y": 1364,
+            "w": 272,
+            "h": 203
+          },
+          "label": "No Lung Disease",
+          "N": 5193,
+          "abx_pct": 0.826,
+          "ate": 0.025,
+          "ate_abx": 0.221,
+          "ate_no_abx": 0.196
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease",
+          "slug": "severe__severe_hypoxemia_no_shock_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1234,
+            "y": 954,
+            "w": 272,
+            "h": 203
+          },
+          "label": "Lung Disease",
+          "N": 6874,
+          "abx_pct": 0.91,
+          "ate": -0.001,
+          "ate_abx": 0.149,
+          "ate_no_abx": 0.15
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1234,
+            "y": 544,
+            "w": 272,
+            "h": 203
+          },
+          "label": "No Lung Disease",
+          "N": 934,
+          "abx_pct": 0.959,
+          "ate": 0.068,
+          "ate_abx": 0.401,
+          "ate_no_abx": 0.332
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease",
+          "slug": "severe__severe_hypoxemia_and_shock_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1234,
+            "y": 134,
+            "w": 272,
+            "h": 203
+          },
+          "label": "Lung Disease",
+          "N": 686,
+          "abx_pct": [null],
+          "ate": 0.04,
+          "ate_abx": 0.33,
+          "ate_no_abx": 0.29
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1234,
+            "y": 2185,
+            "w": 272,
+            "h": 203
+          },
+          "label": "No Lung Disease",
+          "N": 1294,
+          "abx_pct": 0.932,
+          "ate": 0.073,
+          "ate_abx": 0.264,
+          "ate_no_abx": 0.191
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease",
+          "slug": "severe__shock_no_s_hypoxemia_lung_disease",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1234,
+            "y": 1775,
+            "w": 272,
+            "h": 203
+          },
+          "label": "Lung Disease",
+          "N": 899,
+          "abx_pct": 0.967,
+          "ate": 0.042,
+          "ate_abx": 0.233,
+          "ate_no_abx": 0.191
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality)",
+          "slug": "severe__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 245,
+            "y": 1570,
+            "w": 272,
+            "h": 203
+          },
+          "label": "Severe Pneumonia",
+          "N": 20247,
+          "abx_pct": 0.881,
+          "ate": 0.017,
+          "ate_abx": 0.202,
+          "ate_no_abx": 0.185
+        }
+      ]
+    },
+    "severity=severe_outcome=30day_depth=3": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 6048
+      },
+      "nodes": [
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia",
+          "slug": "severe__no_shock_no_s_hypoxemia",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 592,
+            "y": 5217,
+            "w": 194,
+            "h": 100
+          },
+          "label": "No Shock / No S.Hyp",
+          "N": 4367,
+          "abx_pct": 0.833,
+          "ate": 0,
+          "ate_abx": 0.174,
+          "ate_no_abx": 0.174
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia)",
+          "slug": "severe__shock_no_s_hypoxemia",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 592,
+            "y": 3804,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Shock (No S.Hyp)",
+          "N": 2193,
+          "abx_pct": 0.946,
+          "ate": 0.06,
+          "ate_abx": 0.251,
+          "ate_no_abx": 0.191
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock)",
+          "slug": "severe__severe_hypoxemia_no_shock",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 592,
+            "y": 2392,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Severe Hypoxemia (No Shock)",
+          "N": 12067,
+          "abx_pct": 0.874,
+          "ate": 0.01,
+          "ate_abx": 0.18,
+          "ate_no_abx": 0.17
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock",
+          "slug": "severe__severe_hypoxemia_and_shock",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 592,
+            "y": 980,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Severe Hypoxemia and Shock",
+          "N": 1620,
+          "abx_pct": 0.972,
+          "ate": 0.057,
+          "ate_abx": 0.371,
+          "ate_no_abx": 0.314
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 5570,
+            "w": 194,
+            "h": 100
+          },
+          "label": "No Lung Disease",
+          "N": 2206,
+          "abx_pct": 0.807,
+          "ate": 0.021,
+          "ate_abx": 0.199,
+          "ate_no_abx": 0.178
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease",
+          "slug": "severe__no_shock_no_s_hypoxemia_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 4864,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Lung Disease",
+          "N": 2161,
+          "abx_pct": 0.86,
+          "ate": -0.02,
+          "ate_abx": 0.148,
+          "ate_no_abx": 0.168
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > COVID",
+          "slug": "severe__no_shock_no_s_hypoxemia_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 5267,
+            "w": 194,
+            "h": 100
+          },
+          "label": "COVID",
+          "N": 353,
+          "abx_pct": 0.728,
+          "ate": -0.033,
+          "ate_abx": 0.179,
+          "ate_no_abx": 0.212
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > Influenza",
+          "slug": "severe__no_shock_no_s_hypoxemia_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 5065,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Influenza",
+          "N": 55,
+          "abx_pct": [null],
+          "ate": -0.089,
+          "ate_abx": 0.087,
+          "ate_no_abx": 0.176
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > None",
+          "slug": "severe__no_shock_no_s_hypoxemia_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 4864,
+            "w": 194,
+            "h": 100
+          },
+          "label": "No virus",
+          "N": 1659,
+          "abx_pct": 0.878,
+          "ate": -0.014,
+          "ate_abx": 0.146,
+          "ate_no_abx": 0.16
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > Other Viruses",
+          "slug": "severe__no_shock_no_s_hypoxemia_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 4662,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Other Viruses",
+          "N": 63,
+          "abx_pct": [null],
+          "ate": -0.025,
+          "ate_abx": 0.098,
+          "ate_no_abx": 0.122
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > RSV",
+          "slug": "severe__no_shock_no_s_hypoxemia_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 4460,
+            "w": 194,
+            "h": 100
+          },
+          "label": "RSV",
+          "N": 31,
+          "abx_pct": [null],
+          "ate": -0.092,
+          "ate_abx": 0.095,
+          "ate_no_abx": 0.188
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 5671,
+            "w": 194,
+            "h": 100
+          },
+          "label": "No Comorbidity",
+          "N": 411,
+          "abx_pct": 0.757,
+          "ate": 0.031,
+          "ate_abx": 0.21,
+          "ate_no_abx": 0.179
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 5469,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Other Comorbidities",
+          "N": 1795,
+          "abx_pct": 0.818,
+          "ate": 0.018,
+          "ate_abx": 0.196,
+          "ate_no_abx": 0.178
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 2745,
+            "w": 194,
+            "h": 100
+          },
+          "label": "No Lung Disease",
+          "N": 5193,
+          "abx_pct": 0.826,
+          "ate": 0.025,
+          "ate_abx": 0.221,
+          "ate_no_abx": 0.196
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease",
+          "slug": "severe__severe_hypoxemia_no_shock_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 2039,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Lung Disease",
+          "N": 6874,
+          "abx_pct": 0.91,
+          "ate": -0.001,
+          "ate_abx": 0.149,
+          "ate_no_abx": 0.15
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > COVID",
+          "slug": "severe__severe_hypoxemia_no_shock_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 2443,
+            "w": 194,
+            "h": 100
+          },
+          "label": "COVID",
+          "N": 886,
+          "abx_pct": 0.769,
+          "ate": -0.019,
+          "ate_abx": 0.219,
+          "ate_no_abx": 0.238
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > Influenza",
+          "slug": "severe__severe_hypoxemia_no_shock_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 2241,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Influenza",
+          "N": 162,
+          "abx_pct": [null],
+          "ate": -0.065,
+          "ate_abx": 0.084,
+          "ate_no_abx": 0.149
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > None",
+          "slug": "severe__severe_hypoxemia_no_shock_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 2039,
+            "w": 194,
+            "h": 100
+          },
+          "label": "No virus",
+          "N": 5517,
+          "abx_pct": 0.93,
+          "ate": 0.006,
+          "ate_abx": 0.143,
+          "ate_no_abx": 0.137
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > Other Viruses",
+          "slug": "severe__severe_hypoxemia_no_shock_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 1837,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Other Viruses",
+          "N": 206,
+          "abx_pct": [null],
+          "ate": -0.027,
+          "ate_abx": 0.102,
+          "ate_no_abx": 0.128
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > RSV",
+          "slug": "severe__severe_hypoxemia_no_shock_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 1636,
+            "w": 194,
+            "h": 100
+          },
+          "label": "RSV",
+          "N": 103,
+          "abx_pct": [null],
+          "ate": -0.047,
+          "ate_abx": 0.088,
+          "ate_no_abx": 0.135
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 2846,
+            "w": 194,
+            "h": 100
+          },
+          "label": "No Comorbidity",
+          "N": 1567,
+          "abx_pct": 0.789,
+          "ate": 0.024,
+          "ate_abx": 0.207,
+          "ate_no_abx": 0.183
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 2644,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Other Comorbidities",
+          "N": 3626,
+          "abx_pct": 0.841,
+          "ate": 0.025,
+          "ate_abx": 0.228,
+          "ate_no_abx": 0.202
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 1333,
+            "w": 194,
+            "h": 100
+          },
+          "label": "No Lung Disease",
+          "N": 934,
+          "abx_pct": 0.959,
+          "ate": 0.068,
+          "ate_abx": 0.401,
+          "ate_no_abx": 0.332
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease",
+          "slug": "severe__severe_hypoxemia_and_shock_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 627,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Lung Disease",
+          "N": 686,
+          "abx_pct": [null],
+          "ate": 0.04,
+          "ate_abx": 0.33,
+          "ate_no_abx": 0.29
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > COVID",
+          "slug": "severe__severe_hypoxemia_and_shock_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 1030,
+            "w": 194,
+            "h": 100
+          },
+          "label": "COVID",
+          "N": 88,
+          "abx_pct": [null],
+          "ate": 0.032,
+          "ate_abx": 0.418,
+          "ate_no_abx": 0.386
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > Influenza",
+          "slug": "severe__severe_hypoxemia_and_shock_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 829,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Influenza",
+          "N": 21,
+          "abx_pct": [null],
+          "ate": -0.016,
+          "ate_abx": 0.252,
+          "ate_no_abx": 0.268
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > None",
+          "slug": "severe__severe_hypoxemia_and_shock_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 627,
+            "w": 194,
+            "h": 100
+          },
+          "label": "No virus",
+          "N": 556,
+          "abx_pct": [null],
+          "ate": 0.044,
+          "ate_abx": 0.323,
+          "ate_no_abx": 0.279
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > Other Viruses",
+          "slug": "severe__severe_hypoxemia_and_shock_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 425,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Other Viruses",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > RSV",
+          "slug": "severe__severe_hypoxemia_and_shock_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 223,
+            "w": 194,
+            "h": 100
+          },
+          "label": "RSV",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 1434,
+            "w": 194,
+            "h": 100
+          },
+          "label": "No Comorbidity",
+          "N": 266,
+          "abx_pct": [null],
+          "ate": 0.059,
+          "ate_abx": 0.37,
+          "ate_no_abx": 0.31
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 1232,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Other Comorbidities",
+          "N": 668,
+          "abx_pct": 0.966,
+          "ate": 0.073,
+          "ate_abx": 0.414,
+          "ate_no_abx": 0.341
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 4157,
+            "w": 194,
+            "h": 100
+          },
+          "label": "No Lung Disease",
+          "N": 1294,
+          "abx_pct": 0.932,
+          "ate": 0.073,
+          "ate_abx": 0.264,
+          "ate_no_abx": 0.191
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease",
+          "slug": "severe__shock_no_s_hypoxemia_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 945,
+            "y": 3451,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Lung Disease",
+          "N": 899,
+          "abx_pct": 0.967,
+          "ate": 0.042,
+          "ate_abx": 0.233,
+          "ate_no_abx": 0.191
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > COVID",
+          "slug": "severe__shock_no_s_hypoxemia_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 3855,
+            "w": 194,
+            "h": 100
+          },
+          "label": "COVID",
+          "N": 85,
+          "abx_pct": [null],
+          "ate": 0.017,
+          "ate_abx": 0.23,
+          "ate_no_abx": 0.213
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > Influenza",
+          "slug": "severe__shock_no_s_hypoxemia_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 3653,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Influenza",
+          "N": 21,
+          "abx_pct": [null],
+          "ate": -0.003,
+          "ate_abx": 0.154,
+          "ate_no_abx": 0.158
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > None",
+          "slug": "severe__shock_no_s_hypoxemia_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 3451,
+            "w": 194,
+            "h": 100
+          },
+          "label": "No virus",
+          "N": 763,
+          "abx_pct": 0.972,
+          "ate": 0.047,
+          "ate_abx": 0.239,
+          "ate_no_abx": 0.193
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > Other Viruses",
+          "slug": "severe__shock_no_s_hypoxemia_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 3250,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Other Viruses",
+          "N": 20,
+          "abx_pct": [null],
+          "ate": 0.044,
+          "ate_abx": 0.15,
+          "ate_no_abx": 0.107
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > RSV",
+          "slug": "severe__shock_no_s_hypoxemia_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 3048,
+            "w": 194,
+            "h": 100
+          },
+          "label": "RSV",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 4258,
+            "w": 194,
+            "h": 100
+          },
+          "label": "No Comorbidity",
+          "N": 362,
+          "abx_pct": 0.901,
+          "ate": 0.067,
+          "ate_abx": 0.24,
+          "ate_no_abx": 0.173
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1298,
+            "y": 4057,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Other Comorbidities",
+          "N": 932,
+          "abx_pct": 0.944,
+          "ate": 0.075,
+          "ate_abx": 0.273,
+          "ate_no_abx": 0.198
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality)",
+          "slug": "severe__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 239,
+            "y": 3098,
+            "w": 194,
+            "h": 100
+          },
+          "label": "Severe Pneumonia",
+          "N": 20247,
+          "abx_pct": 0.881,
+          "ate": 0.017,
+          "ate_abx": 0.202,
+          "ate_no_abx": 0.185
+        }
+      ]
+    },
+    "severity=severe_outcome=30day_depth=4": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 6048
+      },
+      "nodes": [
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia",
+          "slug": "severe__no_shock_no_s_hypoxemia",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 514,
+            "y": 4830,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No Shock / No S.Hyp",
+          "N": 4367,
+          "abx_pct": 0.833,
+          "ate": 0,
+          "ate_abx": 0.174,
+          "ate_no_abx": 0.174
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia)",
+          "slug": "severe__shock_no_s_hypoxemia",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 514,
+            "y": 3494,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Shock (No S.Hyp)",
+          "N": 2193,
+          "abx_pct": 0.946,
+          "ate": 0.06,
+          "ate_abx": 0.251,
+          "ate_no_abx": 0.191
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock)",
+          "slug": "severe__severe_hypoxemia_no_shock",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 514,
+            "y": 2158,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Severe Hypoxemia (No Shock)",
+          "N": 12067,
+          "abx_pct": 0.874,
+          "ate": 0.01,
+          "ate_abx": 0.18,
+          "ate_no_abx": 0.17
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock",
+          "slug": "severe__severe_hypoxemia_and_shock",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 514,
+            "y": 822,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Severe Hypoxemia and Shock",
+          "N": 1620,
+          "abx_pct": 0.972,
+          "ate": 0.057,
+          "ate_abx": 0.371,
+          "ate_no_abx": 0.314
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 793,
+            "y": 5163,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No Lung Disease",
+          "N": 2206,
+          "abx_pct": 0.807,
+          "ate": 0.021,
+          "ate_abx": 0.199,
+          "ate_no_abx": 0.178
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease",
+          "slug": "severe__no_shock_no_s_hypoxemia_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 793,
+            "y": 4496,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Lung Disease",
+          "N": 2161,
+          "abx_pct": 0.86,
+          "ate": -0.02,
+          "ate_abx": 0.148,
+          "ate_no_abx": 0.168
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > COVID",
+          "slug": "severe__no_shock_no_s_hypoxemia_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 4738,
+            "w": 153,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 353,
+          "abx_pct": 0.728,
+          "ate": -0.033,
+          "ate_abx": 0.179,
+          "ate_no_abx": 0.212
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > Influenza",
+          "slug": "severe__no_shock_no_s_hypoxemia_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 4617,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 55,
+          "abx_pct": [null],
+          "ate": -0.089,
+          "ate_abx": 0.087,
+          "ate_no_abx": 0.176
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > None",
+          "slug": "severe__no_shock_no_s_hypoxemia_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 4496,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 1659,
+          "abx_pct": 0.878,
+          "ate": -0.014,
+          "ate_abx": 0.146,
+          "ate_no_abx": 0.16
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > Other Viruses",
+          "slug": "severe__no_shock_no_s_hypoxemia_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 4374,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 63,
+          "abx_pct": [null],
+          "ate": -0.025,
+          "ate_abx": 0.098,
+          "ate_no_abx": 0.122
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > RSV",
+          "slug": "severe__no_shock_no_s_hypoxemia_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 4253,
+            "w": 153,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 31,
+          "abx_pct": [null],
+          "ate": -0.092,
+          "ate_abx": 0.095,
+          "ate_no_abx": 0.188
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 5467,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No Comorbidity",
+          "N": 411,
+          "abx_pct": 0.757,
+          "ate": 0.031,
+          "ate_abx": 0.21,
+          "ate_no_abx": 0.179
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 4860,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Comorbidities",
+          "N": 1795,
+          "abx_pct": 0.818,
+          "ate": 0.018,
+          "ate_abx": 0.196,
+          "ate_no_abx": 0.178
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity > COVID",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 5710,
+            "w": 153,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 155,
+          "abx_pct": 0.535,
+          "ate": 0.018,
+          "ate_abx": 0.224,
+          "ate_no_abx": 0.206
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity > Influenza",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 5589,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity > None",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 5467,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 222,
+          "abx_pct": 0.883,
+          "ate": 0.05,
+          "ate_abx": 0.214,
+          "ate_no_abx": 0.164
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity > Other Viruses",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 5346,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity > RSV",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 5224,
+            "w": 153,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities > COVID",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 5103,
+            "w": 153,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 406,
+          "abx_pct": 0.682,
+          "ate": 0.003,
+          "ate_abx": 0.253,
+          "ate_no_abx": 0.25
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities > Influenza",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 4981,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 58,
+          "abx_pct": [null],
+          "ate": -0.058,
+          "ate_abx": 0.118,
+          "ate_no_abx": 0.176
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities > None",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 4860,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 1246,
+          "abx_pct": 0.856,
+          "ate": 0.028,
+          "ate_abx": 0.186,
+          "ate_no_abx": 0.158
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities > Other Viruses",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 4738,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 59,
+          "abx_pct": [null],
+          "ate": -0.003,
+          "ate_abx": 0.109,
+          "ate_no_abx": 0.112
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities > RSV",
+          "slug": "severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 4617,
+            "w": 153,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 26,
+          "abx_pct": [null],
+          "ate": -0.022,
+          "ate_abx": 0.186,
+          "ate_no_abx": 0.208
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 793,
+            "y": 2492,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No Lung Disease",
+          "N": 5193,
+          "abx_pct": 0.826,
+          "ate": 0.025,
+          "ate_abx": 0.221,
+          "ate_no_abx": 0.196
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease",
+          "slug": "severe__severe_hypoxemia_no_shock_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 793,
+            "y": 1824,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Lung Disease",
+          "N": 6874,
+          "abx_pct": 0.91,
+          "ate": -0.001,
+          "ate_abx": 0.149,
+          "ate_no_abx": 0.15
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > COVID",
+          "slug": "severe__severe_hypoxemia_no_shock_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 2067,
+            "w": 153,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 886,
+          "abx_pct": 0.769,
+          "ate": -0.019,
+          "ate_abx": 0.219,
+          "ate_no_abx": 0.238
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > Influenza",
+          "slug": "severe__severe_hypoxemia_no_shock_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 1945,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 162,
+          "abx_pct": [null],
+          "ate": -0.065,
+          "ate_abx": 0.084,
+          "ate_no_abx": 0.149
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > None",
+          "slug": "severe__severe_hypoxemia_no_shock_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 1824,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 5517,
+          "abx_pct": 0.93,
+          "ate": 0.006,
+          "ate_abx": 0.143,
+          "ate_no_abx": 0.137
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > Other Viruses",
+          "slug": "severe__severe_hypoxemia_no_shock_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 1703,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 206,
+          "abx_pct": [null],
+          "ate": -0.027,
+          "ate_abx": 0.102,
+          "ate_no_abx": 0.128
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > RSV",
+          "slug": "severe__severe_hypoxemia_no_shock_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 1581,
+            "w": 153,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 103,
+          "abx_pct": [null],
+          "ate": -0.047,
+          "ate_abx": 0.088,
+          "ate_no_abx": 0.135
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 2795,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No Comorbidity",
+          "N": 1567,
+          "abx_pct": 0.789,
+          "ate": 0.024,
+          "ate_abx": 0.207,
+          "ate_no_abx": 0.183
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 2188,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Comorbidities",
+          "N": 3626,
+          "abx_pct": 0.841,
+          "ate": 0.025,
+          "ate_abx": 0.228,
+          "ate_no_abx": 0.202
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity > COVID",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 3038,
+            "w": 153,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 592,
+          "abx_pct": 0.588,
+          "ate": 0.018,
+          "ate_abx": 0.255,
+          "ate_no_abx": 0.238
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity > Influenza",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 2917,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 50,
+          "abx_pct": [null],
+          "ate": -0.042,
+          "ate_abx": 0.118,
+          "ate_no_abx": 0.16
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity > None",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 2795,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 872,
+          "abx_pct": 0.907,
+          "ate": 0.032,
+          "ate_abx": 0.184,
+          "ate_no_abx": 0.151
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity > Other Viruses",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 2674,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 42,
+          "abx_pct": [null],
+          "ate": 0.035,
+          "ate_abx": 0.134,
+          "ate_no_abx": 0.099
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity > RSV",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 2553,
+            "w": 153,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities > COVID",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 2431,
+            "w": 153,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 950,
+          "abx_pct": 0.686,
+          "ate": 0.016,
+          "ate_abx": 0.302,
+          "ate_no_abx": 0.286
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities > Influenza",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 2310,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 103,
+          "abx_pct": [null],
+          "ate": -0.061,
+          "ate_abx": 0.158,
+          "ate_no_abx": 0.219
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities > None",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 2188,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 2402,
+          "abx_pct": 0.893,
+          "ate": 0.036,
+          "ate_abx": 0.206,
+          "ate_no_abx": 0.17
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities > Other Viruses",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 2067,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 106,
+          "abx_pct": [null],
+          "ate": 0.006,
+          "ate_abx": 0.153,
+          "ate_no_abx": 0.146
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities > RSV",
+          "slug": "severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 1945,
+            "w": 153,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": 65,
+          "abx_pct": [null],
+          "ate": -0.053,
+          "ate_abx": 0.163,
+          "ate_no_abx": 0.216
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 793,
+            "y": 1156,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No Lung Disease",
+          "N": 934,
+          "abx_pct": 0.959,
+          "ate": 0.068,
+          "ate_abx": 0.401,
+          "ate_no_abx": 0.332
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease",
+          "slug": "severe__severe_hypoxemia_and_shock_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 793,
+            "y": 488,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Lung Disease",
+          "N": 686,
+          "abx_pct": [null],
+          "ate": 0.04,
+          "ate_abx": 0.33,
+          "ate_no_abx": 0.29
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > COVID",
+          "slug": "severe__severe_hypoxemia_and_shock_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 731,
+            "w": 153,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 88,
+          "abx_pct": [null],
+          "ate": 0.032,
+          "ate_abx": 0.418,
+          "ate_no_abx": 0.386
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > Influenza",
+          "slug": "severe__severe_hypoxemia_and_shock_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 610,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 21,
+          "abx_pct": [null],
+          "ate": -0.016,
+          "ate_abx": 0.252,
+          "ate_no_abx": 0.268
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > None",
+          "slug": "severe__severe_hypoxemia_and_shock_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 488,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 556,
+          "abx_pct": [null],
+          "ate": 0.044,
+          "ate_abx": 0.323,
+          "ate_no_abx": 0.279
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > Other Viruses",
+          "slug": "severe__severe_hypoxemia_and_shock_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 367,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > RSV",
+          "slug": "severe__severe_hypoxemia_and_shock_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 245,
+            "w": 153,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 1460,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No Comorbidity",
+          "N": 266,
+          "abx_pct": [null],
+          "ate": 0.059,
+          "ate_abx": 0.37,
+          "ate_no_abx": 0.31
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 852,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Comorbidities",
+          "N": 668,
+          "abx_pct": 0.966,
+          "ate": 0.073,
+          "ate_abx": 0.414,
+          "ate_no_abx": 0.341
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity > COVID",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 1703,
+            "w": 153,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 52,
+          "abx_pct": [null],
+          "ate": 0.045,
+          "ate_abx": 0.422,
+          "ate_no_abx": 0.377
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity > Influenza",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 1581,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity > None",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 1460,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 193,
+          "abx_pct": [null],
+          "ate": 0.069,
+          "ate_abx": 0.369,
+          "ate_no_abx": 0.301
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity > Other Viruses",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 1338,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity > RSV",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 1217,
+            "w": 153,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities > COVID",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 1095,
+            "w": 153,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 102,
+          "abx_pct": [null],
+          "ate": 0.024,
+          "ate_abx": 0.454,
+          "ate_no_abx": 0.43
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities > Influenza",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 974,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 20,
+          "abx_pct": [null],
+          "ate": -0.062,
+          "ate_abx": 0.251,
+          "ate_no_abx": 0.313
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities > None",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 852,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 524,
+          "abx_pct": [null],
+          "ate": 0.088,
+          "ate_abx": 0.415,
+          "ate_no_abx": 0.327
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities > Other Viruses",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 731,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities > RSV",
+          "slug": "severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 610,
+            "w": 153,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 793,
+            "y": 3828,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No Lung Disease",
+          "N": 1294,
+          "abx_pct": 0.932,
+          "ate": 0.073,
+          "ate_abx": 0.264,
+          "ate_no_abx": 0.191
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease",
+          "slug": "severe__shock_no_s_hypoxemia_lung_disease",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 793,
+            "y": 3160,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Lung Disease",
+          "N": 899,
+          "abx_pct": 0.967,
+          "ate": 0.042,
+          "ate_abx": 0.233,
+          "ate_no_abx": 0.191
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > COVID",
+          "slug": "severe__shock_no_s_hypoxemia_lung_disease_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 3403,
+            "w": 153,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 85,
+          "abx_pct": [null],
+          "ate": 0.017,
+          "ate_abx": 0.23,
+          "ate_no_abx": 0.213
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > Influenza",
+          "slug": "severe__shock_no_s_hypoxemia_lung_disease_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 3281,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": 21,
+          "abx_pct": [null],
+          "ate": -0.003,
+          "ate_abx": 0.154,
+          "ate_no_abx": 0.158
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > None",
+          "slug": "severe__shock_no_s_hypoxemia_lung_disease_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 3160,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 763,
+          "abx_pct": 0.972,
+          "ate": 0.047,
+          "ate_abx": 0.239,
+          "ate_no_abx": 0.193
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > Other Viruses",
+          "slug": "severe__shock_no_s_hypoxemia_lung_disease_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 3038,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 20,
+          "abx_pct": [null],
+          "ate": 0.044,
+          "ate_abx": 0.15,
+          "ate_no_abx": 0.107
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > RSV",
+          "slug": "severe__shock_no_s_hypoxemia_lung_disease_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 2917,
+            "w": 153,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 4131,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No Comorbidity",
+          "N": 362,
+          "abx_pct": 0.901,
+          "ate": 0.067,
+          "ate_abx": 0.24,
+          "ate_no_abx": 0.173
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1072,
+            "y": 3524,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Comorbidities",
+          "N": 932,
+          "abx_pct": 0.944,
+          "ate": 0.075,
+          "ate_abx": 0.273,
+          "ate_no_abx": 0.198
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity > COVID",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 4374,
+            "w": 153,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 77,
+          "abx_pct": 0.688,
+          "ate": 0.061,
+          "ate_abx": 0.227,
+          "ate_no_abx": 0.166
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity > Influenza",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 4253,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity > None",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 4131,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 262,
+          "abx_pct": [null],
+          "ate": 0.074,
+          "ate_abx": 0.254,
+          "ate_no_abx": 0.18
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity > Other Viruses",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 4010,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity > RSV",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 3888,
+            "w": 153,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities > COVID",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 3767,
+            "w": 153,
+            "h": 60
+          },
+          "label": "COVID",
+          "N": 129,
+          "abx_pct": 0.775,
+          "ate": 0.064,
+          "ate_abx": 0.284,
+          "ate_no_abx": 0.22
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities > Influenza",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 3646,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Influenza",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities > None",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 3524,
+            "w": 153,
+            "h": 60
+          },
+          "label": "No virus",
+          "N": 749,
+          "abx_pct": 0.969,
+          "ate": 0.08,
+          "ate_abx": 0.277,
+          "ate_no_abx": 0.197
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities > Other Viruses",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 3403,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Other Viruses",
+          "N": 26,
+          "abx_pct": [null],
+          "ate": 0.069,
+          "ate_abx": 0.172,
+          "ate_no_abx": 0.103
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities > RSV",
+          "slug": "severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1350,
+            "y": 3281,
+            "w": 153,
+            "h": 60
+          },
+          "label": "RSV",
+          "N": [null],
+          "abx_pct": [null],
+          "ate": [null],
+          "ate_abx": [null],
+          "ate_no_abx": [null]
+        },
+        {
+          "node_id": "severe pneumonia (30-day mortality)",
+          "slug": "severe__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 236,
+            "y": 2826,
+            "w": 153,
+            "h": 60
+          },
+          "label": "Severe Pneumonia",
+          "N": 20247,
+          "abx_pct": 0.881,
+          "ate": 0.017,
+          "ate_abx": 0.202,
+          "ate_no_abx": 0.185
+        }
+      ]
+    }
+  }
+}

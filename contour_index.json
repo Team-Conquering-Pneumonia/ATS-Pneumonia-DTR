@@ -1,0 +1,1935 @@
+{
+  "nodes": {
+    "mild__no_lung_disease": {
+      "node_id": "mild pneumonia (30-day mortality) > No Lung Disease",
+      "image": "assets/node-contours/mild__no_lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0014,
+      "n_total": 29542,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "mild__lung_disease": {
+      "node_id": "mild pneumonia (30-day mortality) > Lung Disease",
+      "image": "assets/node-contours/mild__lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0024,
+      "n_total": 14955,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "mild__lung_disease_covid": {
+      "node_id": "mild pneumonia (30-day mortality) > Lung Disease > COVID",
+      "image": "assets/node-contours/mild__lung_disease_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0019,
+      "n_total": 1325,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "mild__lung_disease_influenza": {
+      "node_id": "mild pneumonia (30-day mortality) > Lung Disease > Influenza",
+      "image": "assets/node-contours/mild__lung_disease_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0024,
+      "n_total": 344,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "mild__lung_disease_none": {
+      "node_id": "mild pneumonia (30-day mortality) > Lung Disease > None",
+      "image": "assets/node-contours/mild__lung_disease_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0025,
+      "n_total": 12683,
+      "viruses": [
+        "None"
+      ]
+    },
+    "mild__lung_disease_other_viruses": {
+      "node_id": "mild pneumonia (30-day mortality) > Lung Disease > Other Viruses",
+      "image": "assets/node-contours/mild__lung_disease_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0028,
+      "n_total": 401,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "mild__lung_disease_rsv": {
+      "node_id": "mild pneumonia (30-day mortality) > Lung Disease > RSV",
+      "image": "assets/node-contours/mild__lung_disease_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0018,
+      "n_total": 202,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "mild__no_lung_disease_no_comorbidity": {
+      "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > No Comorbidity",
+      "image": "assets/node-contours/mild__no_lung_disease_no_comorbidity.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0023,
+      "n_total": 15428,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "mild__no_lung_disease_other_comorbidities": {
+      "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > Other Comorbidities",
+      "image": "assets/node-contours/mild__no_lung_disease_other_comorbidities.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0006,
+      "n_total": 14114,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "mild__no_lung_disease_no_comorbidity_covid": {
+      "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > No Comorbidity > COVID",
+      "image": "assets/node-contours/mild__no_lung_disease_no_comorbidity_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0022,
+      "n_total": 2416,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "mild__no_lung_disease_no_comorbidity_influenza": {
+      "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > No Comorbidity > Influenza",
+      "image": "assets/node-contours/mild__no_lung_disease_no_comorbidity_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.002,
+      "n_total": 532,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "mild__no_lung_disease_no_comorbidity_none": {
+      "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > No Comorbidity > None",
+      "image": "assets/node-contours/mild__no_lung_disease_no_comorbidity_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0023,
+      "n_total": 11896,
+      "viruses": [
+        "None"
+      ]
+    },
+    "mild__no_lung_disease_no_comorbidity_other_viruses": {
+      "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > No Comorbidity > Other Viruses",
+      "image": "assets/node-contours/mild__no_lung_disease_no_comorbidity_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0023,
+      "n_total": 402,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "mild__no_lung_disease_no_comorbidity_rsv": {
+      "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > No Comorbidity > RSV",
+      "image": "assets/node-contours/mild__no_lung_disease_no_comorbidity_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0013,
+      "n_total": 182,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "mild__no_lung_disease_other_comorbidities_covid": {
+      "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > Other Comorbidities > COVID",
+      "image": "assets/node-contours/mild__no_lung_disease_other_comorbidities_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0015,
+      "n_total": 1808,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "mild__no_lung_disease_other_comorbidities_influenza": {
+      "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > Other Comorbidities > Influenza",
+      "image": "assets/node-contours/mild__no_lung_disease_other_comorbidities_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0018,
+      "n_total": 441,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "mild__no_lung_disease_other_comorbidities_none": {
+      "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > Other Comorbidities > None",
+      "image": "assets/node-contours/mild__no_lung_disease_other_comorbidities_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0008,
+      "n_total": 11260,
+      "viruses": [
+        "None"
+      ]
+    },
+    "mild__no_lung_disease_other_comorbidities_other_viruses": {
+      "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > Other Comorbidities > Other Viruses",
+      "image": "assets/node-contours/mild__no_lung_disease_other_comorbidities_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0003,
+      "n_total": 390,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "mild__no_lung_disease_other_comorbidities_rsv": {
+      "node_id": "mild pneumonia (30-day mortality) > No Lung Disease > Other Comorbidities > RSV",
+      "image": "assets/node-contours/mild__no_lung_disease_other_comorbidities_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0001,
+      "n_total": 215,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0036,
+      "n_total": 21987,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia)",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0106,
+      "n_total": 41131,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis)",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0053,
+      "n_total": 17166,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0202,
+      "n_total": 25831,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_no_lung_disease": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_no_lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0026,
+      "n_total": 7349,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_lung_disease": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0074,
+      "n_total": 9817,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_lung_disease_covid": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > COVID",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_lung_disease_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0097,
+      "n_total": 1117,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_lung_disease_influenza": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > Influenza",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_lung_disease_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0153,
+      "n_total": 239,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_lung_disease_none": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > None",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_lung_disease_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0064,
+      "n_total": 8057,
+      "viruses": [
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_lung_disease_other_viruses": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > Other Viruses",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_lung_disease_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0154,
+      "n_total": 277,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_lung_disease_rsv": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > Lung Disease > RSV",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_lung_disease_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0142,
+      "n_total": 127,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0013,
+      "n_total": 2423,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0032,
+      "n_total": 4926,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_covid": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity > COVID",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0033,
+      "n_total": 839,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_influenza": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity > Influenza",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0112,
+      "n_total": 89,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_none": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity > None",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.001,
+      "n_total": 1391,
+      "viruses": [
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_other_viruses": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity > Other Viruses",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0096,
+      "n_total": 71,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_rsv": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity > RSV",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_no_lung_disease_no_comorbidity_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0026,
+      "n_total": 33,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_covid": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities > COVID",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0059,
+      "n_total": 1059,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_influenza": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities > Influenza",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0128,
+      "n_total": 128,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_none": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities > None",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0015,
+      "n_total": 3516,
+      "viruses": [
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_other_viruses": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities > Other Viruses",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0128,
+      "n_total": 143,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_rsv": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities > RSV",
+      "image": "assets/node-contours/moderate__hypoxemia_no_sepsis_no_lung_disease_other_comorbidities_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0105,
+      "n_total": 80,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_no_lung_disease": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_no_lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0138,
+      "n_total": 11742,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_lung_disease": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0255,
+      "n_total": 14089,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_lung_disease_covid": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > COVID",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_lung_disease_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.024,
+      "n_total": 1443,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_lung_disease_influenza": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > Influenza",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_lung_disease_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0253,
+      "n_total": 367,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_lung_disease_none": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > None",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_lung_disease_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0253,
+      "n_total": 11613,
+      "viruses": [
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_lung_disease_other_viruses": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > Other Viruses",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_lung_disease_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.03,
+      "n_total": 455,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_lung_disease_rsv": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > Lung Disease > RSV",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_lung_disease_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0357,
+      "n_total": 211,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.014,
+      "n_total": 3364,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0138,
+      "n_total": 8378,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_covid": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity > COVID",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.006,
+      "n_total": 943,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_influenza": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity > Influenza",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0242,
+      "n_total": 121,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_none": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity > None",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.016,
+      "n_total": 2145,
+      "viruses": [
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_other_viruses": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity > Other Viruses",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0223,
+      "n_total": 104,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_rsv": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity > RSV",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_no_lung_disease_no_comorbidity_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.034,
+      "n_total": 51,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_covid": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities > COVID",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0094,
+      "n_total": 1552,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_influenza": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities > Influenza",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0188,
+      "n_total": 248,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_none": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities > None",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0137,
+      "n_total": 6151,
+      "viruses": [
+        "None"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_other_viruses": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities > Other Viruses",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0278,
+      "n_total": 288,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_rsv": {
+      "node_id": "moderate pneumonia (30-day mortality) > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities > RSV",
+      "image": "assets/node-contours/moderate__hypoxemia_and_sepsis_no_lung_disease_other_comorbidities_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0283,
+      "n_total": 139,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_no_lung_disease": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_no_lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0024,
+      "n_total": 14266,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_lung_disease": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0058,
+      "n_total": 7721,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_lung_disease_covid": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > COVID",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_lung_disease_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0068,
+      "n_total": 676,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_lung_disease_influenza": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > Influenza",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_lung_disease_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0074,
+      "n_total": 106,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_lung_disease_none": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > None",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_lung_disease_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0054,
+      "n_total": 6660,
+      "viruses": [
+        "None"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_lung_disease_other_viruses": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > Other Viruses",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_lung_disease_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0121,
+      "n_total": 204,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_lung_disease_rsv": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > Lung Disease > RSV",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_lung_disease_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0117,
+      "n_total": 75,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity.png",
+      "n_leaves_aggregated": 4,
+      "agg_ate": 0.0009,
+      "n_total": 3634,
+      "viruses": [
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities.png",
+      "n_leaves_aggregated": 4,
+      "agg_ate": -0.0035,
+      "n_total": 10354,
+      "viruses": [
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_covid": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity > COVID",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0004,
+      "n_total": 615,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_influenza": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity > Influenza",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0074,
+      "n_total": 278,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_none": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity > None",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0014,
+      "n_total": 2907,
+      "viruses": [
+        "None"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_other_viruses": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity > Other Viruses",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0132,
+      "n_total": 66,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_rsv": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity > RSV",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0084,
+      "n_total": 46,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_covid": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities > COVID",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0037,
+      "n_total": 1312,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_influenza": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities > Influenza",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0074,
+      "n_total": 278,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_none": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities > None",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0031,
+      "n_total": 8622,
+      "viruses": [
+        "None"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_other_viruses": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities > Other Viruses",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.011,
+      "n_total": 272,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_rsv": {
+      "node_id": "moderate pneumonia (30-day mortality) > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities > RSV",
+      "image": "assets/node-contours/moderate__no_sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0111,
+      "n_total": 148,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_no_lung_disease": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_no_lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0085,
+      "n_total": 25791,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_lung_disease": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0141,
+      "n_total": 15340,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_lung_disease_covid": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > COVID",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_lung_disease_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0116,
+      "n_total": 1502,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_lung_disease_influenza": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > Influenza",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_lung_disease_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0126,
+      "n_total": 343,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_lung_disease_none": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > None",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_lung_disease_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0143,
+      "n_total": 12892,
+      "viruses": [
+        "None"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_lung_disease_other_viruses": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > Other Viruses",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_lung_disease_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0177,
+      "n_total": 419,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_lung_disease_rsv": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > Lung Disease > RSV",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_lung_disease_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0157,
+      "n_total": 184,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0077,
+      "n_total": 8319,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0089,
+      "n_total": 17472,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_covid": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity > COVID",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0053,
+      "n_total": 1469,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_influenza": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity > Influenza",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0065,
+      "n_total": 312,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_none": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity > None",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0083,
+      "n_total": 6248,
+      "viruses": [
+        "None"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_other_viruses": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity > Other Viruses",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0084,
+      "n_total": 201,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_rsv": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity > RSV",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_no_lung_disease_no_comorbidity_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0132,
+      "n_total": 89,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_covid": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities > COVID",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.008,
+      "n_total": 2323,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_influenza": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities > Influenza",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0111,
+      "n_total": 425,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_none": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities > None",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0085,
+      "n_total": 14073,
+      "viruses": [
+        "None"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_other_viruses": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities > Other Viruses",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.016,
+      "n_total": 454,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_rsv": {
+      "node_id": "moderate pneumonia (30-day mortality) > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities > RSV",
+      "image": "assets/node-contours/moderate__sepsis_no_hypoxemia_no_lung_disease_other_comorbidities_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.023,
+      "n_total": 197,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": 0.0006,
+      "n_total": 4333,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia)",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia.png",
+      "n_leaves_aggregated": 4,
+      "agg_ate": 0.0621,
+      "n_total": 2132,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock)",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": 0.0103,
+      "n_total": 12067,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock",
+      "image": "assets/node-contours/severe__severe_hypoxemia_and_shock.png",
+      "n_leaves_aggregated": 3,
+      "agg_ate": 0.0577,
+      "n_total": 1556,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "None"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_no_lung_disease": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_no_lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": 0.0212,
+      "n_total": 2172,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_lung_disease": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0201,
+      "n_total": 2161,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_lung_disease_covid": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > COVID",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_lung_disease_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0328,
+      "n_total": 353,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_lung_disease_influenza": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > Influenza",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_lung_disease_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0888,
+      "n_total": 55,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_lung_disease_none": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > None",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_lung_disease_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0136,
+      "n_total": 1659,
+      "viruses": [
+        "None"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_lung_disease_other_viruses": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > Other Viruses",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_lung_disease_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0237,
+      "n_total": 63,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_lung_disease_rsv": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > Lung Disease > RSV",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_lung_disease_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0921,
+      "n_total": 31,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity.png",
+      "n_leaves_aggregated": 2,
+      "agg_ate": 0.0369,
+      "n_total": 377,
+      "viruses": [
+        "COVID",
+        "None"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": 0.0178,
+      "n_total": 1795,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_covid": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity > COVID",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0183,
+      "n_total": 155,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_influenza": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity > Influenza",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_none": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity > None",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0498,
+      "n_total": 222,
+      "viruses": [
+        "None"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_other_viruses": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity > Other Viruses",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__no_shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_rsv": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity > RSV",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_covid": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities > COVID",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0033,
+      "n_total": 406,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_influenza": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities > Influenza",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0566,
+      "n_total": 58,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_none": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities > None",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0279,
+      "n_total": 1246,
+      "viruses": [
+        "None"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_other_viruses": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities > Other Viruses",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.004,
+      "n_total": 59,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_rsv": {
+      "node_id": "severe pneumonia (30-day mortality) > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities > RSV",
+      "image": "assets/node-contours/severe__no_shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.023,
+      "n_total": 26,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_no_lung_disease": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_no_lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": 0.0247,
+      "n_total": 5193,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_lung_disease": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_lung_disease.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0006,
+      "n_total": 6874,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_lung_disease_covid": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > COVID",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_lung_disease_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0189,
+      "n_total": 886,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_lung_disease_influenza": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > Influenza",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_lung_disease_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0654,
+      "n_total": 162,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_lung_disease_none": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > None",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_lung_disease_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.006,
+      "n_total": 5517,
+      "viruses": [
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_lung_disease_other_viruses": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > Other Viruses",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_lung_disease_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0263,
+      "n_total": 206,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_lung_disease_rsv": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > Lung Disease > RSV",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_lung_disease_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0462,
+      "n_total": 103,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity.png",
+      "n_leaves_aggregated": 3,
+      "agg_ate": 0.0288,
+      "n_total": 964,
+      "viruses": [
+        "Influenza",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities.png",
+      "n_leaves_aggregated": 3,
+      "agg_ate": 0.0303,
+      "n_total": 2611,
+      "viruses": [
+        "Influenza",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_covid": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity > COVID",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0166,
+      "n_total": 1542,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_influenza": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity > Influenza",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0417,
+      "n_total": 50,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_none": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity > None",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0326,
+      "n_total": 872,
+      "viruses": [
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_other_viruses": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity > Other Viruses",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0356,
+      "n_total": 42,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_rsv": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity > RSV",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_no_lung_disease_no_comorbidity_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0535,
+      "n_total": 76,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_covid": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities > COVID",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0166,
+      "n_total": 1542,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_influenza": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities > Influenza",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0633,
+      "n_total": 103,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_none": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities > None",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0354,
+      "n_total": 2402,
+      "viruses": [
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_other_viruses": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities > Other Viruses",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0056,
+      "n_total": 106,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_rsv": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities > RSV",
+      "image": "assets/node-contours/severe__severe_hypoxemia_no_shock_no_lung_disease_other_comorbidities_rsv.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0535,
+      "n_total": 76,
+      "viruses": [
+        "RSV"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock_no_lung_disease": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease",
+      "image": "assets/node-contours/severe__severe_hypoxemia_and_shock_no_lung_disease.png",
+      "n_leaves_aggregated": 3,
+      "agg_ate": 0.0711,
+      "n_total": 891,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock_lung_disease": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease",
+      "image": "assets/node-contours/severe__severe_hypoxemia_and_shock_lung_disease.png",
+      "n_leaves_aggregated": 3,
+      "agg_ate": 0.0397,
+      "n_total": 665,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock_lung_disease_covid": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > COVID",
+      "image": "assets/node-contours/severe__severe_hypoxemia_and_shock_lung_disease_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0314,
+      "n_total": 88,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock_lung_disease_influenza": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > Influenza",
+      "image": "assets/node-contours/severe__severe_hypoxemia_and_shock_lung_disease_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0195,
+      "n_total": 21,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock_lung_disease_none": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > None",
+      "image": "assets/node-contours/severe__severe_hypoxemia_and_shock_lung_disease_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0433,
+      "n_total": 556,
+      "viruses": [
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock_lung_disease_other_viruses": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > Other Viruses",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__severe_hypoxemia_and_shock_lung_disease_rsv": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > Lung Disease > RSV",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity",
+      "image": "assets/node-contours/severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity.png",
+      "n_leaves_aggregated": 2,
+      "agg_ate": 0.0647,
+      "n_total": 245,
+      "viruses": [
+        "COVID",
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities",
+      "image": "assets/node-contours/severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities.png",
+      "n_leaves_aggregated": 3,
+      "agg_ate": 0.0735,
+      "n_total": 646,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity_covid": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity > COVID",
+      "image": "assets/node-contours/severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0454,
+      "n_total": 52,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity_influenza": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity > Influenza",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity_none": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity > None",
+      "image": "assets/node-contours/severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0699,
+      "n_total": 193,
+      "viruses": [
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity_other_viruses": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity > Other Viruses",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__severe_hypoxemia_and_shock_no_lung_disease_no_comorbidity_rsv": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity > RSV",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities_covid": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities > COVID",
+      "image": "assets/node-contours/severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0226,
+      "n_total": 102,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities_influenza": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities > Influenza",
+      "image": "assets/node-contours/severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0625,
+      "n_total": 20,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities_none": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities > None",
+      "image": "assets/node-contours/severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0886,
+      "n_total": 524,
+      "viruses": [
+        "None"
+      ]
+    },
+    "severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities_other_viruses": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities > Other Viruses",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__severe_hypoxemia_and_shock_no_lung_disease_other_comorbidities_rsv": {
+      "node_id": "severe pneumonia (30-day mortality) > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities > RSV",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__shock_no_s_hypoxemia_no_lung_disease": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia_no_lung_disease.png",
+      "n_leaves_aggregated": 3,
+      "agg_ate": 0.0762,
+      "n_total": 1243,
+      "viruses": [
+        "COVID",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia_lung_disease": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia_lung_disease.png",
+      "n_leaves_aggregated": 4,
+      "agg_ate": 0.0425,
+      "n_total": 889,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia_lung_disease_covid": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > COVID",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia_lung_disease_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0165,
+      "n_total": 85,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia_lung_disease_influenza": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > Influenza",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia_lung_disease_influenza.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": -0.0046,
+      "n_total": 21,
+      "viruses": [
+        "Influenza"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia_lung_disease_none": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > None",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia_lung_disease_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0466,
+      "n_total": 763,
+      "viruses": [
+        "None"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia_lung_disease_other_viruses": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > Other Viruses",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia_lung_disease_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0436,
+      "n_total": 20,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia_lung_disease_rsv": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > Lung Disease > RSV",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity.png",
+      "n_leaves_aggregated": 2,
+      "agg_ate": 0.0707,
+      "n_total": 339,
+      "viruses": [
+        "COVID",
+        "None"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities.png",
+      "n_leaves_aggregated": 3,
+      "agg_ate": 0.0782,
+      "n_total": 904,
+      "viruses": [
+        "COVID",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_covid": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity > COVID",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0605,
+      "n_total": 77,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_influenza": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity > Influenza",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_none": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity > None",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0737,
+      "n_total": 262,
+      "viruses": [
+        "None"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_other_viruses": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity > Other Viruses",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__shock_no_s_hypoxemia_no_lung_disease_no_comorbidity_rsv": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity > RSV",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_covid": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities > COVID",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_covid.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0644,
+      "n_total": 129,
+      "viruses": [
+        "COVID"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_influenza": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities > Influenza",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_none": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities > None",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_none.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0809,
+      "n_total": 749,
+      "viruses": [
+        "None"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_other_viruses": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities > Other Viruses",
+      "image": "assets/node-contours/severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_other_viruses.png",
+      "n_leaves_aggregated": 1,
+      "agg_ate": 0.0673,
+      "n_total": 26,
+      "viruses": [
+        "Other"
+      ]
+    },
+    "severe__shock_no_s_hypoxemia_no_lung_disease_other_comorbidities_rsv": {
+      "node_id": "severe pneumonia (30-day mortality) > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities > RSV",
+      "image": null,
+      "n_leaves_aggregated": 0,
+      "agg_ate": null,
+      "viruses": []
+    },
+    "mild__root": {
+      "node_id": "mild pneumonia (30-day mortality)",
+      "image": "assets/node-contours/mild__root.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0018,
+      "n_total": 44497,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "moderate__root": {
+      "node_id": "moderate pneumonia (30-day mortality)",
+      "image": "assets/node-contours/moderate__root.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": -0.0106,
+      "n_total": 106115,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    },
+    "severe__root": {
+      "node_id": "severe pneumonia (30-day mortality)",
+      "image": "assets/node-contours/severe__root.png",
+      "n_leaves_aggregated": 5,
+      "agg_ate": 0.0174,
+      "n_total": 20088,
+      "viruses": [
+        "Influenza",
+        "COVID",
+        "RSV",
+        "Other",
+        "None"
+      ]
+    }
+  }
+}

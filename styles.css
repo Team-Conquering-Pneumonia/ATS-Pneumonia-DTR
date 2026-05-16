@@ -1,0 +1,400 @@
+/* ATS Poster Interactive Site — mobile-first */
+
+:root {
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-muted: #6b7280;
+  --color-border: #d1d5db;
+  --color-accent: #1e40af;
+  --color-disabled: #9ca3af;
+  --color-beneficial: #27ae60;
+  --color-harmful: #e74c3c;
+  --color-uncertain: #95a5a6;
+  --color-card: #f9fafb;
+  --gap: 0.75rem;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.4;
+}
+
+a { color: var(--color-accent); }
+
+.site-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.site-header h1 {
+  font-size: 1.1rem;
+  margin: 0 0 0.15rem;
+}
+.subtitle {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+/* Control bar */
+.control-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  padding: 0.75rem 1rem;
+  background: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+  align-items: flex-end;
+}
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.control-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+}
+.control-options {
+  display: flex;
+  gap: 0.5rem;
+}
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.radio.disabled {
+  color: var(--color-disabled);
+  cursor: not-allowed;
+}
+select#root-value {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: white;
+}
+.depth-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.depth-controls button {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.1rem;
+  border: 1px solid var(--color-border);
+  background: white;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.depth-controls button:disabled {
+  color: var(--color-disabled);
+  cursor: not-allowed;
+}
+#depth-display {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.95rem;
+  min-width: 3rem;
+  text-align: center;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.swatch {
+  width: 0.9rem;
+  height: 0.9rem;
+  display: inline-block;
+  border-radius: 3px;
+}
+.swatch-beneficial { background: var(--color-beneficial); }
+.swatch-harmful    { background: var(--color-harmful); }
+.swatch-uncertain  { background: var(--color-uncertain); }
+.bar-explain { color: var(--color-muted); }
+
+/* Tree outline header */
+.tree-outline {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  overflow-x: auto;
+}
+.outline-columns {
+  display: flex;
+  align-items: stretch;
+  gap: 0.25rem;
+  min-width: max-content;
+}
+.outline-col {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+}
+.outline-col.active {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+.outline-col.pending {
+  color: var(--color-disabled);
+  background: var(--color-card);
+  border-style: dashed;
+  cursor: not-allowed;
+}
+.outline-gap {
+  width: 1.5rem;
+  flex: 0 0 1.5rem;
+  border-left: 2px dashed var(--color-border);
+  margin: 0 0.25rem;
+}
+
+/* Main panels */
+.main-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+.tree-panel, .contour-panel {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+}
+.image-wrapper {
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Zoom-enabled wrappers clip pan/zoom content to the panel */
+.zoom-wrapper {
+  overflow: hidden;
+  touch-action: none; /* let panzoom handle pinch + drag gestures */
+}
+#tree-img, #contour-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  cursor: grab;
+  transform-origin: 0 0;
+}
+#tree-img:active, #contour-img:active { cursor: grabbing; }
+
+/* Tree stage: wraps the tree <img> + hot-zone overlay so they pan/zoom
+ * together under panzoom. panzoom is attached to #tree-stage, not the img. */
+.tree-stage {
+  position: relative;
+  display: inline-block;
+  transform-origin: 0 0;
+  cursor: grab;
+}
+.tree-stage:active { cursor: grabbing; }
+.tree-stage > #tree-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hot-zone overlay: absolutely-positioned divs over each node bbox. */
+.hotzone-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* children opt back in */
+}
+.node-hotzone {
+  position: absolute;
+  pointer-events: auto;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  /* Mobile hit-target padding (visual border remains tight to bbox). */
+  box-sizing: content-box;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+.node-hotzone:hover,
+.node-hotzone:focus {
+  background-color: rgba(30, 64, 175, 0.08);
+  border-color: rgba(30, 64, 175, 0.45);
+  outline: none;
+}
+.node-hotzone.selected {
+  background-color: transparent;
+  border-color: var(--color-accent);
+  border-width: 3px;
+}
+
+/* Tooltip — single shared element, positioned absolutely within wrapper. */
+.node-tooltip {
+  position: absolute;
+  z-index: 20;
+  pointer-events: none;
+  background: rgba(17, 24, 39, 0.95);
+  color: white;
+  padding: 0.45rem 0.6rem;
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  max-width: 240px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  display: none;
+}
+.node-tooltip.visible { display: block; }
+.node-tooltip .tt-label {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.node-tooltip .tt-row {
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.node-tooltip .tt-key { color: #c7d2fe; }
+
+/* Right panel — single contour. */
+.contour-header {
+  padding: 0.25rem 0.25rem 0.5rem;
+}
+.contour-breadcrumb {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.contour-meta {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.82rem;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-variant-numeric: tabular-nums;
+}
+.contour-meta .meta-key { color: var(--color-muted); margin-right: 0.25rem; }
+
+/* Zoom control cluster, corner-anchored */
+.zoom-controls {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 5;
+}
+.zoom-controls button {
+  width: 1.9rem;
+  height: 1.9rem;
+  font-size: 0.95rem;
+  line-height: 1;
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.zoom-controls button:hover { background: white; }
+.tap-hint {
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.instructions {
+  margin: 0;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  background: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+  text-align: center;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  position: absolute;
+  width: 32px; height: 32px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: none;
+}
+.loading-spinner.active { display: block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Missing-image fallback */
+.img-missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 1rem;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  background: white;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Desktop: side-by-side panels */
+@media (min-width: 768px) {
+  .main-panels {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .tree-panel { flex: 1 1 60%; }
+  .contour-panel { flex: 1 1 40%; }
+  .site-header h1 { font-size: 1.4rem; }
+}

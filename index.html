@@ -1,83 +1,124 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tree-Based DTRs for CAP — ATS 2026</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #f8f9fa;
-      color: #212529;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1.25rem;
-    }
-
-    .container {
-      max-width: 680px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .conference {
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #6c757d;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      font-size: clamp(1.3rem, 4vw, 1.85rem);
-      font-weight: 700;
-      color: #003366;
-      line-height: 1.3;
-      margin-bottom: 1.25rem;
-    }
-
-    .authors {
-      font-size: 0.92rem;
-      color: #444;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    .cta {
-      display: inline-block;
-      background: #003366;
-      color: #fff;
-      padding: 0.75rem 1.75rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: background 0.2s;
-    }
-
-    .cta:hover { background: #00509e; }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ATS Pneumonia DTR — Interactive Trees</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="conference">ATS International Conference 2026</div>
+  <header class="site-header">
+    <h1>Tree-Based Dynamic Treatment Regimes for Pneumonia</h1>
+    <p class="subtitle">Interactive exploration — ATS 2026 poster companion</p>
+  </header>
 
-    <h1>Empiric Antibiotics and 30-day mortality in Community-Acquired Pneumonia: A Decision Tree Analysis of 124 U.S. Veterans Affairs Medical Centers</h1>
-
-    <div class="authors">
-      Barbara Jones, MD MS &middot; Yizhen Xu, PhD &middot; Alec Chapman, MS<br>
-      McKenna Nevers, MS &middot; Teressa Ju, MD &middot; Jian Ying, PhD<br>
-      Makoto Jones, MD MS &middot; Kristina Crothers, MD &middot; Daniel Scharfstein, ScD
+  <!-- Region 1: Control bar -->
+  <section class="control-bar" aria-label="Tree controls">
+    <div class="control-group">
+      <span class="control-label">Outcome</span>
+      <div class="control-options" role="radiogroup" aria-label="Outcome">
+        <label class="radio disabled" title="Phase 2 — coming after ATS 2026">
+          <input type="radio" name="outcome" value="30day" checked disabled />
+          30-day mortality
+        </label>
+        <label class="radio disabled" title="Phase 2 — coming after ATS 2026">
+          <input type="radio" name="outcome" value="90day" disabled />
+          90-day mortality
+        </label>
+      </div>
     </div>
 
-    <a class="cta" href="https://yizhenxu.github.io/Interactive-Trees/" target="_blank" rel="noopener">
-      View Interactive Decision Trees &rarr;
-    </a>
-  </div>
+    <div class="control-group">
+      <span class="control-label">Root variable</span>
+      <div class="control-options" role="radiogroup" aria-label="Root variable">
+        <label class="radio disabled" title="Phase 2 — coming after ATS 2026">
+          <input type="radio" name="root_var" value="severity" checked disabled />
+          Severity
+        </label>
+        <label class="radio disabled" title="Phase 2 — coming after ATS 2026">
+          <input type="radio" name="root_var" value="virus" disabled />
+          Virus
+        </label>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="root-value">Root value</label>
+      <select id="root-value" aria-label="Root value">
+        <option value="mild">Mild</option>
+        <option value="moderate" selected>Moderate</option>
+        <option value="severe">Severe</option>
+      </select>
+    </div>
+
+    <div class="control-group depth-group">
+      <span class="control-label">Depth</span>
+      <div class="depth-controls">
+        <button id="depth-minus" type="button" aria-label="Decrease depth">−</button>
+        <span id="depth-display" aria-live="polite">0 / 0</span>
+        <button id="depth-plus" type="button" aria-label="Increase depth">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Region 2: Legend -->
+  <section class="legend" aria-label="Legend">
+    <div class="legend-item"><span class="swatch swatch-beneficial"></span>Beneficial (treatment reduces mortality)</div>
+    <div class="legend-item"><span class="swatch swatch-harmful"></span>Harmful (treatment increases mortality)</div>
+    <div class="legend-item"><span class="swatch swatch-uncertain"></span>Uncertain (95% CI crosses 0)</div>
+    <div class="legend-item legend-bar">
+      <span class="bar-explain">Inline bar: mortality under each treatment with ATE point estimate and 95% CI.</span>
+    </div>
+  </section>
+
+  <!-- Region 2b: Instructions -->
+  <p class="instructions">Hover to see node detail. Single-click a node to see the virus distribution for that tree. Double-click to expand the tree.</p>
+
+  <!-- Region 3: Tree outline -->
+  <section class="tree-outline" aria-label="Tree outline">
+    <div id="outline-columns" class="outline-columns"></div>
+  </section>
+
+  <!-- Region 4: Tree + detail panel -->
+  <main class="main-panels">
+    <section class="tree-panel" aria-label="Decision tree">
+      <div class="image-wrapper zoom-wrapper" id="tree-wrapper">
+        <div class="tree-stage" id="tree-stage">
+          <img id="tree-img" alt="Decision tree" />
+          <div class="hotzone-layer" id="hotzone-layer" aria-label="Tree node hot-zones"></div>
+        </div>
+        <div class="loading-spinner" id="tree-spinner" aria-hidden="true"></div>
+        <div class="zoom-controls" aria-label="Tree zoom controls">
+          <button type="button" data-zoom-target="tree" data-zoom-action="in" aria-label="Zoom in">+</button>
+          <button type="button" data-zoom-target="tree" data-zoom-action="out" aria-label="Zoom out">&minus;</button>
+          <button type="button" data-zoom-target="tree" data-zoom-action="reset" aria-label="Reset zoom">&#x21bb;</button>
+        </div>
+        <div class="node-tooltip" id="node-tooltip" role="tooltip" aria-hidden="true"></div>
+      </div>
+    </section>
+    <section class="contour-panel" aria-label="Contour for selected node">
+      <header class="contour-header">
+        <div class="contour-breadcrumb" id="contour-breadcrumb" aria-live="polite">&nbsp;</div>
+      </header>
+      <div class="image-wrapper zoom-wrapper" id="contour-wrapper">
+        <img id="contour-img" alt="Contour overlay" />
+        <div class="loading-spinner" id="contour-spinner" aria-hidden="true"></div>
+        <div class="zoom-controls" aria-label="Contour zoom controls">
+          <button type="button" data-zoom-target="contour" data-zoom-action="in" aria-label="Zoom in">+</button>
+          <button type="button" data-zoom-target="contour" data-zoom-action="out" aria-label="Zoom out">&minus;</button>
+          <button type="button" data-zoom-target="contour" data-zoom-action="reset" aria-label="Reset zoom">&#x21bb;</button>
+        </div>
+      </div>
+      <div class="contour-meta" id="contour-meta"></div>
+      <p class="tap-hint">Pinch or scroll to zoom.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Team Conquering Pneumonia &middot; <a href="https://github.com/Team-Conquering-Pneumonia/ATS-Pneumonia-DTR">GitHub</a></p>
+  </footer>
+
+  <script src="vendor/panzoom.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
