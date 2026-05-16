@@ -68,7 +68,24 @@ function pzForTarget(target) {
 // --- helpers ---------------------------------------------------------------
 
 function treeKey() {
-  return `severity=${state.root_value}_outcome=${state.outcome}`;
+  return `${state.root_var}=${state.root_value}_outcome=${state.outcome}`;
+}
+
+function rootValueOptions(root_var) {
+  if (root_var === "virus") return ["flu", "rsv", "covid", "others", "none"];
+  return ["mild", "moderate", "severe"];
+}
+
+function rootValueLabel(v) {
+  const labels = {
+    mild: "Mild", moderate: "Moderate", severe: "Severe",
+    flu: "Flu", rsv: "RSV", covid: "COVID", others: "Other virus", none: "No virus"
+  };
+  return labels[v] || v;
+}
+
+function defaultRootValue(root_var) {
+  return root_var === "virus" ? "flu" : "moderate";
 }
 
 function stateKey() {
@@ -329,7 +346,9 @@ function renderContourPanel() {
 
   const slug = state.selected_slug;
   const node = currentNodes().find(n => n.slug === slug);
-  const idxEntry = (contourIndex && contourIndex.nodes && slug) ? contourIndex.nodes[slug] : null;
+  // contour_index.json is keyed by (slug, outcome): 30day → slug; 90day → slug + "__90day".
+  const idxKey = slug ? (state.outcome === "30day" ? slug : slug + "__90day") : null;
+  const idxEntry = (contourIndex && contourIndex.nodes && idxKey) ? contourIndex.nodes[idxKey] : null;
 
   if (!slug) {
     breadcrumb.textContent = "";
@@ -352,10 +371,10 @@ function renderContourPanel() {
     nLeaves != null ? `<span><span class="meta-key">Leaves aggregated</span>${nLeaves}</span>` : ""
   ].filter(Boolean).join("");
 
-  // Defensive: if missing from index, fall back to expected filename pattern.
+  // Defensive: if missing from index, fall back to the outcome-suffixed filename.
   const src = idxEntry
     ? idxEntry.image
-    : `assets/node-contours/${slug}.png`;
+    : `assets/node-contours/${idxKey}.png`;
   setImage(img, "contour-wrapper", src, `Contour for ${breadcrumbText}`);
 }
 
@@ -450,18 +469,67 @@ function advanceDepth() { setDepth(state.depth + 1); }
 function retreatDepth() { setDepth(state.depth - 1); }
 
 function setRootValue(v) {
-  if (!["mild", "moderate", "severe"].includes(v)) return;
+  if (!rootValueOptions(state.root_var).includes(v)) return;
   state.root_value = v;
   state.depth = 0;
   state.selected_slug = null;
   render();
 }
 
+function setRootVar(rv) {
+  if (!["severity", "virus"].includes(rv)) return;
+  if (rv === state.root_var) return;
+  state.root_var = rv;
+  state.root_value = defaultRootValue(rv);
+  state.depth = 0;
+  state.selected_slug = null;
+  refreshRootValueSelect();
+  render();
+}
+
+function setOutcome(o) {
+  if (!["30day", "90day"].includes(o)) return;
+  if (o === state.outcome) return;
+  state.outcome = o;
+  state.depth = 0;
+  state.selected_slug = null;
+  render();
+}
+
+function refreshRootValueSelect() {
+  const sel = document.getElementById("root-value");
+  if (!sel) return;
+  const opts = rootValueOptions(state.root_var);
+  sel.innerHTML = "";
+  opts.forEach(v => {
+    const opt = document.createElement("option");
+    opt.value = v;
+    opt.textContent = rootValueLabel(v);
+    if (v === state.root_value) opt.selected = true;
+    sel.appendChild(opt);
+  });
+}
+
 // --- wire up ---------------------------------------------------------------
 
 function wireUp() {
+  // Initialize the root-value select to match state.root_var.
+  refreshRootValueSelect();
+
   document.getElementById("root-value").addEventListener("change", (e) => {
     setRootValue(e.target.value);
+  });
+
+  document.querySelectorAll('input[name="outcome"]').forEach(r => {
+    r.addEventListener("change", (e) => {
+      if (e.target.checked) setOutcome(e.target.value);
+    });
+  });
+
+  document.querySelectorAll('input[name="root_var"]').forEach(r => {
+    r.addEventListener("change", (e) => {
+      if (e.target.checked) setRootVar(e.target.value);
+    });
   });
 
   document.getElementById("depth-plus").addEventListener("click", advanceDepth);
