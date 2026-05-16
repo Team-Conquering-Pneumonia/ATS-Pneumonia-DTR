@@ -41,6 +41,12 @@ a { color: var(--color-accent); }
   font-size: 0.85rem;
   color: var(--color-muted);
 }
+.authors {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  line-height: 1.4;
+}
 
 /* Control bar */
 .control-bar {

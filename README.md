@@ -8,9 +8,15 @@ This repository accompanies the ATS 2026 poster presenting tree-based dynamic tr
 
 ## Authors
 
-- **Barbara E. Jones, MD, MSc** (PI) — VA Salt Lake City Health Care System; University of Utah
+- **Barbara Jones, MD MS** (PI) — VA Salt Lake City Health Care System; University of Utah
 - **Yizhen Xu, PhD** — Biostatistician, lead analyst
-- **Alec B. Chapman, PhD** — Data Science, University of Utah / VA
+- **Alec Chapman, MS** — Data Science, University of Utah / VA
+- **McKenna Nevers, MS**
+- **Teressa Ju, MD**
+- **Jian Ying, PhD**
+- **Makoto Jones, MD MS**
+- **Kristina Crothers, MD**
+- **Daniel Scharfstein, ScD** (Co-I)
 
 ## Interactive Decision Trees
 
