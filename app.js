@@ -30,10 +30,16 @@ let contourPanzoom = null;
 // --- panzoom ---------------------------------------------------------------
 
 const PANZOOM_OPTS = {
-  minZoom: 1,
+  // Phase 2-D: allow 4x zoom-out so tall depth-4 trees (up to ~6000px) can be
+  // shrunk to fit the viewport. `bounds: false` is required because, with
+  // bounds on, panzoom refuses to scale below 1x once the content fits the
+  // container — and our stage already starts at "fit width", so bounded
+  // zoom-out is effectively clamped to 1. Looser bounds + boundsPadding keeps
+  // the image partially recoverable if the user pans far off-screen.
+  minZoom: 0.25,
   maxZoom: 8,
   smoothScroll: false,
-  bounds: true,
+  bounds: false,
   boundsPadding: 0.1,
   zoomDoubleClickSpeed: 1 // disable panzoom's double-click zoom
 };
