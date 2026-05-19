@@ -47,6 +47,11 @@ a { color: var(--color-accent); }
   color: var(--color-muted);
   line-height: 1.4;
 }
+.contact {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
 
 /* Control bar */
 .control-bar {
