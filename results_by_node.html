@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Per-node Results — Empiric Antibiotics and Mortality in CAP</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Per-node Results Table</h1>
+    <p class="subtitle">Empiric Antibiotics and Mortality in Community-Acquired Pneumonia — ATS 2026 poster companion</p>
+    <p class="contact">
+      <a href="index.html">&larr; Interactive trees</a>
+      &middot; <a href="tables.html">Summary tables</a>
+    </p>
+    <p class="provenance">
+      Per-node estimates from analysis run <code>run-20260618-final</code> (run date 2026-06-18),
+      mirroring the static review workbook (T3.5). Source of record: the published interactive trees,
+      identical to what is shown on the <a href="index.html">interactive site</a>.
+      Mortality scale: death = 1, lower = better. ATE = p(mortality | abx) &minus; p(mortality | no abx);
+      ATE &lt; 0 = antibiotics reduce mortality.
+    </p>
+  </header>
+
+  <section class="control-bar" aria-label="Table controls">
+    <div class="control-group">
+      <label class="control-label" for="family-select">Tree family (window &times; stratum)</label>
+      <select id="family-select" aria-label="Tree family"></select>
+    </div>
+
+    <div class="control-group">
+      <span class="control-label">Signal</span>
+      <div class="control-options" role="radiogroup" aria-label="Signal filter">
+        <label class="radio"><input type="radio" name="signal" value="all" checked /> All</label>
+        <label class="radio"><input type="radio" name="signal" value="Benefit" /> Benefit</label>
+        <label class="radio"><input type="radio" name="signal" value="Harm" /> Harm</label>
+        <label class="radio"><input type="radio" name="signal" value="Inconclusive" /> Inconclusive</label>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <span class="control-label">Row count</span>
+      <span id="row-count" class="row-count" aria-live="polite">&nbsp;</span>
+    </div>
+  </section>
+
+  <section class="legend" aria-label="Legend">
+    <div class="legend-item"><span class="swatch swatch-signal-benefit"></span>Benefit (95% CI entirely below 0)</div>
+    <div class="legend-item"><span class="swatch swatch-signal-harm"></span>Harm (95% CI entirely above 0)</div>
+    <div class="legend-item"><span class="swatch swatch-signal-incon"></span>Inconclusive (CI crosses 0)</div>
+    <div class="legend-item legend-bar">
+      <span class="bar-explain">Cells showing <code>&lt;20</code> are VA small-cell suppressed; click a column header to sort.</span>
+    </div>
+  </section>
+
+  <main class="tables-main">
+    <div class="table-scroll" id="table-scroll">
+      <table class="data-table results-by-node" id="results-table">
+        <thead id="results-thead"></thead>
+        <tbody id="results-tbody"></tbody>
+      </table>
+    </div>
+    <p class="table-foot" id="table-foot"></p>
+  </main>
+
+  <footer class="site-footer">
+    <p>Team Conquering Pneumonia &middot; <a href="https://github.com/Team-Conquering-Pneumonia/ATS-Pneumonia-DTR">GitHub</a></p>
+  </footer>
+
+  <script src="results_by_node.js"></script>
+</body>
+</html>

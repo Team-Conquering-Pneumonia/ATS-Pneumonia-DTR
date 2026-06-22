@@ -490,3 +490,46 @@ select#root-value {
   .contour-panel { flex: 1 1 40%; }
   .site-header h1 { font-size: 1.4rem; }
 }
+
+/* Per-node browsable results table (results_by_node.html) */
+.row-count {
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+}
+.swatch-signal-benefit { background: #d6efdc; border: 1px solid #1e6b3a; }
+.swatch-signal-harm    { background: #fadbd8; border: 1px solid #922b21; }
+.swatch-signal-incon   { background: var(--color-card); border: 1px solid var(--color-border); }
+
+.data-table.results-by-node thead th.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+.data-table.results-by-node thead th.sortable:hover { background: #2b50c9; }
+.data-table.results-by-node thead th.sort-asc::after  { content: " \25B2"; font-size: 0.7em; }
+.data-table.results-by-node thead th.sort-desc::after { content: " \25BC"; font-size: 0.7em; }
+
+/* ATE benefit/harm shading — matches the T3.5 workbook palette. */
+.data-table.results-by-node td.ate-benefit {
+  background: #d6efdc;
+  color: #1e6b3a;
+  font-weight: 600;
+}
+.data-table.results-by-node td.ate-harm {
+  background: #fadbd8;
+  color: #922b21;
+  font-weight: 600;
+}
+/* Keep ATE shading visible over zebra striping. */
+.data-table.results-by-node tbody tr:nth-child(even) td.ate-benefit { background: #d6efdc; }
+.data-table.results-by-node tbody tr:nth-child(even) td.ate-harm    { background: #fadbd8; }
+
+.data-table.results-by-node td.cell-suppressed,
+.data-table.results-by-node tr.row-suppressed td {
+  color: var(--color-muted);
+  font-style: italic;
+}
+.data-table.results-by-node td.split-col { color: var(--color-text); }
+.data-table.results-by-node td.signal-benefit { color: #1e6b3a; }
+.data-table.results-by-node td.signal-harm    { color: #922b21; }
+.data-table.results-by-node td.signal-inconclusive { color: var(--color-muted); }
