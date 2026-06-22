@@ -399,6 +399,87 @@ select#root-value {
   border-top: 1px solid var(--color-border);
 }
 
+/* Summary tables page */
+.provenance {
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+.tables-main {
+  padding: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.table-section { margin-bottom: 2.5rem; }
+.table-section h2 {
+  font-size: 1.15rem;
+  margin: 0 0 0.35rem;
+}
+.window-heading {
+  font-size: 0.95rem;
+  margin: 1rem 0 0.4rem;
+  color: var(--color-accent);
+}
+.table-desc {
+  margin: 0 0 0.6rem;
+  font-size: 0.88rem;
+  color: var(--color-text);
+}
+.table-caveat {
+  margin: 0 0 0.6rem;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.85rem;
+  background: var(--color-card);
+  border-left: 3px solid var(--color-uncertain);
+  border-radius: var(--radius);
+}
+.table-foot {
+  margin: 0.6rem 0 0;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+.data-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--color-accent);
+  color: white;
+  text-align: left;
+  padding: 0.45rem 0.6rem;
+  font-weight: 600;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+.data-table td {
+  padding: 0.35rem 0.6rem;
+  border-top: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+.data-table tbody tr:nth-child(even) td { background: var(--color-card); }
+.data-table .varname { font-weight: 500; white-space: normal; }
+.data-table .ci { color: var(--color-muted); font-size: 0.8rem; }
+.data-table tr.section th {
+  background: #eef2ff;
+  color: var(--color-accent);
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-top: 2px solid var(--color-border);
+  position: static;
+}
+
 /* Desktop: side-by-side panels */
 @media (min-width: 768px) {
   .main-panels {

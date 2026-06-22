@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Summary Tables — Empiric Antibiotics and Mortality in CAP</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Summary Tables</h1>
+    <p class="subtitle">Empiric Antibiotics and Mortality in Community-Acquired Pneumonia — ATS 2026 poster companion</p>
+    <p class="contact"><a href="index.html">&larr; Back to interactive trees</a></p>
+    <p class="provenance">Both tables are from analysis run <code>run-20260618-final</code> (run date 2026-06-18). Mortality scale: death = 1, lower = better.</p>
+  </header>
+
+  <main class="tables-main">
+
+    <section class="table-section" aria-labelledby="t2-heading">
+      <h2 id="t2-heading">Table 2 — Population regime comparison</h2>
+      <p class="table-desc">Population mean mortality (posterior mean + 95% credible interval over 1,000 draws) and population antibiotic-use fraction, for five candidate treatment regimes, by mortality window.</p>
+
+      <h3 class="window-heading">30-day mortality</h3>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr><th>Regime</th><th>Mortality % (95% CrI)</th><th>Abx use</th></tr>
+          </thead>
+          <tbody>
+<tr><td class="varname">Antibiotics for all</td><td>6.47 (6.34&ndash;6.60)</td><td>100%</td></tr>
+<tr><td class="varname">Antibiotics for none</td><td>7.16 (6.67&ndash;7.72)</td><td>0%</td></tr>
+<tr><td class="varname">ATS-2025 guideline rule†</td><td>6.47 (6.34&ndash;6.60)</td><td>98.5%</td></tr>
+<tr><td class="varname">Optimal: give unless harmful‡</td><td>6.29 (6.00&ndash;6.59)</td><td>81.7%</td></tr>
+<tr><td class="varname">Optimal: give only if beneficial‡</td><td>6.29 (6.00&ndash;6.59)</td><td>81.7%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="window-heading">90-day mortality</h3>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr><th>Regime</th><th>Mortality % (95% CrI)</th><th>Abx use</th></tr>
+          </thead>
+          <tbody>
+<tr><td class="varname">Antibiotics for all</td><td>12.37 (12.21&ndash;12.54)</td><td>100%</td></tr>
+<tr><td class="varname">Antibiotics for none</td><td>14.18 (13.54&ndash;14.86)</td><td>0%</td></tr>
+<tr><td class="varname">ATS-2025 guideline rule†</td><td>12.37 (12.21&ndash;12.54)</td><td>98.5%</td></tr>
+<tr><td class="varname">Optimal: give unless harmful‡</td><td>12.25 (12.05&ndash;12.46)</td><td>83.1%</td></tr>
+<tr><td class="varname">Optimal: give only if beneficial‡</td><td>12.25 (12.05&ndash;12.46)</td><td>83.1%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-foot">&dagger; ATS-2025 rule provenance pending PI review. &Dagger; Optimal-regime thresholds pending PI review. Both flags affect row labeling only. In this run the two optimal variants are numerically identical (recorded as observed, not interpreted).</p>
+    </section>
+
+    <section class="table-section" aria-labelledby="t1-heading">
+      <h2 id="t1-heading">Table 1 — Cohort characteristics by empiric antibiotics within 24h</h2>
+      <p class="table-caveat"><em>Interim, censored artifact:</em> this is Jian&rsquo;s Table 1, carried verbatim from the grounding source &mdash; it is <em>not yet a product of this run&rsquo;s pipeline</em>. Counts below <code>20</code> are suppressed and shown verbatim. Values are unchanged from the source workbook.</p>
+      <p class="table-desc">Cohort: 134,916 ED encounters (empiric abx within 24h: 114,004 / 84.5%; no empiric abx: 20,912 / 15.5%). Columns report n (%) or mean (SD) with 95% CIs, split by antibiotic group.</p>
+      <div class="table-scroll">
+        <table class="data-table t1">
+          <thead>
+            <tr>
+              <th>Variable</th>
+              <th>Missing<br>n (%)</th>
+              <th>Overall<br>N = 134,916</th>
+              <th>95% CI</th>
+              <th>No abx (0)<br>N = 20,912</th>
+              <th>95% CI</th>
+              <th>Abx (1)<br>N = 114,004</th>
+              <th>95% CI</th>
+            </tr>
+          </thead>
+          <tbody>
+<tr class="section"><th colspan="8">facility rurality (from VSSC VAST)</th></tr>
+<tr><td class="varname">Missing</td><td></td><td>762 (0.6%)</td><td class="ci">0.526%, 0.607%</td><td>90 (0.4%)</td><td class="ci">0.348%, 0.531%</td><td>672 (0.6%)</td><td class="ci">0.546%, 0.636%</td></tr>
+<tr><td class="varname">R</td><td></td><td>7,431 (5.5%)</td><td class="ci">5.387%, 5.631%</td><td>1,008 (4.8%)</td><td class="ci">4.536%, 5.121%</td><td>6,423 (5.6%)</td><td class="ci">5.501%, 5.770%</td></tr>
+<tr><td class="varname">U</td><td></td><td>126,723 (93.9%)</td><td class="ci">93.80%, 94.05%</td><td>19,814 (94.7%)</td><td class="ci">94.44%, 95.05%</td><td>106,909 (93.8%)</td><td class="ci">93.63%, 93.92%</td></tr>
+<tr class="section"><th colspan="8">Complexity for the parent administration facility over the ED sta6a</th></tr>
+<tr><td class="varname">1a-1c</td><td></td><td>117,643 (87.2%)</td><td class="ci">87.02%, 87.37%</td><td>18,490 (88.4%)</td><td class="ci">87.97%, 88.85%</td><td>99,153 (87.0%)</td><td class="ci">86.78%, 87.17%</td></tr>
+<tr><td class="varname">2 and 3</td><td></td><td>17,273 (12.8%)</td><td class="ci">12.63%, 12.98%</td><td>2,422 (11.6%)</td><td class="ci">11.15%, 12.03%</td><td>14,851 (13.0%)</td><td class="ci">12.83%, 13.22%</td></tr>
+<tr><td class="varname">daily ED load</td><td>0(0%)</td><td>72.17 (36.80)</td><td class="ci">71.97, 72.37</td><td>72.72 (35.42)</td><td class="ci">72.24, 73.20</td><td>72.07 (37.04)</td><td class="ci">71.85, 72.28</td></tr>
+<tr><td class="varname">daily patient census</td><td>56,373(42%)</td><td>97.61 (52.37)</td><td class="ci">97.24, 97.98</td><td>102.48 (51.26)</td><td class="ci">101.50, 103.46</td><td>96.86 (52.50)</td><td class="ci">96.46, 97.25</td></tr>
+<tr><td class="varname">monthly average ED load</td><td>0(0%)</td><td>68.01 (31.62)</td><td class="ci">67.84, 68.18</td><td>68.53 (30.11)</td><td class="ci">68.13, 68.94</td><td>67.91 (31.89)</td><td class="ci">67.73, 68.10</td></tr>
+<tr><td class="varname">quartly average ED load</td><td>0(0%)</td><td>67.59 (31.16)</td><td class="ci">67.42, 67.76</td><td>67.84 (29.24)</td><td class="ci">67.44, 68.23</td><td>67.55 (31.51)</td><td class="ci">67.36, 67.73</td></tr>
+<tr><td class="varname">yearly average ED load</td><td>0(0%)</td><td>66.93 (30.79)</td><td class="ci">66.77, 67.09</td><td>67.15 (28.86)</td><td class="ci">66.76, 67.54</td><td>66.89 (31.12)</td><td class="ci">66.71, 67.07</td></tr>
+<tr><td class="varname">yearly patient census</td><td>56,373(42%)</td><td>95.46 (50.48)</td><td class="ci">95.11, 95.81</td><td>99.83 (49.38)</td><td class="ci">98.88, 100.77</td><td>94.78 (50.62)</td><td class="ci">94.40, 95.16</td></tr>
+<tr><td class="varname">provider_age</td><td>18,673(14%)</td><td>48.32 (11.85)</td><td class="ci">48.25, 48.39</td><td>46.39 (11.96)</td><td class="ci">46.22, 46.57</td><td>48.67 (11.80)</td><td class="ci">48.59, 48.74</td></tr>
+<tr class="section"><th colspan="8">Physician (MD/DO)</th></tr>
+<tr><td class="varname">midlevel</td><td></td><td>13,840 (10.3%)</td><td class="ci">10.10%, 10.42%</td><td>1,568 (7.5%)</td><td class="ci">7.147%, 7.865%</td><td>12,272 (10.8%)</td><td class="ci">10.59%, 10.95%</td></tr>
+<tr><td class="varname">physician</td><td></td><td>121,076 (89.7%)</td><td class="ci">89.58%, 89.90%</td><td>19,344 (92.5%)</td><td class="ci">92.13%, 92.85%</td><td>101,732 (89.2%)</td><td class="ci">89.05%, 89.41%</td></tr>
+<tr class="section"><th colspan="8">ED provider gender</th></tr>
+<tr><td class="varname">FEMALE</td><td></td><td>36,034 (35.9%)</td><td class="ci">35.65%, 36.25%</td><td>5,941 (38.4%)</td><td class="ci">37.59%, 39.13%</td><td>30,093 (35.5%)</td><td class="ci">35.18%, 35.83%</td></tr>
+<tr><td class="varname">MALE</td><td></td><td>64,208 (64.1%)</td><td class="ci">63.75%, 64.35%</td><td>9,548 (61.6%)</td><td class="ci">60.87%, 62.41%</td><td>54,660 (64.5%)</td><td class="ci">64.17%, 64.82%</td></tr>
+<tr><td class="varname">Female ED provider</td><td>0(0%)</td><td>36,034 (26.7%)</td><td class="ci">26.47%, 26.95%</td><td>5,941 (28.4%)</td><td class="ci">27.80%, 29.03%</td><td>30,093 (26.4%)</td><td class="ci">26.14%, 26.65%</td></tr>
+<tr><td class="varname">provider patient load</td><td>140(0.1%)</td><td>10.29 (6.10)</td><td class="ci">10.26, 10.32</td><td>9.83 (5.92)</td><td class="ci">9.75, 9.91</td><td>10.37 (6.13)</td><td class="ci">10.34, 10.41</td></tr>
+<tr><td class="varname">number of pneumonia cases seen by provider in past year</td><td>0(0%)</td><td>64.72 (90.56)</td><td class="ci">64.24, 65.20</td><td>78.20 (111.27)</td><td class="ci">76.70, 79.71</td><td>62.25 (86.00)</td><td class="ci">61.75, 62.75</td></tr>
+<tr><td class="varname">Age</td><td>0(0%)</td><td>71.98 (12.85)</td><td class="ci">71.92, 72.05</td><td>71.60 (12.91)</td><td class="ci">71.42, 71.77</td><td>72.05 (12.84)</td><td class="ci">71.98, 72.13</td></tr>
+<tr><td class="varname">Body Mass Index</td><td>6,175(4.6%)</td><td>28.12 (6.85)</td><td class="ci">28.09, 28.16</td><td>28.94 (6.89)</td><td class="ci">28.85, 29.04</td><td>27.97 (6.83)</td><td class="ci">27.93, 28.01</td></tr>
+<tr class="section"><th colspan="8">Sex</th></tr>
+<tr><td class="varname">F</td><td></td><td>8,023 (5.9%)</td><td class="ci">5.821%, 6.074%</td><td>1,310 (6.3%)</td><td class="ci">5.942%, 6.603%</td><td>6,713 (5.9%)</td><td class="ci">5.753%, 6.027%</td></tr>
+<tr><td class="varname">M</td><td></td><td>126,893 (94.1%)</td><td class="ci">93.93%, 94.18%</td><td>19,602 (93.7%)</td><td class="ci">93.40%, 94.06%</td><td>107,291 (94.1%)</td><td class="ci">93.97%, 94.25%</td></tr>
+<tr class="section"><th colspan="8">Race</th></tr>
+<tr><td class="varname">non white</td><td></td><td>38,342 (28.4%)</td><td class="ci">28.18%, 28.66%</td><td>6,828 (32.7%)</td><td class="ci">32.02%, 33.29%</td><td>31,514 (27.6%)</td><td class="ci">27.38%, 27.90%</td></tr>
+<tr><td class="varname">WHITE</td><td></td><td>96,574 (71.6%)</td><td class="ci">71.34%, 71.82%</td><td>14,084 (67.3%)</td><td class="ci">66.71%, 67.98%</td><td>82,490 (72.4%)</td><td class="ci">72.10%, 72.62%</td></tr>
+<tr class="section"><th colspan="8">Rural residence</th></tr>
+<tr><td class="varname">non-rural</td><td></td><td>97,535 (72.3%)</td><td class="ci">72.05%, 72.53%</td><td>15,509 (74.2%)</td><td class="ci">73.56%, 74.75%</td><td>82,026 (72.0%)</td><td class="ci">71.69%, 72.21%</td></tr>
+<tr><td class="varname">Rural</td><td></td><td>37,381 (27.7%)</td><td class="ci">27.47%, 27.95%</td><td>5,403 (25.8%)</td><td class="ci">25.25%, 26.44%</td><td>31,978 (28.0%)</td><td class="ci">27.79%, 28.31%</td></tr>
+<tr class="section"><th colspan="8">URH</th></tr>
+<tr><td class="varname">H</td><td></td><td>3,601 (2.7%)</td><td class="ci">2.584%, 2.757%</td><td>547 (2.6%)</td><td class="ci">2.406%, 2.843%</td><td>3,054 (2.7%)</td><td class="ci">2.586%, 2.775%</td></tr>
+<tr><td class="varname">I</td><td></td><td>23 (0.0%)</td><td class="ci">0.011%, 0.026%</td><td>&lt;20 (censored)</td><td class="ci">0.004%, 0.046%</td><td>20 (0.0%)</td><td class="ci">0.011%, 0.028%</td></tr>
+<tr><td class="varname">R</td><td></td><td>33,780 (25.0%)</td><td class="ci">24.81%, 25.27%</td><td>4,856 (23.2%)</td><td class="ci">22.65%, 23.80%</td><td>28,924 (25.4%)</td><td class="ci">25.12%, 25.62%</td></tr>
+<tr><td class="varname">U</td><td></td><td>97,130 (72.0%)</td><td class="ci">71.75%, 72.23%</td><td>15,423 (73.8%)</td><td class="ci">73.15%, 74.35%</td><td>81,707 (71.7%)</td><td class="ci">71.41%, 71.93%</td></tr>
+<tr><td class="varname">X</td><td></td><td>382 (0.3%)</td><td class="ci">0.256%, 0.313%</td><td>83 (0.4%)</td><td class="ci">0.318%, 0.494%</td><td>299 (0.3%)</td><td class="ci">0.234%, 0.294%</td></tr>
+<tr><td class="varname">Drive time to primary care</td><td>23,608(17%)</td><td>18.50 (15.98)</td><td class="ci">18.41, 18.59</td><td>18.34 (14.31)</td><td class="ci">18.13, 18.55</td><td>18.53 (16.27)</td><td class="ci">18.42, 18.63</td></tr>
+<tr><td class="varname">Drive time to secondary care</td><td>23,767(18%)</td><td>29.16 (25.79)</td><td class="ci">29.01, 29.31</td><td>29.39 (24.71)</td><td class="ci">29.02, 29.75</td><td>29.12 (25.98)</td><td class="ci">28.95, 29.29</td></tr>
+<tr><td class="varname">Drive time to tertiary care</td><td>23,992(18%)</td><td>74.43 (68.24)</td><td class="ci">74.03, 74.83</td><td>69.71 (66.69)</td><td class="ci">68.72, 70.70</td><td>75.31 (68.49)</td><td class="ci">74.87, 75.75</td></tr>
+<tr class="section"><th colspan="8">Married</th></tr>
+<tr><td class="varname">MARRIED</td><td></td><td>62,506 (46.3%)</td><td class="ci">46.06%, 46.60%</td><td>9,223 (44.1%)</td><td class="ci">43.43%, 44.78%</td><td>53,283 (46.7%)</td><td class="ci">46.45%, 47.03%</td></tr>
+<tr><td class="varname">other</td><td></td><td>72,410 (53.7%)</td><td class="ci">53.40%, 53.94%</td><td>11,689 (55.9%)</td><td class="ci">55.22%, 56.57%</td><td>60,721 (53.3%)</td><td class="ci">52.97%, 53.55%</td></tr>
+<tr><td class="varname">Housing instability</td><td>0(0%)</td><td>6,626 (4.9%)</td><td class="ci">4.797%, 5.028%</td><td>1,193 (5.7%)</td><td class="ci">5.396%, 6.030%</td><td>5,433 (4.8%)</td><td class="ci">4.643%, 4.891%</td></tr>
+<tr><td class="varname">History of MI</td><td>0(0%)</td><td>12,069 (8.9%)</td><td class="ci">8.794%, 9.099%</td><td>2,305 (11.0%)</td><td class="ci">10.60%, 11.46%</td><td>9,764 (8.6%)</td><td class="ci">8.403%, 8.729%</td></tr>
+<tr><td class="varname">Congestive Heart Failure</td><td>0(0%)</td><td>37,101 (27.5%)</td><td class="ci">27.26%, 27.74%</td><td>6,809 (32.6%)</td><td class="ci">31.93%, 33.20%</td><td>30,292 (26.6%)</td><td class="ci">26.31%, 26.83%</td></tr>
+<tr><td class="varname">Peripheral vascular disease</td><td>0(0%)</td><td>27,590 (20.4%)</td><td class="ci">20.24%, 20.67%</td><td>4,110 (19.7%)</td><td class="ci">19.12%, 20.20%</td><td>23,480 (20.6%)</td><td class="ci">20.36%, 20.83%</td></tr>
+<tr><td class="varname">Cerebrovascular Disease</td><td>0(0%)</td><td>21,068 (15.6%)</td><td class="ci">15.42%, 15.81%</td><td>3,205 (15.3%)</td><td class="ci">14.84%, 15.82%</td><td>17,863 (15.7%)</td><td class="ci">15.46%, 15.88%</td></tr>
+<tr><td class="varname">Dementia</td><td>0(0%)</td><td>21,144 (15.7%)</td><td class="ci">15.48%, 15.87%</td><td>2,842 (13.6%)</td><td class="ci">13.13%, 14.06%</td><td>18,302 (16.1%)</td><td class="ci">15.84%, 16.27%</td></tr>
+<tr><td class="varname">Chronic Pulmonary Disease</td><td>0(0%)</td><td>59,184 (43.9%)</td><td class="ci">43.60%, 44.13%</td><td>7,912 (37.8%)</td><td class="ci">37.18%, 38.50%</td><td>51,272 (45.0%)</td><td class="ci">44.68%, 45.26%</td></tr>
+<tr><td class="varname">History of Aspiration</td><td>0(0%)</td><td>4,770 (3.5%)</td><td class="ci">3.438%, 3.636%</td><td>513 (2.5%)</td><td class="ci">2.250%, 2.674%</td><td>4,257 (3.7%)</td><td class="ci">3.625%, 3.846%</td></tr>
+<tr><td class="varname">Autoimmune Disease</td><td>0(0%)</td><td>4,173 (3.1%)</td><td class="ci">3.002%, 3.187%</td><td>594 (2.8%)</td><td class="ci">2.622%, 3.077%</td><td>3,579 (3.1%)</td><td class="ci">3.039%, 3.243%</td></tr>
+<tr><td class="varname">Peptic ulcer disease</td><td>0(0%)</td><td>2,583 (1.9%)</td><td class="ci">1.842%, 1.989%</td><td>437 (2.1%)</td><td class="ci">1.902%, 2.295%</td><td>2,146 (1.9%)</td><td class="ci">1.805%, 1.963%</td></tr>
+<tr><td class="varname">Liver Disease without complications</td><td>0(0%)</td><td>14,791 (11.0%)</td><td class="ci">10.80%, 11.13%</td><td>2,475 (11.8%)</td><td class="ci">11.40%, 12.28%</td><td>12,316 (10.8%)</td><td class="ci">10.62%, 10.99%</td></tr>
+<tr><td class="varname">Diabetes without complications</td><td>0(0%)</td><td>51,969 (38.5%)</td><td class="ci">38.26%, 38.78%</td><td>8,378 (40.1%)</td><td class="ci">39.40%, 40.73%</td><td>43,591 (38.2%)</td><td class="ci">37.95%, 38.52%</td></tr>
+<tr><td class="varname">Diabetes with complications</td><td>0(0%)</td><td>36,959 (27.4%)</td><td class="ci">27.16%, 27.63%</td><td>6,030 (28.8%)</td><td class="ci">28.22%, 29.46%</td><td>30,929 (27.1%)</td><td class="ci">26.87%, 27.39%</td></tr>
+<tr><td class="varname">Hemiplegia</td><td>0(0%)</td><td>3,382 (2.5%)</td><td class="ci">2.424%, 2.592%</td><td>376 (1.8%)</td><td class="ci">1.624%, 1.990%</td><td>3,006 (2.6%)</td><td class="ci">2.545%, 2.732%</td></tr>
+<tr><td class="varname">Renal Disease</td><td>0(0%)</td><td>43,042 (31.9%)</td><td class="ci">31.65%, 32.15%</td><td>7,095 (33.9%)</td><td class="ci">33.29%, 34.57%</td><td>35,947 (31.5%)</td><td class="ci">31.26%, 31.80%</td></tr>
+<tr><td class="varname">Cancer</td><td>0(0%)</td><td>35,600 (26.4%)</td><td class="ci">26.15%, 26.62%</td><td>5,081 (24.3%)</td><td class="ci">23.72%, 24.89%</td><td>30,519 (26.8%)</td><td class="ci">26.51%, 27.03%</td></tr>
+<tr><td class="varname">Liver Disease with complications</td><td>0(0%)</td><td>6,113 (4.5%)</td><td class="ci">4.421%, 4.644%</td><td>964 (4.6%)</td><td class="ci">4.332%, 4.905%</td><td>5,149 (4.5%)</td><td class="ci">4.397%, 4.639%</td></tr>
+<tr><td class="varname">Metastatic Cancer</td><td>0(0%)</td><td>8,068 (6.0%)</td><td class="ci">5.854%, 6.108%</td><td>1,152 (5.5%)</td><td class="ci">5.205%, 5.829%</td><td>6,916 (6.1%)</td><td class="ci">5.929%, 6.207%</td></tr>
+<tr><td class="varname">Aquired Immunodeficiency Syndrom</td><td>0(0%)</td><td>1,490 (1.1%)</td><td class="ci">1.050%, 1.162%</td><td>212 (1.0%)</td><td class="ci">0.884%, 1.161%</td><td>1,278 (1.1%)</td><td class="ci">1.061%, 1.184%</td></tr>
+<tr><td class="varname">Charlson Comorbidity Index</td><td>0(0%)</td><td>3.78 (3.18)</td><td class="ci">3.77, 3.80</td><td>3.76 (3.23)</td><td class="ci">3.72, 3.81</td><td>3.79 (3.17)</td><td class="ci">3.77, 3.80</td></tr>
+<tr><td class="varname">num_comorbidities</td><td>0(0%)</td><td>2.86 (2.26)</td><td class="ci">2.85, 2.88</td><td>2.87 (2.33)</td><td class="ci">2.84, 2.90</td><td>2.86 (2.25)</td><td class="ci">2.85, 2.88</td></tr>
+<tr><td class="varname">Coronary Artery Disease</td><td>0(0%)</td><td>44,387 (32.9%)</td><td class="ci">32.65%, 33.15%</td><td>7,409 (35.4%)</td><td class="ci">34.78%, 36.08%</td><td>36,978 (32.4%)</td><td class="ci">32.16%, 32.71%</td></tr>
+<tr><td class="varname">COPD</td><td>0(0%)</td><td>53,436 (39.6%)</td><td class="ci">39.35%, 39.87%</td><td>6,959 (33.3%)</td><td class="ci">32.64%, 33.92%</td><td>46,477 (40.8%)</td><td class="ci">40.48%, 41.05%</td></tr>
+<tr><td class="varname">Asthma</td><td>0(0%)</td><td>10,512 (7.8%)</td><td class="ci">7.649%, 7.936%</td><td>1,546 (7.4%)</td><td class="ci">7.044%, 7.758%</td><td>8,966 (7.9%)</td><td class="ci">7.709%, 8.023%</td></tr>
+<tr><td class="varname">Bronchiectasis</td><td>0(0%)</td><td>2,481 (1.8%)</td><td class="ci">1.768%, 1.912%</td><td>258 (1.2%)</td><td class="ci">1.091%, 1.395%</td><td>2,223 (1.9%)</td><td class="ci">1.871%, 2.032%</td></tr>
+<tr><td class="varname">ILD</td><td>0(0%)</td><td>801 (0.6%)</td><td class="ci">0.554%, 0.637%</td><td>101 (0.5%)</td><td class="ci">0.396%, 0.589%</td><td>700 (0.6%)</td><td class="ci">0.570%, 0.662%</td></tr>
+<tr><td class="varname">Alcohol Use Disorders</td><td>0(0%)</td><td>1,182 (0.9%)</td><td class="ci">0.827%, 0.928%</td><td>202 (1.0%)</td><td class="ci">0.840%, 1.110%</td><td>980 (0.9%)</td><td class="ci">0.807%, 0.915%</td></tr>
+<tr><td class="varname">Opiod Use Disorders</td><td>0(0%)</td><td>4,547 (3.4%)</td><td class="ci">3.275%, 3.468%</td><td>677 (3.2%)</td><td class="ci">3.004%, 3.488%</td><td>3,870 (3.4%)</td><td class="ci">3.291%, 3.502%</td></tr>
+<tr><td class="varname">Marijuana Use Disorders</td><td>0(0%)</td><td>5,588 (4.1%)</td><td class="ci">4.036%, 4.250%</td><td>873 (4.2%)</td><td class="ci">3.910%, 4.457%</td><td>4,715 (4.1%)</td><td class="ci">4.021%, 4.253%</td></tr>
+<tr><td class="varname">Tobacco use</td><td>0(0%)</td><td>34,683 (25.7%)</td><td class="ci">25.47%, 25.94%</td><td>4,859 (23.2%)</td><td class="ci">22.67%, 23.82%</td><td>29,824 (26.2%)</td><td class="ci">25.91%, 26.42%</td></tr>
+<tr><td class="varname">Delirium Disorders</td><td>0(0%)</td><td>21,158 (15.7%)</td><td class="ci">15.49%, 15.88%</td><td>2,844 (13.6%)</td><td class="ci">13.14%, 14.07%</td><td>18,314 (16.1%)</td><td class="ci">15.85%, 16.28%</td></tr>
+<tr><td class="varname">Nursing Home Resident</td><td>0(0%)</td><td>138 (0.1%)</td><td class="ci">0.086%, 0.121%</td><td>&lt;20 (censored)</td><td class="ci">0.038%, 0.115%</td><td>124 (0.1%)</td><td class="ci">0.091%, 0.130%</td></tr>
+<tr><td class="varname">Discharged from rehab facility in the past 90 days</td><td>0(0%)</td><td>90 (0.1%)</td><td class="ci">0.054%, 0.082%</td><td>&lt;20 (censored)</td><td class="ci">0.012%, 0.066%</td><td>84 (0.1%)</td><td class="ci">0.059%, 0.092%</td></tr>
+<tr><td class="varname">Number acute hospitalizations in the past 90 days</td><td>0(0%)</td><td>0.24 (0.61)</td><td class="ci">0.24, 0.24</td><td>0.26 (0.64)</td><td class="ci">0.25, 0.27</td><td>0.24 (0.60)</td><td class="ci">0.23, 0.24</td></tr>
+<tr><td class="varname">Number of acute hospital days in the past 90 days</td><td>0(0%)</td><td>1.57 (5.23)</td><td class="ci">1.54, 1.60</td><td>1.62 (5.18)</td><td class="ci">1.55, 1.69</td><td>1.56 (5.24)</td><td class="ci">1.53, 1.59</td></tr>
+<tr><td class="varname">Number of prior ED visits in past 90 days</td><td>0(0%)</td><td>2.66 (4.12)</td><td class="ci">2.64, 2.68</td><td>2.73 (4.10)</td><td class="ci">2.67, 2.78</td><td>2.65 (4.12)</td><td class="ci">2.62, 2.67</td></tr>
+<tr><td class="varname">NumDaysInACF30</td><td>0(0%)</td><td>4.28 (6.12)</td><td class="ci">4.25, 4.31</td><td>3.73 (5.87)</td><td class="ci">3.65, 3.81</td><td>4.38 (6.16)</td><td class="ci">4.35, 4.42</td></tr>
+<tr><td class="varname">NumDaysInACF60</td><td>0(0%)</td><td>5.14 (8.15)</td><td class="ci">5.10, 5.19</td><td>4.58 (7.84)</td><td class="ci">4.48, 4.69</td><td>5.24 (8.21)</td><td class="ci">5.20, 5.29</td></tr>
+<tr><td class="varname">NumDaysInACF90</td><td>0(0%)</td><td>5.74 (9.60)</td><td class="ci">5.69, 5.79</td><td>5.18 (9.26)</td><td class="ci">5.06, 5.31</td><td>5.85 (9.66)</td><td class="ci">5.79, 5.90</td></tr>
+<tr><td class="varname">NumDaysInACF180</td><td>0(0%)</td><td>7.10 (12.94)</td><td class="ci">7.03, 7.17</td><td>6.59 (12.59)</td><td class="ci">6.42, 6.76</td><td>7.19 (13.00)</td><td class="ci">7.11, 7.26</td></tr>
+<tr><td class="varname">NumDaysInACF365</td><td>0(0%)</td><td>8.90 (17.08)</td><td class="ci">8.81, 8.99</td><td>8.47 (16.93)</td><td class="ci">8.24, 8.70</td><td>8.98 (17.11)</td><td class="ci">8.88, 9.07</td></tr>
+<tr><td class="varname">Previous nursing home in the past 90 days</td><td>0(0%)</td><td>1,159 (0.9%)</td><td class="ci">0.811%, 0.910%</td><td>125 (0.6%)</td><td class="ci">0.500%, 0.714%</td><td>1,034 (0.9%)</td><td class="ci">0.853%, 0.964%</td></tr>
+<tr><td class="varname">Hemodialysis in the past year</td><td>0(0%)</td><td>3,234 (2.4%)</td><td class="ci">2.316%, 2.480%</td><td>670 (3.2%)</td><td class="ci">2.971%, 3.454%</td><td>2,564 (2.2%)</td><td class="ci">2.164%, 2.337%</td></tr>
+<tr><td class="varname">hx_hosp</td><td>0(0%)</td><td>24,824 (18.4%)</td><td class="ci">18.19%, 18.61%</td><td>3,990 (19.1%)</td><td class="ci">18.55%, 19.62%</td><td>20,834 (18.3%)</td><td class="ci">18.05%, 18.50%</td></tr>
+<tr><td class="varname">History of Pneumonia</td><td>0(0%)</td><td>25,143 (18.6%)</td><td class="ci">18.43%, 18.85%</td><td>3,287 (15.7%)</td><td class="ci">15.23%, 16.22%</td><td>21,856 (19.2%)</td><td class="ci">18.94%, 19.40%</td></tr>
+<tr><td class="varname">Previous hospitalization in 90 days</td><td>0(0%)</td><td>24,209 (17.9%)</td><td class="ci">17.74%, 18.15%</td><td>3,892 (18.6%)</td><td class="ci">18.09%, 19.15%</td><td>20,317 (17.8%)</td><td class="ci">17.60%, 18.04%</td></tr>
+<tr><td class="varname">History of Respiratory Failure</td><td>0(0%)</td><td>23,840 (17.7%)</td><td class="ci">17.47%, 17.88%</td><td>3,260 (15.6%)</td><td class="ci">15.10%, 16.09%</td><td>20,580 (18.1%)</td><td class="ci">17.83%, 18.28%</td></tr>
+<tr><td class="varname">Prior IV antibiotics</td><td>0(0%)</td><td>13,255 (9.8%)</td><td class="ci">9.667%, 9.985%</td><td>1,706 (8.2%)</td><td class="ci">7.792%, 8.539%</td><td>11,549 (10.1%)</td><td class="ci">9.956%, 10.31%</td></tr>
+<tr><td class="varname">Prior Oral Antibiotics</td><td>0(0%)</td><td>33,879 (25.1%)</td><td class="ci">24.88%, 25.34%</td><td>4,388 (21.0%)</td><td class="ci">20.43%, 21.54%</td><td>29,491 (25.9%)</td><td class="ci">25.61%, 26.12%</td></tr>
+<tr><td class="varname">prevhospdaynum_nh_cat</td><td>0(0%)</td><td>1,563 (1.2%)</td><td class="ci">1.102%, 1.217%</td><td>190 (0.9%)</td><td class="ci">0.786%, 1.049%</td><td>1,373 (1.2%)</td><td class="ci">1.142%, 1.270%</td></tr>
+<tr><td class="varname">Immunosuppressant History</td><td>0(0%)</td><td>12,008 (8.9%)</td><td class="ci">8.749%, 9.054%</td><td>1,790 (8.6%)</td><td class="ci">8.186%, 8.949%</td><td>10,218 (9.0%)</td><td class="ci">8.798%, 9.130%</td></tr>
+<tr><td class="varname">Gglucorticoid days in prev 90 days</td><td>0(0%)</td><td>3.98 (14.82)</td><td class="ci">3.90, 4.06</td><td>3.28 (13.59)</td><td class="ci">3.10, 3.46</td><td>4.11 (15.03)</td><td class="ci">4.02, 4.20</td></tr>
+<tr><td class="varname">Immunocompromised</td><td>0(0%)</td><td>22,334 (16.6%)</td><td class="ci">16.36%, 16.75%</td><td>3,127 (15.0%)</td><td class="ci">14.47%, 15.45%</td><td>19,207 (16.8%)</td><td class="ci">16.63%, 17.07%</td></tr>
+<tr><td class="varname">Hemophilus vaccine</td><td>0(0%)</td><td>1,856 (1.4%)</td><td class="ci">1.315%, 1.440%</td><td>242 (1.2%)</td><td class="ci">1.019%, 1.314%</td><td>1,614 (1.4%)</td><td class="ci">1.348%, 1.486%</td></tr>
+<tr><td class="varname">Pneumoccocal vaccine</td><td>0(0%)</td><td>105,240 (78.0%)</td><td class="ci">77.78%, 78.22%</td><td>15,947 (76.3%)</td><td class="ci">75.67%, 76.83%</td><td>89,293 (78.3%)</td><td class="ci">78.08%, 78.56%</td></tr>
+<tr><td class="varname">Covid vaccine</td><td>0(0%)</td><td>114,520 (84.9%)</td><td class="ci">84.69%, 85.07%</td><td>17,196 (82.2%)</td><td class="ci">81.70%, 82.74%</td><td>97,324 (85.4%)</td><td class="ci">85.16%, 85.57%</td></tr>
+<tr><td class="varname">merged_recent_influenza_vaccine</td><td>0(0%)</td><td>121,578 (90.1%)</td><td class="ci">89.95%, 90.27%</td><td>18,552 (88.7%)</td><td class="ci">88.28%, 89.14%</td><td>103,026 (90.4%)</td><td class="ci">90.20%, 90.54%</td></tr>
+<tr><td class="varname">merged_recent_rsv_vaccine</td><td>0(0%)</td><td>5,532 (4.1%)</td><td class="ci">3.995%, 4.208%</td><td>739 (3.5%)</td><td class="ci">3.290%, 3.795%</td><td>4,793 (4.2%)</td><td class="ci">4.089%, 4.323%</td></tr>
+<tr><td class="varname">Recent covid vaccine in past 6 months</td><td>0(0%)</td><td>36,079 (26.7%)</td><td class="ci">26.51%, 26.98%</td><td>5,503 (26.3%)</td><td class="ci">25.72%, 26.92%</td><td>30,576 (26.8%)</td><td class="ci">26.56%, 27.08%</td></tr>
+<tr><td class="varname">Recent influenza vaccine in past 12 months</td><td>0(0%)</td><td>80,541 (59.7%)</td><td class="ci">59.43%, 59.96%</td><td>11,894 (56.9%)</td><td class="ci">56.20%, 57.55%</td><td>68,647 (60.2%)</td><td class="ci">59.93%, 60.50%</td></tr>
+<tr><td class="varname">RSV vaccine ever given</td><td>0(0%)</td><td>5,532 (4.1%)</td><td class="ci">3.995%, 4.208%</td><td>739 (3.5%)</td><td class="ci">3.290%, 3.795%</td><td>4,793 (4.2%)</td><td class="ci">4.089%, 4.323%</td></tr>
+<tr><td class="varname">previous positive MRSA blood culture</td><td>0(0%)</td><td>234 (0.2%)</td><td class="ci">0.152%, 0.198%</td><td>23 (0.1%)</td><td class="ci">0.071%, 0.168%</td><td>211 (0.2%)</td><td class="ci">0.161%, 0.212%</td></tr>
+<tr><td class="varname">previous positive MRSA respiratory culture</td><td>0(0%)</td><td>542 (0.4%)</td><td class="ci">0.369%, 0.437%</td><td>62 (0.3%)</td><td class="ci">0.229%, 0.383%</td><td>480 (0.4%)</td><td class="ci">0.385%, 0.461%</td></tr>
+<tr><td class="varname">previous positive PAER blood culture</td><td>0(0%)</td><td>156 (0.1%)</td><td class="ci">0.099%, 0.136%</td><td>&lt;20 (censored)</td><td class="ci">0.053%, 0.139%</td><td>138 (0.1%)</td><td class="ci">0.102%, 0.143%</td></tr>
+<tr><td class="varname">previous positive PAER resp culture</td><td>0(0%)</td><td>1,646 (1.2%)</td><td class="ci">1.162%, 1.280%</td><td>134 (0.6%)</td><td class="ci">0.539%, 0.761%</td><td>1,512 (1.3%)</td><td class="ci">1.261%, 1.395%</td></tr>
+<tr><td class="varname">Temprature celsius</td><td>901(0.7%)</td><td>36.87 (0.68)</td><td class="ci">36.86, 36.87</td><td>36.73 (0.53)</td><td class="ci">36.72, 36.74</td><td>36.89 (0.69)</td><td class="ci">36.89, 36.90</td></tr>
+<tr><td class="varname">Abnormal temperature (&lt;35C or &gt;38C)</td><td>0(0%)</td><td>16,585 (12.3%)</td><td class="ci">12.12%, 12.47%</td><td>1,785 (8.5%)</td><td class="ci">8.162%, 8.925%</td><td>14,800 (13.0%)</td><td class="ci">12.79%, 13.18%</td></tr>
+<tr><td class="varname">Heart rate (beats per minute)</td><td>370(0.3%)</td><td>90.45 (19.81)</td><td class="ci">90.34, 90.55</td><td>86.23 (18.54)</td><td class="ci">85.98, 86.48</td><td>91.22 (19.94)</td><td class="ci">91.10, 91.34</td></tr>
+<tr><td class="varname">Systolic blood pressure (mmHg)</td><td>410(0.3%)</td><td>135.26 (25.62)</td><td class="ci">135.12, 135.40</td><td>138.62 (25.92)</td><td class="ci">138.27, 138.97</td><td>134.64 (25.52)</td><td class="ci">134.50, 134.79</td></tr>
+<tr><td class="varname">Diastolic blood pressure (mmHg)</td><td>422(0.3%)</td><td>76.83 (14.41)</td><td class="ci">76.76, 76.91</td><td>79.01 (14.74)</td><td class="ci">78.81, 79.21</td><td>76.44 (14.31)</td><td class="ci">76.35, 76.52</td></tr>
+<tr><td class="varname">Respiratory rate (breaths per minute)</td><td>669(0.5%)</td><td>19.54 (4.26)</td><td class="ci">19.52, 19.56</td><td>19.07 (3.91)</td><td class="ci">19.02, 19.12</td><td>19.63 (4.32)</td><td class="ci">19.60, 19.65</td></tr>
+<tr><td class="varname">Pulse oximetry (%)</td><td>10,970(8.1%)</td><td>94.53 (4.74)</td><td class="ci">94.50, 94.55</td><td>95.26 (4.22)</td><td class="ci">95.20, 95.32</td><td>94.39 (4.81)</td><td class="ci">94.36, 94.42</td></tr>
+<tr><td class="varname">spO2 - from blood gas</td><td>10,542(7.8%)</td><td>94.40 (5.13)</td><td class="ci">94.37, 94.43</td><td>95.17 (4.57)</td><td class="ci">95.11, 95.24</td><td>94.26 (5.21)</td><td class="ci">94.23, 94.29</td></tr>
+<tr><td class="varname">Oxygenation:NRB,HF,CPAP or VENTILATOR</td><td>0(0%)</td><td>10,315 (7.6%)</td><td class="ci">7.505%, 7.789%</td><td>918 (4.4%)</td><td class="ci">4.118%, 4.678%</td><td>9,397 (8.2%)</td><td class="ci">8.084%, 8.404%</td></tr>
+<tr><td class="varname">Albumin (g/dL)</td><td>27,277(20%)</td><td>3.55 (0.62)</td><td class="ci">3.54, 3.55</td><td>3.63 (0.60)</td><td class="ci">3.62, 3.64</td><td>3.53 (0.62)</td><td class="ci">3.53, 3.54</td></tr>
+<tr><td class="varname">Alanine aminotransferase (IU/L)</td><td>29,382(22%)</td><td>29.73 (66.61)</td><td class="ci">29.33, 30.14</td><td>28.74 (47.94)</td><td class="ci">28.01, 29.48</td><td>29.92 (69.49)</td><td class="ci">29.46, 30.37</td></tr>
+<tr><td class="varname">Aspartate aminotransferase (IU/L)</td><td>33,140(25%)</td><td>35.19 (90.10)</td><td class="ci">34.64, 35.74</td><td>32.86 (63.46)</td><td class="ci">31.87, 33.85</td><td>35.62 (94.17)</td><td class="ci">34.99, 36.25</td></tr>
+<tr><td class="varname">Bicarbonate (mmol/L)</td><td>13,991(10%)</td><td>25.21 (4.21)</td><td class="ci">25.18, 25.23</td><td>25.19 (3.91)</td><td class="ci">25.13, 25.24</td><td>25.21 (4.27)</td><td class="ci">25.18, 25.24</td></tr>
+<tr><td class="varname">Bilirubin (mg/dL)</td><td>27,721(21%)</td><td>0.84 (0.90)</td><td class="ci">0.83, 0.84</td><td>0.78 (0.72)</td><td class="ci">0.77, 0.80</td><td>0.84 (0.93)</td><td class="ci">0.84, 0.85</td></tr>
+<tr><td class="varname">Brain natriuretic peptide (pg/mL)</td><td>62,279(46%)</td><td>1,060.84 (2,810.99)</td><td class="ci">1,040.39, 1,081.28</td><td>1,370.38 (3,258.41)</td><td class="ci">1,311.71, 1,429.05</td><td>1,000.49 (2,711.10)</td><td class="ci">978.93, 1,022.04</td></tr>
+<tr><td class="varname">Blood urea nitrogen (mg/dL)</td><td>13,470(10.0%)</td><td>23.47 (16.40)</td><td class="ci">23.38, 23.57</td><td>23.18 (16.04)</td><td class="ci">22.95, 23.41</td><td>23.53 (16.46)</td><td class="ci">23.43, 23.63</td></tr>
+<tr><td class="varname">Creatinine (g/dl)</td><td>13,419(9.9%)</td><td>1.51 (1.78)</td><td class="ci">1.50, 1.52</td><td>1.61 (2.04)</td><td class="ci">1.58, 1.64</td><td>1.49 (1.73)</td><td class="ci">1.48, 1.50</td></tr>
+<tr><td class="varname">C-reactive peptide mg/dL))</td><td>111,874(83%)</td><td>55.67 (78.97)</td><td class="ci">54.65, 56.69</td><td>35.83 (55.84)</td><td class="ci">33.85, 37.81</td><td>58.70 (81.51)</td><td class="ci">57.57, 59.83</td></tr>
+<tr><td class="varname">Erythrocyte sedimentation rate (mm/hr)</td><td>121,373(90%)</td><td>50.11 (34.09)</td><td class="ci">49.53, 50.68</td><td>42.63 (31.37)</td><td class="ci">41.15, 44.12</td><td>51.20 (34.34)</td><td class="ci">50.58, 51.82</td></tr>
+<tr><td class="varname">Blood ethanol level (mg/dL)</td><td>133,894(99%)</td><td>132.33 (124.49)</td><td class="ci">124.69, 139.97</td><td>156.29 (127.44)</td><td class="ci">139.36, 173.23</td><td>125.75 (122.93)</td><td class="ci">117.23, 134.27</td></tr>
+<tr><td class="varname">Supplemental FiO2 (%)</td><td>134,392(100%)</td><td>34.97 (24.36)</td><td class="ci">32.88, 37.06</td><td>30.50 (23.34)</td><td class="ci">23.87, 37.13</td><td>35.44 (24.44)</td><td class="ci">33.23, 37.64</td></tr>
+<tr><td class="varname">Supplemental O2 flow rate (L/min)</td><td>81,508(60%)</td><td>3.36 (4.10)</td><td class="ci">3.33, 3.40</td><td>3.02 (3.36)</td><td class="ci">2.94, 3.11</td><td>3.41 (4.19)</td><td class="ci">3.37, 3.45</td></tr>
+<tr><td class="varname">Glucose (mg/dL)</td><td>13,176(9.8%)</td><td>139.86 (67.36)</td><td class="ci">139.49, 140.24</td><td>135.92 (66.18)</td><td class="ci">134.98, 136.86</td><td>140.60 (67.55)</td><td class="ci">140.19, 141.02</td></tr>
+<tr><td class="varname">Hematocrit (%)</td><td>13,055(9.7%)</td><td>38.54 (6.54)</td><td class="ci">38.50, 38.58</td><td>38.95 (6.64)</td><td class="ci">38.85, 39.04</td><td>38.47 (6.52)</td><td class="ci">38.43, 38.51</td></tr>
+<tr><td class="varname">Hemoglobin (g/dL)</td><td>13,048(9.7%)</td><td>12.70 (2.31)</td><td class="ci">12.69, 12.72</td><td>12.83 (2.38)</td><td class="ci">12.79, 12.86</td><td>12.68 (2.30)</td><td class="ci">12.67, 12.69</td></tr>
+<tr><td class="varname">Lactic acid (mmol/L)</td><td>67,129(50%)</td><td>1.89 (1.29)</td><td class="ci">1.88, 1.90</td><td>1.69 (1.01)</td><td class="ci">1.67, 1.72</td><td>1.92 (1.32)</td><td class="ci">1.90, 1.93</td></tr>
+<tr><td class="varname">Abolute lymphocyte count (K/uL)</td><td>23,030(17%)</td><td>14.62 (10.84)</td><td class="ci">14.55, 14.68</td><td>18.33 (10.55)</td><td class="ci">18.17, 18.48</td><td>13.93 (10.75)</td><td class="ci">13.86, 14.00</td></tr>
+<tr><td class="varname">Absolute neutrophil count (K/uL)</td><td>29,058(22%)</td><td>68.89 (21.96)</td><td class="ci">68.76, 69.02</td><td>63.70 (21.86)</td><td class="ci">63.36, 64.03</td><td>69.85 (21.84)</td><td class="ci">69.71, 70.00</td></tr>
+<tr><td class="varname">Arterial PaCO2 (mmHg)</td><td>113,064(84%)</td><td>42.37 (14.65)</td><td class="ci">42.18, 42.57</td><td>41.94 (13.62)</td><td class="ci">41.36, 42.52</td><td>42.42 (14.76)</td><td class="ci">42.21, 42.62</td></tr>
+<tr><td class="varname">Arterial PaO2 (mmHg)</td><td>113,742(84%)</td><td>83.00 (50.04)</td><td class="ci">82.32, 83.67</td><td>83.62 (50.73)</td><td class="ci">81.41, 85.84</td><td>82.93 (49.97)</td><td class="ci">82.22, 83.64</td></tr>
+<tr><td class="varname">arterial pH</td><td>113,500(84%)</td><td>7.40 (0.09)</td><td class="ci">7.40, 7.40</td><td>7.41 (0.09)</td><td class="ci">7.40, 7.41</td><td>7.40 (0.09)</td><td class="ci">7.40, 7.40</td></tr>
+<tr><td class="varname">Platelet count (K/uL)</td><td>14,177(11%)</td><td>242.58 (105.90)</td><td class="ci">241.98, 243.17</td><td>228.38 (93.74)</td><td class="ci">227.05, 229.71</td><td>245.25 (107.83)</td><td class="ci">244.58, 245.91</td></tr>
+<tr><td class="varname">Potassium (mEq/L)</td><td>13,625(10%)</td><td>4.12 (0.58)</td><td class="ci">4.12, 4.13</td><td>4.13 (0.57)</td><td class="ci">4.12, 4.14</td><td>4.12 (0.58)</td><td class="ci">4.12, 4.12</td></tr>
+<tr><td class="varname">Procalcitonin (ng/mL)</td><td>87,580(65%)</td><td>1.92 (9.11)</td><td class="ci">1.83, 2.00</td><td>0.60 (4.77)</td><td class="ci">0.46, 0.74</td><td>2.04 (9.41)</td><td class="ci">1.95, 2.13</td></tr>
+<tr><td class="varname">Sodium (mEq/L)</td><td>13,384(9.9%)</td><td>137.11 (4.39)</td><td class="ci">137.08, 137.13</td><td>137.67 (4.01)</td><td class="ci">137.61, 137.72</td><td>137.00 (4.45)</td><td class="ci">136.98, 137.03</td></tr>
+<tr><td class="varname">Troponin (ng/mL)</td><td>85,879(64%)</td><td>0.19 (3.70)</td><td class="ci">0.16, 0.23</td><td>0.16 (1.80)</td><td class="ci">0.12, 0.20</td><td>0.20 (3.99)</td><td class="ci">0.16, 0.24</td></tr>
+<tr><td class="varname">White blood cell count (K/uL)</td><td>17,299(13%)</td><td>10.71 (6.07)</td><td class="ci">10.68, 10.74</td><td>8.10 (3.83)</td><td class="ci">8.04, 8.15</td><td>11.19 (6.28)</td><td class="ci">11.15, 11.23</td></tr>
+<tr><td class="varname">ePSI</td><td>0(0%)</td><td>99.18 (32.32)</td><td class="ci">99.01, 99.35</td><td>97.14 (31.25)</td><td class="ci">96.72, 97.57</td><td>99.56 (32.50)</td><td class="ci">99.37, 99.75</td></tr>
+<tr><td class="varname">ePSI&gt;120</td><td>0(0%)</td><td>33,647 (24.9%)</td><td class="ci">24.71%, 25.17%</td><td>4,773 (22.8%)</td><td class="ci">22.26%, 23.40%</td><td>28,874 (25.3%)</td><td class="ci">25.08%, 25.58%</td></tr>
+<tr><td class="varname">ePSI&lt;90</td><td>0(0%)</td><td>55,704 (41.3%)</td><td class="ci">41.03%, 41.55%</td><td>9,095 (43.5%)</td><td class="ci">42.82%, 44.17%</td><td>46,609 (40.9%)</td><td class="ci">40.60%, 41.17%</td></tr>
+<tr><td class="varname">frailty_score_prev1yr</td><td>0(0%)</td><td>0.23 (0.15)</td><td class="ci">0.23, 0.23</td><td>0.23 (0.15)</td><td class="ci">0.22, 0.23</td><td>0.23 (0.15)</td><td class="ci">0.23, 0.23</td></tr>
+<tr><td class="varname">frailty_score_followup1yr</td><td>22,620(17%)</td><td>0.28 (0.15)</td><td class="ci">0.27, 0.28</td><td>0.27 (0.15)</td><td class="ci">0.27, 0.27</td><td>0.28 (0.15)</td><td class="ci">0.28, 0.28</td></tr>
+<tr><td class="varname">predicted 30 day mortality risk by 28 variables</td><td>692(0.5%)</td><td>0.08 (0.10)</td><td class="ci">0.08, 0.08</td><td>0.06 (0.07)</td><td class="ci">0.06, 0.06</td><td>0.08 (0.11)</td><td class="ci">0.08, 0.08</td></tr>
+<tr><td class="varname">predicted 30 day mortality risk by 69 variables</td><td>692(0.5%)</td><td>0.09 (0.12)</td><td class="ci">0.09, 0.09</td><td>0.06 (0.09)</td><td class="ci">0.06, 0.07</td><td>0.09 (0.13)</td><td class="ci">0.09, 0.09</td></tr>
+<tr><td class="varname">Brain natriuretic peptide &gt; 500 pg/mL</td><td>0(0%)</td><td>22,796 (16.9%)</td><td class="ci">16.70%, 17.10%</td><td>4,633 (22.2%)</td><td class="ci">21.59%, 22.73%</td><td>18,163 (15.9%)</td><td class="ci">15.72%, 16.15%</td></tr>
+<tr><td class="varname">Blood urea nitrogen &gt; 20 mg/dL</td><td>0(0%)</td><td>52,901 (39.2%)</td><td class="ci">38.95%, 39.47%</td><td>8,042 (38.5%)</td><td class="ci">37.80%, 39.12%</td><td>44,859 (39.3%)</td><td class="ci">39.06%, 39.63%</td></tr>
+<tr><td class="varname">Creatinine &gt; 2.0 g/dl</td><td>0(0%)</td><td>14,859 (11.0%)</td><td class="ci">10.85%, 11.18%</td><td>2,516 (12.0%)</td><td class="ci">11.60%, 12.48%</td><td>12,343 (10.8%)</td><td class="ci">10.65%, 11.01%</td></tr>
+<tr><td class="varname">C-reactive peptide &gt; 20 mg/dL</td><td>0(0%)</td><td>10,699 (7.9%)</td><td class="ci">7.787%, 8.076%</td><td>1,120 (5.4%)</td><td class="ci">5.056%, 5.672%</td><td>9,579 (8.4%)</td><td class="ci">8.242%, 8.565%</td></tr>
+<tr><td class="varname">Fever (temperature&gt;38.0 C)</td><td>0(0%)</td><td>9,423 (7.0%)</td><td class="ci">6.849%, 7.122%</td><td>667 (3.2%)</td><td class="ci">2.958%, 3.439%</td><td>8,756 (7.7%)</td><td class="ci">7.527%, 7.837%</td></tr>
+<tr><td class="varname">Heart rate &gt; 90 beats per minute</td><td>0(0%)</td><td>62,757 (46.5%)</td><td class="ci">46.25%, 46.78%</td><td>7,845 (37.5%)</td><td class="ci">36.86%, 38.18%</td><td>54,912 (48.2%)</td><td class="ci">47.88%, 48.46%</td></tr>
+<tr><td class="varname">Systolic blood pressure&lt;90 (mmHg)</td><td>0(0%)</td><td>3,597 (2.7%)</td><td class="ci">2.581%, 2.754%</td><td>349 (1.7%)</td><td class="ci">1.502%, 1.854%</td><td>3,248 (2.8%)</td><td class="ci">2.754%, 2.948%</td></tr>
+<tr><td class="varname">Lactic acid&gt;2 (mmol/L)</td><td>0(0%)</td><td>20,472 (15.2%)</td><td class="ci">14.98%, 15.37%</td><td>1,690 (8.1%)</td><td class="ci">7.717%, 8.461%</td><td>18,782 (16.5%)</td><td class="ci">16.26%, 16.69%</td></tr>
+<tr><td class="varname">Platelet count &lt; 150 K/uL</td><td>0(0%)</td><td>17,522 (13.0%)</td><td class="ci">12.81%, 13.17%</td><td>3,058 (14.6%)</td><td class="ci">14.15%, 15.11%</td><td>14,464 (12.7%)</td><td class="ci">12.49%, 12.88%</td></tr>
+<tr><td class="varname">Procalcitonin &gt; 0.2 ng/mL</td><td>0(0%)</td><td>20,345 (15.1%)</td><td class="ci">14.89%, 15.27%</td><td>906 (4.3%)</td><td class="ci">4.062%, 4.619%</td><td>19,439 (17.1%)</td><td class="ci">16.83%, 17.27%</td></tr>
+<tr><td class="varname">Respiratory rate &gt; 20 breaths per minute</td><td>0(0%)</td><td>30,090 (22.3%)</td><td class="ci">22.08%, 22.53%</td><td>3,726 (17.8%)</td><td class="ci">17.30%, 18.34%</td><td>26,364 (23.1%)</td><td class="ci">22.88%, 23.37%</td></tr>
+<tr><td class="varname">Respiratory rate &gt; 30 breaths per minute</td><td>0(0%)</td><td>2,778 (2.1%)</td><td class="ci">1.984%, 2.137%</td><td>254 (1.2%)</td><td class="ci">1.073%, 1.375%</td><td>2,524 (2.2%)</td><td class="ci">2.130%, 2.301%</td></tr>
+<tr><td class="varname">White blood cell count &lt; 4 or &gt; 11 K/uL</td><td>0(0%)</td><td>48,381 (35.9%)</td><td class="ci">35.60%, 36.12%</td><td>3,479 (16.6%)</td><td class="ci">16.14%, 17.15%</td><td>44,902 (39.4%)</td><td class="ci">39.10%, 39.67%</td></tr>
+<tr><td class="varname">Tested for Adenovirus</td><td>0(0%)</td><td>31,240 (23.2%)</td><td class="ci">22.93%, 23.38%</td><td>3,217 (15.4%)</td><td class="ci">14.90%, 15.88%</td><td>28,023 (24.6%)</td><td class="ci">24.33%, 24.83%</td></tr>
+<tr><td class="varname">Positive  Adenovirus</td><td>103,676(77%)</td><td>71 (0.2%)</td><td class="ci">0.179%, 0.288%</td><td>&lt;20 (censored)</td><td class="ci">0.057%, 0.385%</td><td>66 (0.2%)</td><td class="ci">0.184%, 0.301%</td></tr>
+<tr><td class="varname">Tested for Human metapneumovirus</td><td>0(0%)</td><td>31,318 (23.2%)</td><td class="ci">22.99%, 23.44%</td><td>3,305 (15.8%)</td><td class="ci">15.31%, 16.31%</td><td>28,013 (24.6%)</td><td class="ci">24.32%, 24.82%</td></tr>
+<tr><td class="varname">Positive Human metapneumovirus</td><td>103,598(77%)</td><td>882 (2.8%)</td><td class="ci">2.637%, 3.007%</td><td>102 (3.1%)</td><td class="ci">2.535%, 3.749%</td><td>780 (2.8%)</td><td class="ci">2.596%, 2.986%</td></tr>
+<tr><td class="varname">Tested for HPIV</td><td>0(0%)</td><td>29,266 (21.7%)</td><td class="ci">21.47%, 21.91%</td><td>3,153 (15.1%)</td><td class="ci">14.60%, 15.57%</td><td>26,113 (22.9%)</td><td class="ci">22.66%, 23.15%</td></tr>
+<tr><td class="varname">Positive Human Parainfluenza Virus</td><td>105,650(78%)</td><td>780 (2.7%)</td><td class="ci">2.485%, 2.858%</td><td>96 (3.0%)</td><td class="ci">2.485%, 3.721%</td><td>684 (2.6%)</td><td class="ci">2.431%, 2.822%</td></tr>
+<tr><td class="varname">Tested for Influenza</td><td>0(0%)</td><td>102,092 (75.7%)</td><td class="ci">75.44%, 75.90%</td><td>13,590 (65.0%)</td><td class="ci">64.33%, 65.63%</td><td>88,502 (77.6%)</td><td class="ci">77.39%, 77.87%</td></tr>
+<tr><td class="varname">Positive Influenza</td><td>32,824(24%)</td><td>3,768 (3.7%)</td><td class="ci">3.576%, 3.809%</td><td>681 (5.0%)</td><td class="ci">4.653%, 5.395%</td><td>3,087 (3.5%)</td><td class="ci">3.369%, 3.612%</td></tr>
+<tr><td class="varname">Tested for Rhinovirus/Enterovirus</td><td>0(0%)</td><td>31,350 (23.2%)</td><td class="ci">23.01%, 23.46%</td><td>3,308 (15.8%)</td><td class="ci">15.33%, 16.32%</td><td>28,042 (24.6%)</td><td class="ci">24.35%, 24.85%</td></tr>
+<tr><td class="varname">Positive Rhinovirus/Enterovirus</td><td>103,566(77%)</td><td>2,587 (8.3%)</td><td class="ci">7.951%, 8.563%</td><td>212 (6.4%)</td><td class="ci">5.609%, 7.311%</td><td>2,375 (8.5%)</td><td class="ci">8.147%, 8.803%</td></tr>
+<tr><td class="varname">Tested for Respiratory Syncytial Virus</td><td>0(0%)</td><td>99,748 (73.9%)</td><td class="ci">73.70%, 74.17%</td><td>13,333 (63.8%)</td><td class="ci">63.10%, 64.41%</td><td>86,415 (75.8%)</td><td class="ci">75.55%, 76.05%</td></tr>
+<tr><td class="varname">Positive Respiratory Syncytial Virus</td><td>35,168(26%)</td><td>1,795 (1.8%)</td><td class="ci">1.718%, 1.884%</td><td>327 (2.5%)</td><td class="ci">2.200%, 2.733%</td><td>1,468 (1.7%)</td><td class="ci">1.614%, 1.788%</td></tr>
+<tr><td class="varname">COVID tested</td><td>0(0%)</td><td>74,324 (55.1%)</td><td class="ci">54.82%, 55.35%</td><td>9,390 (44.9%)</td><td class="ci">44.23%, 45.58%</td><td>64,934 (57.0%)</td><td class="ci">56.67%, 57.25%</td></tr>
+<tr><td class="varname">Positive SARS-CoV 2</td><td>0(0%)</td><td>9,619 (7.1%)</td><td class="ci">6.993%, 7.269%</td><td>2,302 (11.0%)</td><td class="ci">10.59%, 11.44%</td><td>7,317 (6.4%)</td><td class="ci">6.277%, 6.562%</td></tr>
+<tr><td class="varname">Blood cultures obtained within 48 hrs</td><td>0(0%)</td><td>67,780 (50.2%)</td><td class="ci">49.97%, 50.51%</td><td>3,444 (16.5%)</td><td class="ci">15.97%, 16.98%</td><td>64,336 (56.4%)</td><td class="ci">56.14%, 56.72%</td></tr>
+<tr><td class="varname">Respiratory cultures obtained within 48 hrs</td><td>0(0%)</td><td>21,268 (15.8%)</td><td class="ci">15.57%, 15.96%</td><td>822 (3.9%)</td><td class="ci">3.673%, 4.205%</td><td>20,446 (17.9%)</td><td class="ci">17.71%, 18.16%</td></tr>
+<tr><td class="varname">Positive blood culture within 48 hrs</td><td>0(0%)</td><td>4,823 (3.6%)</td><td class="ci">3.477%, 3.676%</td><td>99 (0.5%)</td><td class="ci">0.387%, 0.579%</td><td>4,724 (4.1%)</td><td class="ci">4.029%, 4.261%</td></tr>
+<tr><td class="varname">Positive respiratory culture within 48 hrs</td><td>0(0%)</td><td>5,653 (4.2%)</td><td class="ci">4.084%, 4.299%</td><td>178 (0.9%)</td><td class="ci">0.733%, 0.988%</td><td>5,475 (4.8%)</td><td class="ci">4.679%, 4.929%</td></tr>
+<tr><td class="varname">Xray obtained</td><td>0(0%)</td><td>125,136 (92.8%)</td><td class="ci">92.61%, 92.89%</td><td>19,090 (91.3%)</td><td class="ci">90.90%, 91.66%</td><td>106,046 (93.0%)</td><td class="ci">92.87%, 93.17%</td></tr>
+<tr><td class="varname">Chest tomography obtained</td><td>0(0%)</td><td>9,780 (7.2%)</td><td class="ci">7.111%, 7.389%</td><td>1,822 (8.7%)</td><td class="ci">8.336%, 9.105%</td><td>7,958 (7.0%)</td><td class="ci">6.834%, 7.130%</td></tr>
+<tr><td class="varname">Time to first imaging</td><td>0(0%)</td><td>0.63 (9.83)</td><td class="ci">0.58, 0.68</td><td>0.85 (13.79)</td><td class="ci">0.66, 1.03</td><td>0.59 (8.91)</td><td class="ci">0.54, 0.64</td></tr>
+<tr><td class="varname">ED Diagnosis classified as possible</td><td>0(0%)</td><td>44,384 (32.9%)</td><td class="ci">32.65%, 33.15%</td><td>12,876 (61.6%)</td><td class="ci">60.91%, 62.23%</td><td>31,508 (27.6%)</td><td class="ci">27.38%, 27.90%</td></tr>
+<tr><td class="varname">Pneumonia diagnosis</td><td>0(0%)</td><td>82,574 (61.2%)</td><td class="ci">60.94%, 61.46%</td><td>2,981 (14.3%)</td><td class="ci">13.79%, 14.74%</td><td>79,593 (69.8%)</td><td class="ci">69.55%, 70.08%</td></tr>
+<tr><td class="varname">Sepsis diagnosis</td><td>0(0%)</td><td>5,433 (4.0%)</td><td class="ci">3.923%, 4.134%</td><td>24 (0.1%)</td><td class="ci">0.075%, 0.174%</td><td>5,409 (4.7%)</td><td class="ci">4.622%, 4.870%</td></tr>
+<tr><td class="varname">Respiratory failure diagnosis</td><td>0(0%)</td><td>5,467 (4.1%)</td><td class="ci">3.948%, 4.159%</td><td>194 (0.9%)</td><td class="ci">0.804%, 1.070%</td><td>5,273 (4.6%)</td><td class="ci">4.504%, 4.749%</td></tr>
+<tr><td class="varname">Anti--MRSA antibiotic within 24 hrs</td><td>0(0%)</td><td>21,273 (15.8%)</td><td class="ci">15.57%, 15.96%</td><td>0 (0.0%)</td><td class="ci">0%, 0.023%</td><td>21,273 (18.7%)</td><td class="ci">18.43%, 18.89%</td></tr>
+<tr><td class="varname">Antipseudomonal antibiotic within 24 hrs</td><td>0(0%)</td><td>29,256 (21.7%)</td><td class="ci">21.47%, 21.91%</td><td>0 (0.0%)</td><td class="ci">0%, 0.023%</td><td>29,256 (25.7%)</td><td class="ci">25.41%, 25.92%</td></tr>
+<tr><td class="varname">Broad-spectrum antibiotic within 24 hrs</td><td>0(0%)</td><td>31,977 (23.7%)</td><td class="ci">23.47%, 23.93%</td><td>0 (0.0%)</td><td class="ci">0%, 0.023%</td><td>31,977 (28.0%)</td><td class="ci">27.79%, 28.31%</td></tr>
+<tr><td class="varname">Standard-spectrum antibiotics within 24 hrs</td><td>0(0%)</td><td>76,781 (56.9%)</td><td class="ci">56.65%, 57.17%</td><td>0 (0.0%)</td><td class="ci">0%, 0.023%</td><td>76,781 (67.3%)</td><td class="ci">67.08%, 67.62%</td></tr>
+<tr><td class="varname">Narrow spectrum within 24 hrs</td><td>0(0%)</td><td>109,660 (81.3%)</td><td class="ci">81.07%, 81.49%</td><td>0 (0.0%)</td><td class="ci">0%, 0.023%</td><td>109,660 (96.2%)</td><td class="ci">96.08%, 96.30%</td></tr>
+<tr><td class="varname">No antibiotics within 24 hours</td><td>0(0%)</td><td>20,912 (15.5%)</td><td class="ci">15.31%, 15.69%</td><td>20,912 (100.0%)</td><td class="ci">99.98%, 100.00%</td><td>0 (0.0%)</td><td class="ci">0%, 0.004%</td></tr>
+<tr><td class="varname">Broad-spectrum-guideline-condordant abx</td><td>0(0%)</td><td>19,010 (14.1%)</td><td class="ci">13.91%, 14.28%</td><td>0 (0.0%)</td><td class="ci">0%, 0.023%</td><td>19,010 (16.7%)</td><td class="ci">16.46%, 16.89%</td></tr>
+<tr><td class="varname">Broad-spectrum-non-guideline-concordant antibiotics</td><td>0(0%)</td><td>12,967 (9.6%)</td><td class="ci">9.455%, 9.770%</td><td>0 (0.0%)</td><td class="ci">0%, 0.023%</td><td>12,967 (11.4%)</td><td class="ci">11.19%, 11.56%</td></tr>
+<tr><td class="varname">guidline concordant abx</td><td>0(0%)</td><td>57,771 (42.8%)</td><td class="ci">42.56%, 43.08%</td><td>0 (0.0%)</td><td class="ci">0%, 0.023%</td><td>57,771 (50.7%)</td><td class="ci">50.38%, 50.97%</td></tr>
+<tr><td class="varname">Narrow_spectrum abx</td><td>0(0%)</td><td>23,821 (17.7%)</td><td class="ci">17.45%, 17.86%</td><td>0 (0.0%)</td><td class="ci">0%, 0.023%</td><td>23,821 (20.9%)</td><td class="ci">20.66%, 21.13%</td></tr>
+<tr><td class="varname">Other abx</td><td>0(0%)</td><td>435 (0.3%)</td><td class="ci">0.293%, 0.355%</td><td>0 (0.0%)</td><td class="ci">0%, 0.023%</td><td>435 (0.4%)</td><td class="ci">0.347%, 0.420%</td></tr>
+<tr><td class="varname">No abx</td><td>0(0%)</td><td>20,912 (15.5%)</td><td class="ci">15.31%, 15.69%</td><td>20,912 (100.0%)</td><td class="ci">99.98%, 100.00%</td><td>0 (0.0%)</td><td class="ci">0%, 0.004%</td></tr>
+<tr><td class="varname">Time to first antibiotic</td><td>18,726(14%)</td><td>5.06 (31.89)</td><td class="ci">4.87, 5.24</td><td>119.60 (200.94)</td><td class="ci">111.17, 128.03</td><td>2.86 (2.49)</td><td class="ci">2.85, 2.87</td></tr>
+<tr><td class="varname">Pressor within 24hr</td><td>0(0%)</td><td>2,914 (2.2%)</td><td class="ci">2.083%, 2.239%</td><td>78 (0.4%)</td><td class="ci">0.297%, 0.468%</td><td>2,836 (2.5%)</td><td class="ci">2.398%, 2.580%</td></tr>
+<tr><td class="varname">Antibiotic days (among inpatients)</td><td>56,373(42%)</td><td>4.90 (5.63)</td><td class="ci">4.86, 4.94</td><td>1.22 (3.54)</td><td class="ci">1.15, 1.29</td><td>5.47 (5.68)</td><td class="ci">5.43, 5.52</td></tr>
+<tr><td class="varname">Antiviral during hospital</td><td>56,373(42%)</td><td>8,549 (10.9%)</td><td class="ci">10.67%, 11.10%</td><td>1,876 (17.8%)</td><td class="ci">17.08%, 18.55%</td><td>6,673 (9.8%)</td><td class="ci">9.590%, 10.04%</td></tr>
+<tr><td class="varname">Antiviral in first 24 hours</td><td>0(0%)</td><td>8,997 (6.7%)</td><td class="ci">6.536%, 6.803%</td><td>2,300 (11.0%)</td><td class="ci">10.58%, 11.43%</td><td>6,697 (5.9%)</td><td class="ci">5.739%, 6.013%</td></tr>
+<tr><td class="varname">Receipt of bronchodilator in first 24 hours</td><td>0(0%)</td><td>74,674 (55.3%)</td><td class="ci">55.08%, 55.61%</td><td>8,614 (41.2%)</td><td class="ci">40.52%, 41.86%</td><td>66,060 (57.9%)</td><td class="ci">57.66%, 58.23%</td></tr>
+<tr><td class="varname">Receipt of of bronchodilator during hospital</td><td>56,373(42%)</td><td>58,343 (74.3%)</td><td class="ci">73.97%, 74.59%</td><td>6,517 (61.8%)</td><td class="ci">60.91%, 62.78%</td><td>51,826 (76.2%)</td><td class="ci">75.89%, 76.53%</td></tr>
+<tr><td class="varname">Diuretic in first 24 hours</td><td>0(0%)</td><td>27,871 (20.7%)</td><td class="ci">20.44%, 20.88%</td><td>5,777 (27.6%)</td><td class="ci">27.02%, 28.24%</td><td>22,094 (19.4%)</td><td class="ci">19.15%, 19.61%</td></tr>
+<tr><td class="varname">Diuretic during hospital</td><td>0(0%)</td><td>35,532 (26.3%)</td><td class="ci">26.10%, 26.57%</td><td>6,483 (31.0%)</td><td class="ci">30.38%, 31.63%</td><td>29,049 (25.5%)</td><td class="ci">25.23%, 25.73%</td></tr>
+<tr><td class="varname">Steriod within 24hr</td><td>0(0%)</td><td>43,955 (32.6%)</td><td class="ci">32.33%, 32.83%</td><td>4,445 (21.3%)</td><td class="ci">20.70%, 21.82%</td><td>39,510 (34.7%)</td><td class="ci">34.38%, 34.93%</td></tr>
+<tr><td class="varname">Steroid during hospital</td><td>56,373(42%)</td><td>34,048 (43.3%)</td><td class="ci">43.00%, 43.70%</td><td>3,327 (31.6%)</td><td class="ci">30.69%, 32.47%</td><td>30,721 (45.2%)</td><td class="ci">44.80%, 45.55%</td></tr>
+<tr><td class="varname">Brain natriuretic peptide obtained</td><td>0(0%)</td><td>72,637 (53.8%)</td><td class="ci">53.57%, 54.10%</td><td>11,851 (56.7%)</td><td class="ci">56.00%, 57.34%</td><td>60,786 (53.3%)</td><td class="ci">53.03%, 53.61%</td></tr>
+<tr><td class="varname">Troponin obtained</td><td>0(0%)</td><td>49,037 (36.3%)</td><td class="ci">36.09%, 36.60%</td><td>8,631 (41.3%)</td><td class="ci">40.60%, 41.94%</td><td>40,406 (35.4%)</td><td class="ci">35.17%, 35.72%</td></tr>
+<tr><td class="varname">ED Length of stay (hours) based upon EDIS data</td><td>3,386(2.5%)</td><td>5.90 (47.34)</td><td class="ci">5.64, 6.15</td><td>5.96 (31.65)</td><td class="ci">5.53, 6.39</td><td>5.89 (49.68)</td><td class="ci">5.59, 6.18</td></tr>
+<tr><td class="varname">ED Length of stay &gt; 3 hours</td><td>3,386(2.5%)</td><td>108,397 (82.4%)</td><td class="ci">82.21%, 82.62%</td><td>17,012 (83.6%)</td><td class="ci">83.06%, 84.09%</td><td>91,385 (82.2%)</td><td class="ci">81.97%, 82.42%</td></tr>
+<tr><td class="varname">ED length of stay among inpatients</td><td>56,373(42%)</td><td>5.61 (2.68)</td><td class="ci">5.59, 5.63</td><td>5.74 (2.69)</td><td class="ci">5.69, 5.79</td><td>5.59 (2.68)</td><td class="ci">5.57, 5.61</td></tr>
+<tr><td class="varname">ED length of stay among inpatient &gt;3 hours</td><td>56,373(42%)</td><td>69,120 (88.0%)</td><td class="ci">87.77%, 88.23%</td><td>9,374 (89.0%)</td><td class="ci">88.35%, 89.55%</td><td>59,746 (87.9%)</td><td class="ci">87.61%, 88.10%</td></tr>
+<tr><td class="varname">acfadmit</td><td>0(0%)</td><td>78,543 (58.2%)</td><td class="ci">57.95%, 58.48%</td><td>10,537 (50.4%)</td><td class="ci">49.71%, 51.07%</td><td>68,006 (59.7%)</td><td class="ci">59.37%, 59.94%</td></tr>
+<tr><td class="varname">admit2AnyHosp</td><td>176(0.1%)</td><td>80,739 (59.9%)</td><td class="ci">59.66%, 60.18%</td><td>11,147 (53.5%)</td><td class="ci">52.81%, 54.16%</td><td>69,592 (61.1%)</td><td class="ci">60.82%, 61.38%</td></tr>
+<tr><td class="varname">Transfer to non-VA</td><td>0(0%)</td><td>2,243 (1.7%)</td><td class="ci">1.595%, 1.733%</td><td>619 (3.0%)</td><td class="ci">2.737%, 3.201%</td><td>1,624 (1.4%)</td><td class="ci">1.357%, 1.495%</td></tr>
+<tr><td class="varname">Transfer to VA</td><td>0(0%)</td><td>625 (0.5%)</td><td class="ci">0.428%, 0.501%</td><td>107 (0.5%)</td><td class="ci">0.421%, 0.620%</td><td>518 (0.5%)</td><td class="ci">0.417%, 0.496%</td></tr>
+<tr><td class="varname">admitwardicu</td><td>56,373(42%)</td><td>11,587 (14.8%)</td><td class="ci">14.51%, 15.00%</td><td>1,186 (11.3%)</td><td class="ci">10.66%, 11.88%</td><td>10,401 (15.3%)</td><td class="ci">15.02%, 15.57%</td></tr>
+<tr><td class="varname">Hospital Length of Stay (days)</td><td>56,373(42%)</td><td>7.90 (11.83)</td><td class="ci">7.82, 7.98</td><td>7.56 (11.02)</td><td class="ci">7.35, 7.77</td><td>7.95 (11.95)</td><td class="ci">7.86, 8.04</td></tr>
+<tr><td class="varname">transfer_acfadmit</td><td>0(0%)</td><td>80,890 (60.0%)</td><td class="ci">59.69%, 60.22%</td><td>11,188 (53.5%)</td><td class="ci">52.82%, 54.18%</td><td>69,702 (61.1%)</td><td class="ci">60.86%, 61.42%</td></tr>
+<tr><td class="varname">ePSI_lg_120_admitted</td><td>101,269(75%)</td><td>26,502 (78.8%)</td><td class="ci">78.32%, 79.20%</td><td>3,257 (68.2%)</td><td class="ci">66.89%, 69.55%</td><td>23,245 (80.5%)</td><td class="ci">80.04%, 80.96%</td></tr>
+<tr><td class="varname">ePSI_ls_90_admitted</td><td>79,212(59%)</td><td>22,514 (40.4%)</td><td class="ci">40.01%, 40.83%</td><td>3,411 (37.5%)</td><td class="ci">36.51%, 38.51%</td><td>19,103 (41.0%)</td><td class="ci">40.54%, 41.43%</td></tr>
+<tr><td class="varname">first3dayicu</td><td>56,373(42%)</td><td>16,002 (20.4%)</td><td class="ci">20.09%, 20.66%</td><td>1,710 (16.2%)</td><td class="ci">15.53%, 16.95%</td><td>14,292 (21.0%)</td><td class="ci">20.71%, 21.32%</td></tr>
+<tr><td class="varname">transfer2ICU</td><td>68,264(51%)</td><td>4,395 (6.6%)</td><td class="ci">6.407%, 6.786%</td><td>520 (5.6%)</td><td class="ci">5.150%, 6.098%</td><td>3,875 (6.8%)</td><td class="ci">6.550%, 6.963%</td></tr>
+<tr><td class="varname">Inpatient Death</td><td>56,373(42%)</td><td>3,790 (4.8%)</td><td class="ci">4.677%, 4.978%</td><td>357 (3.4%)</td><td class="ci">3.055%, 3.756%</td><td>3,433 (5.0%)</td><td class="ci">4.885%, 5.216%</td></tr>
+<tr><td class="varname">7-day mortality</td><td>0(0%)</td><td>2,387 (1.8%)</td><td class="ci">1.700%, 1.841%</td><td>231 (1.1%)</td><td class="ci">0.969%, 1.258%</td><td>2,156 (1.9%)</td><td class="ci">1.813%, 1.972%</td></tr>
+<tr><td class="varname">30-day mortality</td><td>0(0%)</td><td>8,751 (6.5%)</td><td class="ci">6.356%, 6.619%</td><td>998 (4.8%)</td><td class="ci">4.489%, 5.072%</td><td>7,753 (6.8%)</td><td class="ci">6.656%, 6.949%</td></tr>
+<tr><td class="varname">60-day mortality</td><td>0(0%)</td><td>13,362 (9.9%)</td><td class="ci">9.745%, 10.06%</td><td>1,658 (7.9%)</td><td class="ci">7.568%, 8.305%</td><td>11,704 (10.3%)</td><td class="ci">10.09%, 10.44%</td></tr>
+<tr><td class="varname">90-day mortality</td><td>0(0%)</td><td>16,567 (12.3%)</td><td class="ci">12.11%, 12.46%</td><td>2,125 (10.2%)</td><td class="ci">9.757%, 10.58%</td><td>14,442 (12.7%)</td><td class="ci">12.48%, 12.86%</td></tr>
+<tr><td class="varname">180-day mortality</td><td>0(0%)</td><td>23,086 (17.1%)</td><td class="ci">16.91%, 17.31%</td><td>3,118 (14.9%)</td><td class="ci">14.43%, 15.40%</td><td>19,968 (17.5%)</td><td class="ci">17.30%, 17.74%</td></tr>
+<tr><td class="varname">365-day mortality</td><td>0(0%)</td><td>32,405 (24.0%)</td><td class="ci">23.79%, 24.25%</td><td>4,528 (21.7%)</td><td class="ci">21.10%, 22.22%</td><td>27,877 (24.5%)</td><td class="ci">24.20%, 24.70%</td></tr>
+<tr><td class="varname">30-day mortality after discharge</td><td>60,163(45%)</td><td>5,409 (7.2%)</td><td class="ci">7.052%, 7.424%</td><td>605 (5.9%)</td><td class="ci">5.495%, 6.424%</td><td>4,804 (7.4%)</td><td class="ci">7.239%, 7.645%</td></tr>
+<tr><td class="varname">60-day mortality after discharge</td><td>60,163(45%)</td><td>8,452 (11.3%)</td><td class="ci">11.08%, 11.54%</td><td>969 (9.5%)</td><td class="ci">8.959%, 10.11%</td><td>7,483 (11.6%)</td><td class="ci">11.34%, 11.84%</td></tr>
+<tr><td class="varname">90-day mortality after discharge</td><td>60,163(45%)</td><td>10,651 (14.2%)</td><td class="ci">14.00%, 14.50%</td><td>1,265 (12.4%)</td><td class="ci">11.79%, 13.09%</td><td>9,386 (14.5%)</td><td class="ci">14.26%, 14.81%</td></tr>
+<tr><td class="varname">180-day mortality after discharge</td><td>60,163(45%)</td><td>15,365 (20.6%)</td><td class="ci">20.27%, 20.85%</td><td>1,899 (18.7%)</td><td class="ci">17.90%, 19.43%</td><td>13,466 (20.9%)</td><td class="ci">20.54%, 21.17%</td></tr>
+<tr><td class="varname">365-day mortality after discharge</td><td>60,163(45%)</td><td>22,073 (29.5%)</td><td class="ci">29.20%, 29.86%</td><td>2,770 (27.2%)</td><td class="ci">26.35%, 28.09%</td><td>19,303 (29.9%)</td><td class="ci">29.54%, 30.25%</td></tr>
+<tr><td class="varname">30-day readmission</td><td>60,163(45%)</td><td>12,139 (16.2%)</td><td class="ci">15.98%, 16.51%</td><td>1,787 (17.6%)</td><td class="ci">16.82%, 18.31%</td><td>10,352 (16.0%)</td><td class="ci">15.75%, 16.32%</td></tr>
+<tr><td class="varname">60-day readmission</td><td>60,163(45%)</td><td>17,822 (23.8%)</td><td class="ci">23.54%, 24.15%</td><td>2,585 (25.4%)</td><td class="ci">24.55%, 26.25%</td><td>15,237 (23.6%)</td><td class="ci">23.27%, 23.93%</td></tr>
+<tr><td class="varname">90-day readmission</td><td>60,163(45%)</td><td>21,633 (28.9%)</td><td class="ci">28.61%, 29.27%</td><td>3,080 (30.3%)</td><td class="ci">29.37%, 31.16%</td><td>18,553 (28.7%)</td><td class="ci">28.38%, 29.08%</td></tr>
+<tr><td class="varname">180-day readmission</td><td>60,163(45%)</td><td>28,559 (38.2%)</td><td class="ci">37.86%, 38.55%</td><td>4,010 (39.4%)</td><td class="ci">38.44%, 40.35%</td><td>24,549 (38.0%)</td><td class="ci">37.64%, 38.39%</td></tr>
+<tr><td class="varname">365-day readmission</td><td>60,163(45%)</td><td>35,070 (46.9%)</td><td class="ci">46.56%, 47.27%</td><td>4,881 (47.9%)</td><td class="ci">46.97%, 48.92%</td><td>30,189 (46.8%)</td><td class="ci">46.37%, 47.14%</td></tr>
+<tr><td class="varname">readmitnh_direct</td><td>0(0%)</td><td>2,825 (2.1%)</td><td class="ci">2.018%, 2.172%</td><td>311 (1.5%)</td><td class="ci">1.330%, 1.663%</td><td>2,514 (2.2%)</td><td class="ci">2.121%, 2.293%</td></tr>
+<tr><td class="varname">Nursing home admission within 30 days</td><td>0(0%)</td><td>622 (0.5%)</td><td class="ci">0.426%, 0.499%</td><td>80 (0.4%)</td><td class="ci">0.305%, 0.478%</td><td>542 (0.5%)</td><td class="ci">0.437%, 0.518%</td></tr>
+<tr><td class="varname">Admission to nursing home in the 30 to 60 days</td><td>0(0%)</td><td>1,154 (0.9%)</td><td class="ci">0.807%, 0.906%</td><td>153 (0.7%)</td><td class="ci">0.623%, 0.859%</td><td>1,001 (0.9%)</td><td class="ci">0.825%, 0.934%</td></tr>
+<tr><td class="varname">Admission to a nursing home in 90 days</td><td>0(0%)</td><td>1,890 (1.4%)</td><td class="ci">1.339%, 1.465%</td><td>259 (1.2%)</td><td class="ci">1.095%, 1.400%</td><td>1,631 (1.4%)</td><td class="ci">1.363%, 1.502%</td></tr>
+<tr><td class="varname">Admission to a rehab in 90 days</td><td>0(0%)</td><td>&lt;20 (censored)</td><td class="ci">0.003%, 0.013%</td><td>&lt;20 (censored)</td><td class="ci">&lt;0.001%, 0.031%</td><td>&lt;20 (censored)</td><td class="ci">0.003%, 0.014%</td></tr>
+<tr><td class="varname">7-day Secondary hospitalization after dc from ED</td><td>78,543(58%)</td><td>2,839 (5.0%)</td><td class="ci">4.858%, 5.221%</td><td>611 (5.9%)</td><td class="ci">5.448%, 6.364%</td><td>2,228 (4.8%)</td><td class="ci">4.650%, 5.045%</td></tr>
+<tr class="section"><th colspan="8">Hypoxemia</th></tr>
+<tr><td class="varname">Absent</td><td></td><td>86,489 (64.1%)</td><td class="ci">63.85%, 64.36%</td><td>15,232 (72.8%)</td><td class="ci">72.23%, 73.44%</td><td>71,257 (62.5%)</td><td class="ci">62.22%, 62.78%</td></tr>
+<tr><td class="varname">Moderate</td><td></td><td>38,112 (28.2%)</td><td class="ci">28.01%, 28.49%</td><td>4,762 (22.8%)</td><td class="ci">22.21%, 23.35%</td><td>33,350 (29.3%)</td><td class="ci">28.99%, 29.52%</td></tr>
+<tr><td class="varname">Severe</td><td></td><td>10,315 (7.6%)</td><td class="ci">7.505%, 7.789%</td><td>918 (4.4%)</td><td class="ci">4.118%, 4.678%</td><td>9,397 (8.2%)</td><td class="ci">8.084%, 8.404%</td></tr>
+<tr class="section"><th colspan="8">Sepsis</th></tr>
+<tr><td class="varname">No sepsis</td><td></td><td>69,344 (51.4%)</td><td class="ci">51.13%, 51.66%</td><td>13,196 (63.1%)</td><td class="ci">62.44%, 63.76%</td><td>56,148 (49.3%)</td><td class="ci">48.96%, 49.54%</td></tr>
+<tr><td class="varname">Sepsis</td><td></td><td>62,658 (46.4%)</td><td class="ci">46.18%, 46.71%</td><td>7,638 (36.5%)</td><td class="ci">35.87%, 37.18%</td><td>55,020 (48.3%)</td><td class="ci">47.97%, 48.55%</td></tr>
+<tr><td class="varname">Septic shock</td><td></td><td>2,914 (2.2%)</td><td class="ci">2.083%, 2.239%</td><td>78 (0.4%)</td><td class="ci">0.297%, 0.468%</td><td>2,836 (2.5%)</td><td class="ci">2.398%, 2.580%</td></tr>
+<tr><td class="varname">SCAP</td><td>0(0%)</td><td>15,409 (11.4%)</td><td class="ci">11.25%, 11.59%</td><td>1,458 (7.0%)</td><td class="ci">6.632%, 7.328%</td><td>13,951 (12.2%)</td><td class="ci">12.05%, 12.43%</td></tr>
+<tr class="section"><th colspan="8">n (%); Mean (SD)</th></tr>
+<tr class="section"><th colspan="8">Abbreviation: CI = Confidence Interval</th></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Team Conquering Pneumonia &middot; <a href="index.html">Interactive trees</a> &middot; <a href="https://github.com/Team-Conquering-Pneumonia/ATS-Pneumonia-DTR">GitHub</a></p>
+  </footer>
+</body>
+</html>
+
