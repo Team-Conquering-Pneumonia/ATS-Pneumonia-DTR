@@ -22,7 +22,7 @@ This repository accompanies the ATS 2026 poster presenting tree-based dynamic tr
 
 Explore the treatment decision trees interactively:
 
-**[https://team-conquering-pneumonia.github.io/ats-pneumonia-dtr/](https://team-conquering-pneumonia.github.io/ats-pneumonia-dtr/)**
+**[https://team-conquering-pneumonia.github.io/ATS-Pneumonia-DTR/](https://team-conquering-pneumonia.github.io/ATS-Pneumonia-DTR/)**
 
 The trees display antibiotic recommendations stratified by pneumonia severity (mild / moderate / severe) and virus subgroup, with posterior estimates of 30-day mortality under each treatment arm.
 
