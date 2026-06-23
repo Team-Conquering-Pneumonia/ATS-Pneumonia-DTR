@@ -125,6 +125,21 @@
         </div>
       </div>
       <div class="contour-meta" id="contour-meta"></div>
+      <aside class="contour-caveat" aria-label="Caveat about the contour plots">
+        <strong>About these per-virus contours &mdash; please read before citing.</strong>
+        Each shaded blob shows how uncertain we are about one virus group at this node.
+        These per-virus blobs are drawn with a quicker shortcut, <em>not</em> the same
+        rigorous method (a &ldquo;Bayesian bootstrap&rdquo;) used for the tree&rsquo;s headline
+        numbers and the summary tables. So treat the <strong>size and shape of each blob as a
+        rough guide</strong>, not an exact uncertainty range &mdash; and note that some blobs
+        cover <strong>very small groups (under 20 patients)</strong>.
+        If you need to cite an ATE number, use the value shown on the <strong>tree node or in
+        the per-node results table</strong> &mdash; not the small &ldquo;Agg ATE&rdquo; in this
+        panel, which is figured a different, approximate way and can differ slightly.
+        The tree&rsquo;s benefit/harm coloring and the Table&nbsp;2 results use the rigorous
+        method and are not affected. We plan to rebuild these per-virus contours the correct
+        way in the next update.
+      </aside>
       <p class="tap-hint">Pinch or scroll to zoom.</p>
     </section>
   </main>
