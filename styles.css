@@ -53,6 +53,30 @@ a { color: var(--color-accent); }
   color: var(--color-muted);
 }
 
+/* Primary view tabs — Tree / Summary tables / Per-node results */
+.view-tabs {
+  display: flex;
+  padding: 0 1rem;
+  border-bottom: 2px solid var(--color-border);
+  background: var(--color-bg);
+  overflow-x: auto;
+}
+.view-tab {
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+.view-tab:hover { color: var(--color-text); }
+.view-tab.active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
 /* Control bar */
 .control-bar {
   display: flex;

@@ -10,49 +10,16 @@
   <header class="site-header">
     <h1>Summary Tables</h1>
     <p class="subtitle">Empiric Antibiotics and Mortality in Community-Acquired Pneumonia — ATS 2026 poster companion</p>
-    <p class="contact"><a href="index.html">&larr; Back to interactive trees</a> &middot; <a href="results_by_node.html">Per-node results</a></p>
     <p class="provenance">Both tables are from analysis run <code>run-20260618-final</code> (run date 2026-06-18). Mortality scale: death = 1, lower = better.</p>
   </header>
 
+  <nav class="view-tabs" aria-label="Primary views">
+    <a class="view-tab" href="index.html">Tree</a>
+    <a class="view-tab active" href="tables.html" aria-current="page">Summary tables</a>
+    <a class="view-tab" href="results_by_node.html">Per-node results</a>
+  </nav>
+
   <main class="tables-main">
-
-    <section class="table-section" aria-labelledby="t2-heading">
-      <h2 id="t2-heading">Table 2 — Population regime comparison</h2>
-      <p class="table-desc">Population mean mortality (posterior mean + 95% credible interval over 1,000 draws) and population antibiotic-use fraction, for five candidate treatment regimes, by mortality window.</p>
-
-      <h3 class="window-heading">30-day mortality</h3>
-      <div class="table-scroll">
-        <table class="data-table">
-          <thead>
-            <tr><th>Regime</th><th>Mortality % (95% CrI)</th><th>Abx use</th></tr>
-          </thead>
-          <tbody>
-<tr><td class="varname">Antibiotics for all</td><td>6.47 (6.34&ndash;6.60)</td><td>100%</td></tr>
-<tr><td class="varname">Antibiotics for none</td><td>7.16 (6.67&ndash;7.72)</td><td>0%</td></tr>
-<tr><td class="varname">ATS-2025 guideline rule†</td><td>6.47 (6.34&ndash;6.60)</td><td>98.5%</td></tr>
-<tr><td class="varname">Optimal: give unless harmful‡</td><td>6.29 (6.00&ndash;6.59)</td><td>81.7%</td></tr>
-<tr><td class="varname">Optimal: give only if beneficial‡</td><td>6.29 (6.00&ndash;6.59)</td><td>81.7%</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3 class="window-heading">90-day mortality</h3>
-      <div class="table-scroll">
-        <table class="data-table">
-          <thead>
-            <tr><th>Regime</th><th>Mortality % (95% CrI)</th><th>Abx use</th></tr>
-          </thead>
-          <tbody>
-<tr><td class="varname">Antibiotics for all</td><td>12.37 (12.21&ndash;12.54)</td><td>100%</td></tr>
-<tr><td class="varname">Antibiotics for none</td><td>14.18 (13.54&ndash;14.86)</td><td>0%</td></tr>
-<tr><td class="varname">ATS-2025 guideline rule†</td><td>12.37 (12.21&ndash;12.54)</td><td>98.5%</td></tr>
-<tr><td class="varname">Optimal: give unless harmful‡</td><td>12.25 (12.05&ndash;12.46)</td><td>83.1%</td></tr>
-<tr><td class="varname">Optimal: give only if beneficial‡</td><td>12.25 (12.05&ndash;12.46)</td><td>83.1%</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="table-foot">&dagger; ATS-2025 rule provenance pending PI review. &Dagger; Optimal-regime thresholds pending PI review. Both flags affect row labeling only. In this run the two optimal variants are numerically identical (recorded as observed, not interpreted).</p>
-    </section>
 
     <section class="table-section" aria-labelledby="t1-heading">
       <h2 id="t1-heading">Table 1 — Cohort characteristics by empiric antibiotics within 24h</h2>
@@ -343,6 +310,44 @@
           </tbody>
         </table>
       </div>
+    </section>
+
+    <section class="table-section" aria-labelledby="t2-heading">
+      <h2 id="t2-heading">Table 2 — Population regime comparison</h2>
+      <p class="table-desc">Population mean mortality (posterior mean + 95% credible interval over 1,000 draws) and population antibiotic-use fraction, for five candidate treatment regimes, by mortality window.</p>
+
+      <h3 class="window-heading">30-day mortality</h3>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr><th>Regime</th><th>Mortality % (95% CrI)</th><th>Abx use</th></tr>
+          </thead>
+          <tbody>
+<tr><td class="varname">Antibiotics for all</td><td>6.47 (6.34&ndash;6.60)</td><td>100%</td></tr>
+<tr><td class="varname">Antibiotics for none</td><td>7.16 (6.67&ndash;7.72)</td><td>0%</td></tr>
+<tr><td class="varname">ATS-2025 guideline rule†</td><td>6.47 (6.34&ndash;6.60)</td><td>98.5%</td></tr>
+<tr><td class="varname">Optimal: give unless harmful‡</td><td>6.29 (6.00&ndash;6.59)</td><td>81.7%</td></tr>
+<tr><td class="varname">Optimal: give only if beneficial‡</td><td>6.29 (6.00&ndash;6.59)</td><td>81.7%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="window-heading">90-day mortality</h3>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr><th>Regime</th><th>Mortality % (95% CrI)</th><th>Abx use</th></tr>
+          </thead>
+          <tbody>
+<tr><td class="varname">Antibiotics for all</td><td>12.37 (12.21&ndash;12.54)</td><td>100%</td></tr>
+<tr><td class="varname">Antibiotics for none</td><td>14.18 (13.54&ndash;14.86)</td><td>0%</td></tr>
+<tr><td class="varname">ATS-2025 guideline rule†</td><td>12.37 (12.21&ndash;12.54)</td><td>98.5%</td></tr>
+<tr><td class="varname">Optimal: give unless harmful‡</td><td>12.25 (12.05&ndash;12.46)</td><td>83.1%</td></tr>
+<tr><td class="varname">Optimal: give only if beneficial‡</td><td>12.25 (12.05&ndash;12.46)</td><td>83.1%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-foot">&dagger; ATS-2025 rule provenance pending PI review. &Dagger; Optimal-regime thresholds pending PI review. Both flags affect row labeling only. In this run the two optimal variants are numerically identical (recorded as observed, not interpreted).</p>
     </section>
 
   </main>
