@@ -33,6 +33,14 @@ JSON_DIR = os.path.normpath(os.path.join(SITE_DIR, "..", "data",
                                           "yizhen_interactive_trees"))
 OUT_PATH = os.path.join(SITE_DIR, "results_by_node.json")
 
+# Promoted-run reference for the delivery-currency gate (see assert_current()).
+RESULTS_CURRENT_CSV = os.path.normpath(
+    os.path.join(SITE_DIR, "..", "results", "current", "aim3_ate_summary.csv"))
+
+# Severity strata only — the virus-rooted families partition the same cohort
+# differently and would double-count the depth-0 N.
+SEVERITY_STRATA = {"mild", "moderate", "severe"}
+
 RUN_LABEL = "run-20260618-final"
 
 WINDOWS = ["30day", "90day"]
@@ -218,6 +226,69 @@ def build_family(win, stratum):
     }
 
 
+def severity_depth0_n(families):
+    """Sum the depth-0 (root) N over the severity families ONLY.
+
+    Ported from .assert_input_current()/.depth0_cohort_n() in
+    code/R/load_ate_summary.R. The site JSON key is lowercase 'n' (an 'N' probe
+    returns None and would silently pass a None==None compare); n is stored as
+    an int-as-string OR the '<20' suppression flag. The severity roots are never
+    suppressed, so each contributes a positive integer; anything else is fatal.
+    """
+    total = 0
+    for fam in families:
+        if fam["stratum"] not in SEVERITY_STRATA:
+            continue
+        roots = [r for r in fam["rows"] if r.get("depth") == 0]
+        if len(roots) != 1:
+            sys.exit("STALE-DELIVERY check: family %s has %d depth-0 roots "
+                     "(expected 1)" % (fam["key"], len(roots)))
+        raw = roots[0].get("n")
+        try:
+            n = int(raw)
+        except (TypeError, ValueError):
+            sys.exit("STALE-DELIVERY check: family %s depth-0 n is not an "
+                     "integer (got %r)" % (fam["key"], raw))
+        if n <= 0:
+            sys.exit("STALE-DELIVERY check: family %s depth-0 n is not positive "
+                     "(got %d)" % (fam["key"], n))
+        total += n
+    return total
+
+
+def results_current_depth0_n(csv_path):
+    """Sum depth-0 N from results/current/aim3_ate_summary.csv (all roots).
+
+    The CSV carries both windows, so summing all depth-0 rows mirrors the R
+    loader signal (= 269,832 for the FINAL run) and the severity-only JSON sum.
+    """
+    import csv
+    total = 0
+    with open(csv_path, newline="") as f:
+        for row in csv.DictReader(f):
+            if str(row.get("depth", "")).strip() != "0":
+                continue
+            raw = (row.get("N") or "").strip()
+            if raw:
+                total += int(float(raw))
+    return total
+
+
+def assert_delivery_current(families):
+    """Fail the site build if the JSON-derived severity depth-0 n disagrees with
+    results/current/. No-ops when results/current is absent (worktree dev)."""
+    if not os.path.exists(RESULTS_CURRENT_CSV):
+        return  # worktree dev: no promoted run to compare against
+    site_n = severity_depth0_n(families)
+    cur_n = results_current_depth0_n(RESULTS_CURRENT_CSV)
+    if site_n != cur_n:
+        sys.exit(
+            "STALE DELIVERY: site results_by_node families disagree with %s on "
+            "depth-0 cohort N (site = %d, current = %d).\n  The promoted run has "
+            "moved on. Rebuild from the current run before deploying."
+            % (RESULTS_CURRENT_CSV, site_n, cur_n))
+
+
 def main():
     if not os.path.isdir(JSON_DIR):
         sys.exit("JSON input dir not found: %s" % JSON_DIR)
@@ -229,6 +300,10 @@ def main():
             fam = build_family(win, s)
             total_nodes += len(fam["rows"])
             families.append(fam)
+
+    # Delivery-currency gate (REQUIRED before deploy): the built severity roots
+    # must fingerprint-match results/current/ on depth-0 cohort N.
+    assert_delivery_current(families)
 
     out = {
         "run": RUN_LABEL,
