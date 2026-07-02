@@ -4,10 +4,11 @@
  * Browsable per-node results table (Track C). Consumes results_by_node.json
  * (produced by build_results_by_node_data.py, which mirrors the T3.5 static
  * workbook builder code/R/build_static_results_workbook.R). One row per node
- * across 16 tree families; sort any column; filter by tree family and by
+ * across 16 export-native tree families; sort any column; filter by tree family and by
  * Signal (Benefit/Harm/Inconclusive). VA <20 small-cell suppression is mirrored
  * exactly from the data file: fully suppressed nodes show N = "<20" with blank
- * estimates; observed %s whose count is suppressed show "<20". Benefit/harm
+ * estimates; suppressed observed mortality is blank and suppressed observed
+ * antibiotic use shows "<20". Benefit/harm
  * shading on the ATE cell matches the workbook palette (#d6efdc / #fadbd8),
  * driven by the Signal column.
  *

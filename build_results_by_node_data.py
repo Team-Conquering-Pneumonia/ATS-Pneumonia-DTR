@@ -2,59 +2,56 @@
 """
 build_results_by_node_data.py
 
-Generate site/results_by_node.json — the data file behind the browsable
-per-node results table page (Track C). This is the T3.5 static workbook made
-browsable: 16 tree families (8 strata x 2 mortality windows), one row per node,
-the T3.5 columns, with VA <20 small-cell suppression mirrored exactly.
+Generate site/results_by_node.json, the data file behind the browsable
+per-node results table page. This is the T3.5 static workbook made browsable:
+16 tree families (3 severity-rooted + 5 virus-rooted families x 2 mortality
+windows), one row per node, with VA <20 small-cell suppression mirrored.
 
-This is a faithful port of the parse/walk logic in
-  code/R/build_static_results_workbook.R  (registry T3.5)
-which is the source of truth for what each row/column means and how suppression
-is applied. The same regexes and the same Signal (Benefit/Harm/Inconclusive)
-rule are used here so the page matches the workbook cell-for-cell.
+Source of record: run-20260702 VINCI export only (D-BR-01). The builder reads
+the export-native contracts created by code/R/build_ate_summary_from_export.R:
+  * results/current/aim3_ate_summary.csv
+  * results/current/aim3_ate_summary_virus.csv
 
-Source of record: Yizhen's published interactive-tree JSONs (FINAL 2026-06-18),
-vendored at data/yizhen_interactive_trees/ (the literal source of the live site).
+It does not read legacy interactive-tree files or serialized tree objects.
 
 Regenerate (from the site/ directory):
     python3 build_results_by_node_data.py
 
-Output: site/results_by_node.json  (consumed by results_by_node.js)
+Output: site/results_by_node.json (consumed by results_by_node.js)
 """
 
+import csv
 import json
 import os
-import re
 import sys
 
 # --- paths -----------------------------------------------------------------
 SITE_DIR = os.path.dirname(os.path.abspath(__file__))
-JSON_DIR = os.path.normpath(os.path.join(SITE_DIR, "..", "data",
-                                          "yizhen_interactive_trees"))
+PROJECT_ROOT = os.path.normpath(os.path.join(SITE_DIR, ".."))
+DATA_ROOT = os.environ.get("AIM3_DATA_ROOT", PROJECT_ROOT)
+RESULTS_CURRENT = os.path.join(DATA_ROOT, "results", "current")
+SUMMARY_CSV = os.path.join(RESULTS_CURRENT, "aim3_ate_summary.csv")
+VIRUS_CSV = os.path.join(RESULTS_CURRENT, "aim3_ate_summary_virus.csv")
 OUT_PATH = os.path.join(SITE_DIR, "results_by_node.json")
 
-# Promoted-run reference for the delivery-currency gate (see assert_current()).
-RESULTS_CURRENT_CSV = os.path.normpath(
-    os.path.join(SITE_DIR, "..", "results", "current", "aim3_ate_summary.csv"))
-
-# Severity strata only — the virus-rooted families partition the same cohort
-# differently and would double-count the depth-0 N.
-SEVERITY_STRATA = {"mild", "moderate", "severe"}
-
-RUN_LABEL = "run-20260618-final"
+RUN_LABEL = "run-20260702"
 
 WINDOWS = ["30day", "90day"]
-STRATA = ["mild", "moderate", "severe", "covid", "flu", "rsv", "none", "others"]
+SEVERITY_STRATA = ["mild", "moderate", "severe"]
+VIRUS_STRATA = ["flu", "rsv", "covid", "none", "others"]
 
-# Human-facing window/stratum labels for the family selector.
 WINDOW_LABEL = {"30day": "30-day mortality", "90day": "90-day mortality"}
 STRATUM_LABEL = {
-    "mild": "Mild", "moderate": "Moderate", "severe": "Severe",
-    "covid": "COVID", "flu": "Influenza", "rsv": "RSV",
-    "none": "No virus", "others": "Other viruses",
+    "mild": "Mild",
+    "moderate": "Moderate",
+    "severe": "Severe",
+    "flu": "Influenza",
+    "rsv": "RSV",
+    "covid": "COVID",
+    "none": "No virus",
+    "others": "Other viruses",
 }
 
-# --- JSON title -> split variable (inverse of the builder's TITLE_TO_VAR) ---
 TITLE_TO_VAR = {
     "No Lung Disease": "lung_comorbidities",
     "Lung Disease": "lung_comorbidities",
@@ -78,9 +75,14 @@ TITLE_TO_VAR = {
     "Other Viruses": "virus",
 }
 
-# Canonical column order + Barb-facing header (matches the builder's VAR_HEADER).
-VAR_ORDER = ["pna_severity", "severe_hypoxemia_shock", "hypoxemia_sepsis",
-             "lung_comorbidities", "comorbidities_not_cpd", "virus"]
+VAR_ORDER = [
+    "pna_severity",
+    "severe_hypoxemia_shock",
+    "hypoxemia_sepsis",
+    "lung_comorbidities",
+    "comorbidities_not_cpd",
+    "virus",
+]
 VAR_HEADER = {
     "pna_severity": "Severity (split)",
     "severe_hypoxemia_shock": "Severe hypoxemia / shock",
@@ -90,225 +92,168 @@ VAR_HEADER = {
     "virus": "Virus",
 }
 
-SUPP = "<20"   # workbook suppression flag (mirror export <20)
+SUPP = "<20"
 
 
-def num1(txt, pat):
-    m = re.search(pat, txt)
-    if not m:
+def read_csv(path):
+    if not os.path.exists(path):
+        sys.exit("Required export-native contract not found: %s" % path)
+    with open(path, newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def parse_float(value):
+    if value is None:
         return None
+    txt = str(value).strip()
+    if txt == "" or txt.upper() == "NA" or "<" in txt or ">" in txt:
+        return None
+    if txt.endswith("%"):
+        txt = txt[:-1]
     try:
-        return float(m.group(1))
-    except (ValueError, IndexError):
+        return float(txt)
+    except ValueError:
         return None
 
 
-def parse_details(details):
-    """Port of build_static_results_workbook.R::parse_details."""
-    if isinstance(details, list):
-        txt = " ; ".join(str(x) for x in details)
-    else:
-        txt = str(details)
-
-    n = num1(txt, r"N\s*=\s*(\d+)")
-    # Fully suppressed node: no N, no estimates.
-    if n is None:
-        return {
-            "n": SUPP, "pct_obs_abx": SUPP, "pct_obs_mort": SUPP,
-            "p_abx": None, "p_noabx": None,
-            "ate": None, "ate_lo": None, "ate_hi": None,
-            "ci": "", "signal": "",
-        }
-
-    obs_mort = num1(txt, r"Observed death\s+([0-9.]+)%")
-    obs_abx = num1(txt, r"Observed ABX\s+([0-9.]+)%")
-    p_abx = num1(txt, r"ABX mort\s+([0-9.]+)")
-    p_noabx = num1(txt, r"No-ABX mort\s+([0-9.]+)")
-    ate = num1(txt, r"\bATE\s+(-?[0-9.]+)")
-    m_ci = re.search(r"\bATE\s+-?[0-9.]+\s*\((-?[0-9.]+),\s*(-?[0-9.]+)\)", txt)
-    ate_lo = float(m_ci.group(1)) if m_ci else None
-    ate_hi = float(m_ci.group(2)) if m_ci else None
-    ci_str = "(%.3f, %.3f)" % (ate_lo, ate_hi) if ate_lo is not None else ""
-
-    # Benefit/harm signal — SAME rule as the inline-forest tree + the workbook:
-    #   CI entirely < 0 -> "Benefit"; CI entirely > 0 -> "Harm"; else "Inconclusive".
-    if ate_lo is None or ate is None:
-        signal = ""
-    elif ate_hi < 0:
-        signal = "Benefit"
-    elif ate_lo > 0:
-        signal = "Harm"
-    else:
-        signal = "Inconclusive"
-
-    return {
-        "n": str(int(n)),
-        "pct_obs_abx": SUPP if obs_abx is None else obs_abx,
-        "pct_obs_mort": SUPP if obs_mort is None else obs_mort,
-        "p_abx": p_abx,
-        "p_noabx": p_noabx,
-        "ate": ate,
-        "ate_lo": ate_lo,
-        "ate_hi": ate_hi,
-        "ci": ci_str,
-        "signal": signal,
-    }
+def parse_int(value):
+    x = parse_float(value)
+    return None if x is None else int(x)
 
 
-def walk_tree(node, depth=0, path_map=None, ctr=None, recs=None):
-    """DFS walk — port of build_static_results_workbook.R::walk_tree.
-
-    node_id is the DFS ordinal (1-based), matching the workbook.
-    """
-    if recs is None:
-        recs = []
-        ctr = [0]
-        path_map = {}
-    ctr[0] += 1
-    recs.append({
-        "node_id": ctr[0],
-        "label": node.get("title"),
-        "depth": depth,
-        "path": dict(path_map),
-        "vals": parse_details(node.get("details")),
-    })
-    for ch in (node.get("children") or []):
-        title = ch.get("title")
-        var = TITLE_TO_VAR.get(title)
-        pm = dict(path_map)
-        if var is not None:
-            pm[var] = title
-        walk_tree(ch, depth + 1, pm, ctr, recs)
-    return recs
+def pct_value(value, blank_if_missing=False):
+    x = parse_float(value)
+    if x is None:
+        return "" if blank_if_missing else SUPP
+    return round(x, 1)
 
 
-def round3(x):
+def prob_value(value):
+    x = parse_float(value)
     return None if x is None else round(x, 3)
 
 
-def build_family(win, stratum):
-    json_path = os.path.join(JSON_DIR, "%s_%s.json" % (win, stratum))
-    with open(json_path) as f:
-        j = json.load(f)
-    recs = walk_tree(j)
+def signal_of(ate_lo, ate_hi):
+    lo = parse_float(ate_lo)
+    hi = parse_float(ate_hi)
+    if lo is None or hi is None:
+        return ""
+    if hi < 0:
+        return "Benefit"
+    if lo > 0:
+        return "Harm"
+    return "Inconclusive"
 
-    # Which split variables actually appear in this tree (canonical order).
-    present = [v for v in VAR_ORDER
-               if any(v in r["path"] for r in recs)]
 
-    rows = []
-    for r in recs:
-        v = r["vals"]
-        row = {
-            "node_id": r["node_id"],
-            "label": r["label"],
-            "depth": r["depth"],
-            "splits": {VAR_HEADER[var]: r["path"].get(var) for var in present},
-            "n": v["n"],                       # int-as-string OR "<20"
-            "pct_obs_abx": v["pct_obs_abx"],   # number OR "<20"
-            "pct_obs_mort": v["pct_obs_mort"], # number OR "<20"
-            "p_abx": round3(v["p_abx"]),
-            "p_noabx": round3(v["p_noabx"]),
-            "ate": round3(v["ate"]),
-            "ci": v["ci"],
-            "signal": v["signal"],
-            "suppressed": v["n"] == SUPP,
-        }
-        rows.append(row)
+def path_map_of(node_path):
+    segs = str(node_path or "").split(" > ")
+    out = {}
+    for title in segs[1:]:
+        var = TITLE_TO_VAR.get(title)
+        if var:
+            out[var] = title
+    return out
+
+
+def build_family(rows, win, stratum):
+    sub = [
+        (i, row) for i, row in enumerate(rows)
+        if row.get("mortality_window") == win and row.get("severity") == stratum
+    ]
+    if not sub:
+        sys.exit("No rows for %s_%s in export-native contracts" % (win, stratum))
+
+    # Match the static workbook: root first, then stable within depth.
+    sub.sort(key=lambda item: parse_int(item[1].get("depth")) or 0)
+    path_maps = [path_map_of(row.get("node_path")) for _, row in sub]
+    present = [
+        var for var in VAR_ORDER
+        if any(var in path_map for path_map in path_maps)
+    ]
+
+    out_rows = []
+    for node_idx, ((_, row), path_map) in enumerate(zip(sub, path_maps), start=1):
+        n = parse_int(row.get("N"))
+        ate = prob_value(row.get("ate_mean"))
+        ate_lo = parse_float(row.get("ate_lo"))
+        ate_hi = parse_float(row.get("ate_hi"))
+        suppressed = n is None or ate is None
+        out_rows.append({
+            "node_id": node_idx,
+            "label": row.get("node_title") or "",
+            "depth": parse_int(row.get("depth")) or 0,
+            "splits": {
+                VAR_HEADER[var]: path_map.get(var)
+                for var in present
+            },
+            "n": SUPP if n is None else str(n),
+            "pct_obs_abx": pct_value(row.get("obs_abx_pct")),
+            "pct_obs_mort": pct_value(row.get("obs_death"), blank_if_missing=True),
+            "p_abx": prob_value(row.get("abx_mort_mean")),
+            "p_noabx": prob_value(row.get("noabx_mort_mean")),
+            "ate": ate,
+            "ci": "" if ate_lo is None or ate_hi is None
+                  else "(%.3f, %.3f)" % (ate_lo, ate_hi),
+            "signal": signal_of(row.get("ate_lo"), row.get("ate_hi")),
+            "suppressed": suppressed,
+        })
 
     return {
         "key": "%s_%s" % (win, stratum),
         "window": win,
         "stratum": stratum,
-        "label": "%s — %s" % (STRATUM_LABEL[stratum], WINDOW_LABEL[win]),
-        "split_columns": [VAR_HEADER[v] for v in present],
-        "rows": rows,
+        "label": "%s - %s" % (STRATUM_LABEL[stratum], WINDOW_LABEL[win]),
+        "split_columns": [VAR_HEADER[var] for var in present],
+        "rows": out_rows,
     }
 
 
-def severity_depth0_n(families):
-    """Sum the depth-0 (root) N over the severity families ONLY.
-
-    Ported from .assert_input_current()/.depth0_cohort_n() in
-    code/R/load_ate_summary.R. The site JSON key is lowercase 'n' (an 'N' probe
-    returns None and would silently pass a None==None compare); n is stored as
-    an int-as-string OR the '<20' suppression flag. The severity roots are never
-    suppressed, so each contributes a positive integer; anything else is fatal.
-    """
+def depth0_n(families, strata):
     total = 0
     for fam in families:
-        if fam["stratum"] not in SEVERITY_STRATA:
+        if fam["stratum"] not in strata:
             continue
-        roots = [r for r in fam["rows"] if r.get("depth") == 0]
+        roots = [row for row in fam["rows"] if row["depth"] == 0]
         if len(roots) != 1:
-            sys.exit("STALE-DELIVERY check: family %s has %d depth-0 roots "
-                     "(expected 1)" % (fam["key"], len(roots)))
-        raw = roots[0].get("n")
+            sys.exit("Family %s has %d depth-0 roots; expected 1" %
+                     (fam["key"], len(roots)))
         try:
-            n = int(raw)
-        except (TypeError, ValueError):
-            sys.exit("STALE-DELIVERY check: family %s depth-0 n is not an "
-                     "integer (got %r)" % (fam["key"], raw))
-        if n <= 0:
-            sys.exit("STALE-DELIVERY check: family %s depth-0 n is not positive "
-                     "(got %d)" % (fam["key"], n))
-        total += n
+            total += int(roots[0]["n"])
+        except ValueError:
+            sys.exit("Family %s depth-0 n is not an integer: %r" %
+                     (fam["key"], roots[0]["n"]))
     return total
-
-
-def results_current_depth0_n(csv_path):
-    """Sum depth-0 N from results/current/aim3_ate_summary.csv (all roots).
-
-    The CSV carries both windows, so summing all depth-0 rows mirrors the R
-    loader signal (= 269,832 for the FINAL run) and the severity-only JSON sum.
-    """
-    import csv
-    total = 0
-    with open(csv_path, newline="") as f:
-        for row in csv.DictReader(f):
-            if str(row.get("depth", "")).strip() != "0":
-                continue
-            raw = (row.get("N") or "").strip()
-            if raw:
-                total += int(float(raw))
-    return total
-
-
-def assert_delivery_current(families):
-    """Fail the site build if the JSON-derived severity depth-0 n disagrees with
-    results/current/. No-ops when results/current is absent (worktree dev)."""
-    if not os.path.exists(RESULTS_CURRENT_CSV):
-        return  # worktree dev: no promoted run to compare against
-    site_n = severity_depth0_n(families)
-    cur_n = results_current_depth0_n(RESULTS_CURRENT_CSV)
-    if site_n != cur_n:
-        sys.exit(
-            "STALE DELIVERY: site results_by_node families disagree with %s on "
-            "depth-0 cohort N (site = %d, current = %d).\n  The promoted run has "
-            "moved on. Rebuild from the current run before deploying."
-            % (RESULTS_CURRENT_CSV, site_n, cur_n))
 
 
 def main():
-    if not os.path.isdir(JSON_DIR):
-        sys.exit("JSON input dir not found: %s" % JSON_DIR)
+    severity_rows = read_csv(SUMMARY_CSV)
+    virus_rows = read_csv(VIRUS_CSV)
 
     families = []
     total_nodes = 0
     for win in WINDOWS:
-        for s in STRATA:
-            fam = build_family(win, s)
-            total_nodes += len(fam["rows"])
+        for stratum in SEVERITY_STRATA:
+            fam = build_family(severity_rows, win, stratum)
             families.append(fam)
+            total_nodes += len(fam["rows"])
+        for stratum in VIRUS_STRATA:
+            fam = build_family(virus_rows, win, stratum)
+            families.append(fam)
+            total_nodes += len(fam["rows"])
 
-    # Delivery-currency gate (REQUIRED before deploy): the built severity roots
-    # must fingerprint-match results/current/ on depth-0 cohort N.
-    assert_delivery_current(families)
+    severity_n = depth0_n(families, SEVERITY_STRATA)
+    virus_n = depth0_n(families, VIRUS_STRATA)
+    if severity_n != virus_n:
+        sys.exit("Depth-0 cohort mismatch: severity=%d virus=%d" %
+                 (severity_n, virus_n))
 
     out = {
         "run": RUN_LABEL,
-        "source": ("Yizhen's published interactive-tree JSONs (FINAL 2026-06-18); "
-                   "parse logic mirrors code/R/build_static_results_workbook.R (T3.5)"),
+        "source": (
+            "run-20260702 export-native contracts: "
+            "results/current/aim3_ate_summary.csv and "
+            "results/current/aim3_ate_summary_virus.csv"
+        ),
         "generated_by": "site/build_results_by_node_data.py",
         "n_families": len(families),
         "n_nodes": total_nodes,

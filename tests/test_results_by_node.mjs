@@ -94,8 +94,8 @@ await (async () => {
   await new Promise((r) => setTimeout(r, 50));
   const t = globalThis.__t;
 
-  check("data loaded: 16 families / 844 nodes",
-        t.DATA && t.DATA.families.length === 16 && t.DATA.n_nodes === 844,
+  check("data loaded: 16 families / 750 nodes",
+        t.DATA && t.DATA.families.length === 16 && t.DATA.n_nodes === 750,
         `families=${t.DATA?.families?.length} nodes=${t.DATA?.n_nodes}`);
 
   // Interaction 1: family selector changes the rows.
