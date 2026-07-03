@@ -1,7 +1,8 @@
 /* ATS Poster Interactive Site — Wave 3 (node-driven interaction model)
  *
  * Tree PNG path:           assets/trees/severity={...}_outcome=30day_depth={d}.png
- * Per-node contour PNG:    assets/node-contours/<slug>.png   (from contour_index.json)
+ * Per-node contour PNG:    assets/node-contours-byvirus/contour_<tree>_nodeNN_<window>.png
+ *                          (from node_contours_byvirus_index.json)
  *
  * Interaction model (replaces Wave 2.5 stacked-contour layout):
  *   - Hot-zones over each visible tree node (from tree_coordinates.json)
@@ -23,7 +24,8 @@ const state = {
 
 let topology = null;          // tree_topology.json (depth/columns metadata)
 let coordinates = null;       // tree_coordinates.json (node bboxes per state)
-let contourIndex = null;      // contour_index.json (per-slug contour metadata)
+let contourIndex = null;      // node_contours_byvirus_index.json
+let resultsByNode = null;     // results_by_node.json, used as a slug -> node_id bridge
 let treePanzoom = null;
 let contourPanzoom = null;
 
@@ -96,6 +98,10 @@ function defaultRootValue(root_var) {
 
 function stateKey() {
   return `${treeKey()}_depth=${state.depth}`;
+}
+
+function familyKey() {
+  return `${state.outcome}_${state.root_value}`;
 }
 
 function maxDepth() {
@@ -322,6 +328,61 @@ function escapeHtml(s) {
   }[c]));
 }
 
+function normalizeLabel(s) {
+  return String(s || "")
+    .toLowerCase()
+    .replace(/flu/g, "influenza")
+    .replace(/others/g, "other viruses")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function pathDepth(node) {
+  return String(node && node.node_id || "").split(" > ").length - 1;
+}
+
+function matchingResultRow(node) {
+  if (!node || !resultsByNode || !Array.isArray(resultsByNode.families)) return null;
+  const family = resultsByNode.families.find(f => f.key === familyKey());
+  if (!family || !Array.isArray(family.rows)) return null;
+
+  const nText = (typeof node.N === "number" && isFinite(node.N)) ? String(node.N) : null;
+  if (!nText) return null;
+  const depth = pathDepth(node);
+  const label = normalizeLabel(node.label);
+  const candidates = family.rows.filter(r => String(r.n) === nText && r.depth === depth);
+  const labelMatches = candidates.filter(r => {
+    const rowLabel = normalizeLabel(r.label);
+    return rowLabel === label || rowLabel.includes(label) || label.includes(rowLabel);
+  });
+  const matches = labelMatches.length === 1 ? labelMatches : candidates;
+  return matches.length === 1 ? matches[0] : null;
+}
+
+function contourEntryForNode(node) {
+  if (!node || !contourIndex || !contourIndex.nodes) return null;
+  if (state.root_var !== "severity") return null;
+  const resultRow = matchingResultRow(node);
+  if (!resultRow || typeof resultRow.node_id !== "number") return null;
+  const key = `${state.root_value}__node${String(resultRow.node_id).padStart(2, "0")}__${state.outcome}`;
+  return contourIndex.nodes[key] || null;
+}
+
+function setMissingContour(message) {
+  const wrapper = document.getElementById("contour-wrapper");
+  const img = document.getElementById("contour-img");
+  const spinner = wrapper.querySelector(".loading-spinner");
+  const oldFallback = wrapper.querySelector(".img-missing");
+  if (oldFallback) oldFallback.remove();
+  spinner.classList.remove("active");
+  img.style.display = "none";
+  img.removeAttribute("src");
+  const fb = document.createElement("div");
+  fb.className = "img-missing";
+  fb.textContent = message;
+  wrapper.appendChild(fb);
+}
+
 // --- selection -------------------------------------------------------------
 
 function selectNode(slug) {
@@ -342,7 +403,7 @@ function ensureSelectionValid() {
   }
 }
 
-// --- right panel: single contour ------------------------------------------
+// --- right panel: by-virus contour ----------------------------------------
 
 function renderContourPanel() {
   const breadcrumb = document.getElementById("contour-breadcrumb");
@@ -352,9 +413,7 @@ function renderContourPanel() {
 
   const slug = state.selected_slug;
   const node = currentNodes().find(n => n.slug === slug);
-  // contour_index.json is keyed by (slug, outcome): 30day → slug; 90day → slug + "__90day".
-  const idxKey = slug ? (state.outcome === "30day" ? slug : slug + "__90day") : null;
-  const idxEntry = (contourIndex && contourIndex.nodes && idxKey) ? contourIndex.nodes[idxKey] : null;
+  const idxEntry = contourEntryForNode(node);
 
   if (!slug) {
     breadcrumb.textContent = "";
@@ -367,20 +426,29 @@ function renderContourPanel() {
   breadcrumb.textContent = breadcrumbText;
   breadcrumb.title = breadcrumbText;
 
-  // Build meta block from contour_index (preferred) + node fallback.
   const N = node ? node.N : null;
-  const aggAte = idxEntry ? idxEntry.agg_ate : (node ? node.ate : null);
-  const nLeaves = idxEntry ? idxEntry.n_leaves_aggregated : null;
+  const ate = idxEntry ? idxEntry.ate : (node ? node.ate : null);
+  const ci = idxEntry && idxEntry.ate_ci_lower != null && idxEntry.ate_ci_upper != null
+    ? `${fmtAte(idxEntry.ate_ci_lower)} to ${fmtAte(idxEntry.ate_ci_upper)}`
+    : null;
+  const viruses = idxEntry && Array.isArray(idxEntry.viruses) ? idxEntry.viruses.join(", ") : null;
   meta.innerHTML = [
     N != null ? `<span><span class="meta-key">N</span>${fmtN(N)}</span>` : "",
-    aggAte != null ? `<span><span class="meta-key">Agg ATE</span>${fmtAte(aggAte)}</span>` : "",
-    nLeaves != null ? `<span><span class="meta-key">Leaves aggregated</span>${nLeaves}</span>` : ""
+    ate != null ? `<span><span class="meta-key">ATE</span>${fmtAte(ate)}</span>` : "",
+    ci != null ? `<span><span class="meta-key">95% CI</span>${ci}</span>` : "",
+    viruses != null ? `<span><span class="meta-key">Viruses</span>${escapeHtml(viruses)}</span>` : ""
   ].filter(Boolean).join("");
 
-  // Defensive: if missing from index, fall back to the outcome-suffixed filename.
-  const src = idxEntry
-    ? idxEntry.image
-    : `assets/node-contours/${idxKey}.png`;
+  if (!idxEntry || !idxEntry.image) {
+    setMissingContour(
+      state.root_var === "severity"
+        ? "By-virus contour is not available for this suppressed or unmapped node in the run-20260702 export."
+        : "By-virus contour overlays are available for severity-rooted tree nodes only in this run-20260702 site contract."
+    );
+    return;
+  }
+
+  const src = idxEntry.image;
   setImage(img, "contour-wrapper", src, `Contour for ${breadcrumbText}`);
 }
 
@@ -615,12 +683,11 @@ async function init() {
   if (!coordinates) {
     coordinates = await loadJsonOrNull("tests/fixtures/tree_coordinates.sample.json");
   }
-  contourIndex = await loadJsonOrNull("contour_index.json");
-  if (!contourIndex) {
-    contourIndex = await loadJsonOrNull("tests/fixtures/contour_index.sample.json");
-  }
+  contourIndex = await loadJsonOrNull("node_contours_byvirus_index.json");
+  resultsByNode = await loadJsonOrNull("results_by_node.json");
   if (!coordinates) coordinates = { states: {} };
   if (!contourIndex) contourIndex = { nodes: {} };
+  if (!resultsByNode) resultsByNode = { families: [] };
 
   wireUp();
   ensurePanzooms();
