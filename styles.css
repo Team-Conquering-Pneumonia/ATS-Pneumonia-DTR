@@ -318,10 +318,30 @@ select#root-value {
 }
 .node-tooltip .tt-key { color: #c7d2fe; }
 
+/* Panel header (title + info button), used on the tree panel. */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.15rem 0.25rem 0.5rem;
+}
+.panel-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
 /* Right panel — single contour. */
 .contour-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
   padding: 0.25rem 0.25rem 0.5rem;
 }
+.contour-header .contour-breadcrumb { flex: 1 1 auto; min-width: 0; }
+.contour-header .info-btn { flex: 0 0 auto; }
 .contour-breadcrumb {
   font-size: 0.85rem;
   font-weight: 600;
@@ -396,6 +416,60 @@ select#root-value {
   text-align: center;
 }
 
+/* Info popover buttons — beside each visualization */
+.info-anchor {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.info-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.info-btn::before {
+  content: "\24D8"; /* circled i */
+  font-size: 0.95rem;
+  line-height: 1;
+}
+.info-btn:hover,
+.info-btn[aria-expanded="true"] {
+  background: #eef2ff;
+  border-color: var(--color-accent);
+}
+.info-popover {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  width: min(20rem, 78vw);
+  padding: 0.6rem 0.75rem;
+  background: rgba(17, 24, 39, 0.97);
+  color: white;
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+  display: none;
+}
+.info-popover.visible { display: block; }
+.info-popover .info-pop-title {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+/* Flip to the right edge when the button sits near the right of the viewport. */
+.info-anchor.flip-right .info-popover { left: auto; right: 0; }
+
 /* Loading spinner */
 .loading-spinner {
   position: absolute;
@@ -463,6 +537,14 @@ select#root-value {
   font-size: 1.15rem;
   margin: 0 0 0.35rem;
 }
+.table-head-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+.table-head-row h2 { margin: 0; }
 .window-heading {
   font-size: 0.95rem;
   margin: 1rem 0 0.4rem;

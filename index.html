@@ -97,6 +97,10 @@
   <!-- Region 4: Tree + detail panel -->
   <main class="main-panels">
     <section class="tree-panel" aria-label="Decision tree">
+      <header class="panel-header">
+        <span class="panel-title">Decision tree</span>
+        <button type="button" class="info-btn" data-info="tree">Info</button>
+      </header>
       <div class="image-wrapper zoom-wrapper" id="tree-wrapper">
         <div class="tree-stage" id="tree-stage">
           <img id="tree-img" alt="Decision tree" />
@@ -114,6 +118,7 @@
     <section class="contour-panel" aria-label="Contour for selected node">
       <header class="contour-header">
         <div class="contour-breadcrumb" id="contour-breadcrumb" aria-live="polite">&nbsp;</div>
+        <button type="button" class="info-btn" data-info="contour">Info</button>
       </header>
       <div class="image-wrapper zoom-wrapper" id="contour-wrapper">
         <img id="contour-img" alt="Contour overlay" />
@@ -146,6 +151,7 @@
   </footer>
 
   <script src="vendor/panzoom.min.js"></script>
+  <script src="viz-info.js"></script>
   <script src="app.js?v=run20260702-byvirus"></script>
 </body>
 </html>

@@ -28,7 +28,10 @@
     </nav>
 
     <section class="table-section" aria-labelledby="t1-heading">
-      <h2 id="t1-heading">Table 1 — Cohort characteristics by empiric antibiotics within 24h</h2>
+      <div class="table-head-row">
+        <h2 id="t1-heading">Table 1 — Cohort characteristics by empiric antibiotics within 24h</h2>
+        <button type="button" class="info-btn" data-info="table1">Info</button>
+      </div>
       <p class="table-caveat"><em>Interim, censored artifact:</em> this is Jian&rsquo;s Table 1, carried verbatim from the grounding source &mdash; it is <em>not yet a product of this run&rsquo;s pipeline</em>. Counts below <code>20</code> are suppressed and shown verbatim. Values are unchanged from the source workbook.</p>
       <p class="table-desc">Cohort: 134,916 ED encounters (empiric abx within 24h: 114,004 / 84.5%; no empiric abx: 20,912 / 15.5%). Columns report n (%) or mean (SD) with 95% CIs, split by antibiotic group.</p>
       <div class="table-scroll">
@@ -319,7 +322,10 @@
     </section>
 
     <section class="table-section" aria-labelledby="t2-heading">
-      <h2 id="t2-heading">Table 2 — Population regime comparison</h2>
+      <div class="table-head-row">
+        <h2 id="t2-heading">Table 2 — Population regime comparison</h2>
+        <button type="button" class="info-btn" data-info="table2">Info</button>
+      </div>
       <p class="table-desc">Population mean mortality (posterior mean + 95% credible interval over 1,000 draws) and population antibiotic-use fraction, for five candidate treatment regimes, by mortality window.</p>
 
       <h3 class="window-heading">30-day mortality</h3>
@@ -361,6 +367,7 @@
   <footer class="site-footer">
     <p>Team Conquering Pneumonia &middot; <a href="index.html">Interactive trees</a> &middot; <a href="https://github.com/Team-Conquering-Pneumonia/ATS-Pneumonia-DTR">GitHub</a></p>
   </footer>
+  <script src="viz-info.js"></script>
 </body>
 </html>
 
