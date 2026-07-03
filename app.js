@@ -19,7 +19,8 @@ const state = {
   root_var: "severity",
   root_value: "moderate",
   depth: 0,
-  selected_slug: null
+  selected_slug: null,
+  interactive: true
 };
 
 let topology = null;          // tree_topology.json (depth/columns metadata)
@@ -519,11 +520,84 @@ function renderTreeImage() {
 }
 
 function render() {
+  applyViewMode();
+  if (!state.interactive) {
+    renderStaticView();
+    return;
+  }
   ensureSelectionValid();
   renderOutline();
   renderDepthDisplay();
   renderTreeImage();
   renderContourPanel();
+}
+
+// --- interactive / static view toggle -------------------------------------
+
+// Interactive-only regions are hidden when the static integrated figure is
+// shown; the control bar (outcome / root / root value) still selects which
+// figure to display.
+function applyViewMode() {
+  const interactive = state.interactive;
+  const setHidden = (sel, hidden) =>
+    document.querySelectorAll(sel).forEach((el) => { el.hidden = hidden; });
+  setHidden(".legend", !interactive);
+  setHidden(".instructions", !interactive);
+  setHidden(".tree-outline", !interactive);
+  setHidden(".main-panels", !interactive);
+  setHidden(".depth-group", !interactive);
+  const sp = document.getElementById("static-panel");
+  if (sp) sp.hidden = interactive;
+}
+
+function staticFigureSrc() {
+  // The integrated tree+contour figure exists per severity stratum × window.
+  if (state.root_var !== "severity") return null;
+  return `assets/integrated/tree_contour_integrated_${state.root_value}_${state.outcome}.png`;
+}
+
+function setMissingStatic(message) {
+  const wrapper = document.getElementById("static-wrapper");
+  const img = document.getElementById("static-img");
+  const spinner = wrapper.querySelector(".loading-spinner");
+  const oldFallback = wrapper.querySelector(".img-missing");
+  if (oldFallback) oldFallback.remove();
+  if (spinner) spinner.classList.remove("active");
+  img.style.display = "none";
+  img.removeAttribute("src");
+  const fb = document.createElement("div");
+  fb.className = "img-missing";
+  fb.textContent = message;
+  wrapper.appendChild(fb);
+}
+
+function renderStaticView() {
+  const wrapper = document.getElementById("static-wrapper");
+  const img = document.getElementById("static-img");
+  if (!wrapper || !img) return;
+  const spinner = wrapper.querySelector(".loading-spinner");
+  const oldFallback = wrapper.querySelector(".img-missing");
+  if (oldFallback) oldFallback.remove();
+
+  const src = staticFigureSrc();
+  if (!src) {
+    setMissingStatic(
+      "A static integrated figure is available for the severity trees only. " +
+      "Set Root variable to Severity, or turn on “Interactive” to explore this tree."
+    );
+    return;
+  }
+
+  if (spinner) spinner.classList.add("active");
+  img.style.display = "";
+  img.onload = () => { if (spinner) spinner.classList.remove("active"); };
+  img.onerror = () => {
+    setMissingStatic(
+      "The static integrated figure for this tree is not yet available for the " +
+      "current analysis. Turn on “Interactive” above to explore it node by node."
+    );
+  };
+  img.src = src;
 }
 
 // --- state mutators --------------------------------------------------------
@@ -608,6 +682,14 @@ function wireUp() {
 
   document.getElementById("depth-plus").addEventListener("click", advanceDepth);
   document.getElementById("depth-minus").addEventListener("click", retreatDepth);
+
+  const interactiveToggle = document.getElementById("interactive-toggle");
+  if (interactiveToggle) {
+    interactiveToggle.addEventListener("change", (e) => {
+      state.interactive = e.target.checked;
+      render();
+    });
+  }
 
   // Zoom-control buttons for both panels.
   document.querySelectorAll(".zoom-controls button").forEach((btn) => {

@@ -17,6 +17,10 @@
 
 * { box-sizing: border-box; }
 
+/* Ensure the `hidden` attribute wins over author display rules
+ * (e.g. .main-panels { display: flex }). */
+[hidden] { display: none !important; }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -113,6 +117,13 @@ a { color: var(--color-accent); }
 .radio.disabled {
   color: var(--color-disabled);
   cursor: not-allowed;
+}
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
 select#root-value {
   padding: 0.4rem 0.6rem;
@@ -224,6 +235,21 @@ select#root-value {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 0.5rem;
+}
+
+/* Static integrated tree figure panel (Trees view, Interactive off) */
+.static-panel {
+  margin: 1rem;
+  padding: 0.5rem;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.static-panel #static-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 .image-wrapper {
   position: relative;

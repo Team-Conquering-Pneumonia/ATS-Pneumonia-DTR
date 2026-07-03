@@ -23,7 +23,7 @@
 
   <nav class="view-tabs" aria-label="Primary views">
     <a class="view-tab" href="index.html">About</a>
-    <a class="view-tab active" href="trees.html" aria-current="page">Tree</a>
+    <a class="view-tab active" href="trees.html" aria-current="page">Trees</a>
     <a class="view-tab" href="tables.html">Summary tables</a>
     <a class="view-tab" href="results_by_node.html">Per-node results</a>
   </nav>
@@ -74,6 +74,14 @@
         <span id="depth-display" aria-live="polite">0 / 0</span>
         <button id="depth-plus" type="button" aria-label="Increase depth">+</button>
       </div>
+    </div>
+
+    <div class="control-group">
+      <span class="control-label">View</span>
+      <label class="checkbox">
+        <input type="checkbox" id="interactive-toggle" checked />
+        Interactive
+      </label>
     </div>
   </section>
 
@@ -147,12 +155,25 @@
     </section>
   </main>
 
+  <!-- Region 4b: Static integrated tree + contour figure (shown when Interactive is off) -->
+  <section class="static-panel" id="static-panel" aria-label="Static integrated tree figure" hidden>
+    <header class="panel-header">
+      <span class="panel-title">Integrated tree + contour figure</span>
+      <button type="button" class="info-btn" data-info="tree">Info</button>
+    </header>
+    <div class="image-wrapper" id="static-wrapper">
+      <img id="static-img" alt="Integrated decision tree and contour figure" />
+      <div class="loading-spinner" id="static-spinner" aria-hidden="true"></div>
+    </div>
+    <p class="tap-hint">Turn on “Interactive” above to explore the tree node by node.</p>
+  </section>
+
   <footer class="site-footer">
     <p>Team Conquering Pneumonia &middot; <a href="https://github.com/Team-Conquering-Pneumonia/ATS-Pneumonia-DTR">GitHub</a></p>
   </footer>
 
   <script src="vendor/panzoom.min.js"></script>
-  <script src="viz-info.js"></script>
-  <script src="app.js?v=run20260702-byvirus"></script>
+  <script src="viz-info.js?v=site-improvements"></script>
+  <script src="app.js?v=site-improvements"></script>
 </body>
 </html>
