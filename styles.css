@@ -702,6 +702,72 @@ select#root-value {
   .site-header h1 { font-size: 1.4rem; }
 }
 
+/* Report-view dynamic filters bar */
+.filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap) 1.25rem;
+  padding: 0.6rem 1rem;
+  background: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+  align-items: flex-start;
+}
+.filters-bar select,
+.filters-bar input[type="number"] {
+  padding: 0.3rem 0.45rem;
+  font-size: 0.88rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: white;
+}
+.value-filters-group { flex: 1 1 auto; }
+.value-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+}
+.value-filter {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.78rem;
+}
+.value-filter-label { color: var(--color-muted); }
+.numeric-filters {
+  font-size: 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: white;
+  padding: 0 0.5rem;
+  align-self: flex-start;
+}
+.numeric-filters summary {
+  cursor: pointer;
+  padding: 0.4rem 0.2rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+.numeric-filter-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 0.3rem 0.5rem;
+  align-items: center;
+  padding: 0.3rem 0.2rem 0.6rem;
+}
+.numeric-filter-label { font-size: 0.82rem; }
+.numeric-filter-grid input[type="number"] { width: 5.5rem; }
+.reset-btn {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.reset-btn:hover { background: #eef2ff; }
+
 /* Per-node browsable results table (results_by_node.html) */
 .row-count {
   font-size: 0.9rem;

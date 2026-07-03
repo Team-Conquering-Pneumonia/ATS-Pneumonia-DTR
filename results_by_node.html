@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Per-node Results — Empiric Antibiotics and Mortality in CAP</title>
+  <title>Report view — Empiric Antibiotics and Mortality in CAP</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
-    <h1>Per-node Results Table</h1>
+    <h1>Report view</h1>
     <p class="subtitle">Empiric Antibiotics and Mortality in Community-Acquired Pneumonia — ATS 2026 poster companion</p>
     <p class="provenance">
       Each row is a subgroup in the selected decision tree. Mortality is on a scale where
@@ -22,7 +22,7 @@
     <a class="view-tab" href="index.html">About</a>
     <a class="view-tab" href="trees.html">Trees</a>
     <a class="view-tab" href="tables.html">Summary tables</a>
-    <a class="view-tab active" href="results_by_node.html" aria-current="page">Per-node results</a>
+    <a class="view-tab active" href="results_by_node.html" aria-current="page">Report view</a>
   </nav>
 
   <section class="control-bar" aria-label="Table controls">
@@ -52,6 +52,33 @@
     </div>
   </section>
 
+  <!-- Dynamic filters (Tableau-style): depth range, per-level values, numeric ranges -->
+  <section class="filters-bar" aria-label="Report filters">
+    <div class="control-group">
+      <label class="control-label" for="min-depth">Min depth (from)</label>
+      <select id="min-depth" aria-label="Minimum depth level"></select>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="max-depth">Max depth (to)</label>
+      <select id="max-depth" aria-label="Maximum depth level"></select>
+    </div>
+
+    <div class="control-group value-filters-group">
+      <span class="control-label">Node values</span>
+      <div id="value-filters" class="value-filters"></div>
+    </div>
+
+    <details class="numeric-filters">
+      <summary>Numeric filters</summary>
+      <div id="numeric-filter-grid" class="numeric-filter-grid"></div>
+    </details>
+
+    <div class="control-group">
+      <span class="control-label">&nbsp;</span>
+      <button type="button" id="reset-filters" class="reset-btn">Reset filters</button>
+    </div>
+  </section>
+
   <section class="legend" aria-label="Legend">
     <div class="legend-item"><span class="swatch swatch-signal-benefit"></span>Benefit (95% CI entirely below 0)</div>
     <div class="legend-item"><span class="swatch swatch-signal-harm"></span>Harm (95% CI entirely above 0)</div>
@@ -75,7 +102,7 @@
     <p>Team Conquering Pneumonia &middot; <a href="https://github.com/Team-Conquering-Pneumonia/ATS-Pneumonia-DTR">GitHub</a></p>
   </footer>
 
-  <script src="viz-info.js"></script>
-  <script src="results_by_node.js"></script>
+  <script src="viz-info.js?v=site-improvements"></script>
+  <script src="results_by_node.js?v=site-improvements"></script>
 </body>
 </html>
