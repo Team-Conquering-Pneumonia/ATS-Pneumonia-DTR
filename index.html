@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Empiric Antibiotics and 30-day Mortality in CAP — Interactive Trees</title>
+  <title>About — Empiric Antibiotics and Mortality in CAP</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
-    <h1>Empiric Antibiotics and 30-day Mortality in Community-Acquired Pneumonia: A Decision Tree Analysis of 124 U.S. Veterans Affairs Medical Centers</h1>
+    <h1>Empiric Antibiotics and Mortality in Community-Acquired Pneumonia: A Decision Tree Analysis of 124 U.S. Veterans Affairs Medical Centers</h1>
     <p class="subtitle">Interactive exploration — ATS 2026 poster companion</p>
     <p class="authors">
       Barbara Jones, MD MS &middot; Yizhen Xu, PhD &middot; Alec Chapman, MS &middot;
@@ -17,132 +17,78 @@
     </p>
     <p class="contact">
       Contact: <a href="mailto:Barbara.Jones@hsc.utah.edu">Barbara.Jones@hsc.utah.edu</a>
-      <!-- Abstract link (add once available): &middot; <a href="ABSTRACT_URL">View ATS Abstract</a> -->
     </p>
   </header>
 
   <nav class="view-tabs" aria-label="Primary views">
-    <a class="view-tab active" href="index.html" aria-current="page">Tree</a>
+    <a class="view-tab active" href="index.html" aria-current="page">About</a>
+    <a class="view-tab" href="trees.html">Tree</a>
     <a class="view-tab" href="tables.html">Summary tables</a>
     <a class="view-tab" href="results_by_node.html">Per-node results</a>
   </nav>
 
-  <!-- Region 1: Control bar -->
-  <section class="control-bar" aria-label="Tree controls">
-    <div class="control-group">
-      <span class="control-label">Outcome</span>
-      <div class="control-options" role="radiogroup" aria-label="Outcome">
-        <label class="radio">
-          <input type="radio" name="outcome" value="30day" checked />
-          30-day mortality
-        </label>
-        <label class="radio">
-          <input type="radio" name="outcome" value="90day" />
-          90-day mortality
-        </label>
-      </div>
-    </div>
+  <main class="about-main">
+    <p class="about-caveat" role="note">
+      <strong>Draft overview.</strong> This page was written with AI assistance and has
+      not yet been reviewed by the study authors. The wording, and any preliminary
+      numbers or figures, are subject to revision.
+    </p>
 
-    <div class="control-group">
-      <span class="control-label">Root variable</span>
-      <div class="control-options" role="radiogroup" aria-label="Root variable">
-        <label class="radio">
-          <input type="radio" name="root_var" value="severity" checked />
-          Severity
-        </label>
-        <label class="radio">
-          <input type="radio" name="root_var" value="virus" />
-          Virus
-        </label>
-      </div>
-    </div>
+    <section class="about-section" aria-labelledby="overview-heading">
+      <h2 id="overview-heading">Project overview</h2>
 
-    <div class="control-group">
-      <label class="control-label" for="root-value">Root value</label>
-      <select id="root-value" aria-label="Root value">
-        <option value="mild">Mild</option>
-        <option value="moderate" selected>Moderate</option>
-        <option value="severe">Severe</option>
-      </select>
-    </div>
+      <h3>Background</h3>
+      <p>
+        Empiric antibiotics — started at the time of diagnosis, before any bacterial
+        pathogen is confirmed — have long been the standard of care for
+        community-acquired pneumonia (CAP). Yet for most patients with CAP no pathogen
+        is ever identified, and the routine availability of viral testing together with
+        the experience of COVID-19 have raised the question of whether every patient
+        with pneumonia benefits from antibiotics. Direct comparative evidence to guide
+        this decision is limited, and recent American Thoracic Society (ATS) and
+        Infectious Diseases Society of America (IDSA) guidance differ on when antibiotics
+        can be safely withheld.
+      </p>
 
-    <div class="control-group depth-group">
-      <span class="control-label">Depth</span>
-      <div class="depth-controls">
-        <button id="depth-minus" type="button" aria-label="Decrease depth">−</button>
-        <span id="depth-display" aria-live="polite">0 / 0</span>
-        <button id="depth-plus" type="button" aria-label="Increase depth">+</button>
-      </div>
-    </div>
-  </section>
+      <h3>Objective</h3>
+      <p>
+        This project examines how the association between empiric antibiotics and
+        mortality varies across clinically defined patient subgroups, and compares
+        population treatment strategies: antibiotics for all patients, for none, the
+        ATS guideline-based strategy, and individualized strategies that direct
+        antibiotics toward the patients estimated to benefit.
+      </p>
 
-  <!-- Region 2: Legend -->
-  <section class="legend" aria-label="Legend">
-    <div class="legend-item"><span class="swatch swatch-beneficial"></span>Beneficial (treatment reduces mortality)</div>
-    <div class="legend-item"><span class="swatch swatch-harmful"></span>Harmful (treatment increases mortality)</div>
-    <div class="legend-item"><span class="swatch swatch-uncertain"></span>Uncertain (95% CI crosses 0)</div>
-    <div class="legend-item legend-bar">
-      <span class="bar-explain">Inline bar: mortality under each treatment with ATE point estimate and 95% CI.</span>
-    </div>
-  </section>
-
-  <!-- Region 2b: Instructions -->
-  <p class="instructions">Hover to see node detail. Single-click a node to see the virus distribution for that tree. Click a variable below to expand or collapse the tree.</p>
-
-  <!-- Region 3: Tree outline -->
-  <section class="tree-outline" aria-label="Tree outline">
-    <div id="outline-columns" class="outline-columns"></div>
-  </section>
-
-  <!-- Region 4: Tree + detail panel -->
-  <main class="main-panels">
-    <section class="tree-panel" aria-label="Decision tree">
-      <header class="panel-header">
-        <span class="panel-title">Decision tree</span>
-        <button type="button" class="info-btn" data-info="tree">Info</button>
-      </header>
-      <div class="image-wrapper zoom-wrapper" id="tree-wrapper">
-        <div class="tree-stage" id="tree-stage">
-          <img id="tree-img" alt="Decision tree" />
-          <div class="hotzone-layer" id="hotzone-layer" aria-label="Tree node hot-zones"></div>
-        </div>
-        <div class="loading-spinner" id="tree-spinner" aria-hidden="true"></div>
-        <div class="zoom-controls" aria-label="Tree zoom controls">
-          <button type="button" data-zoom-target="tree" data-zoom-action="in" aria-label="Zoom in">+</button>
-          <button type="button" data-zoom-target="tree" data-zoom-action="out" aria-label="Zoom out">&minus;</button>
-          <button type="button" data-zoom-target="tree" data-zoom-action="reset" aria-label="Reset zoom">&#x21bb;</button>
-        </div>
-        <div class="node-tooltip" id="node-tooltip" role="tooltip" aria-hidden="true"></div>
-      </div>
+      <h3>Setting and methods</h3>
+      <p>
+        We studied emergency-department encounters with an initial diagnosis of
+        pneumonia and positive chest imaging at 124 U.S. Veterans Affairs medical
+        centers between 2022 and 2024 (134,916 encounters; 84.5% received antibiotics
+        within the first 24 hours; 30-day mortality was 6.5%). Using a Bayesian
+        Additive Regression Tree (BART) model with 89 patient factors, we estimated
+        each patient's probability of 30-day and 90-day mortality with versus without
+        empiric antibiotics in the first 24 hours.
+      </p>
+      <p>
+        To make the results clinically interpretable, we summarized these estimates
+        within pre-specified decision trees built from six factors chosen for their
+        clinical relevance to the antibiotic decision: pneumonia severity, severe
+        hypoxemia or shock, hypoxemia or sepsis, lung disease, other comorbidities, and
+        viral test result. Within each subgroup we report the average treatment effect
+        (ATE) of antibiotics on mortality — the difference in the probability of death
+        with versus without antibiotics — with a 95% credible interval. On this scale a
+        <em>negative</em> ATE means antibiotics are estimated to reduce mortality.
+      </p>
     </section>
-    <section class="contour-panel" aria-label="Contour for selected node">
-      <header class="contour-header">
-        <div class="contour-breadcrumb" id="contour-breadcrumb" aria-live="polite">&nbsp;</div>
-        <button type="button" class="info-btn" data-info="contour">Info</button>
-      </header>
-      <div class="image-wrapper zoom-wrapper" id="contour-wrapper">
-        <img id="contour-img" alt="Contour overlay" />
-        <div class="loading-spinner" id="contour-spinner" aria-hidden="true"></div>
-        <div class="zoom-controls" aria-label="Contour zoom controls">
-          <button type="button" data-zoom-target="contour" data-zoom-action="in" aria-label="Zoom in">+</button>
-          <button type="button" data-zoom-target="contour" data-zoom-action="out" aria-label="Zoom out">&minus;</button>
-          <button type="button" data-zoom-target="contour" data-zoom-action="reset" aria-label="Reset zoom">&#x21bb;</button>
-        </div>
-      </div>
-      <div class="contour-meta" id="contour-meta"></div>
-      <aside class="contour-caveat" aria-label="About the contour plots">
-        <strong>About these per-virus contours.</strong>
-        Each colored outline shows the 95% posterior region for one virus group in this node,
-        comparing predicted mortality with antibiotics to predicted mortality without antibiotics.
-        Points below the diagonal favor antibiotics; points above it favor no antibiotics.
-        The treatment signal on the node and in the table comes from the ATE 95% credible interval.
-        The outline is a two-dimensional uncertainty region, so it can cross the diagonal even when
-        the ATE interval stays on one side. When those differ, use the ATE interval as the
-        benefit/harm call; the contour is showing the fuller joint uncertainty. Some deep severe
-        nodes omit virus groups with fewer than 20 patients. Contours are shown for the virus groups
-        available in the export.
-      </aside>
-      <p class="tap-hint">Pinch or scroll to zoom.</p>
+
+    <section class="about-section" aria-labelledby="viz-heading">
+      <h2 id="viz-heading">Visualizations</h2>
+      <p>
+        This companion site presents the results four ways. Each visualization also
+        carries an <span class="info-btn-inline">&#x24D8; Info</span> button that shows
+        the summary below.
+      </p>
+      <div id="viz-descriptions"></div>
     </section>
   </main>
 
@@ -150,8 +96,7 @@
     <p>Team Conquering Pneumonia &middot; <a href="https://github.com/Team-Conquering-Pneumonia/ATS-Pneumonia-DTR">GitHub</a></p>
   </footer>
 
-  <script src="vendor/panzoom.min.js"></script>
   <script src="viz-info.js"></script>
-  <script src="app.js?v=run20260702-byvirus"></script>
+  <script src="about.js"></script>
 </body>
 </html>

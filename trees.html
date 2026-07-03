@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Empiric Antibiotics and 30-day Mortality in CAP — Interactive Trees</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Empiric Antibiotics and 30-day Mortality in Community-Acquired Pneumonia: A Decision Tree Analysis of 124 U.S. Veterans Affairs Medical Centers</h1>
+    <p class="subtitle">Interactive exploration — ATS 2026 poster companion</p>
+    <p class="authors">
+      Barbara Jones, MD MS &middot; Yizhen Xu, PhD &middot; Alec Chapman, MS &middot;
+      McKenna Nevers, MS &middot; Teressa Ju, MD &middot; Jian Ying, PhD &middot;
+      Makoto Jones, MD MS &middot; Kristina Crothers, MD &middot; Daniel Scharfstein, ScD
+    </p>
+    <p class="contact">
+      Contact: <a href="mailto:Barbara.Jones@hsc.utah.edu">Barbara.Jones@hsc.utah.edu</a>
+      <!-- Abstract link (add once available): &middot; <a href="ABSTRACT_URL">View ATS Abstract</a> -->
+    </p>
+  </header>
+
+  <nav class="view-tabs" aria-label="Primary views">
+    <a class="view-tab" href="index.html">About</a>
+    <a class="view-tab active" href="trees.html" aria-current="page">Tree</a>
+    <a class="view-tab" href="tables.html">Summary tables</a>
+    <a class="view-tab" href="results_by_node.html">Per-node results</a>
+  </nav>
+
+  <!-- Region 1: Control bar -->
+  <section class="control-bar" aria-label="Tree controls">
+    <div class="control-group">
+      <span class="control-label">Outcome</span>
+      <div class="control-options" role="radiogroup" aria-label="Outcome">
+        <label class="radio">
+          <input type="radio" name="outcome" value="30day" checked />
+          30-day mortality
+        </label>
+        <label class="radio">
+          <input type="radio" name="outcome" value="90day" />
+          90-day mortality
+        </label>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <span class="control-label">Root variable</span>
+      <div class="control-options" role="radiogroup" aria-label="Root variable">
+        <label class="radio">
+          <input type="radio" name="root_var" value="severity" checked />
+          Severity
+        </label>
+        <label class="radio">
+          <input type="radio" name="root_var" value="virus" />
+          Virus
+        </label>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="root-value">Root value</label>
+      <select id="root-value" aria-label="Root value">
+        <option value="mild">Mild</option>
+        <option value="moderate" selected>Moderate</option>
+        <option value="severe">Severe</option>
+      </select>
+    </div>
+
+    <div class="control-group depth-group">
+      <span class="control-label">Depth</span>
+      <div class="depth-controls">
+        <button id="depth-minus" type="button" aria-label="Decrease depth">−</button>
+        <span id="depth-display" aria-live="polite">0 / 0</span>
+        <button id="depth-plus" type="button" aria-label="Increase depth">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Region 2: Legend -->
+  <section class="legend" aria-label="Legend">
+    <div class="legend-item"><span class="swatch swatch-beneficial"></span>Beneficial (treatment reduces mortality)</div>
+    <div class="legend-item"><span class="swatch swatch-harmful"></span>Harmful (treatment increases mortality)</div>
+    <div class="legend-item"><span class="swatch swatch-uncertain"></span>Uncertain (95% CI crosses 0)</div>
+    <div class="legend-item legend-bar">
+      <span class="bar-explain">Inline bar: mortality under each treatment with ATE point estimate and 95% CI.</span>
+    </div>
+  </section>
+
+  <!-- Region 2b: Instructions -->
+  <p class="instructions">Hover to see node detail. Single-click a node to see the virus distribution for that tree. Click a variable below to expand or collapse the tree.</p>
+
+  <!-- Region 3: Tree outline -->
+  <section class="tree-outline" aria-label="Tree outline">
+    <div id="outline-columns" class="outline-columns"></div>
+  </section>
+
+  <!-- Region 4: Tree + detail panel -->
+  <main class="main-panels">
+    <section class="tree-panel" aria-label="Decision tree">
+      <header class="panel-header">
+        <span class="panel-title">Decision tree</span>
+        <button type="button" class="info-btn" data-info="tree">Info</button>
+      </header>
+      <div class="image-wrapper zoom-wrapper" id="tree-wrapper">
+        <div class="tree-stage" id="tree-stage">
+          <img id="tree-img" alt="Decision tree" />
+          <div class="hotzone-layer" id="hotzone-layer" aria-label="Tree node hot-zones"></div>
+        </div>
+        <div class="loading-spinner" id="tree-spinner" aria-hidden="true"></div>
+        <div class="zoom-controls" aria-label="Tree zoom controls">
+          <button type="button" data-zoom-target="tree" data-zoom-action="in" aria-label="Zoom in">+</button>
+          <button type="button" data-zoom-target="tree" data-zoom-action="out" aria-label="Zoom out">&minus;</button>
+          <button type="button" data-zoom-target="tree" data-zoom-action="reset" aria-label="Reset zoom">&#x21bb;</button>
+        </div>
+        <div class="node-tooltip" id="node-tooltip" role="tooltip" aria-hidden="true"></div>
+      </div>
+    </section>
+    <section class="contour-panel" aria-label="Contour for selected node">
+      <header class="contour-header">
+        <div class="contour-breadcrumb" id="contour-breadcrumb" aria-live="polite">&nbsp;</div>
+        <button type="button" class="info-btn" data-info="contour">Info</button>
+      </header>
+      <div class="image-wrapper zoom-wrapper" id="contour-wrapper">
+        <img id="contour-img" alt="Contour overlay" />
+        <div class="loading-spinner" id="contour-spinner" aria-hidden="true"></div>
+        <div class="zoom-controls" aria-label="Contour zoom controls">
+          <button type="button" data-zoom-target="contour" data-zoom-action="in" aria-label="Zoom in">+</button>
+          <button type="button" data-zoom-target="contour" data-zoom-action="out" aria-label="Zoom out">&minus;</button>
+          <button type="button" data-zoom-target="contour" data-zoom-action="reset" aria-label="Reset zoom">&#x21bb;</button>
+        </div>
+      </div>
+      <div class="contour-meta" id="contour-meta"></div>
+      <aside class="contour-caveat" aria-label="About the contour plots">
+        <strong>About these per-virus contours.</strong>
+        Each colored outline shows the 95% posterior region for one virus group in this node,
+        comparing predicted mortality with antibiotics to predicted mortality without antibiotics.
+        Points below the diagonal favor antibiotics; points above it favor no antibiotics.
+        The treatment signal on the node and in the table comes from the ATE 95% credible interval.
+        The outline is a two-dimensional uncertainty region, so it can cross the diagonal even when
+        the ATE interval stays on one side. When those differ, use the ATE interval as the
+        benefit/harm call; the contour is showing the fuller joint uncertainty. Some deep severe
+        nodes omit virus groups with fewer than 20 patients. Contours are shown for the virus groups
+        available in the export.
+      </aside>
+      <p class="tap-hint">Pinch or scroll to zoom.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Team Conquering Pneumonia &middot; <a href="https://github.com/Team-Conquering-Pneumonia/ATS-Pneumonia-DTR">GitHub</a></p>
+  </footer>
+
+  <script src="vendor/panzoom.min.js"></script>
+  <script src="viz-info.js"></script>
+  <script src="app.js?v=run20260702-byvirus"></script>
+</body>
+</html>
