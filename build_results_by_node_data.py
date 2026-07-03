@@ -23,6 +23,7 @@ Output: site/results_by_node.json (consumed by results_by_node.js)
 import csv
 import json
 import os
+import re
 import sys
 
 # --- paths -----------------------------------------------------------------
@@ -145,6 +146,25 @@ def signal_of(ate_lo, ate_hi):
     return "Inconclusive"
 
 
+def full_path_label(node_path):
+    """Full covariate path to the node, matching the interactive contour title.
+
+    The stored path is a ' > '-joined chain of node titles whose root segment
+    carries a redundant '(NN-day mortality)' window annotation (the report is
+    already grouped by window). Strip that annotation from the root and
+    tidy-case it; keep the covariate chain verbatim so it matches the
+    interactive tree's node breadcrumb.
+    """
+    segs = [s.strip() for s in str(node_path or "").split(" > ") if s.strip()]
+    if not segs:
+        return ""
+    root = re.sub(r"\s*\(\d+-day mortality\)\s*$", "", segs[0]).strip()
+    if root and root[0].islower():
+        root = root[0].upper() + root[1:]
+    segs[0] = root
+    return " > ".join(segs)
+
+
 def path_map_of(node_path):
     segs = str(node_path or "").split(" > ")
     out = {}
@@ -181,6 +201,7 @@ def build_family(rows, win, stratum):
         out_rows.append({
             "node_id": node_idx,
             "label": row.get("node_title") or "",
+            "path": full_path_label(row.get("node_path")),
             "depth": parse_int(row.get("depth")) or 0,
             "splits": {
                 VAR_HEADER[var]: path_map.get(var)

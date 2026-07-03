@@ -22,7 +22,7 @@ const SUPP = "<20";
 // object; `type` controls sort comparison; `label` is the header text.
 const FIXED_COLS = [
   { key: "node_id",      label: "Node ID",                   type: "num" },
-  { key: "label",        label: "Label",                     type: "str" },
+  { key: "path",         label: "Node (covariate path)",     type: "str" },
   { key: "depth",        label: "Depth",                     type: "num" },
 ];
 // Tail columns (after the per-family split columns).
@@ -125,9 +125,9 @@ function renderBody(cols, rows) {
         const val = (row.splits && row.splits[name] != null) ? row.splits[name] : "";
         td.textContent = val;
         td.classList.add("split-col");
-      } else if (col.key === "label") {
-        td.textContent = row.label || "";
-        td.classList.add("varname");
+      } else if (col.key === "path") {
+        td.textContent = row.path || row.label || "";
+        td.classList.add("varname", "node-path");
       } else if (col.key === "ci") {
         td.textContent = row.ci || "";
         td.classList.add("ci");
