@@ -18,23 +18,33 @@
 
 const SUPP = "<20";
 
-// Fixed (always-present) columns, in display order. `key` indexes the row
-// object; `type` controls sort comparison; `label` is the header text.
-const FIXED_COLS = [
+// Column blocks in display order (Alec 2026-07-04 reorder):
+//   1. Node ID + label
+//   2. N + observed %s (both carry a `*` marker pointing at the <20 caveat)
+//   3. ATE / 95% CI / Signal, then p(mort) WITH/WITHOUT kept together just after
+//   4. Depth, then the per-family root/split covariate columns (appended in
+//      activeColumns()).
+// `key` indexes the row object; `type` controls sort comparison; `label` is the
+// header text. Sorting/filtering key off `key`, not position, so this is a pure
+// display reorder.
+const ID_COLS = [
   { key: "node_id",      label: "Node ID",                   type: "num" },
   { key: "path",         label: "Node (covariate path)",     type: "str" },
-  { key: "depth",        label: "Depth",                     type: "num" },
 ];
-// Tail columns (after the per-family split columns).
-const TAIL_COLS = [
+const OBS_COLS = [
   { key: "n",            label: "N",                         type: "supp" },
-  { key: "pct_obs_abx",  label: "% obs. abx",                type: "supp" },
-  { key: "pct_obs_mort", label: "% obs. mortality",          type: "supp" },
-  { key: "p_abx",        label: "p(mort) WITH abx",          type: "num" },
-  { key: "p_noabx",      label: "p(mort) WITHOUT abx",       type: "num" },
+  { key: "pct_obs_abx",  label: "% obs. abx *",              type: "supp" },
+  { key: "pct_obs_mort", label: "% obs. mortality *",        type: "supp" },
+];
+const EST_COLS = [
   { key: "ate",          label: "ATE",                       type: "num" },
   { key: "ci",           label: "95% CI",                    type: "str" },
   { key: "signal",       label: "Signal",                    type: "str" },
+  { key: "p_noabx",      label: "p(mort) WITHOUT abx",       type: "num" },
+  { key: "p_abx",        label: "p(mort) WITH abx",          type: "num" },
+];
+const DEPTH_COL = [
+  { key: "depth",        label: "Depth",                     type: "num" },
 ];
 
 // Numeric fields that get a min/max range filter (keys index the row object).
@@ -92,7 +102,8 @@ function activeColumns() {
   const splitCols = (currentFamily.split_columns || []).map((name) => ({
     key: "split:" + name, label: name, type: "str",
   }));
-  return FIXED_COLS.concat(rootCol, splitCols, TAIL_COLS);
+  return ID_COLS
+    .concat(OBS_COLS, EST_COLS, DEPTH_COL, rootCol, splitCols);
 }
 
 // Read a sort value for a row + column key. Split columns live in row.splits.
@@ -236,7 +247,8 @@ function render() {
     rows.length + " / " + currentFamily.rows.length + " nodes";
   document.getElementById("table-foot").textContent =
     "Showing tree family “" + currentFamily.label + "”. " +
-    "Cells showing “<20” are VA small-cell suppressed. Rows shaded green = " +
+    "Cells showing “<20” are VA small-cell suppressed; * columns (% observed) " +
+    "show “<20” for small cells. Rows shaded green = " +
     "credible benefit (95% CI below 0), red = credible harm (CI above 0).";
 }
 
