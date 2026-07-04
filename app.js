@@ -551,8 +551,7 @@ function applyViewMode() {
 }
 
 function staticFigureSrc() {
-  // The integrated tree+contour figure exists per severity stratum × window.
-  if (state.root_var !== "severity") return null;
+  // The integrated tree+contour figure exists per root value × window.
   return `assets/integrated/tree_contour_integrated_${state.root_value}_${state.outcome}.png`;
 }
 
@@ -582,8 +581,8 @@ function renderStaticView() {
   const src = staticFigureSrc();
   if (!src) {
     setMissingStatic(
-      "A static integrated figure is available for the severity trees only. " +
-      "Set Root variable to Severity, or turn on “Interactive” to explore this tree."
+      "The static integrated figure for this tree is not yet available for the " +
+      "current analysis. Turn on “Interactive” above to explore it node by node."
     );
     return;
   }
