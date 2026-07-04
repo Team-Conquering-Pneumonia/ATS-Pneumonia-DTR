@@ -1,0 +1,47 @@
+name: Deploy to GitHub Pages
+
+# Publishes the static site (index.html, app.js, styles.css, vendor/, JSON data)
+# via a real, individually-manageable Actions run. Replaces the legacy
+# "Deploy from a branch" Jekyll builder, whose synthetic build queue got stuck
+# and could not be cancelled (see docs/app_design.md §3 in the parent repo).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Least-privilege token scoped for Pages deployment.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; don't cancel an in-progress publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # No build step — package the checked-out tree as-is (.git is excluded
+      # automatically). No Jekyll processing under the workflow build type, so
+      # no .nojekyll file is required.
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
