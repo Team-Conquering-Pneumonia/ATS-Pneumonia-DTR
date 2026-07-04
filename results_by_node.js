@@ -71,6 +71,7 @@ let valueFilterOptions = {};  // { splitColumnName: string[] } all distinct valu
 let valueFilterDepth = {};    // { splitColumnName: {min, max} } observed depth range for the column
 let valueFilterEls = {};      // { splitColumnName: <details> element } for depth-gating updates
 let numericFilters = {};    // { fieldKey: { min: number|null, max: number|null } }
+let numericSliderEls = {};  // { fieldKey: { minRange, maxRange, readout, wrap } }
 
 // Parse a row's value for a numeric field to a Number, or null when it is
 // suppressed ("<20") or blank.
@@ -197,7 +198,10 @@ function renderBody(cols, rows) {
   tbody.appendChild(frag);
 }
 
-function visibleRows() {
+// Apply signal / depth / value / numeric filters to the current family's rows.
+// `exceptNumericKey` (optional) skips that one numeric field's bound so a
+// field's own slider does not collapse its own domain when computing it.
+function filteredRows(exceptNumericKey) {
   let rows = currentFamily.rows.slice();
 
   if (signalFilter !== "all") {
@@ -221,6 +225,7 @@ function visibleRows() {
   // Numeric range filters (suppressed/blank values are excluded when a bound
   // is active on that field).
   NUMERIC_FIELDS.forEach((f) => {
+    if (f.key === exceptNumericKey) return;
     const nf = numericFilters[f.key];
     if (!nf || (nf.min === null && nf.max === null)) return;
     rows = rows.filter((r) => {
@@ -232,6 +237,11 @@ function visibleRows() {
     });
   });
 
+  return rows;
+}
+
+function visibleRows() {
+  const rows = filteredRows();
   const cols = activeColumns();
   const sortCol = cols.find((c) => c.key === sortKey) || cols[0];
   rows.sort((a, b) => compareRows(a, b, sortCol));
@@ -372,6 +382,7 @@ function buildValueFilters(family) {
       cb.addEventListener("change", () => {
         if (cb.checked) valueFilters[col].add(v); else valueFilters[col].delete(v);
         updateValueFilterSummary(col);
+        refreshNumericDomains();
         render();
       });
       const text = document.createElement("span");
@@ -389,8 +400,120 @@ function buildValueFilters(family) {
   applyValueFilterDepthGating();
 }
 
+// --- numeric-range dual sliders --------------------------------------------
+// Each field gets a dual-handle range slider (two overlaid <input type=range>).
+// The slider's min/max reflect the domain of the CURRENTLY VISIBLE rows under
+// all OTHER filters (so a field's own bound never collapses its own domain).
+// numericFilters[key].{min,max} stay the state the visibleRows() loop reads;
+// a handle sitting at the domain edge means "no bound" (null) on that side, so
+// suppressed rows keep their current include-when-unbounded behavior.
+
+// Domain [min,max] of a numeric field over rows passing all OTHER filters.
+// Returns null when no row carries a value (field can't be filtered).
+function numericDomain(key) {
+  const rows = filteredRows(key);
+  let lo = null, hi = null;
+  rows.forEach((r) => {
+    const v = numericValue(r, key);
+    if (v === null) return;
+    if (lo === null || v < lo) lo = v;
+    if (hi === null || v > hi) hi = v;
+  });
+  return lo === null ? null : { min: lo, max: hi };
+}
+
+function sliderStep(key, span) {
+  if (key === "n") return 1;                 // counts are integers
+  if (span <= 0) return 1;
+  const s = span / 200;
+  return s > 0 ? s : "any";
+}
+
+function fmtBound(key, v) {
+  if (v === null || v === undefined) return "";
+  if (key === "n") return String(Math.round(v));
+  return (Math.round(v * 1000) / 1000).toString();
+}
+
+// Refresh one field's slider extent from its current domain, keeping any active
+// user bound that still falls inside the domain; edges map back to null (unset).
+function refreshNumericField(f) {
+  const els = numericSliderEls[f.key];
+  if (!els) return;
+  const dom = numericDomain(f.key);
+  const nf = numericFilters[f.key];
+
+  if (!dom || dom.min === dom.max) {
+    // No spread to filter on: pin the control, clear any bound.
+    const val = dom ? dom.min : 0;
+    nf.min = null; nf.max = null;
+    els.disabled = true;
+    [els.minRange, els.maxRange].forEach((r) => {
+      r.min = String(val); r.max = String(val); r.value = String(val);
+      r.disabled = true;
+    });
+    els.readout.textContent = dom ? ("= " + fmtBound(f.key, val)) : "n/a";
+    els.wrap.classList.toggle("numeric-slider--inert", true);
+    return;
+  }
+
+  els.disabled = false;
+  const step = sliderStep(f.key, dom.max - dom.min);
+  // Clamp any existing bound into the new domain; a bound at/beyond an edge
+  // becomes null (no filter).
+  let lo = nf.min === null ? dom.min : Math.max(dom.min, Math.min(nf.min, dom.max));
+  let hi = nf.max === null ? dom.max : Math.min(dom.max, Math.max(nf.max, dom.min));
+  if (lo > hi) { lo = dom.min; hi = dom.max; }
+  nf.min = lo <= dom.min ? null : lo;
+  nf.max = hi >= dom.max ? null : hi;
+
+  [els.minRange, els.maxRange].forEach((r) => {
+    r.min = String(dom.min); r.max = String(dom.max); r.step = String(step);
+    r.disabled = false;
+  });
+  els.minRange.value = String(lo);
+  els.maxRange.value = String(hi);
+  els.wrap.classList.toggle("numeric-slider--inert", false);
+  updateNumericReadout(f.key, dom);
+}
+
+function updateNumericReadout(key, dom) {
+  const els = numericSliderEls[key];
+  if (!els) return;
+  const nf = numericFilters[key];
+  const loShown = nf.min === null ? (dom ? dom.min : null) : nf.min;
+  const hiShown = nf.max === null ? (dom ? dom.max : null) : nf.max;
+  els.readout.textContent =
+    fmtBound(key, loShown) + " – " + fmtBound(key, hiShown);
+}
+
+// Recompute every field's domain (call after any filter change).
+function refreshNumericDomains() {
+  NUMERIC_FIELDS.forEach(refreshNumericField);
+}
+
+function onSliderInput(f) {
+  const els = numericSliderEls[f.key];
+  let lo = Number(els.minRange.value);
+  let hi = Number(els.maxRange.value);
+  // Keep the two handles from crossing.
+  if (lo > hi) { const t = lo; lo = hi; hi = t; }
+  const domMin = Number(els.minRange.min);
+  const domMax = Number(els.minRange.max);
+  const nf = numericFilters[f.key];
+  nf.min = lo <= domMin ? null : lo;
+  nf.max = hi >= domMax ? null : hi;
+  els.minRange.value = String(lo);
+  els.maxRange.value = String(hi);
+  updateNumericReadout(f.key, { min: domMin, max: domMax });
+  render();
+  // The change to this field can shift OTHER fields' domains.
+  NUMERIC_FIELDS.forEach((g) => { if (g.key !== f.key) refreshNumericField(g); });
+}
+
 function buildNumericFilters() {
   numericFilters = {};
+  numericSliderEls = {};
   const grid = document.getElementById("numeric-filter-grid");
   grid.innerHTML = "";
   NUMERIC_FIELDS.forEach((f) => {
@@ -403,21 +526,30 @@ function buildNumericFilters() {
     label.textContent = f.label;
     row.appendChild(label);
 
-    ["min", "max"].forEach((bound) => {
-      const inp = document.createElement("input");
-      inp.type = "number";
-      inp.step = "any";
-      inp.placeholder = bound;
-      inp.setAttribute("aria-label", f.label + " " + bound);
-      inp.addEventListener("input", (e) => {
-        const raw = e.target.value.trim();
-        numericFilters[f.key][bound] = raw === "" ? null : Number(raw);
-        render();
-      });
-      row.appendChild(inp);
-    });
+    const wrap = document.createElement("div");
+    wrap.className = "numeric-slider";
+    const minRange = document.createElement("input");
+    minRange.type = "range";
+    minRange.className = "numeric-slider-min";
+    minRange.setAttribute("aria-label", f.label + " minimum");
+    const maxRange = document.createElement("input");
+    maxRange.type = "range";
+    maxRange.className = "numeric-slider-max";
+    maxRange.setAttribute("aria-label", f.label + " maximum");
+    minRange.addEventListener("input", () => onSliderInput(f));
+    maxRange.addEventListener("input", () => onSliderInput(f));
+    wrap.appendChild(minRange);
+    wrap.appendChild(maxRange);
+    row.appendChild(wrap);
+
+    const readout = document.createElement("span");
+    readout.className = "numeric-slider-readout";
+    row.appendChild(readout);
+
     grid.appendChild(row);
+    numericSliderEls[f.key] = { minRange, maxRange, readout, wrap };
   });
+  refreshNumericDomains();
 }
 
 function resetFilters() {
@@ -473,6 +605,7 @@ function wireControls() {
   document.querySelectorAll('input[name="signal"]').forEach((r) => {
     r.addEventListener("change", (e) => {
       signalFilter = e.target.value;
+      refreshNumericDomains();
       render();
     });
   });
@@ -483,12 +616,14 @@ function wireControls() {
     minDepth = Number(e.target.value);
     if (minDepth > maxDepth) { maxDepth = minDepth; maxSel.value = String(maxDepth); }
     applyValueFilterDepthGating();
+    refreshNumericDomains();
     render();
   });
   maxSel.addEventListener("change", (e) => {
     maxDepth = Number(e.target.value);
     if (maxDepth < minDepth) { minDepth = maxDepth; minSel.value = String(minDepth); }
     applyValueFilterDepthGating();
+    refreshNumericDomains();
     render();
   });
 

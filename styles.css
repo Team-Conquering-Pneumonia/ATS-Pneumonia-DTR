@@ -786,7 +786,65 @@ select#root-value {
   padding: 0.3rem 0.2rem 0.6rem;
 }
 .numeric-filter-label { font-size: 0.82rem; }
-.numeric-filter-grid input[type="number"] { width: 5.5rem; }
+
+/* Dual-handle range slider: two overlaid <input type=range> sharing one track.
+   The inputs are click-transparent except for their thumbs, so both handles are
+   grabbable over a single visible track. Extents are set dynamically in JS from
+   the currently-visible rows. */
+.numeric-slider {
+  position: relative;
+  width: 11rem;
+  height: 1.2rem;
+}
+.numeric-slider::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 3px;
+  transform: translateY(-50%);
+  background: var(--color-border);
+  border-radius: 2px;
+}
+.numeric-slider input[type="range"] {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  margin: 0;
+  height: 1.2rem;
+  background: none;
+  pointer-events: none;   /* track is click-through; thumbs re-enabled below */
+  -webkit-appearance: none;
+  appearance: none;
+}
+.numeric-slider input[type="range"]::-webkit-slider-thumb {
+  pointer-events: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px var(--color-border);
+  cursor: pointer;
+}
+.numeric-slider input[type="range"]::-moz-range-thumb {
+  pointer-events: auto;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid white;
+  cursor: pointer;
+}
+.numeric-slider input[type="range"]::-moz-range-track { background: none; }
+.numeric-slider--inert { opacity: 0.45; }
+.numeric-slider-readout {
+  font-size: 0.78rem;
+  color: var(--color-muted, #555);
+  white-space: nowrap;
+  min-width: 6.5rem;
+}
 .reset-btn {
   padding: 0.35rem 0.7rem;
   font-size: 0.85rem;
