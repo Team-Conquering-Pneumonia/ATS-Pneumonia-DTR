@@ -703,6 +703,12 @@ select#root-value {
   border-top: 2px solid var(--color-border);
   position: static;
 }
+/* Table 1 stage-group row fills (green=Stage 2, blue=Stage 1, yellow=Other).
+   Placed after the zebra rule so they take precedence. */
+.data-table.t1 tr.stage-s2 td  { background: #e2efda; }
+.data-table.t1 tr.stage-s1 td  { background: #ddeeff; }
+.data-table.t1 tr.stage-rem td { background: #fff2cc; }
+.data-table.t1 tr.subhdr td.varname { font-weight: 600; font-style: italic; }
 
 /* Desktop: side-by-side panels */
 @media (min-width: 768px) {
