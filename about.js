@@ -5,9 +5,29 @@
  * object (viz-info.js), so the descriptions here and the Info popovers beside
  * each visual are one source. Links each visualization to its page.
  *
+ * Also loads the editable prose (caveat + overview) from about-content.html,
+ * so Barb can edit that text on GitHub without touching this file.
+ *
  * Plain script (no module syntax), matching app.js's convention.
  */
 "use strict";
+
+function loadAboutContent() {
+  var container = document.getElementById("about-content");
+  if (!container) return;
+
+  fetch("about-content.html")
+    .then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.text();
+    })
+    .then(function (html) {
+      container.innerHTML = html;
+    })
+    .catch(function () {
+      container.innerHTML = "<p>Unable to load page content.</p>";
+    });
+}
 
 // Order + destination link for each visualization block.
 var VIZ_ORDER = [
@@ -50,8 +70,13 @@ function renderVizDescriptions() {
   });
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", renderVizDescriptions);
-} else {
+function initAboutPage() {
+  loadAboutContent();
   renderVizDescriptions();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initAboutPage);
+} else {
+  initAboutPage();
 }

@@ -1,0 +1,58 @@
+<!--
+  About-page prose. Edit this file directly on GitHub to update the caveat
+  banner or the Project overview text — no other files need to change.
+  Keep the surrounding tags (<p>, <h3>, etc.) as-is; only edit the text
+  between them. Wrap emphasized words in <em>...</em> if needed.
+-->
+<p class="about-caveat" role="note">
+  <strong>Draft overview.</strong> This page was written with AI assistance and has
+  not yet been finalized by the study authors. The wording, and any preliminary
+  numbers or figures, are subject to revision.
+</p>
+
+<section class="about-section" aria-labelledby="overview-heading">
+  <h2 id="overview-heading">Project overview</h2>
+
+  <h3>Background</h3>
+  <p>
+    Empiric antibiotics — started at the time of diagnosis, before any bacterial
+    pathogen is confirmed — have long been the standard of care for
+    community-acquired pneumonia (CAP). Yet for most patients with CAP no pathogen
+    is ever identified, and the routine availability of viral testing together with
+    the experience of COVID-19 have raised the question of whether every patient
+    with pneumonia benefits from antibiotics. Direct comparative evidence to guide
+    this decision is limited, and recent American Thoracic Society (ATS) and
+    Infectious Diseases Society of America (IDSA) guidance differ on when antibiotics
+    can be safely withheld.
+  </p>
+
+  <h3>Objective</h3>
+  <p>
+    This project examines how the association between empiric antibiotics and
+    mortality varies across clinically defined patient subgroups, and compares
+    population treatment strategies: antibiotics for all patients, for none, the
+    ATS guideline-based strategy, and individualized strategies that direct
+    antibiotics toward the patients estimated to benefit.
+  </p>
+
+  <h3>Setting and methods</h3>
+  <p>
+    We studied emergency-department encounters with an initial diagnosis of
+    pneumonia and positive chest imaging at 124 U.S. Veterans Affairs medical
+    centers between 2022 and 2024 (134,916 encounters; 84.5% received antibiotics
+    within the first 24 hours; 30-day mortality was 6.5%). Using a Bayesian
+    Additive Regression Tree (BART) model with 89 patient factors, we estimated
+    each patient's probability of 30-day and 90-day mortality with versus without
+    empiric antibiotics in the first 24 hours.
+  </p>
+  <p>
+    To make the results clinically interpretable, we summarized these estimates
+    within pre-specified decision trees built from six factors chosen for their
+    clinical relevance to the antibiotic decision: pneumonia severity, severe
+    hypoxemia or shock, hypoxemia or sepsis, lung disease, other comorbidities, and
+    viral test result. Within each subgroup we report the average treatment effect
+    (ATE) of antibiotics on mortality — the difference in the probability of death
+    with versus without antibiotics — with a 95% credible interval. On this scale a
+    <em>negative</em> ATE means antibiotics are estimated to reduce mortality.
+  </p>
+</section>
