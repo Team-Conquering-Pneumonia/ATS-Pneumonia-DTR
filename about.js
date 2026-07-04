@@ -12,17 +12,32 @@
  */
 "use strict";
 
-// Appends a small robot-icon marker to `el` flagging it as AI-drafted prose.
-// Hovering the icon shows `source` (the file to edit) and the review status.
+// GitHub's /edit/<branch>/<path> URL opens its web editor directly on that
+// file (auto-forking for anyone without push access), so a reviewer can jump
+// straight from the icon to editing the source text.
+var GITHUB_EDIT_BASE =
+  "https://github.com/Team-Conquering-Pneumonia/ATS-Pneumonia-DTR/edit/main/";
+
+// Appends a small robot-icon link to `el` flagging it as AI-drafted prose.
+// `source` is the file path relative to this repo (e.g. "site/viz-info.js");
+// clicking opens that file (relative to the ATS-Pneumonia-DTR repo root, so
+// the "site/" mount prefix is stripped) in GitHub's editor in a new tab.
 function appendProseFlag(el, status, source) {
-  var flag = document.createElement("span");
+  var repoPath = source.replace(/^site\//, "");
+  var statusText = status === "approved" ? "Approved" : "Pending human review";
+
+  var flag = document.createElement("a");
   flag.className = "prose-flag";
   flag.setAttribute("data-status", status);
-  flag.setAttribute("aria-hidden", "true");
+  flag.href = GITHUB_EDIT_BASE + repoPath;
+  flag.target = "_blank";
+  flag.rel = "noopener";
   flag.textContent = "\u{1F916}"; // robot emoji
-  flag.title =
-    (status === "approved" ? "Approved" : "Pending human review") +
-    " — AI-drafted text, edit in " + source;
+  flag.title = statusText + " — click to edit " + source + " on GitHub";
+  flag.setAttribute(
+    "aria-label",
+    "Edit source (" + source + ") on GitHub — " + statusText
+  );
   el.appendChild(flag);
 }
 

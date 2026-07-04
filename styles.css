@@ -495,7 +495,8 @@ select#root-value {
   line-height: 1;
   border-radius: 50%;
   vertical-align: middle;
-  cursor: help;
+  cursor: pointer;
+  text-decoration: none;
 }
 .prose-flag[data-status="pending"] {
   background: #fef3c7;
@@ -504,6 +505,9 @@ select#root-value {
 .prose-flag[data-status="approved"] {
   background: #dcfce7;
   border: 1px solid #16a34a;
+}
+.prose-flag:hover {
+  filter: brightness(0.92);
 }
 .info-btn-inline {
   display: inline-flex;
