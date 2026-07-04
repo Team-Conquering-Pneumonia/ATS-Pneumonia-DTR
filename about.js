@@ -12,6 +12,33 @@
  */
 "use strict";
 
+// Appends a small robot-icon marker to `el` flagging it as AI-drafted prose.
+// Hovering the icon shows `source` (the file to edit) and the review status.
+function appendProseFlag(el, status, source) {
+  var flag = document.createElement("span");
+  flag.className = "prose-flag";
+  flag.setAttribute("data-status", status);
+  flag.setAttribute("aria-hidden", "true");
+  flag.textContent = "\u{1F916}"; // robot emoji
+  flag.title =
+    (status === "approved" ? "Approved" : "Pending human review") +
+    " — AI-drafted text, edit in " + source;
+  el.appendChild(flag);
+}
+
+// Scans a freshly-injected fragment for paragraphs carrying
+// data-status/data-source (see about-content.html) and flags each one.
+function flagInjectedProse(root) {
+  var nodes = root.querySelectorAll("[data-status]");
+  nodes.forEach(function (node) {
+    appendProseFlag(
+      node,
+      node.getAttribute("data-status"),
+      node.getAttribute("data-source") || "unknown file"
+    );
+  });
+}
+
 function loadAboutContent() {
   var container = document.getElementById("about-content");
   if (!container) return;
@@ -23,6 +50,7 @@ function loadAboutContent() {
     })
     .then(function (html) {
       container.innerHTML = html;
+      flagInjectedProse(container);
     })
     .catch(function () {
       container.innerHTML = "<p>Unable to load page content.</p>";
@@ -54,9 +82,10 @@ function renderVizDescriptions() {
     h3.textContent = entry.title;
     block.appendChild(h3);
 
-    (entry.detail || [entry.summary]).forEach(function (para) {
+    (entry.detail || [{ text: entry.summary }]).forEach(function (para) {
       var p = document.createElement("p");
-      p.innerHTML = para; // detail strings carry inline <em> markup
+      p.innerHTML = para.text; // detail text carries inline <em> markup
+      if (para.status) appendProseFlag(p, para.status, "site/viz-info.js");
       block.appendChild(p);
     });
 

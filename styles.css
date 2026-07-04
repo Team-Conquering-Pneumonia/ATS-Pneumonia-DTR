@@ -484,6 +484,27 @@ select#root-value {
 }
 .viz-desc h3 { margin-top: 0; }
 .viz-desc-link { font-weight: 600; font-size: 0.9rem; }
+.prose-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15em;
+  height: 1.15em;
+  margin-left: 0.35rem;
+  font-size: 0.75rem;
+  line-height: 1;
+  border-radius: 50%;
+  vertical-align: middle;
+  cursor: help;
+}
+.prose-flag[data-status="pending"] {
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+}
+.prose-flag[data-status="approved"] {
+  background: #dcfce7;
+  border: 1px solid #16a34a;
+}
 .info-btn-inline {
   display: inline-flex;
   align-items: center;

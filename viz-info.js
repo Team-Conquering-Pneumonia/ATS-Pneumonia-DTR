@@ -7,7 +7,9 @@
  *   2. The About page's "Visualizations" section (about.js reads VIZ_INFO).
  *
  * Each entry: { title, summary (1-2 sentences, shown in the popover),
- *               detail (array of HTML paragraph strings, shown on About) }.
+ *               detail (array of { text, status } — status is "pending" or
+ *               "approved"; About renders a robot icon per paragraph from
+ *               this file showing it, so edit text/status here). }.
  *
  * Voice: clinical, external audience (/voice-style). First-draft copy — the
  * About page carries the "written with AI assistance, pending author review"
@@ -27,19 +29,22 @@ window.VIZ_INFO = {
       "shows the estimated effect of empiric antibiotics on mortality within each " +
       "subgroup.",
     detail: [
-      "Each tree divides the cohort into clinically meaningful subgroups using a " +
-      "small set of factors chosen before the analysis: pneumonia severity, severe " +
-      "hypoxemia or shock, hypoxemia or sepsis, lung disease, other comorbidities, " +
-      "and viral test result. Use the depth control to reveal successive levels of " +
-      "the tree.",
-      "Inside each node, two bars show the estimated probability of death <em>with</em> " +
-      "antibiotics (orange) and <em>without</em> antibiotics (blue), along with the " +
-      "average treatment effect (ATE) — the difference in mortality between the two — " +
-      "and its 95% credible interval.",
-      "Nodes are colored by that interval: green where antibiotics are a credible " +
-      "benefit (interval entirely below zero), red where credibly harmful (entirely " +
-      "above zero), and grey where the interval crosses zero and the direction is " +
-      "uncertain.",
+      { status: "pending", text:
+        "Each tree divides the cohort into clinically meaningful subgroups using a " +
+        "small set of factors chosen before the analysis: pneumonia severity, severe " +
+        "hypoxemia or shock, hypoxemia or sepsis, lung disease, other comorbidities, " +
+        "and viral test result. Use the depth control to reveal successive levels of " +
+        "the tree." },
+      { status: "pending", text:
+        "Inside each node, two bars show the estimated probability of death <em>with</em> " +
+        "antibiotics (orange) and <em>without</em> antibiotics (blue), along with the " +
+        "average treatment effect (ATE) — the difference in mortality between the two — " +
+        "and its 95% credible interval." },
+      { status: "pending", text:
+        "Nodes are colored by that interval: green where antibiotics are a credible " +
+        "benefit (interval entirely below zero), red where credibly harmful (entirely " +
+        "above zero), and grey where the interval crosses zero and the direction is " +
+        "uncertain." },
     ],
   },
   contour: {
@@ -49,18 +54,21 @@ window.VIZ_INFO = {
       "predicted mortality with versus without antibiotics, drawn separately for each " +
       "viral test result. Points below the diagonal favor antibiotics.",
     detail: [
-      "When you select a node in the tree, this panel shows the joint posterior for " +
-      "that subgroup: predicted mortality without antibiotics on the horizontal axis " +
-      "versus predicted mortality with antibiotics on the vertical axis. Each colored " +
-      "outline is the 95% posterior region for one viral test group.",
-      "The dashed diagonal marks equal mortality under both choices. An outline below " +
-      "the diagonal favors antibiotics; above it favors withholding antibiotics.",
-      "The benefit-or-harm call on the node and in the tables comes from the ATE " +
-      "credible interval, which summarizes the treatment effect in one dimension. A " +
-      "two-dimensional region is more permissive, so an outline can cross the diagonal " +
-      "even when the ATE interval stays on one side; when they differ, use the ATE " +
-      "interval. Some deep, small severe subgroups omit viral groups with fewer than " +
-      "20 patients.",
+      { status: "pending", text:
+        "When you select a node in the tree, this panel shows the joint posterior for " +
+        "that subgroup: predicted mortality without antibiotics on the horizontal axis " +
+        "versus predicted mortality with antibiotics on the vertical axis. Each colored " +
+        "outline is the 95% posterior region for one viral test group." },
+      { status: "pending", text:
+        "The dashed diagonal marks equal mortality under both choices. An outline below " +
+        "the diagonal favors antibiotics; above it favors withholding antibiotics." },
+      { status: "pending", text:
+        "The benefit-or-harm call on the node and in the tables comes from the ATE " +
+        "credible interval, which summarizes the treatment effect in one dimension. A " +
+        "two-dimensional region is more permissive, so an outline can cross the diagonal " +
+        "even when the ATE interval stays on one side; when they differ, use the ATE " +
+        "interval. Some deep, small severe subgroups omit viral groups with fewer than " +
+        "20 patients." },
     ],
   },
   table1: {
@@ -69,10 +77,11 @@ window.VIZ_INFO = {
       "Baseline characteristics of the study cohort of emergency-department pneumonia " +
       "encounters across 120 VA medical centers, overall and by antibiotic treatment.",
     detail: [
-      "Table 1 describes the study population: emergency-department encounters with an " +
-      "initial diagnosis of pneumonia and positive chest imaging across 120 U.S. " +
-      "Veterans Affairs medical centers, 2022–2024. Characteristics are shown overall " +
-      "and by whether empiric antibiotics were given in the first 24 hours.",
+      { status: "pending", text:
+        "Table 1 describes the study population: emergency-department encounters with an " +
+        "initial diagnosis of pneumonia and positive chest imaging across 120 U.S. " +
+        "Veterans Affairs medical centers, 2022–2024. Characteristics are shown overall " +
+        "and by whether empiric antibiotics were given in the first 24 hours." },
     ],
   },
   table2: {
@@ -81,12 +90,13 @@ window.VIZ_INFO = {
       "Estimated population mortality and antibiotic use under five treatment " +
       "strategies, for 30- and 90-day mortality.",
     detail: [
-      "Table 2 compares five population strategies for empiric antibiotics: give to " +
-      "all, give to none, follow the ATS 2025 guideline, and two individualized " +
-      "strategies that give antibiotics only where the model estimates benefit. For " +
-      "each strategy and mortality window it reports the estimated population " +
-      "mortality with a 95% credible interval and the fraction of patients who would " +
-      "receive antibiotics.",
+      { status: "pending", text:
+        "Table 2 compares five population strategies for empiric antibiotics: give to " +
+        "all, give to none, follow the ATS 2025 guideline, and two individualized " +
+        "strategies that give antibiotics only where the model estimates benefit. For " +
+        "each strategy and mortality window it reports the estimated population " +
+        "mortality with a 95% credible interval and the fraction of patients who would " +
+        "receive antibiotics." },
     ],
   },
   report: {
@@ -96,14 +106,16 @@ window.VIZ_INFO = {
       "with observed and model-estimated mortality, antibiotic use, and the antibiotic " +
       "treatment effect (ATE) with its 95% credible interval.",
     detail: [
-      "The Report view lists every subgroup in a selected tree as a row, so you can " +
-      "sort and filter across the whole tree. Each row carries the full covariate path " +
-      "to the subgroup, its size, the observed antibiotic use and mortality, the " +
-      "model-estimated mortality with and without antibiotics, and the ATE with its " +
-      "95% credible interval.",
-      "The Signal column flags whether antibiotics are a credible benefit, credible " +
-      "harm, or inconclusive for each subgroup. Cells showing “&lt;20” are suppressed " +
-      "under VA small-cell rules.",
+      { status: "pending", text:
+        "The Report view lists every subgroup in a selected tree as a row, so you can " +
+        "sort and filter across the whole tree. Each row carries the full covariate path " +
+        "to the subgroup, its size, the observed antibiotic use and mortality, the " +
+        "model-estimated mortality with and without antibiotics, and the ATE with its " +
+        "95% credible interval." },
+      { status: "pending", text:
+        "The Signal column flags whether antibiotics are a credible benefit, credible " +
+        "harm, or inconclusive for each subgroup. Cells showing “&lt;20” are suppressed " +
+        "under VA small-cell rules." },
     ],
   },
 };
