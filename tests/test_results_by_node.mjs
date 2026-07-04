@@ -99,21 +99,54 @@ await (async () => {
   await new Promise((r) => setTimeout(r, 50));
   const t = globalThis.__t;
 
-  check("data loaded: 16 families / 750 nodes",
-        t.DATA && t.DATA.families.length === 16 && t.DATA.n_nodes === 750,
+  check("data loaded: 4 families / 750 nodes",
+        t.DATA && t.DATA.families.length === 4 && t.DATA.n_nodes === 750,
         `families=${t.DATA?.families?.length} nodes=${t.DATA?.n_nodes}`);
 
+  const severity30 = t.DATA.families.find((f) => f.key === "30day_severity");
+  const rootValues = new Set((severity30?.rows || []).map((r) => r.splits?.["Severity (root)"]));
+  check("Merged severity roots include Mild/Moderate/Severe",
+        ["Mild", "Moderate", "Severe"].every((v) => rootValues.has(v)),
+        `values=${Array.from(rootValues).join(",")}`);
+
+  let duplicateFamilies = [];
+  for (const fam of t.DATA.families) {
+    const ids = fam.rows.map((r) => r.node_id);
+    if (new Set(ids).size !== ids.length) duplicateFamilies.push(fam.key);
+  }
+  check("Merged families have unique node IDs",
+        duplicateFamilies.length === 0,
+        `duplicates=${duplicateFamilies.join(",") || "none"}`);
+
+  const mildDepths = (severity30?.rows || [])
+    .filter((r) => r.splits?.["Severity (root)"] === "Mild")
+    .map((r) => r.depth);
+  const moderateDepths = (severity30?.rows || [])
+    .filter((r) => r.splits?.["Severity (root)"] === "Moderate")
+    .map((r) => r.depth);
+  const severeDepths = (severity30?.rows || [])
+    .filter((r) => r.splits?.["Severity (root)"] === "Severe")
+    .map((r) => r.depth);
+  check("Severity canonical depth gaps are preserved",
+        mildDepths.length > 0 &&
+          mildDepths.every((d) => [0, 3, 4, 5].includes(d)) &&
+          moderateDepths.every((d) => d !== 1) &&
+          severeDepths.every((d) => d !== 2),
+        `mild=${Array.from(new Set(mildDepths)).sort().join(",")} ` +
+          `moderate=${Array.from(new Set(moderateDepths)).sort().join(",")} ` +
+          `severe=${Array.from(new Set(severeDepths)).sort().join(",")}`);
+
   // Interaction 1: family selector changes the rows.
-  t.setFamily("30day_moderate");
-  const modRows = t.visibleRows().length;
-  t.setFamily("30day_mild");
-  const mildRows = t.visibleRows().length;
+  t.setFamily("30day_severity");
+  const severityRows = t.visibleRows().length;
+  t.setFamily("30day_virus");
+  const virusRows = t.visibleRows().length;
   check("Interaction 1 — family selector changes row count",
-        modRows !== mildRows && modRows > 0 && mildRows > 0,
-        `30day_moderate=${modRows} rows, 30day_mild=${mildRows} rows`);
+        severityRows !== virusRows && severityRows > 0 && virusRows > 0,
+        `30day_severity=${severityRows} rows, 30day_virus=${virusRows} rows`);
 
   // Interaction 2: Signal filter narrows the rows.
-  t.setFamily("30day_moderate");
+  t.setFamily("30day_severity");
   const allRows = t.visibleRows().length;
   radios.find((r) => r._value === "Benefit").fire("change", { target: { value: "Benefit" } });
   const benRows = t.visibleRows().length;

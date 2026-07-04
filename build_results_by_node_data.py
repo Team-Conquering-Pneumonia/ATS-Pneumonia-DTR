@@ -4,8 +4,8 @@ build_results_by_node_data.py
 
 Generate site/results_by_node.json, the data file behind the browsable
 per-node results table page. This is the T3.5 static workbook made browsable:
-16 tree families (3 severity-rooted + 5 virus-rooted families x 2 mortality
-windows), one row per node, with VA <20 small-cell suppression mirrored.
+4 merged tree-family views (Severity + Virus axes x 2 mortality windows),
+one row per node, with VA <20 small-cell suppression mirrored.
 
 Source of record: run-20260702 VINCI export only (D-BR-01). The builder reads
 the export-native contracts created by code/R/build_ate_summary_from_export.R:
@@ -92,6 +92,14 @@ VAR_HEADER = {
     "comorbidities_not_cpd": "Other comorbidities",
     "virus": "Virus",
 }
+VAR_BY_HEADER = {label: var for var, label in VAR_HEADER.items()}
+SEVERITY_CANONICAL_VARS = [
+    "severe_hypoxemia_shock",
+    "hypoxemia_sepsis",
+    "lung_comorbidities",
+    "comorbidities_not_cpd",
+    "virus",
+]
 
 SUPP = "<20"
 
@@ -229,20 +237,89 @@ def build_family(rows, win, stratum):
     }
 
 
+def merge_severity_families(rows, win):
+    merged_rows = []
+    canonical_depth = {
+        var: idx + 1 for idx, var in enumerate(SEVERITY_CANONICAL_VARS)
+    }
+    for stratum in SEVERITY_STRATA:
+        fam = build_family(rows, win, stratum)
+        present = []
+        for label in fam["split_columns"]:
+            if label not in VAR_BY_HEADER:
+                sys.exit("Cannot reverse-map split column label: %s" % label)
+            present.append(VAR_BY_HEADER[label])
+
+        for row in fam["rows"]:
+            depth = row["depth"]
+            if depth > 0:
+                if depth > len(present):
+                    sys.exit("Family %s row depth %d exceeds split columns" %
+                             (fam["key"], depth))
+                var = present[depth - 1]
+                if var not in canonical_depth:
+                    sys.exit("No severity canonical depth for variable: %s" % var)
+                row["depth"] = canonical_depth[var]
+            row["splits"]["Severity (root)"] = STRATUM_LABEL[stratum]
+            merged_rows.append(row)
+
+    for node_idx, row in enumerate(merged_rows, start=1):
+        row["node_id"] = node_idx
+
+    return {
+        "key": "%s_severity" % win,
+        "window": win,
+        "stratum": "severity",
+        "label": "Severity - %s" % WINDOW_LABEL[win],
+        "split_columns": [VAR_HEADER[var] for var in SEVERITY_CANONICAL_VARS],
+        "root_column": "Severity (root)",
+        "rows": merged_rows,
+    }
+
+
+def merge_virus_families(rows, win):
+    merged_rows = []
+    split_columns = None
+    for stratum in VIRUS_STRATA:
+        fam = build_family(rows, win, stratum)
+        if split_columns is None:
+            split_columns = fam["split_columns"]
+        elif fam["split_columns"] != split_columns:
+            sys.exit("Virus split-column mismatch for %s: %r != %r" %
+                     (fam["key"], fam["split_columns"], split_columns))
+
+        for row in fam["rows"]:
+            row["splits"]["Virus (root)"] = STRATUM_LABEL[stratum]
+            merged_rows.append(row)
+
+    for node_idx, row in enumerate(merged_rows, start=1):
+        row["node_id"] = node_idx
+
+    return {
+        "key": "%s_virus" % win,
+        "window": win,
+        "stratum": "virus",
+        "label": "Virus - %s" % WINDOW_LABEL[win],
+        "split_columns": split_columns or [],
+        "root_column": "Virus (root)",
+        "rows": merged_rows,
+    }
+
+
 def depth0_n(families, strata):
     total = 0
     for fam in families:
         if fam["stratum"] not in strata:
             continue
         roots = [row for row in fam["rows"] if row["depth"] == 0]
-        if len(roots) != 1:
-            sys.exit("Family %s has %d depth-0 roots; expected 1" %
-                     (fam["key"], len(roots)))
-        try:
-            total += int(roots[0]["n"])
-        except ValueError:
-            sys.exit("Family %s depth-0 n is not an integer: %r" %
-                     (fam["key"], roots[0]["n"]))
+        if not roots:
+            sys.exit("Family %s has no depth-0 roots" % fam["key"])
+        for root in roots:
+            try:
+                total += int(root["n"])
+            except ValueError:
+                sys.exit("Family %s depth-0 n is not an integer: %r" %
+                         (fam["key"], root["n"]))
     return total
 
 
@@ -253,17 +330,15 @@ def main():
     families = []
     total_nodes = 0
     for win in WINDOWS:
-        for stratum in SEVERITY_STRATA:
-            fam = build_family(severity_rows, win, stratum)
-            families.append(fam)
-            total_nodes += len(fam["rows"])
-        for stratum in VIRUS_STRATA:
-            fam = build_family(virus_rows, win, stratum)
+        for fam in (
+            merge_severity_families(severity_rows, win),
+            merge_virus_families(virus_rows, win),
+        ):
             families.append(fam)
             total_nodes += len(fam["rows"])
 
-    severity_n = depth0_n(families, SEVERITY_STRATA)
-    virus_n = depth0_n(families, VIRUS_STRATA)
+    severity_n = depth0_n(families, ["severity"])
+    virus_n = depth0_n(families, ["virus"])
     if severity_n != virus_n:
         sys.exit("Depth-0 cohort mismatch: severity=%d virus=%d" %
                  (severity_n, virus_n))

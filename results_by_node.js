@@ -4,7 +4,7 @@
  * Browsable per-node results table (Track C). Consumes results_by_node.json
  * (produced by build_results_by_node_data.py, which mirrors the T3.5 static
  * workbook builder code/R/build_static_results_workbook.R). One row per node
- * across 16 export-native tree families; sort any column; filter by tree family and by
+ * across 4 merged export-native tree-family views; sort any column; filter by tree family and by
  * Signal (Benefit/Harm/Inconclusive). VA <20 small-cell suppression is mirrored
  * exactly from the data file: fully suppressed nodes show N = "<20" with blank
  * estimates; suppressed observed mortality is blank and suppressed observed
@@ -84,10 +84,15 @@ function fmtCell(row, col) {
 
 // Build the active column list for the current family (fixed + split + tail).
 function activeColumns() {
+  const rootCol = currentFamily.root_column ? [{
+    key: "split:" + currentFamily.root_column,
+    label: currentFamily.root_column,
+    type: "str",
+  }] : [];
   const splitCols = (currentFamily.split_columns || []).map((name) => ({
     key: "split:" + name, label: name, type: "str",
   }));
-  return FIXED_COLS.concat(splitCols, TAIL_COLS);
+  return FIXED_COLS.concat(rootCol, splitCols, TAIL_COLS);
 }
 
 // Read a sort value for a row + column key. Split columns live in row.splits.
@@ -241,8 +246,9 @@ function render() {
 // the split column that defines nodes at that depth.
 function depthLevels(family) {
   const maxD = family.rows.reduce((m, r) => Math.max(m, r.depth || 0), 0);
-  const rootRow = family.rows.find((r) => r.depth === 0);
-  const rootName = (rootRow && (rootRow.path || rootRow.label)) || "Root";
+  const rootRows = family.rows.filter((r) => r.depth === 0);
+  const rootName = rootRows.length === 1 ?
+    ((rootRows[0].path || rootRows[0].label) || "Root") : "Root";
   const splitCols = family.split_columns || [];
   const levels = [];
   for (let d = 0; d <= maxD; d++) {
@@ -325,7 +331,9 @@ function buildValueFilters(family) {
   valueFilterEls = {};
   const container = document.getElementById("value-filters");
   container.innerHTML = "";
-  (family.split_columns || []).forEach((col) => {
+  const filterColumns = (family.root_column ? [family.root_column] : [])
+    .concat(family.split_columns || []);
+  filterColumns.forEach((col) => {
     const values = valuesForColumn(family, col);
     if (!values.length) return;
     valueFilterOptions[col] = values;
