@@ -450,9 +450,11 @@ function setMissingContour(message) {
 function contourByvirusTableHtml(byVirus) {
   if (!Array.isArray(byVirus) || byVirus.length === 0) return "";
   const rows = byVirus.map(row => {
-    const ate = typeof row.ate === "number" ? row.ate : null;
-    const rowClass = ate < 0 ? "row-benefit" : (ate > 0 ? "row-harm" : "");
-    const ateClass = ate < 0 ? "ate-benefit" : (ate > 0 ? "ate-harm" : "");
+    const lo = typeof row.ate_ci_lower === "number" ? row.ate_ci_lower : null;
+    const hi = typeof row.ate_ci_upper === "number" ? row.ate_ci_upper : null;
+    const signal = (lo == null || hi == null) ? "" : (hi < 0 ? "Benefit" : (lo > 0 ? "Harm" : "Inconclusive"));
+    const rowClass = signal === "Benefit" ? "row-benefit" : (signal === "Harm" ? "row-harm" : "");
+    const ateClass = signal === "Benefit" ? "ate-benefit" : (signal === "Harm" ? "ate-harm" : "");
     const ci = row.ate_ci_lower != null && row.ate_ci_upper != null
       ? `${fmtAte(row.ate_ci_lower)} to ${fmtAte(row.ate_ci_upper)}`
       : "—";

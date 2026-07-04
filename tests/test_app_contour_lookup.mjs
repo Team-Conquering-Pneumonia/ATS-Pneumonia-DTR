@@ -99,6 +99,20 @@ check("missing by_virus renders no table",
         api.contourByvirusTableHtml([]) === "",
       "empty html for absent/empty by_virus");
 
+const shadingRows = [
+  { virus: "CI excludes 0 (benefit)", n: 1, ate: -0.02, ate_ci_lower: -0.04, ate_ci_upper: -0.01 },
+  { virus: "CI crosses 0, negative point est", n: 1, ate: -0.02, ate_ci_lower: -0.04, ate_ci_upper: 0.01 },
+  { virus: "CI excludes 0 (harm)", n: 1, ate: 0.02, ate_ci_lower: 0.01, ate_ci_upper: 0.04 },
+];
+const shadingHtml = api.contourByvirusTableHtml(shadingRows);
+const shadingRowTags = shadingHtml.match(/<tr class="[^"]*">/g) || [];
+check("by-virus row shading follows CI-crosses-zero, not point-estimate sign",
+      shadingRowTags.length === 3 &&
+        shadingRowTags[0] === '<tr class="row-benefit">' &&
+        shadingRowTags[1] === '<tr class="">' &&
+        shadingRowTags[2] === '<tr class="row-harm">',
+      `rows=${JSON.stringify(shadingRowTags)}`);
+
 // --- exhaustive sweep: every node of every severity tree, both outcomes ---
 let total = 0, found = 0;
 const misses = [];
