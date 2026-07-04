@@ -737,15 +737,33 @@ select#root-value {
 .value-filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem 0.75rem;
+  gap: 0.4rem 0.5rem;
 }
 .value-filter {
-  display: inline-flex;
+  font-size: 0.78rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: white;
+  padding: 0 0.4rem;
+  align-self: flex-start;
+}
+.value-filter-summary {
+  cursor: pointer;
+  padding: 0.3rem 0.15rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+.value-filter-options {
+  display: flex;
   flex-direction: column;
   gap: 0.15rem;
-  font-size: 0.78rem;
+  padding: 0.2rem 0.15rem 0.4rem;
+  max-height: 12rem;
+  overflow-y: auto;
 }
-.value-filter-label { color: var(--color-muted); }
+.value-filter-option { display: flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
+.value-filter--out-of-range { opacity: 0.4; }
+.value-filter--out-of-range .value-filter-summary { cursor: not-allowed; }
 .numeric-filters {
   font-size: 0.85rem;
   border: 1px solid var(--color-border);
@@ -799,20 +817,17 @@ select#root-value {
 .data-table.results-by-node thead th.sort-asc::after  { content: " \25B2"; font-size: 0.7em; }
 .data-table.results-by-node thead th.sort-desc::after { content: " \25BC"; font-size: 0.7em; }
 
-/* ATE benefit/harm shading — matches the T3.5 workbook palette. */
-.data-table.results-by-node td.ate-benefit {
-  background: #d6efdc;
-  color: #1e6b3a;
-  font-weight: 600;
-}
-.data-table.results-by-node td.ate-harm {
-  background: #fadbd8;
-  color: #922b21;
-  font-weight: 600;
-}
-/* Keep ATE shading visible over zebra striping. */
-.data-table.results-by-node tbody tr:nth-child(even) td.ate-benefit { background: #d6efdc; }
-.data-table.results-by-node tbody tr:nth-child(even) td.ate-harm    { background: #fadbd8; }
+/* Benefit/harm shading — matches the T3.5 workbook palette, applied across
+   the full row (driven by the Signal column) so scanning is easier; the ATE
+   cell itself also gets bold text for emphasis. */
+.data-table.results-by-node tr.row-benefit td { background: #d6efdc; }
+.data-table.results-by-node tr.row-harm td    { background: #fadbd8; }
+/* Keep shading visible over zebra striping. */
+.data-table.results-by-node tbody tr:nth-child(even).row-benefit td { background: #d6efdc; }
+.data-table.results-by-node tbody tr:nth-child(even).row-harm td    { background: #fadbd8; }
+
+.data-table.results-by-node td.ate-benefit { color: #1e6b3a; font-weight: 600; }
+.data-table.results-by-node td.ate-harm    { color: #922b21; font-weight: 600; }
 
 .data-table.results-by-node td.cell-suppressed,
 .data-table.results-by-node tr.row-suppressed td {

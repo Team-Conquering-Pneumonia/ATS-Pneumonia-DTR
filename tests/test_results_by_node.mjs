@@ -30,6 +30,11 @@ function makeEl(tag) {
       add(...c) { c.forEach((x) => this._set.add(x)); },
       remove(...c) { c.forEach((x) => this._set.delete(x)); },
       contains(c) { return this._set.has(c); },
+      toggle(c, force) {
+        const on = force !== undefined ? force : !this._set.has(c);
+        if (on) this._set.add(c); else this._set.delete(c);
+        return on;
+      },
       _set: new Set(),
     },
     set textContent(v) { this._text = v == null ? "" : String(v); this.children = []; },

@@ -56,7 +56,10 @@ let sortDir = 1;            // 1 = asc, -1 = desc
 // Dynamic filter state, reset per family.
 let minDepth = 0;
 let maxDepth = 0;
-let valueFilters = {};      // { splitColumnName: selectedValue }  ("" = all)
+let valueFilters = {};        // { splitColumnName: Set<string> of checked values }
+let valueFilterOptions = {};  // { splitColumnName: string[] } all distinct values for the column
+let valueFilterDepth = {};    // { splitColumnName: {min, max} } observed depth range for the column
+let valueFilterEls = {};      // { splitColumnName: <details> element } for depth-gating updates
 let numericFilters = {};    // { fieldKey: { min: number|null, max: number|null } }
 
 // Parse a row's value for a numeric field to a Number, or null when it is
@@ -143,6 +146,8 @@ function renderBody(cols, rows) {
   rows.forEach((row) => {
     const tr = document.createElement("tr");
     if (row.suppressed) tr.classList.add("row-suppressed");
+    if (row.signal === "Benefit") tr.classList.add("row-benefit");
+    else if (row.signal === "Harm") tr.classList.add("row-harm");
     cols.forEach((col) => {
       const td = document.createElement("td");
       if (col.key.startsWith("split:")) {
@@ -187,10 +192,14 @@ function visibleRows() {
   rows = rows.filter((r) => r.depth >= minDepth && r.depth <= maxDepth);
 
   // Per-split-column value filters (match the node's ancestor path value).
+  // A column filters only when it's not fully checked (fully checked = "all",
+  // no filtering). Blank/undefined splits (row hasn't reached this column)
+  // never match an active filter, same as before multi-select.
   Object.keys(valueFilters).forEach((col) => {
-    const val = valueFilters[col];
-    if (!val) return;
-    rows = rows.filter((r) => r.splits && r.splits[col] === val);
+    const selected = valueFilters[col];
+    const total = (valueFilterOptions[col] || []).length;
+    if (!selected || selected.size === total) return;
+    rows = rows.filter((r) => r.splits && selected.has(r.splits[col]));
   });
 
   // Numeric range filters (suppressed/blank values are excluded when a bound
@@ -222,7 +231,7 @@ function render() {
     rows.length + " / " + currentFamily.rows.length + " nodes";
   document.getElementById("table-foot").textContent =
     "Showing tree family “" + currentFamily.label + "”. " +
-    "Cells showing “<20” are VA small-cell suppressed. ATE shaded green = " +
+    "Cells showing “<20” are VA small-cell suppressed. Rows shaded green = " +
     "credible benefit (95% CI below 0), red = credible harm (CI above 0).";
 }
 
@@ -274,40 +283,90 @@ function valuesForColumn(family, col) {
   return seen;
 }
 
+// Observed [min, max] row depth at which a split column carries a value.
+// Used to gray out a column's filter once it falls outside [minDepth, maxDepth].
+function depthRangeForColumn(family, col) {
+  let lo = null, hi = null;
+  family.rows.forEach((r) => {
+    if (r.splits && r.splits[col] != null && r.splits[col] !== "") {
+      if (lo === null || r.depth < lo) lo = r.depth;
+      if (hi === null || r.depth > hi) hi = r.depth;
+    }
+  });
+  return { min: lo, max: hi };
+}
+
+function updateValueFilterSummary(col) {
+  const el = valueFilterEls[col];
+  if (!el) return;
+  const total = valueFilterOptions[col].length;
+  const n = valueFilters[col].size;
+  el.summary.textContent = col + (n === total ? " (all)" : " (" + n + "/" + total + ")");
+}
+
+// Gray out (disable) value-filter groups whose column has no row within the
+// current [minDepth, maxDepth] range. State is preserved, not reset, so
+// widening the depth range later restores the prior selection.
+function applyValueFilterDepthGating() {
+  Object.keys(valueFilterEls).forEach((col) => {
+    const range = valueFilterDepth[col];
+    const inRange = range && range.min !== null &&
+      range.max >= minDepth && range.min <= maxDepth;
+    const el = valueFilterEls[col];
+    el.details.classList.toggle("value-filter--out-of-range", !inRange);
+    el.checkboxes.forEach((cb) => { cb.disabled = !inRange; });
+  });
+}
+
 function buildValueFilters(family) {
   valueFilters = {};
+  valueFilterOptions = {};
+  valueFilterDepth = {};
+  valueFilterEls = {};
   const container = document.getElementById("value-filters");
   container.innerHTML = "";
   (family.split_columns || []).forEach((col) => {
     const values = valuesForColumn(family, col);
     if (!values.length) return;
-    valueFilters[col] = "";
+    valueFilterOptions[col] = values;
+    valueFilters[col] = new Set(values); // default: all checked = no filter
+    valueFilterDepth[col] = depthRangeForColumn(family, col);
 
-    const wrap = document.createElement("label");
-    wrap.className = "value-filter";
-    const span = document.createElement("span");
-    span.className = "value-filter-label";
-    span.textContent = col;
-    const sel = document.createElement("select");
-    sel.setAttribute("aria-label", col + " value filter");
-    const allOpt = document.createElement("option");
-    allOpt.value = "";
-    allOpt.textContent = "(all)";
-    sel.appendChild(allOpt);
+    const details = document.createElement("details");
+    details.className = "value-filter";
+    const summary = document.createElement("summary");
+    summary.className = "value-filter-summary";
+    details.appendChild(summary);
+
+    const list = document.createElement("div");
+    list.className = "value-filter-options";
+    const checkboxes = [];
     values.forEach((v) => {
-      const opt = document.createElement("option");
-      opt.value = v;
-      opt.textContent = v;
-      sel.appendChild(opt);
+      const label = document.createElement("label");
+      label.className = "value-filter-option";
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.checked = true;
+      cb.value = v;
+      cb.setAttribute("aria-label", col + ": " + v);
+      cb.addEventListener("change", () => {
+        if (cb.checked) valueFilters[col].add(v); else valueFilters[col].delete(v);
+        updateValueFilterSummary(col);
+        render();
+      });
+      const text = document.createElement("span");
+      text.textContent = " " + v;
+      label.appendChild(cb);
+      label.appendChild(text);
+      list.appendChild(label);
+      checkboxes.push(cb);
     });
-    sel.addEventListener("change", (e) => {
-      valueFilters[col] = e.target.value;
-      render();
-    });
-    wrap.appendChild(span);
-    wrap.appendChild(sel);
-    container.appendChild(wrap);
+    details.appendChild(list);
+    container.appendChild(details);
+    valueFilterEls[col] = { details: details, summary: summary, checkboxes: checkboxes };
+    updateValueFilterSummary(col);
   });
+  applyValueFilterDepthGating();
 }
 
 function buildNumericFilters() {
@@ -403,11 +462,13 @@ function wireControls() {
   minSel.addEventListener("change", (e) => {
     minDepth = Number(e.target.value);
     if (minDepth > maxDepth) { maxDepth = minDepth; maxSel.value = String(maxDepth); }
+    applyValueFilterDepthGating();
     render();
   });
   maxSel.addEventListener("change", (e) => {
     maxDepth = Number(e.target.value);
     if (maxDepth < minDepth) { minDepth = maxDepth; minSel.value = String(minDepth); }
+    applyValueFilterDepthGating();
     render();
   });
 
