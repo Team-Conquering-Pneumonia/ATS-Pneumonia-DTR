@@ -389,16 +389,6 @@ select#root-value {
   font-variant-numeric: tabular-nums;
 }
 .contour-meta .meta-key { color: var(--color-muted); margin-right: 0.25rem; }
-.contour-caveat {
-  margin-top: 0.5rem;
-  padding: 0.5rem 0.7rem;
-  font-size: 0.82rem;
-  line-height: 1.4;
-  background: var(--color-card);
-  border-left: 3px solid var(--color-uncertain);
-  border-radius: var(--radius);
-}
-.contour-caveat strong { font-weight: 600; }
 
 /* Zoom control cluster, corner-anchored */
 .zoom-controls {
@@ -573,8 +563,6 @@ select#root-value {
   font-weight: 700;
   margin-bottom: 0.25rem;
 }
-/* Flip to the right edge when the button sits near the right of the viewport. */
-.info-anchor.flip-right .info-popover { left: auto; right: 0; }
 
 /* Loading spinner */
 .loading-spinner {

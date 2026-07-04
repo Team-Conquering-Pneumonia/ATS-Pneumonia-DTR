@@ -162,15 +162,20 @@ window.initInfoButtons = function initInfoButtons() {
 
     function show() {
       if (openPopover && openPopover.el !== pop) closeOpen();
-      wrap.classList.remove("flip-right");
+      pop.style.left = "0px";
       pop.classList.add("visible");
       btn.setAttribute("aria-expanded", "true");
       openPopover = { el: pop, btn };
-      // Flip to the right edge if the popover would overflow the viewport.
-      const r = pop.getBoundingClientRect();
-      if (r.right > document.documentElement.clientWidth - 4) {
-        wrap.classList.add("flip-right");
-      }
+      // Clamp horizontally so the popover stays within the viewport on
+      // either edge (narrow/mobile viewports can overflow left as easily
+      // as right once the anchor sits near the edge).
+      const margin = 8;
+      const wrapRect = wrap.getBoundingClientRect();
+      const width = pop.getBoundingClientRect().width;
+      const viewportWidth = document.documentElement.clientWidth;
+      const maxLeft = viewportWidth - margin - width;
+      const desiredLeft = Math.min(Math.max(wrapRect.left, margin), Math.max(maxLeft, margin));
+      pop.style.left = `${desiredLeft - wrapRect.left}px`;
     }
     function hide() {
       pop.classList.remove("visible");

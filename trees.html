@@ -108,7 +108,7 @@
     <section class="tree-panel" aria-label="Decision tree">
       <header class="panel-header">
         <span class="panel-title">Decision tree</span>
-        <button type="button" class="info-btn" data-info="tree">Info</button>
+        <button type="button" class="info-btn" data-info="tree"></button>
       </header>
       <div class="image-wrapper zoom-wrapper" id="tree-wrapper">
         <div class="tree-stage" id="tree-stage">
@@ -127,7 +127,7 @@
     <section class="contour-panel" aria-label="Contour for selected node">
       <header class="contour-header">
         <div class="contour-breadcrumb" id="contour-breadcrumb" aria-live="polite">&nbsp;</div>
-        <button type="button" class="info-btn" data-info="contour">Info</button>
+        <button type="button" class="info-btn" data-info="contour"></button>
       </header>
       <div class="image-wrapper zoom-wrapper" id="contour-wrapper">
         <img id="contour-img" alt="Contour overlay" />
@@ -139,18 +139,6 @@
         </div>
       </div>
       <div class="contour-meta" id="contour-meta"></div>
-      <aside class="contour-caveat" aria-label="About the contour plots">
-        <strong>About these per-virus contours.</strong>
-        Each colored outline shows the 95% posterior region for one virus group in this node,
-        comparing predicted mortality with antibiotics to predicted mortality without antibiotics.
-        Points below the diagonal favor antibiotics; points above it favor no antibiotics.
-        The treatment signal on the node and in the table comes from the ATE 95% credible interval.
-        The outline is a two-dimensional uncertainty region, so it can cross the diagonal even when
-        the ATE interval stays on one side. When those differ, use the ATE interval as the
-        benefit/harm call; the contour is showing the fuller joint uncertainty. Some deep severe
-        nodes omit virus groups with fewer than 20 patients. Contours are shown for the virus groups
-        available in the export.
-      </aside>
       <p class="tap-hint">Pinch or scroll to zoom.</p>
     </section>
   </main>
@@ -159,7 +147,7 @@
   <section class="static-panel" id="static-panel" aria-label="Static integrated tree figure" hidden>
     <header class="panel-header">
       <span class="panel-title">Integrated tree + contour figure</span>
-      <button type="button" class="info-btn" data-info="tree">Info</button>
+      <button type="button" class="info-btn" data-info="tree"></button>
     </header>
     <div class="image-wrapper" id="static-wrapper">
       <img id="static-img" alt="Integrated decision tree and contour figure" />
