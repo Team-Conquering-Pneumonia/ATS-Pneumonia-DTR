@@ -447,6 +447,43 @@ function setMissingContour(message) {
   wrapper.appendChild(fb);
 }
 
+function contourByvirusTableHtml(byVirus) {
+  if (!Array.isArray(byVirus) || byVirus.length === 0) return "";
+  const rows = byVirus.map(row => {
+    const ate = typeof row.ate === "number" ? row.ate : null;
+    const rowClass = ate < 0 ? "row-benefit" : (ate > 0 ? "row-harm" : "");
+    const ateClass = ate < 0 ? "ate-benefit" : (ate > 0 ? "ate-harm" : "");
+    const ci = row.ate_ci_lower != null && row.ate_ci_upper != null
+      ? `${fmtAte(row.ate_ci_lower)} to ${fmtAte(row.ate_ci_upper)}`
+      : "—";
+    return `
+      <tr class="${rowClass}">
+        <td class="varname">${escapeHtml(row.virus)}</td>
+        <td>${fmtN(row.n)}</td>
+        <td class="${ateClass}">${fmtAte(row.ate)}</td>
+        <td class="ci">${ci}</td>
+      </tr>`;
+  }).join("");
+  return `
+    <div class="table-scroll">
+      <table class="data-table results-by-node" aria-label="Per-virus ATE estimates for selected node">
+        <thead>
+          <tr><th>Virus</th><th>N</th><th>ATE</th><th>95% CI</th></tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    <p class="table-foot">Model-based posterior ATE estimates per virus subgroup; 95% credible intervals use the same draw scale as the pooled node above.</p>`;
+}
+
+function renderContourByvirusTable(idxEntry) {
+  const table = document.getElementById("contour-byvirus-table");
+  if (!table) return;
+  const html = contourByvirusTableHtml(idxEntry && idxEntry.by_virus);
+  table.innerHTML = html;
+  table.hidden = html === "";
+}
+
 // --- selection -------------------------------------------------------------
 
 function selectNode(slug) {
@@ -482,6 +519,7 @@ function renderContourPanel() {
   if (!slug) {
     breadcrumb.textContent = "";
     meta.innerHTML = "";
+    renderContourByvirusTable(null);
     img.style.display = "none";
     return;
   }
@@ -502,6 +540,7 @@ function renderContourPanel() {
     ci != null ? `<span><span class="meta-key">95% CI</span>${ci}</span>` : "",
     viruses != null ? `<span><span class="meta-key">Viruses</span>${escapeHtml(viruses)}</span>` : ""
   ].filter(Boolean).join("");
+  renderContourByvirusTable(idxEntry);
 
   if (!idxEntry || !idxEntry.image) {
     setMissingContour(
@@ -859,6 +898,7 @@ if (typeof globalThis !== "undefined") {
     familyKey,
     matchingResultRow,
     contourEntryForNode,
+    contourByvirusTableHtml,
     currentNodes,
     maxDepth,
   };

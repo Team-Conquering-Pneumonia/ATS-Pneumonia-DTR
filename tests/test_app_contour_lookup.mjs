@@ -57,6 +57,15 @@ const results = [];
 function check(name, cond, detail) {
   results.push({ name, pass: !!cond, detail });
 }
+function fmtAteLocal(v) {
+  if (typeof v !== "number" || !isFinite(v)) return "—";
+  const sign = v >= 0 ? "+" : "−";
+  return sign + (Math.abs(v) * 100).toFixed(1) + " pp";
+}
+function fmtNLocal(v) {
+  if (typeof v !== "number" || !isFinite(v)) return "—";
+  return v.toLocaleString();
+}
 
 // --- default state: root node of the default tree (moderate/30day) --------
 Object.assign(api.state, { outcome: "30day", root_var: "severity", root_value: "moderate", depth: 0 });
@@ -70,6 +79,25 @@ const rootIdx = api.contourEntryForNode(root);
 check("default root node resolves a real contour entry with an image",
       !!(rootIdx && rootIdx.image),
       `idx=${JSON.stringify(rootIdx && { node_id: rootIdx.node_id, image: rootIdx.image })}`);
+
+const rootTableHtml = api.contourByvirusTableHtml(rootIdx && rootIdx.by_virus);
+const rootTableRows = (rootTableHtml.match(/<tr class="/g) || []).length;
+const firstVirus = rootIdx && rootIdx.by_virus && rootIdx.by_virus[0];
+check("default root by-virus table renders one row per virus",
+      !!(rootIdx && Array.isArray(rootIdx.by_virus) && rootTableRows === rootIdx.by_virus.length),
+      `rows=${rootTableRows}, by_virus=${rootIdx && rootIdx.by_virus && rootIdx.by_virus.length}`);
+check("default root by-virus table renders expected first-row values",
+      !!(firstVirus &&
+         rootTableHtml.includes(firstVirus.virus) &&
+         rootTableHtml.includes(fmtNLocal(firstVirus.n)) &&
+         rootTableHtml.includes(fmtAteLocal(firstVirus.ate)) &&
+         rootTableHtml.includes(fmtAteLocal(firstVirus.ate_ci_lower)) &&
+         rootTableHtml.includes(fmtAteLocal(firstVirus.ate_ci_upper))),
+      `first=${JSON.stringify(firstVirus)}`);
+check("missing by_virus renders no table",
+      api.contourByvirusTableHtml({ image: "x.png" }.by_virus) === "" &&
+        api.contourByvirusTableHtml([]) === "",
+      "empty html for absent/empty by_virus");
 
 // --- exhaustive sweep: every node of every severity tree, both outcomes ---
 let total = 0, found = 0;
