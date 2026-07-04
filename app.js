@@ -102,7 +102,18 @@ function stateKey() {
 }
 
 function familyKey() {
-  return `${state.outcome}_${state.root_value}`;
+  return `${state.outcome}_${state.root_var}`;
+}
+
+// Merged families (Item 6) key rows by root_var, not root_value; each row
+// still carries its stratum in splits[family.root_column] (e.g. "Mild",
+// "Influenza"). This maps a root_value slug to that exact label string.
+function rootValueColumnLabel(v) {
+  const labels = {
+    mild: "Mild", moderate: "Moderate", severe: "Severe",
+    flu: "Influenza", rsv: "RSV", covid: "COVID", others: "Other viruses", none: "No virus"
+  };
+  return labels[v] || v;
 }
 
 function maxDepth() {
@@ -342,16 +353,46 @@ function pathDepth(node) {
   return String(node && node.node_id || "").split(" > ").length - 1;
 }
 
-function matchingResultRow(node) {
-  if (!node || !resultsByNode || !Array.isArray(resultsByNode.families)) return null;
+// The merged families' own `depth` field is a Report-view "canonical depth"
+// aligned across root values (so e.g. moderate can skip a column mild/severe
+// use) — it no longer matches the tree page's pathDepth(). Count real splits
+// applied instead (every non-null entry in `splits` besides the always-set
+// root-stratum column), which does match pathDepth() exactly.
+function rowSplitDepth(row, family) {
+  const splits = row && row.splits;
+  if (!splits) return -1;
+  let count = 0;
+  for (const key in splits) {
+    if (key === family.root_column) continue;
+    if (splits[key] != null) count++;
+  }
+  return count;
+}
+
+// The merged families (Item 6) carry rows for every root_value of a stratum
+// concatenated in per-value blocks. contourIndex/node_contours_byvirus_index.json
+// still number nodes locally within each root_value (1..N per block), so a
+// row's merged, global node_id is not usable as-is to key into it — the row's
+// position within its own root_value's block is.
+function currentFamilyStrata() {
+  if (!resultsByNode || !Array.isArray(resultsByNode.families)) return null;
   const family = resultsByNode.families.find(f => f.key === familyKey());
   if (!family || !Array.isArray(family.rows)) return null;
+  const rootLabel = rootValueColumnLabel(state.root_value);
+  const rows = family.rows.filter(r => r.splits && r.splits[family.root_column] === rootLabel);
+  return { family, rows };
+}
+
+function matchingResultRow(node) {
+  if (!node) return null;
+  const strata = currentFamilyStrata();
+  if (!strata) return null;
 
   const nText = (typeof node.N === "number" && isFinite(node.N)) ? String(node.N) : null;
   if (!nText) return null;
   const depth = pathDepth(node);
   const label = normalizeLabel(node.label);
-  const candidates = family.rows.filter(r => String(r.n) === nText && r.depth === depth);
+  const candidates = strata.rows.filter(r => String(r.n) === nText && rowSplitDepth(r, strata.family) === depth);
   const labelMatches = candidates.filter(r => {
     const rowLabel = normalizeLabel(r.label);
     return rowLabel === label || rowLabel.includes(label) || label.includes(rowLabel);
@@ -360,12 +401,34 @@ function matchingResultRow(node) {
   return matches.length === 1 ? matches[0] : null;
 }
 
+// contourIndex's local numbering is the node's position in the FULL,
+// pre-suppression per-root_value node enumeration, so on strata (like
+// "severe") where some nodes were dropped for small N it has gaps. The
+// merged results_by_node.json drops the same nodes and keeps the rest in the
+// same relative order, so a row's rank among the surviving rows equals its
+// rank among the surviving (sorted, gappy) contourIndex keys for that
+// root_value+outcome — not the row's raw array position.
+function contourLocalIndexNumbers(rootValue, outcome) {
+  const prefix = `${rootValue}__node`;
+  const suffix = `__${outcome}`;
+  return Object.keys(contourIndex.nodes)
+    .filter(k => k.startsWith(prefix) && k.endsWith(suffix))
+    .map(k => parseInt(k.slice(prefix.length, k.length - suffix.length), 10))
+    .sort((a, b) => a - b);
+}
+
 function contourEntryForNode(node) {
   if (!node || !contourIndex || !contourIndex.nodes) return null;
   if (state.root_var !== "severity") return null;
+  const strata = currentFamilyStrata();
+  if (!strata) return null;
   const resultRow = matchingResultRow(node);
-  if (!resultRow || typeof resultRow.node_id !== "number") return null;
-  const key = `${state.root_value}__node${String(resultRow.node_id).padStart(2, "0")}__${state.outcome}`;
+  if (!resultRow) return null;
+  const rank = strata.rows.indexOf(resultRow);
+  if (rank < 0) return null;
+  const localIndex = contourLocalIndexNumbers(state.root_value, state.outcome)[rank];
+  if (localIndex == null) return null;
+  const key = `${state.root_value}__node${String(localIndex).padStart(2, "0")}__${state.outcome}`;
   return contourIndex.nodes[key] || null;
 }
 
@@ -784,3 +847,19 @@ if (document.readyState === "loading") {
 // --- exports for tests (no-op in browser; safe to ignore) -----------------
 // Node test harness imports this file as a module via dynamic eval; we just
 // avoid module syntax to keep the file browser-loadable as a plain script.
+if (typeof globalThis !== "undefined") {
+  globalThis.__appTest = {
+    state,
+    setData(data) {
+      if (data.topology !== undefined) topology = data.topology;
+      if (data.coordinates !== undefined) coordinates = data.coordinates;
+      if (data.contourIndex !== undefined) contourIndex = data.contourIndex;
+      if (data.resultsByNode !== undefined) resultsByNode = data.resultsByNode;
+    },
+    familyKey,
+    matchingResultRow,
+    contourEntryForNode,
+    currentNodes,
+    maxDepth,
+  };
+}
