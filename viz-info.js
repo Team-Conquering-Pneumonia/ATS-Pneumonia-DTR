@@ -67,10 +67,10 @@ window.VIZ_INFO = {
     title: "Table 1 — Cohort characteristics",
     summary:
       "Baseline characteristics of the study cohort of emergency-department pneumonia " +
-      "encounters across 124 VA medical centers, overall and by antibiotic treatment.",
+      "encounters across 120 VA medical centers, overall and by antibiotic treatment.",
     detail: [
       "Table 1 describes the study population: emergency-department encounters with an " +
-      "initial diagnosis of pneumonia and positive chest imaging across 124 U.S. " +
+      "initial diagnosis of pneumonia and positive chest imaging across 120 U.S. " +
       "Veterans Affairs medical centers, 2022–2024. Characteristics are shown overall " +
       "and by whether empiric antibiotics were given in the first 24 hours.",
     ],
