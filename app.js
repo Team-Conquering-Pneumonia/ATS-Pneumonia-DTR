@@ -486,6 +486,20 @@ function renderContourByvirusTable(idxEntry) {
   table.hidden = html === "";
 }
 
+function rootValueSlugFromLabel(root_var, label) {
+  const opts = rootValueOptions(root_var);
+  return opts.find(v => rootValueColumnLabel(v) === label) || null;
+}
+
+function updateReportLink(node) {
+  const link = document.getElementById("view-in-report-link");
+  if (!link) return;
+  const row = matchingResultRow(node);
+  if (!row) { link.hidden = true; return; }
+  link.href = `results_by_node.html?family=${encodeURIComponent(familyKey())}&node=${row.node_id}`;
+  link.hidden = false;
+}
+
 // --- selection -------------------------------------------------------------
 
 function selectNode(slug) {
@@ -517,6 +531,7 @@ function renderContourPanel() {
   const slug = state.selected_slug;
   const node = currentNodes().find(n => n.slug === slug);
   const idxEntry = contourEntryForNode(node);
+  updateReportLink(node);
 
   if (!slug) {
     breadcrumb.textContent = "";
@@ -832,6 +847,47 @@ function wireUp() {
   });
 }
 
+// --- deep-link from a report row --------------------------------------------
+
+function findSlugForRow(row) {
+  const nodes = currentNodes();
+  for (const n of nodes) {
+    const r = matchingResultRow(n);
+    if (r && r.node_id === row.node_id) return n.slug;
+  }
+  return null;
+}
+
+function applyDeepLinkFromParams() {
+  if (typeof window === "undefined" || !window.location) return;
+  const params = new URLSearchParams(window.location.search);
+  const familyParam = params.get("family");
+  const nodeParam = params.get("node");
+  if (!familyParam || nodeParam === null) return;
+  if (!resultsByNode || !Array.isArray(resultsByNode.families)) return;
+  const family = resultsByNode.families.find(f => f.key === familyParam);
+  if (!family) return;
+  const targetId = Number(nodeParam);
+  const row = family.rows.find(r => r.node_id === targetId);
+  if (!row) return;
+
+  const root_var = family.stratum === "virus" ? "virus" : "severity";
+  const rootLabel = row.splits && row.splits[family.root_column];
+  const root_value = rootValueSlugFromLabel(root_var, rootLabel);
+  if (!root_value) return;
+
+  state.outcome = family.window;
+  state.root_var = root_var;
+  state.root_value = root_value;
+  const depth = rowSplitDepth(row, family);
+  state.depth = Math.max(0, Math.min(depth, maxDepth()));
+  state.selected_slug = findSlugForRow(row);
+
+  document.querySelectorAll('input[name="outcome"]').forEach(r => { r.checked = r.value === state.outcome; });
+  document.querySelectorAll('input[name="root_var"]').forEach(r => { r.checked = r.value === state.root_var; });
+  refreshRootValueSelect();
+}
+
 // --- init ------------------------------------------------------------------
 
 async function loadJsonOrNull(path) {
@@ -874,6 +930,8 @@ async function init() {
   if (!contourIndex) contourIndex = { nodes: {} };
   if (!resultsByNode) resultsByNode = { families: [] };
 
+  applyDeepLinkFromParams();
+
   wireUp();
   ensurePanzooms();
   render();
@@ -903,5 +961,9 @@ if (typeof globalThis !== "undefined") {
     contourByvirusTableHtml,
     currentNodes,
     maxDepth,
+    rowSplitDepth,
+    rootValueSlugFromLabel,
+    findSlugForRow,
+    applyDeepLinkFromParams,
   };
 }

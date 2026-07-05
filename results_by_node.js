@@ -62,6 +62,7 @@ let currentFamily = null;   // family object
 let signalFilter = "all";
 let sortKey = "node_id";
 let sortDir = 1;            // 1 = asc, -1 = desc
+let highlightNodeId = null; // node_id to highlight/scroll-to from a tree deep-link
 
 // Dynamic filter state, reset per family.
 let minDepth = 0;
@@ -131,10 +132,15 @@ function compareRows(a, b, col) {
   return String(va).localeCompare(String(vb)) * sortDir;
 }
 
+function treeNavUrl(row) {
+  return `trees.html?family=${encodeURIComponent(currentFamily.key)}&node=${row.node_id}`;
+}
+
 // --- rendering -------------------------------------------------------------
 function renderHead(cols) {
   const thead = document.getElementById("results-thead");
   const tr = document.createElement("tr");
+  tr.appendChild(document.createElement("th"));
   cols.forEach((col) => {
     const th = document.createElement("th");
     th.textContent = col.label;
@@ -162,9 +168,21 @@ function renderBody(cols, rows) {
   const frag = document.createDocumentFragment();
   rows.forEach((row) => {
     const tr = document.createElement("tr");
+    tr.dataset.nodeId = String(row.node_id);
     if (row.suppressed) tr.classList.add("row-suppressed");
     if (row.signal === "Benefit") tr.classList.add("row-benefit");
     else if (row.signal === "Harm") tr.classList.add("row-harm");
+    if (highlightNodeId !== null && row.node_id === highlightNodeId) {
+      tr.classList.add("row-target-highlight");
+    }
+    const navTd = document.createElement("td");
+    navTd.className = "nav-cell";
+    const navLink = document.createElement("a");
+    navLink.className = "tree-nav-link";
+    navLink.href = treeNavUrl(row);
+    navLink.textContent = "View in tree";
+    navTd.appendChild(navLink);
+    tr.appendChild(navTd);
     cols.forEach((col) => {
       const td = document.createElement("td");
       if (col.key.startsWith("split:")) {
@@ -577,6 +595,7 @@ function setSort(key) {
 function setFamily(key) {
   const fam = DATA.families.find((f) => f.key === key);
   if (!fam) return;
+  highlightNodeId = null;
   currentFamily = fam;
   // Reset sort if the previous sort column doesn't exist in this family.
   const cols = activeColumns();
@@ -599,7 +618,7 @@ function wireControls() {
     opt.textContent = fam.label;
     sel.appendChild(opt);
   });
-  sel.value = DATA.families[0].key;
+  sel.value = currentFamily.key;
   sel.addEventListener("change", (e) => setFamily(e.target.value));
 
   document.querySelectorAll('input[name="signal"]').forEach((r) => {
@@ -654,12 +673,29 @@ async function init() {
     return;
   }
   currentFamily = DATA.families[0];
+
+  const params = (typeof window !== "undefined" && window.location)
+    ? new URLSearchParams(window.location.search)
+    : new URLSearchParams("");
+  const familyParam = params.get("family");
+  const matchedFamily = familyParam && DATA.families.find((f) => f.key === familyParam);
+  if (matchedFamily) currentFamily = matchedFamily;
+  const nodeParam = params.get("node");
+  if (nodeParam !== null) highlightNodeId = Number(nodeParam);
+
   wireControls();
   // Build the dynamic filter controls for the initial family, then render.
   buildDepthControls(currentFamily);
   buildValueFilters(currentFamily);
   buildNumericFilters();
   render();
+
+  if (highlightNodeId !== null && typeof document.querySelector === "function") {
+    const targetRow = document.querySelector('tr[data-node-id="' + highlightNodeId + '"]');
+    if (targetRow && typeof targetRow.scrollIntoView === "function") {
+      targetRow.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+  }
 }
 
 if (document.readyState === "loading") {

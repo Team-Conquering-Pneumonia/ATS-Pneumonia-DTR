@@ -368,6 +368,19 @@ select#root-value {
 }
 .contour-header .contour-breadcrumb { flex: 1 1 auto; min-width: 0; }
 .contour-header .info-btn { flex: 0 0 auto; }
+.contour-header .view-in-report-link { flex: 0 0 auto; }
+.view-in-report-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: white;
+}
+.view-in-report-link:hover { background: #eef2ff; }
 .contour-breadcrumb {
   font-size: 0.85rem;
   font-weight: 600;
@@ -902,3 +915,16 @@ select#root-value {
 .data-table.results-by-node td.signal-benefit { color: #1e6b3a; }
 .data-table.results-by-node td.signal-harm    { color: #922b21; }
 .data-table.results-by-node td.signal-inconclusive { color: var(--color-muted); }
+
+.data-table.results-by-node td.nav-cell { text-align: center; white-space: nowrap; }
+.data-table.results-by-node a.tree-nav-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.data-table.results-by-node a.tree-nav-link:hover { text-decoration: underline; }
+.data-table.results-by-node tr.row-target-highlight td {
+  box-shadow: inset 0 0 0 2px var(--color-accent);
+}
