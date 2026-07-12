@@ -33,7 +33,7 @@
         <h2 id="t1-heading">Table 1 — Cohort characteristics by empiric antibiotics within 24h</h2>
         <button type="button" class="info-btn" data-info="table1"></button>
       </div>
-      <p class="table-desc">Cohort: 134,916 ED encounters (empiric abx within 24h: 114,004 / 84.5%; no empiric abx: 20,912 / 15.5%). Columns report n (%) or mean (SD), split by antibiotic group. Variables are grouped as Stage 2 (decision covariates), Stage 1 (additional confounders), and Other. Counts below 20 are suppressed.</p>
+      <p class="table-desc">Cohort: 134,916 ED encounters (empiric abx within 24h: 114,004 / 84.5%; no empiric abx: 20,912 / 15.5%). Columns report n (%) or mean (SD), split by antibiotic group. Variables are organized by clinical domain (demographics, illness severity, comorbidities, viral testing, outcomes, additional confounders); row shading indicates model-stage membership (green = Stage 2 decision covariate, blue = Stage 1 confounder, yellow = other). Counts below 20 are suppressed. Some lab/vital threshold rows have no confirmed clinical cutpoint yet and are shown blank pending definition.</p>
       <div class="table-scroll">
         <table class="data-table t1">
           <thead>
@@ -46,91 +46,114 @@
             </tr>
           </thead>
           <tbody>
-<tr class="section"><th colspan="5">Stage 2 — decision covariates</th></tr>
+<tr class="section"><th colspan="5">BASELINE DEMOGRAPHICS</th></tr>
+<tr class="stage-s1"><td class="varname">Age (years), mean (SD)</td><td>0 (0%)</td><td>71.98 (12.85)</td><td>71.60 (12.91)</td><td>72.05 (12.84)</td></tr>
+<tr class="stage-s1 subhdr"><td class="varname">Sex</td><td></td><td></td><td></td><td></td></tr>
+<tr class="stage-s1"><td class="varname">Female</td><td>0 (0%)</td><td>8,023 (5.9%)</td><td>1,310 (6.3%)</td><td>6,713 (5.9%)</td></tr>
+<tr class="stage-s1"><td class="varname">Male</td><td>0 (0%)</td><td>126,893 (94.1%)</td><td>19,602 (93.7%)</td><td>107,291 (94.1%)</td></tr>
+<tr class="stage-rem subhdr"><td class="varname">Race</td><td></td><td></td><td></td><td></td></tr>
+<tr class="stage-rem"><td class="varname">White</td><td>0 (0%)</td><td>96,574 (71.6%)</td><td>14,084 (67.3%)</td><td>82,490 (72.4%)</td></tr>
+<tr class="stage-rem"><td class="varname">Non-white</td><td>0 (0%)</td><td>38,342 (28.4%)</td><td>6,828 (32.7%)</td><td>31,514 (27.6%)</td></tr>
+<tr class="stage-rem subhdr"><td class="varname">Rurality</td><td></td><td></td><td></td><td></td></tr>
+<tr class="stage-rem"><td class="varname">Non-rural</td><td>382 (0.3%)</td><td>97,130 (72.0%)</td><td>15,423 (73.8%)</td><td>81,707 (71.7%)</td></tr>
+<tr class="stage-rem"><td class="varname">Rural</td><td>382 (0.3%)</td><td>37,404 (27.7%)</td><td>5,406 (25.9%)</td><td>31,998 (28.1%)</td></tr>
+<tr class="stage-rem"><td class="varname">Charlson Comorbidity Index, mean (SD)</td><td>0 (0%)</td><td>3.78 (3.18)</td><td>3.76 (3.23)</td><td>3.79 (3.17)</td></tr>
+<tr class="section"><th colspan="5">ILLNESS SEVERITY</th></tr>
 <tr class="stage-s2 subhdr"><td class="varname">Illness severity</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s2"><td class="varname">Mild</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s2"><td class="varname">Moderate</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s2"><td class="varname">Severe</td><td></td><td></td><td></td><td></td></tr>
+<tr class="stage-s2"><td class="varname">Mild</td><td>0 (0%)</td><td>35,563 (26.4%)</td><td>6,935 (33.2%)</td><td>28,628 (25.1%)</td></tr>
+<tr class="stage-s2"><td class="varname">Moderate</td><td>0 (0%)</td><td>83,944 (62.2%)</td><td>12,519 (59.9%)</td><td>71,425 (62.7%)</td></tr>
+<tr class="stage-s2"><td class="varname">Severe</td><td>0 (0%)</td><td>15,409 (11.4%)</td><td>1,458 (7.0%)</td><td>13,951 (12.2%)</td></tr>
 <tr class="stage-s2 subhdr"><td class="varname">Hypoxemia</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s2"><td class="varname">Absent</td><td></td><td>86,489 (64.1%)</td><td>15,232 (72.8%)</td><td>71,257 (62.5%)</td></tr>
-<tr class="stage-s2"><td class="varname">Moderate</td><td></td><td>38,112 (28.2%)</td><td>4,762 (22.8%)</td><td>33,350 (29.3%)</td></tr>
-<tr class="stage-s2"><td class="varname">Severe</td><td></td><td>10,315 (7.6%)</td><td>918 (4.4%)</td><td>9,397 (8.2%)</td></tr>
+<tr class="stage-s2"><td class="varname">Absent</td><td>0 (0%)</td><td>86,489 (64.1%)</td><td>15,232 (72.8%)</td><td>71,257 (62.5%)</td></tr>
+<tr class="stage-s2"><td class="varname">Moderate</td><td>0 (0%)</td><td>38,112 (28.2%)</td><td>4,762 (22.8%)</td><td>33,350 (29.3%)</td></tr>
+<tr class="stage-s2"><td class="varname">Severe</td><td>0 (0%)</td><td>10,315 (7.6%)</td><td>918 (4.4%)</td><td>9,397 (8.2%)</td></tr>
 <tr class="stage-s2 subhdr"><td class="varname">Sepsis — clinical definition</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s2"><td class="varname">No sepsis</td><td></td><td>69,344 (51.4%)</td><td>13,196 (63.1%)</td><td>56,148 (49.3%)</td></tr>
-<tr class="stage-s2"><td class="varname">Sepsis</td><td></td><td>62,658 (46.4%)</td><td>7,638 (36.5%)</td><td>55,020 (48.3%)</td></tr>
-<tr class="stage-s2"><td class="varname">Septic shock</td><td></td><td>2,914 (2.2%)</td><td>78 (0.4%)</td><td>2,836 (2.5%)</td></tr>
-<tr class="stage-s2"><td class="varname">Chronic lung disease</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s2"><td class="varname">Other comorbidity burden</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s2"><td class="varname">COPD/asthma exacerbation</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s2"><td class="varname">Tested for Adenovirus (within 14d, before 24hr)</td><td>0 (0%)</td><td>31,240 (23.2%)</td><td>3,217 (15.4%)</td><td>28,023 (24.6%)</td></tr>
-<tr class="stage-s2"><td class="varname">Positive Adenovirus</td><td>103,676 (77%)</td><td>71 (0.2%)</td><td>&lt;20</td><td>66 (0.2%)</td></tr>
-<tr class="stage-s2"><td class="varname">Tested for Human Metapneumovirus (hMPV)</td><td>0 (0%)</td><td>31,318 (23.2%)</td><td>3,305 (15.8%)</td><td>28,013 (24.6%)</td></tr>
-<tr class="stage-s2"><td class="varname">Positive hMPV</td><td>103,598 (77%)</td><td>882 (2.8%)</td><td>102 (3.1%)</td><td>780 (2.8%)</td></tr>
-<tr class="stage-s2"><td class="varname">Tested for Human Parainfluenza Virus (HPIV)</td><td>0 (0%)</td><td>29,266 (21.7%)</td><td>3,153 (15.1%)</td><td>26,113 (22.9%)</td></tr>
-<tr class="stage-s2"><td class="varname">Positive HPIV</td><td>105,650 (78%)</td><td>780 (2.7%)</td><td>96 (3.0%)</td><td>684 (2.6%)</td></tr>
-<tr class="stage-s2"><td class="varname">Tested for Influenza</td><td>0 (0%)</td><td>102,092 (75.7%)</td><td>13,590 (65.0%)</td><td>88,502 (77.6%)</td></tr>
-<tr class="stage-s2"><td class="varname">Positive Influenza</td><td>32,824 (24%)</td><td>3,768 (3.7%)</td><td>681 (5.0%)</td><td>3,087 (3.5%)</td></tr>
-<tr class="stage-s2"><td class="varname">Tested for Rhinovirus/Enterovirus</td><td>0 (0%)</td><td>31,350 (23.2%)</td><td>3,308 (15.8%)</td><td>28,042 (24.6%)</td></tr>
-<tr class="stage-s2"><td class="varname">Positive Rhinovirus/Enterovirus</td><td>103,566 (77%)</td><td>2,587 (8.3%)</td><td>212 (6.4%)</td><td>2,375 (8.5%)</td></tr>
-<tr class="stage-s2"><td class="varname">Tested for Respiratory Syncytial Virus (RSV)</td><td>0 (0%)</td><td>99,748 (73.9%)</td><td>13,333 (63.8%)</td><td>86,415 (75.8%)</td></tr>
-<tr class="stage-s2"><td class="varname">Positive RSV</td><td>35,168 (26%)</td><td>1,795 (1.8%)</td><td>327 (2.5%)</td><td>1,468 (1.7%)</td></tr>
-<tr class="stage-s2"><td class="varname">Tested for SARS-CoV-2 (COVID)</td><td>0 (0%)</td><td>74,324 (55.1%)</td><td>9,390 (44.9%)</td><td>64,934 (57.0%)</td></tr>
-<tr class="stage-s2"><td class="varname">Positive SARS-CoV-2</td><td>0 (0%)</td><td>9,619 (7.1%)</td><td>2,302 (11.0%)</td><td>7,317 (6.4%)</td></tr>
-<tr class="section"><th colspan="5">Stage 1 — additional confounders</th></tr>
+<tr class="stage-s2"><td class="varname">No sepsis</td><td>0 (0%)</td><td>69,344 (51.4%)</td><td>13,196 (63.1%)</td><td>56,148 (49.3%)</td></tr>
+<tr class="stage-s2"><td class="varname">Sepsis</td><td>0 (0%)</td><td>62,658 (46.4%)</td><td>7,638 (36.5%)</td><td>55,020 (48.3%)</td></tr>
+<tr class="stage-s2"><td class="varname">Septic shock</td><td>0 (0%)</td><td>2,914 (2.2%)</td><td>78 (0.4%)</td><td>2,836 (2.5%)</td></tr>
+<tr class="stage-rem"><td class="varname">SCAP (Severe Community-Acquired Pneumonia score)</td><td>0 (0%)</td><td>15,409 (11.4%)</td><td>1,458 (7.0%)</td><td>13,951 (12.2%)</td></tr>
+<tr class="stage-rem"><td class="varname">Pneumonia Severity Index (PSI), mean (SD)</td><td>0 (0%)</td><td>99.18 (32.32)</td><td>97.14 (31.25)</td><td>99.56 (32.50)</td></tr>
+<tr class="stage-rem"><td class="varname">PSI &gt; 120 (high risk)</td><td>0 (0%)</td><td>33,647 (24.9%)</td><td>4,773 (22.8%)</td><td>28,874 (25.3%)</td></tr>
+<tr class="stage-rem"><td class="varname">PSI &lt; 90 (low risk)</td><td>0 (0%)</td><td>55,704 (41.3%)</td><td>9,095 (43.5%)</td><td>46,609 (40.9%)</td></tr>
+<tr class="section"><th colspan="5">COMORBIDITIES — decision-point composites (see footnote for diagnosis definitions)</th></tr>
+<tr class="stage-s2"><td class="varname">Chronic lung disease</td><td>0 (0%)</td><td>59,188 (43.9%)</td><td>7,912 (37.8%)</td><td>51,276 (45.0%)</td></tr>
+<tr class="stage-s1"><td class="varname">Chronic Pulmonary Disease (cpd)</td><td>0 (0%)</td><td>59,184 (43.9%)</td><td>7,912 (37.8%)</td><td>51,272 (45.0%)</td></tr>
 <tr class="stage-s1"><td class="varname">COPD</td><td>0 (0%)</td><td>53,436 (39.6%)</td><td>6,959 (33.3%)</td><td>46,477 (40.8%)</td></tr>
 <tr class="stage-s1"><td class="varname">Asthma</td><td>0 (0%)</td><td>10,512 (7.8%)</td><td>1,546 (7.4%)</td><td>8,966 (7.9%)</td></tr>
 <tr class="stage-s1"><td class="varname">Bronchiectasis</td><td>0 (0%)</td><td>2,481 (1.8%)</td><td>258 (1.2%)</td><td>2,223 (1.9%)</td></tr>
 <tr class="stage-s1"><td class="varname">Interstitial Lung Disease (ILD)</td><td>0 (0%)</td><td>801 (0.6%)</td><td>101 (0.5%)</td><td>700 (0.6%)</td></tr>
-<tr class="stage-s1"><td class="varname">Chronic Pulmonary Disease (any; includes COPD, asthma, bronchiectasis, ILD)</td><td>0 (0%)</td><td>59,184 (43.9%)</td><td>7,912 (37.8%)</td><td>51,272 (45.0%)</td></tr>
+<tr class="stage-s2"><td class="varname">COPD/asthma exacerbation</td><td>0 (0%)</td><td>41,256 (30.6%)</td><td>4,298 (20.6%)</td><td>36,958 (32.4%)</td></tr>
+<tr class="stage-s2"><td class="varname">Other relevant comorbidities</td><td>0 (0%)</td><td>97,074 (72.0%)</td><td>15,173 (72.6%)</td><td>81,901 (71.8%)</td></tr>
 <tr class="stage-s1"><td class="varname">Coronary Artery Disease</td><td>0 (0%)</td><td>44,387 (32.9%)</td><td>7,409 (35.4%)</td><td>36,978 (32.4%)</td></tr>
 <tr class="stage-s1"><td class="varname">History of Myocardial Infarction</td><td>0 (0%)</td><td>12,069 (8.9%)</td><td>2,305 (11.0%)</td><td>9,764 (8.6%)</td></tr>
 <tr class="stage-s1"><td class="varname">Congestive Heart Failure</td><td>0 (0%)</td><td>37,101 (27.5%)</td><td>6,809 (32.6%)</td><td>30,292 (26.6%)</td></tr>
-<tr class="stage-s1"><td class="varname">Peripheral Vascular Disease</td><td>0 (0%)</td><td>27,590 (20.4%)</td><td>4,110 (19.7%)</td><td>23,480 (20.6%)</td></tr>
 <tr class="stage-s1"><td class="varname">Cerebrovascular Disease</td><td>0 (0%)</td><td>21,068 (15.6%)</td><td>3,205 (15.3%)</td><td>17,863 (15.7%)</td></tr>
-<tr class="stage-s1"><td class="varname">Cardiac Dysrhythmias</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s1"><td class="varname">Dementia</td><td>0 (0%)</td><td>21,144 (15.7%)</td><td>2,842 (13.6%)</td><td>18,302 (16.1%)</td></tr>
 <tr class="stage-s1"><td class="varname">Liver Disease (mild/without complications)</td><td>0 (0%)</td><td>14,791 (11.0%)</td><td>2,475 (11.8%)</td><td>12,316 (10.8%)</td></tr>
 <tr class="stage-s1"><td class="varname">Liver Disease (severe/with complications)</td><td>0 (0%)</td><td>6,113 (4.5%)</td><td>964 (4.6%)</td><td>5,149 (4.5%)</td></tr>
 <tr class="stage-s1"><td class="varname">Diabetes (without complications)</td><td>0 (0%)</td><td>51,969 (38.5%)</td><td>8,378 (40.1%)</td><td>43,591 (38.2%)</td></tr>
 <tr class="stage-s1"><td class="varname">Diabetes (with complications)</td><td>0 (0%)</td><td>36,959 (27.4%)</td><td>6,030 (28.8%)</td><td>30,929 (27.1%)</td></tr>
-<tr class="stage-s1"><td class="varname">Renal Disease</td><td>0 (0%)</td><td>43,042 (31.9%)</td><td>7,095 (33.9%)</td><td>35,947 (31.5%)</td></tr>
+<tr class="stage-s1"><td class="varname">Immunocompromised</td><td>0 (0%)</td><td>22,334 (16.6%)</td><td>3,127 (15.0%)</td><td>19,207 (16.8%)</td></tr>
+<tr class="stage-s1"><td class="varname">Acquired Immunodeficiency Syndrome (AIDS)</td><td>0 (0%)</td><td>1,490 (1.1%)</td><td>212 (1.0%)</td><td>1,278 (1.1%)</td></tr>
+<tr class="stage-s1"><td class="varname">Neutropenia/neutrophil suppression</td><td>0 (0%)</td><td>2,553 (1.9%)</td><td>290 (1.4%)</td><td>2,263 (2.0%)</td></tr>
+<tr class="stage-s1"><td class="varname">Stem cell transplant</td><td>0 (0%)</td><td>196 (0.1%)</td><td>&lt;20 (censored)</td><td>182 (0.2%)</td></tr>
+<tr class="stage-s1"><td class="varname">Solid organ transplant</td><td>0 (0%)</td><td>488 (0.4%)</td><td>90 (0.4%)</td><td>398 (0.3%)</td></tr>
 <tr class="stage-s1"><td class="varname">Cancer (non-metastatic)</td><td>0 (0%)</td><td>35,600 (26.4%)</td><td>5,081 (24.3%)</td><td>30,519 (26.8%)</td></tr>
 <tr class="stage-s1"><td class="varname">Metastatic Cancer</td><td>0 (0%)</td><td>8,068 (6.0%)</td><td>1,152 (5.5%)</td><td>6,916 (6.1%)</td></tr>
+<tr class="stage-s1"><td class="varname">Renal Disease</td><td>0 (0%)</td><td>43,042 (31.9%)</td><td>7,095 (33.9%)</td><td>35,947 (31.5%)</td></tr>
+<tr class="stage-s1"><td class="varname">Alcohol Use Disorder</td><td>0 (0%)</td><td>1,182 (0.9%)</td><td>202 (1.0%)</td><td>980 (0.9%)</td></tr>
+<tr class="section"><th colspan="5">VIRAL TESTING</th></tr>
+<tr class="stage-s2"><td class="varname">Tested for Adenovirus (within 14d, before 24hr)</td><td>0 (0%)</td><td>29,955 (22.2%)</td><td>3,106 (14.9%)</td><td>26,849 (23.6%)</td></tr>
+<tr class="stage-s2"><td class="varname">Positive Adenovirus</td><td>0 (0%)</td><td>69 (0.1%)</td><td>&lt;20 (censored)</td><td>64 (0.1%)</td></tr>
+<tr class="stage-s2"><td class="varname">Tested for Human Metapneumovirus (hMPV)</td><td>0 (0%)</td><td>30,163 (22.4%)</td><td>3,211 (15.4%)</td><td>26,952 (23.6%)</td></tr>
+<tr class="stage-s2"><td class="varname">Positive hMPV</td><td>0 (0%)</td><td>853 (0.6%)</td><td>101 (0.5%)</td><td>752 (0.7%)</td></tr>
+<tr class="stage-s2"><td class="varname">Tested for Human Parainfluenza Virus (HPIV)</td><td>0 (0%)</td><td>28,123 (20.8%)</td><td>3,060 (14.6%)</td><td>25,063 (22.0%)</td></tr>
+<tr class="stage-s2"><td class="varname">Positive HPIV</td><td>0 (0%)</td><td>748 (0.6%)</td><td>95 (0.5%)</td><td>653 (0.6%)</td></tr>
+<tr class="stage-s2"><td class="varname">Tested for Rhinovirus/Enterovirus</td><td>0 (0%)</td><td>30,194 (22.4%)</td><td>3,214 (15.4%)</td><td>26,980 (23.7%)</td></tr>
+<tr class="stage-s2"><td class="varname">Positive Rhinovirus/Enterovirus</td><td>0 (0%)</td><td>2,496 (1.9%)</td><td>207 (1.0%)</td><td>2,289 (2.0%)</td></tr>
+<tr class="stage-s2"><td class="varname">Tested for other viruses (adenovirus, hMPV, HPIV, rhinovirus/enterovirus -- tested for &gt;=1)</td><td>0 (0%)</td><td>30,798 (22.8%)</td><td>3,289 (15.7%)</td><td>27,509 (24.1%)</td></tr>
+<tr class="stage-s2"><td class="varname">Positive for other viruses</td><td>0 (0%)</td><td>3,907 (2.9%)</td><td>385 (1.8%)</td><td>3,522 (3.1%)</td></tr>
+<tr class="stage-s2"><td class="varname">Tested for Influenza</td><td>0 (0%)</td><td>101,577 (75.3%)</td><td>13,520 (64.7%)</td><td>88,057 (77.2%)</td></tr>
+<tr class="stage-s2"><td class="varname">Positive Influenza</td><td>0 (0%)</td><td>3,745 (2.8%)</td><td>678 (3.2%)</td><td>3,067 (2.7%)</td></tr>
+<tr class="stage-s2"><td class="varname">Tested for Respiratory Syncytial Virus (RSV)</td><td>0 (0%)</td><td>99,209 (73.5%)</td><td>13,259 (63.4%)</td><td>85,950 (75.4%)</td></tr>
+<tr class="stage-s2"><td class="varname">Positive RSV</td><td>0 (0%)</td><td>1,786 (1.3%)</td><td>325 (1.6%)</td><td>1,461 (1.3%)</td></tr>
+<tr class="stage-s2"><td class="varname">Tested for SARS-CoV-2 (COVID)</td><td>0 (0%)</td><td>117,465 (87.1%)</td><td>16,736 (80.0%)</td><td>100,729 (88.4%)</td></tr>
+<tr class="stage-s2"><td class="varname">Positive SARS-CoV-2</td><td>0 (0%)</td><td>14,860 (11.0%)</td><td>4,315 (20.6%)</td><td>10,545 (9.2%)</td></tr>
+<tr class="section"><th colspan="5">OUTCOMES — crude mortality + secondary outcomes</th></tr>
+<tr class="stage-rem"><td class="varname">30-day mortality (unconditional, from ED visit)</td><td>0 (0%)</td><td>8,751 (6.5%)</td><td>998 (4.8%)</td><td>7,753 (6.8%)</td></tr>
+<tr class="stage-rem"><td class="varname">30-day mortality, discharge-conditional (footnote: among patients who survived to discharge)</td><td>0 (0%)</td><td>5,409 (4.0%)</td><td>605 (2.9%)</td><td>4,804 (4.2%)</td></tr>
+<tr class="stage-rem"><td class="varname">90-day mortality (unconditional, from ED visit)</td><td>0 (0%)</td><td>16,567 (12.3%)</td><td>2,125 (10.2%)</td><td>14,442 (12.7%)</td></tr>
+<tr class="stage-rem"><td class="varname">90-day mortality, discharge-conditional (footnote: among patients who survived to discharge)</td><td>0 (0%)</td><td>10,651 (7.9%)</td><td>1,265 (6.0%)</td><td>9,386 (8.2%)</td></tr>
+<tr class="stage-rem"><td class="varname">Hospitalization within 7 days, among outpatients (not admitted at index visit)</td><td>0 (0%)</td><td>2,839 (2.1%)</td><td>611 (2.9%)</td><td>2,228 (2.0%)</td></tr>
+<tr class="stage-rem"><td class="varname">Length of hospital stay, among inpatients (admitted at index visit), mean (SD)</td><td>0 (0%)</td><td>7.90 (11.83)</td><td>7.56 (11.02)</td><td>7.95 (11.95)</td></tr>
+<tr class="section"><th colspan="5">ADDITIONAL CONFOUNDERS &amp; OTHER VARIABLES</th></tr>
+<tr class="stage-s1"><td class="varname">Cardiac Dysrhythmias</td><td>0 (0%)</td><td>45,844 (34.0%)</td><td>7,503 (35.9%)</td><td>38,341 (33.6%)</td></tr>
+<tr class="stage-s1"><td class="varname">Peripheral Vascular Disease</td><td>0 (0%)</td><td>27,590 (20.4%)</td><td>4,110 (19.7%)</td><td>23,480 (20.6%)</td></tr>
+<tr class="stage-s1"><td class="varname">Dementia</td><td>0 (0%)</td><td>10,216 (7.6%)</td><td>1,379 (6.6%)</td><td>8,837 (7.8%)</td></tr>
 <tr class="stage-s1"><td class="varname">Hemiplegia</td><td>0 (0%)</td><td>3,382 (2.5%)</td><td>376 (1.8%)</td><td>3,006 (2.6%)</td></tr>
 <tr class="stage-s1"><td class="varname">Peptic Ulcer Disease</td><td>0 (0%)</td><td>2,583 (1.9%)</td><td>437 (2.1%)</td><td>2,146 (1.9%)</td></tr>
-<tr class="stage-s1"><td class="varname">Acquired Immunodeficiency Syndrome (AIDS)</td><td>0 (0%)</td><td>1,490 (1.1%)</td><td>212 (1.0%)</td><td>1,278 (1.1%)</td></tr>
-<tr class="stage-s1"><td class="varname">Immunocompromised</td><td>0 (0%)</td><td>22,334 (16.6%)</td><td>3,127 (15.0%)</td><td>19,207 (16.8%)</td></tr>
-<tr class="stage-s1"><td class="varname">Neutropenia/neutrophil suppression</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s1"><td class="varname">Stem cell transplant</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s1"><td class="varname">Solid organ transplant</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s1"><td class="varname">Autoimmune/rheumatoid disease</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s1"><td class="varname">Alcohol Use Disorder</td><td>0 (0%)</td><td>1,182 (0.9%)</td><td>202 (1.0%)</td><td>980 (0.9%)</td></tr>
+<tr class="stage-s1"><td class="varname">Autoimmune/rheumatoid disease</td><td>0 (0%)</td><td>4,163 (3.1%)</td><td>604 (2.9%)</td><td>3,559 (3.1%)</td></tr>
 <tr class="stage-s1"><td class="varname">Delirium Disorders</td><td>0 (0%)</td><td>21,158 (15.7%)</td><td>2,844 (13.6%)</td><td>18,314 (16.1%)</td></tr>
-<tr class="stage-s1"><td class="varname">Schizophrenia/Psychotic Disorders</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s1"><td class="varname">Mood Disorders</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s1"><td class="varname">Anxiety Disorders</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s1"><td class="varname">Bipolar Disorder</td><td></td><td></td><td></td><td></td></tr>
+<tr class="stage-s1"><td class="varname">Schizophrenia/Psychotic Disorders</td><td>0 (0%)</td><td>5,339 (4.0%)</td><td>850 (4.1%)</td><td>4,489 (3.9%)</td></tr>
+<tr class="stage-s1"><td class="varname">Mood Disorders</td><td>0 (0%)</td><td>38,869 (28.8%)</td><td>6,007 (28.7%)</td><td>32,862 (28.8%)</td></tr>
+<tr class="stage-s1"><td class="varname">Anxiety Disorders</td><td>0 (0%)</td><td>43,046 (31.9%)</td><td>6,647 (31.8%)</td><td>36,399 (31.9%)</td></tr>
+<tr class="stage-s1"><td class="varname">Bipolar Disorder</td><td>0 (0%)</td><td>4,696 (3.5%)</td><td>693 (3.3%)</td><td>4,003 (3.5%)</td></tr>
 <tr class="stage-s1"><td class="varname">Opioid Use Disorder</td><td>0 (0%)</td><td>4,547 (3.4%)</td><td>677 (3.2%)</td><td>3,870 (3.4%)</td></tr>
-<tr class="stage-s1"><td class="varname">Opioid Overdose</td><td></td><td></td><td></td><td></td></tr>
+<tr class="stage-s1"><td class="varname">Opioid Overdose</td><td>0 (0%)</td><td>933 (0.7%)</td><td>141 (0.7%)</td><td>792 (0.7%)</td></tr>
 <tr class="stage-s1"><td class="varname">Marijuana Use Disorder</td><td>0 (0%)</td><td>5,588 (4.1%)</td><td>873 (4.2%)</td><td>4,715 (4.1%)</td></tr>
 <tr class="stage-s1"><td class="varname">Tobacco Use (cigarettes)</td><td>0 (0%)</td><td>34,683 (25.7%)</td><td>4,859 (23.2%)</td><td>29,824 (26.2%)</td></tr>
 <tr class="stage-s1"><td class="varname">Housing Instability (homelessness)</td><td>0 (0%)</td><td>6,626 (4.9%)</td><td>1,193 (5.7%)</td><td>5,433 (4.8%)</td></tr>
-<tr class="stage-s1"><td class="varname">Osteoporosis</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s1"><td class="varname">Pathological Fracture</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s1"><td class="varname">Age (years), mean (SD)</td><td>0 (0%)</td><td>71.98 (12.85)</td><td>71.60 (12.91)</td><td>72.05 (12.84)</td></tr>
-<tr class="stage-s1 subhdr"><td class="varname">Sex</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s1"><td class="varname">Female</td><td></td><td>8,023 (5.9%)</td><td>1,310 (6.3%)</td><td>6,713 (5.9%)</td></tr>
-<tr class="stage-s1"><td class="varname">Male</td><td></td><td>126,893 (94.1%)</td><td>19,602 (93.7%)</td><td>107,291 (94.1%)</td></tr>
+<tr class="stage-s1"><td class="varname">Osteoporosis</td><td>0 (0%)</td><td>5,591 (4.1%)</td><td>760 (3.6%)</td><td>4,831 (4.2%)</td></tr>
+<tr class="stage-s1"><td class="varname">Pathological Fracture</td><td>0 (0%)</td><td>2,020 (1.5%)</td><td>281 (1.3%)</td><td>1,739 (1.5%)</td></tr>
 <tr class="stage-s1 subhdr"><td class="varname">Marital Status</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-s1"><td class="varname">Married</td><td></td><td>62,506 (46.3%)</td><td>9,223 (44.1%)</td><td>53,283 (46.7%)</td></tr>
-<tr class="stage-s1"><td class="varname">Not married/other</td><td></td><td>72,410 (53.7%)</td><td>11,689 (55.9%)</td><td>60,721 (53.3%)</td></tr>
-<tr class="stage-s1"><td class="varname">Nursing Home Resident</td><td>0 (0%)</td><td>138 (0.1%)</td><td>&lt;20 (censored)</td><td>124 (0.1%)</td></tr>
-<tr class="stage-s1"><td class="varname">Heart rate &gt; 90 bpm</td><td>0 (0%)</td><td>62,757 (46.5%)</td><td>7,845 (37.5%)</td><td>54,912 (48.2%)</td></tr>
-<tr class="stage-s1"><td class="varname">Respiratory rate &gt; 20 breaths/min</td><td>0 (0%)</td><td>30,090 (22.3%)</td><td>3,726 (17.8%)</td><td>26,364 (23.1%)</td></tr>
-<tr class="stage-s1"><td class="varname">Systolic BP &lt; 90 mmHg</td><td>0 (0%)</td><td>3,597 (2.7%)</td><td>349 (1.7%)</td><td>3,248 (2.8%)</td></tr>
+<tr class="stage-s1"><td class="varname">Married</td><td>0 (0%)</td><td>62,506 (46.3%)</td><td>9,223 (44.1%)</td><td>53,283 (46.7%)</td></tr>
+<tr class="stage-s1"><td class="varname">Not married/other</td><td>0 (0%)</td><td>72,410 (53.7%)</td><td>11,689 (55.9%)</td><td>60,721 (53.3%)</td></tr>
+<tr class="stage-s1"><td class="varname">Nursing Home Resident</td><td>0 (0%)</td><td>1,246 (0.9%)</td><td>131 (0.6%)</td><td>1,115 (1.0%)</td></tr>
+<tr class="stage-s1"><td class="varname">Heart rate &gt; 90 bpm</td><td>370 (0.3%)</td><td>62,757 (46.5%)</td><td>7,845 (37.5%)</td><td>54,912 (48.2%)</td></tr>
+<tr class="stage-s1"><td class="varname">Respiratory rate &gt; 20 breaths/min</td><td>669 (0.5%)</td><td>30,090 (22.3%)</td><td>3,726 (17.8%)</td><td>26,364 (23.1%)</td></tr>
+<tr class="stage-s1"><td class="varname">Systolic BP &lt; 90 mmHg</td><td>410 (0.3%)</td><td>3,597 (2.7%)</td><td>349 (1.7%)</td><td>3,248 (2.8%)</td></tr>
 <tr class="stage-s1"><td class="varname">Lactic acid &gt; 2 mmol/L</td><td>0 (0%)</td><td>20,472 (15.2%)</td><td>1,690 (8.1%)</td><td>18,782 (16.5%)</td></tr>
-<tr class="stage-s1"><td class="varname">Platelet count &lt; 150 K/uL</td><td>0 (0%)</td><td>17,522 (13.0%)</td><td>3,058 (14.6%)</td><td>14,464 (12.7%)</td></tr>
-<tr class="stage-s1"><td class="varname">WBC &lt; 4 or &gt; 11 K/uL</td><td>0 (0%)</td><td>48,381 (35.9%)</td><td>3,479 (16.6%)</td><td>44,902 (39.4%)</td></tr>
+<tr class="stage-s1"><td class="varname">Platelet count &lt; 150 K/uL</td><td>14,177 (10.5%)</td><td>17,522 (13.0%)</td><td>3,058 (14.6%)</td><td>14,464 (12.7%)</td></tr>
+<tr class="stage-s1"><td class="varname">WBC &lt; 4 or &gt; 11 K/uL</td><td>17,299 (12.8%)</td><td>48,381 (35.9%)</td><td>3,479 (16.6%)</td><td>44,902 (39.4%)</td></tr>
 <tr class="stage-s1"><td class="varname">Temperature (categorical threshold)</td><td></td><td></td><td></td><td></td></tr>
 <tr class="stage-s1"><td class="varname">Pulse Oximetry (categorical threshold)</td><td></td><td></td><td></td><td></td></tr>
 <tr class="stage-s1"><td class="varname">Albumin (categorical)</td><td></td><td></td><td></td><td></td></tr>
@@ -151,40 +174,31 @@
 <tr class="stage-s1"><td class="varname">Potassium (categorical)</td><td></td><td></td><td></td><td></td></tr>
 <tr class="stage-s1"><td class="varname">Sodium (categorical)</td><td></td><td></td><td></td><td></td></tr>
 <tr class="stage-s1"><td class="varname">Troponin (categorical)</td><td></td><td></td><td></td><td></td></tr>
-<tr class="section"><th colspan="5">Other variables</th></tr>
-<tr class="stage-rem"><td class="varname">NLP-positive case identification flag</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-rem"><td class="varname">ICD-positive case identification flag</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-rem"><td class="varname">SCAP (Severe Community-Acquired Pneumonia score)</td><td>0 (0%)</td><td>15,409 (11.4%)</td><td>1,458 (7.0%)</td><td>13,951 (12.2%)</td></tr>
-<tr class="stage-rem"><td class="varname">Procalcitonin &gt; 0.2 ng/mL</td><td>0 (0%)</td><td>20,345 (15.1%)</td><td>906 (4.3%)</td><td>19,439 (17.1%)</td></tr>
-<tr class="stage-rem"><td class="varname">Respiratory rate &gt; 30 breaths/min</td><td>0 (0%)</td><td>2,778 (2.1%)</td><td>254 (1.2%)</td><td>2,524 (2.2%)</td></tr>
-<tr class="stage-rem"><td class="varname">Fever (temperature &gt; 38.0°C)</td><td>0 (0%)</td><td>9,423 (7.0%)</td><td>667 (3.2%)</td><td>8,756 (7.7%)</td></tr>
+<tr class="stage-rem"><td class="varname">NLP-positive case identification flag</td><td>0 (0%)</td><td>119,594 (88.6%)</td><td>20,053 (95.9%)</td><td>99,541 (87.3%)</td></tr>
+<tr class="stage-rem"><td class="varname">ICD-positive case identification flag</td><td>0 (0%)</td><td>82,574 (61.2%)</td><td>2,981 (14.3%)</td><td>79,593 (69.8%)</td></tr>
+<tr class="stage-rem"><td class="varname">Procalcitonin &gt; 0.2 ng/mL</td><td>87,580 (64.9%)</td><td>20,345 (15.1%)</td><td>906 (4.3%)</td><td>19,439 (17.1%)</td></tr>
+<tr class="stage-rem"><td class="varname">Respiratory rate &gt; 30 breaths/min</td><td>669 (0.5%)</td><td>2,778 (2.1%)</td><td>254 (1.2%)</td><td>2,524 (2.2%)</td></tr>
+<tr class="stage-rem"><td class="varname">Fever (temperature &gt; 38.0°C)</td><td>901 (0.7%)</td><td>9,423 (7.0%)</td><td>667 (3.2%)</td><td>8,756 (7.7%)</td></tr>
 <tr class="stage-rem subhdr"><td class="varname">Facility rurality (VSSC VAST)</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-rem"><td class="varname">Rural (R)</td><td></td><td>7,431 (5.5%)</td><td>1,008 (4.8%)</td><td>6,423 (5.6%)</td></tr>
-<tr class="stage-rem"><td class="varname">Urban (U)</td><td></td><td>126,723 (93.9%)</td><td>19,814 (94.7%)</td><td>106,909 (93.8%)</td></tr>
+<tr class="stage-rem"><td class="varname">Rural (R)</td><td>762 (0.6%)</td><td>7,431 (5.5%)</td><td>1,008 (4.8%)</td><td>6,423 (5.6%)</td></tr>
+<tr class="stage-rem"><td class="varname">Urban (U)</td><td>762 (0.6%)</td><td>126,723 (93.9%)</td><td>19,814 (94.7%)</td><td>106,909 (93.8%)</td></tr>
 <tr class="stage-rem subhdr"><td class="varname">Facility complexity</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-rem"><td class="varname">1a-1c (large/multiple specialty)</td><td></td><td>117,643 (87.2%)</td><td>18,490 (88.4%)</td><td>99,153 (87.0%)</td></tr>
-<tr class="stage-rem"><td class="varname">2 and 3</td><td></td><td>17,273 (12.8%)</td><td>2,422 (11.6%)</td><td>14,851 (13.0%)</td></tr>
+<tr class="stage-rem"><td class="varname">1a-1c (large/multiple specialty)</td><td>0 (0%)</td><td>117,643 (87.2%)</td><td>18,490 (88.4%)</td><td>99,153 (87.0%)</td></tr>
+<tr class="stage-rem"><td class="varname">2 and 3</td><td>0 (0%)</td><td>17,273 (12.8%)</td><td>2,422 (11.6%)</td><td>14,851 (13.0%)</td></tr>
 <tr class="stage-rem"><td class="varname">Daily ED load, mean (SD)</td><td>0 (0%)</td><td>72.17 (36.80)</td><td>72.72 (35.42)</td><td>72.07 (37.04)</td></tr>
-<tr class="stage-rem"><td class="varname">Daily patient census, mean (SD)</td><td>56,373 (42%)</td><td>97.61 (52.37)</td><td>102.48 (51.26)</td><td>96.86 (52.50)</td></tr>
-<tr class="stage-rem"><td class="varname">Provider age, mean (SD)</td><td>18,673 (14%)</td><td>48.32 (11.85)</td><td>46.39 (11.96)</td><td>48.67 (11.80)</td></tr>
+<tr class="stage-rem"><td class="varname">Daily patient census, mean (SD)</td><td>56,373 (41.8%)</td><td>97.61 (52.37)</td><td>102.48 (51.26)</td><td>96.86 (52.50)</td></tr>
+<tr class="stage-rem"><td class="varname">Provider age, mean (SD)</td><td>18,673 (13.8%)</td><td>48.32 (11.85)</td><td>46.39 (11.96)</td><td>48.67 (11.80)</td></tr>
 <tr class="stage-rem subhdr"><td class="varname">Provider type (Physician MD/DO)</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-rem"><td class="varname">Physician</td><td></td><td>121,076 (89.7%)</td><td>19,344 (92.5%)</td><td>101,732 (89.2%)</td></tr>
-<tr class="stage-rem"><td class="varname">Midlevel</td><td></td><td>13,840 (10.3%)</td><td>1,568 (7.5%)</td><td>12,272 (10.8%)</td></tr>
-<tr class="stage-rem"><td class="varname">Female ED provider</td><td>0 (0%)</td><td>36,034 (26.7%)</td><td>5,941 (28.4%)</td><td>30,093 (26.4%)</td></tr>
+<tr class="stage-rem"><td class="varname">Physician</td><td>0 (0%)</td><td>121,076 (89.7%)</td><td>19,344 (92.5%)</td><td>101,732 (89.2%)</td></tr>
+<tr class="stage-rem"><td class="varname">Midlevel</td><td>0 (0%)</td><td>13,840 (10.3%)</td><td>1,568 (7.5%)</td><td>12,272 (10.8%)</td></tr>
+<tr class="stage-rem"><td class="varname">Female ED provider</td><td>34,616 (25.7%)</td><td>36,034 (26.7%)</td><td>5,941 (28.4%)</td><td>30,093 (26.4%)</td></tr>
 <tr class="stage-rem"><td class="varname">Provider patient load, mean (SD)</td><td>140 (0.1%)</td><td>10.29 (6.10)</td><td>9.83 (5.92)</td><td>10.37 (6.13)</td></tr>
 <tr class="stage-rem"><td class="varname">Provider pneumonia cases in past year, mean (SD)</td><td>0 (0%)</td><td>64.72 (90.56)</td><td>78.20 (111.27)</td><td>62.25 (86.00)</td></tr>
 <tr class="stage-rem"><td class="varname">Body Mass Index, mean (SD)</td><td>6,175 (4.6%)</td><td>28.12 (6.85)</td><td>28.94 (6.89)</td><td>27.97 (6.83)</td></tr>
-<tr class="stage-rem subhdr"><td class="varname">Race</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-rem"><td class="varname">White</td><td></td><td>96,574 (71.6%)</td><td>14,084 (67.3%)</td><td>82,490 (72.4%)</td></tr>
-<tr class="stage-rem"><td class="varname">Non-white</td><td></td><td>38,342 (28.4%)</td><td>6,828 (32.7%)</td><td>31,514 (27.6%)</td></tr>
-<tr class="stage-rem subhdr"><td class="varname">Rural residence</td><td></td><td></td><td></td><td></td></tr>
-<tr class="stage-rem"><td class="varname">Non-rural</td><td></td><td>97,535 (72.3%)</td><td>15,509 (74.2%)</td><td>82,026 (72.0%)</td></tr>
-<tr class="stage-rem"><td class="varname">Rural</td><td></td><td>37,381 (27.7%)</td><td>5,403 (25.8%)</td><td>31,978 (28.0%)</td></tr>
-<tr class="stage-rem"><td class="varname">Drive time to primary care (min), mean (SD)</td><td>23,608 (17%)</td><td>18.50 (15.98)</td><td>18.34 (14.31)</td><td>18.53 (16.27)</td></tr>
-<tr class="stage-rem"><td class="varname">Drive time to secondary care (min), mean (SD)</td><td>23,767 (18%)</td><td>29.16 (25.79)</td><td>29.39 (24.71)</td><td>29.12 (25.98)</td></tr>
-<tr class="stage-rem"><td class="varname">Drive time to tertiary care (min), mean (SD)</td><td>23,992 (18%)</td><td>74.43 (68.24)</td><td>69.71 (66.69)</td><td>75.31 (68.49)</td></tr>
-<tr class="stage-rem"><td class="varname">Number of comorbidities, mean (SD)</td><td>0 (0%)</td><td>2.86 (2.26)</td><td>2.87 (2.33)</td><td>2.86 (2.25)</td></tr>
-<tr class="stage-rem"><td class="varname">Charlson Comorbidity Index, mean (SD)</td><td>0 (0%)</td><td>3.78 (3.18)</td><td>3.76 (3.23)</td><td>3.79 (3.17)</td></tr>
+<tr class="stage-rem"><td class="varname">Drive time to primary care (min), mean (SD)</td><td>23,608 (17.5%)</td><td>18.50 (15.98)</td><td>18.34 (14.31)</td><td>18.53 (16.27)</td></tr>
+<tr class="stage-rem"><td class="varname">Drive time to secondary care (min), mean (SD)</td><td>23,767 (17.6%)</td><td>29.16 (25.79)</td><td>29.39 (24.71)</td><td>29.12 (25.98)</td></tr>
+<tr class="stage-rem"><td class="varname">Drive time to tertiary care (min), mean (SD)</td><td>23,992 (17.8%)</td><td>74.43 (68.24)</td><td>69.71 (66.69)</td><td>75.31 (68.49)</td></tr>
+<tr class="stage-rem"><td class="varname">Number of comorbidities, mean (SD)</td><td>21,786 (16.1%)</td><td>3.41 (2.06)</td><td>3.49 (2.11)</td><td>3.40 (2.05)</td></tr>
 <tr class="stage-rem"><td class="varname">History of Aspiration</td><td>0 (0%)</td><td>4,770 (3.5%)</td><td>513 (2.5%)</td><td>4,257 (3.7%)</td></tr>
 <tr class="stage-rem"><td class="varname">Autoimmune Disease</td><td>0 (0%)</td><td>4,173 (3.1%)</td><td>594 (2.8%)</td><td>3,579 (3.1%)</td></tr>
 <tr class="stage-rem"><td class="varname">Acute hospitalizations in past 90 days, mean (SD)</td><td>0 (0%)</td><td>0.24 (0.61)</td><td>0.26 (0.64)</td><td>0.24 (0.60)</td></tr>
@@ -194,7 +208,7 @@
 <tr class="stage-rem"><td class="varname">Hemodialysis in past year</td><td>0 (0%)</td><td>3,234 (2.4%)</td><td>670 (3.2%)</td><td>2,564 (2.2%)</td></tr>
 <tr class="stage-rem"><td class="varname">History of hospitalization</td><td>0 (0%)</td><td>24,824 (18.4%)</td><td>3,990 (19.1%)</td><td>20,834 (18.3%)</td></tr>
 <tr class="stage-rem"><td class="varname">History of Pneumonia</td><td>0 (0%)</td><td>25,143 (18.6%)</td><td>3,287 (15.7%)</td><td>21,856 (19.2%)</td></tr>
-<tr class="stage-rem"><td class="varname">Previous hospitalization in 90 days</td><td>0 (0%)</td><td>24,209 (17.9%)</td><td>3,892 (18.6%)</td><td>20,317 (17.8%)</td></tr>
+<tr class="stage-rem"><td class="varname">Previous hospitalization in 90 days</td><td>0 (0%)</td><td>23,685 (17.6%)</td><td>3,915 (18.7%)</td><td>19,770 (17.3%)</td></tr>
 <tr class="stage-rem"><td class="varname">History of Respiratory Failure</td><td>0 (0%)</td><td>23,840 (17.7%)</td><td>3,260 (15.6%)</td><td>20,580 (18.1%)</td></tr>
 <tr class="stage-rem"><td class="varname">Prior IV Antibiotics</td><td>0 (0%)</td><td>13,255 (9.8%)</td><td>1,706 (8.2%)</td><td>11,549 (10.1%)</td></tr>
 <tr class="stage-rem"><td class="varname">Prior Oral Antibiotics</td><td>0 (0%)</td><td>33,879 (25.1%)</td><td>4,388 (21.0%)</td><td>29,491 (25.9%)</td></tr>
