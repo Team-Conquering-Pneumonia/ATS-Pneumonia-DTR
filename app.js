@@ -15,7 +15,7 @@
 "use strict";
 
 const state = {
-  outcome: "30day",
+  outcome: "90day",
   root_var: "severity",
   root_value: "moderate",
   depth: 0,
