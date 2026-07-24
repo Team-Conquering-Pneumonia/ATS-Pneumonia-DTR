@@ -35,7 +35,20 @@ SUMMARY_CSV = os.path.join(RESULTS_CURRENT, "aim3_ate_summary.csv")
 VIRUS_CSV = os.path.join(RESULTS_CURRENT, "aim3_ate_summary_virus.csv")
 OUT_PATH = os.path.join(SITE_DIR, "results_by_node.json")
 
-RUN_LABEL = "run-20260702"
+
+def resolve_run_label():
+    """Run label = the promoted run in results/current, read dynamically.
+
+    results/current is a symlink to runs/<run-id>; the label must track whatever
+    run is currently promoted (never a hardcoded constant), so a re-ingest after
+    a run advances stamps the correct run and the delivery stays self-describing.
+    """
+    real = os.path.realpath(RESULTS_CURRENT)
+    label = os.path.basename(real.rstrip(os.sep))
+    return label or "run-unknown"
+
+
+RUN_LABEL = resolve_run_label()
 
 WINDOWS = ["30day", "90day"]
 SEVERITY_STRATA = ["mild", "moderate", "severe"]
@@ -346,9 +359,9 @@ def main():
     out = {
         "run": RUN_LABEL,
         "source": (
-            "run-20260702 export-native contracts: "
+            "%s export-native contracts: "
             "results/current/aim3_ate_summary.csv and "
-            "results/current/aim3_ate_summary_virus.csv"
+            "results/current/aim3_ate_summary_virus.csv" % RUN_LABEL
         ),
         "generated_by": "site/build_results_by_node_data.py",
         "n_families": len(families),

@@ -560,10 +560,13 @@ function renderContourPanel() {
   renderContourByvirusTable(idxEntry);
 
   if (!idxEntry || !idxEntry.image) {
+    // Run label sourced from the loaded results data, not hardcoded, so it
+    // tracks whatever run the site was ingested against.
+    const runLabel = (resultsByNode && resultsByNode.run) || "run-20260723";
     setMissingContour(
       state.root_var === "severity"
-        ? "By-virus contour is not available for this suppressed or unmapped node in the run-20260702 export."
-        : "By-virus contour overlays are available for severity-rooted tree nodes only in this run-20260702 site contract."
+        ? `By-virus contour is not available for this suppressed or unmapped node in the ${runLabel} export.`
+        : `By-virus contour overlays are available for severity-rooted tree nodes only in this ${runLabel} site contract.`
     );
     return;
   }
