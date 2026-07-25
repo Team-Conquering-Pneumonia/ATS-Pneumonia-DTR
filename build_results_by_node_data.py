@@ -7,7 +7,9 @@ per-node results table page. This is the T3.5 static workbook made browsable:
 4 merged tree-family views (Severity + Virus axes x 2 mortality windows),
 one row per node, with VA <20 small-cell suppression mirrored.
 
-Source of record: run-20260702 VINCI export only (D-BR-01). The builder reads
+Source of record: the promoted VINCI export only (D-BR-01) — whichever run
+results/current points at, resolved dynamically by resolve_run_label() below.
+Do not restate a run id here; a hardcoded one goes stale silently. The builder reads
 the export-native contracts created by code/R/build_ate_summary_from_export.R:
   * results/current/aim3_ate_summary.csv
   * results/current/aim3_ate_summary_virus.csv
