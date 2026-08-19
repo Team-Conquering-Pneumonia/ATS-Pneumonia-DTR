@@ -87,16 +87,14 @@ window.VIZ_INFO = {
   table2: {
     title: "Table 2 — Population strategy comparison",
     summary:
-      "Estimated population mortality and antibiotic use under five treatment " +
+      "Estimated population mortality and antibiotic use under three population " +
       "strategies, for 30- and 90-day mortality.",
     detail: [
       { status: "pending", text:
-        "Table 2 compares five population strategies for empiric antibiotics: give to " +
-        "all, give to none, follow the ATS 2025 guideline, and two individualized " +
-        "strategies that give antibiotics only where the model estimates benefit. For " +
-        "each strategy and mortality window it reports the estimated population " +
-        "mortality with a 95% credible interval and the fraction of patients who would " +
-        "receive antibiotics." },
+        "Table 2 compares three population strategies for empiric antibiotics: observed " +
+        "care, antibiotics for all, and antibiotics for none. For each strategy and " +
+        "mortality window it reports the estimated population mortality with a 95% " +
+        "credible interval and the fraction of patients who receive antibiotics." },
     ],
   },
   report: {

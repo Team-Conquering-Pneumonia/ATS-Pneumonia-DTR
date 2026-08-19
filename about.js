@@ -58,7 +58,7 @@ function loadAboutContent() {
   var container = document.getElementById("about-content");
   if (!container) return;
 
-  fetch("about-content.html")
+  fetch("about-content.html", { cache: "no-cache" })
     .then(function (res) {
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.text();

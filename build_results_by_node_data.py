@@ -35,6 +35,9 @@ DATA_ROOT = os.environ.get("AIM3_DATA_ROOT", PROJECT_ROOT)
 RESULTS_CURRENT = os.path.join(DATA_ROOT, "results", "current")
 SUMMARY_CSV = os.path.join(RESULTS_CURRENT, "aim3_ate_summary.csv")
 VIRUS_CSV = os.path.join(RESULTS_CURRENT, "aim3_ate_summary_virus.csv")
+# Descriptive-reframe additions (manuscript trees #1 root-only + #3 sev->virus).
+ROOT_CSV = os.path.join(RESULTS_CURRENT, "aim3_ate_summary_root.csv")
+SEVVIRUS_CSV = os.path.join(RESULTS_CURRENT, "aim3_ate_summary_sevvirus.csv")
 OUT_PATH = os.path.join(SITE_DIR, "results_by_node.json")
 
 
@@ -66,6 +69,8 @@ STRATUM_LABEL = {
     "covid": "COVID",
     "none": "No virus",
     "others": "Other viruses",
+    "root": "Overall cohort",
+    "sevvirus": "Severity then virus",
 }
 
 TITLE_TO_VAR = {
@@ -341,22 +346,32 @@ def depth0_n(families, strata):
 def main():
     severity_rows = read_csv(SUMMARY_CSV)
     virus_rows = read_csv(VIRUS_CSV)
+    root_rows = read_csv(ROOT_CSV)
+    sevvirus_rows = read_csv(SEVVIRUS_CSV)
 
+    # Family order per window matches the revised manuscript's tree list:
+    # (1) root-only, (3) severity->virus, then the deep severity + virus trees.
     families = []
     total_nodes = 0
     for win in WINDOWS:
         for fam in (
+            build_family(root_rows, win, "root"),
+            build_family(sevvirus_rows, win, "sevvirus"),
             merge_severity_families(severity_rows, win),
             merge_virus_families(virus_rows, win),
         ):
             families.append(fam)
             total_nodes += len(fam["rows"])
 
+    # Every tree's whole-cohort depth-0 total must agree (same cohort, N=130,265
+    # per window -> 260,530 across the two windows).
     severity_n = depth0_n(families, ["severity"])
     virus_n = depth0_n(families, ["virus"])
-    if severity_n != virus_n:
-        sys.exit("Depth-0 cohort mismatch: severity=%d virus=%d" %
-                 (severity_n, virus_n))
+    root_n = depth0_n(families, ["root"])
+    sevvirus_n = depth0_n(families, ["sevvirus"])
+    if not (severity_n == virus_n == root_n == sevvirus_n):
+        sys.exit("Depth-0 cohort mismatch: severity=%d virus=%d root=%d sevvirus=%d"
+                 % (severity_n, virus_n, root_n, sevvirus_n))
 
     out = {
         "run": RUN_LABEL,

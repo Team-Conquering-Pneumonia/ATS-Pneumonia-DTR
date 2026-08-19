@@ -52,15 +52,11 @@ COHORT_XLSX = os.path.join(RESULTS_CURRENT, "cohort_report.xlsx")
 TABLE2_CSV = os.path.join(DATA_ROOT, "output", "tables", "table2_regime_comparison.csv")
 TABLES_HTML = os.path.join(SITE_DIR, "tables.html")
 
-# D-PIR-02: single definition lives in code/R/figure_rule_tree.R::REGIME_IDSA_CAVEAT.
-# Mirrored here (not re-worded) because this is a Python consumer of an R constant;
-# verify() asserts the two still agree so a drift fails the build.
-IDSA_CAVEAT = (
-    'The "IDSA-aligned" regime is the study team\'s formalization of a qualitative '
-    "IDSA position; no published IDSA decision rule for antibiotics in "
-    "community-acquired pneumonia exists. ATS 2025 is a published guideline."
-)
-RULE_TREE_R = os.path.join(DATA_ROOT, "code", "R", "figure_rule_tree.R")
+# (Descriptive-reframe: the ATS/IDSA/individualized recommendation regimes were
+# gated off the production export, so Table 2 no longer surfaces the IDSA caveat.
+# The former D-PIR-02 caveat mirror + its figure_rule_tree.R drift guard were
+# removed with the footnote; figure_rule_tree.R keeps the constant for its own
+# exclude-but-keep figure path.)
 
 
 def run_label():
@@ -258,8 +254,10 @@ def cohort_numbers():
 
 
 # --- Table 2 ---------------------------------------------------------------
-ORDER = ["observed", "abx_all", "abx_none", "ats_2025", "idsa",
-         "optimal_only_if_beneficial"]
+# Descriptive-reframe: the recommendation layer (ATS 2025 / IDSA-aligned /
+# individualized-optimal regimes) was gated off the production export, so Table 2
+# is now the three descriptive population strategies only.
+ORDER = ["observed", "abx_all", "abx_none"]
 
 
 def build_table2(window):
@@ -322,15 +320,8 @@ def verify(t1_html, coh, rows, ix):
         if stale in t1_html:
             sys.exit("superseded cohort value %s present in generated Table 1" % stale)
 
-    # 4. D-PIR-02 caveat must still match its single R definition
-    if os.path.exists(RULE_TREE_R):
-        r_src = open(RULE_TREE_R, encoding="utf-8").read()
-        words = ["formalization of a qualitative IDSA position",
-                 "no published IDSA decision rule",
-                 "ATS 2025 is a published guideline"]
-        for w in words:
-            if w not in r_src:
-                sys.exit("D-PIR-02 caveat drifted from figure_rule_tree.R (missing: %r)" % w)
+    # (D-PIR-02 IDSA-caveat drift guard removed with the Table 2 footnote in the
+    # descriptive reframe; the site no longer surfaces the IDSA regime.)
     return total, sev
 
 
@@ -386,8 +377,9 @@ def main():
     # Table 2 — two windows, in document order
     t2_desc = (
         "Population mean mortality (posterior mean + 95%% credible interval over 1,000 "
-        "draws) and population antibiotic-use fraction, for six candidate treatment "
-        "regimes, by mortality window. Generated from %s." % label
+        "draws) and population antibiotic-use fraction under three population "
+        "strategies (observed care, antibiotics for all, antibiotics for none), by "
+        "mortality window. Generated from %s." % label
     )
     text = replace_between(
         text,
@@ -399,13 +391,6 @@ def main():
             text,
             r'<h3 class="window-heading">%s</h3>.*?<tbody>\s*\n' % re.escape(heading),
             r"\n\s*</tbody>", build_table2(window), "Table 2 %s body" % window)
-
-    foot = (
-        "&dagger; %s &Dagger; The individualized regime assigns antibiotics only to "
-        "patients whose estimated effect is beneficial." % esc(IDSA_CAVEAT)
-    )
-    text = replace_between(text, r'<p class="table-foot">', r"</p>", foot,
-                           "Table 2 footnote")
 
     prov = ("Tables 1 and 2 are generated from %s, the currently promoted analysis run. "
             "Mortality is on a scale where lower is better." % label)

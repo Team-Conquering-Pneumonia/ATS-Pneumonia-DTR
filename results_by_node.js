@@ -136,6 +136,14 @@ function treeNavUrl(row) {
   return `trees.html?family=${encodeURIComponent(currentFamily.key)}&node=${row.node_id}`;
 }
 
+// The interactive Trees view is image-based and only renders the deep severity
+// and virus trees. The root-only and severity->virus families have no tree image,
+// so their rows carry no "View in tree" deep-link (it would load a wrong/blank
+// tree). They live in this report view only.
+function familyHasTreeView() {
+  return currentFamily.stratum === "severity" || currentFamily.stratum === "virus";
+}
+
 // --- rendering -------------------------------------------------------------
 function renderHead(cols) {
   const thead = document.getElementById("results-thead");
@@ -177,11 +185,13 @@ function renderBody(cols, rows) {
     }
     const navTd = document.createElement("td");
     navTd.className = "nav-cell";
-    const navLink = document.createElement("a");
-    navLink.className = "tree-nav-link";
-    navLink.href = treeNavUrl(row);
-    navLink.textContent = "View in tree";
-    navTd.appendChild(navLink);
+    if (familyHasTreeView()) {
+      const navLink = document.createElement("a");
+      navLink.className = "tree-nav-link";
+      navLink.href = treeNavUrl(row);
+      navLink.textContent = "View in tree";
+      navTd.appendChild(navLink);
+    }
     tr.appendChild(navTd);
     cols.forEach((col) => {
       const td = document.createElement("td");
