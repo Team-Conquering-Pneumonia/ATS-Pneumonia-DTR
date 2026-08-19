@@ -4,15 +4,19 @@ build_results_by_node_data.py
 
 Generate site/results_by_node.json, the data file behind the browsable
 per-node results table page. This is the T3.5 static workbook made browsable:
-4 merged tree-family views (Severity + Virus axes x 2 mortality windows),
-one row per node, with VA <20 small-cell suppression mirrored.
+5 tree-family views per window (root, virus->severity, severity->virus, and the
+merged deep severity + virus trees), one row per node, with VA <20 small-cell
+suppression mirrored.
 
 Source of record: the promoted VINCI export only (D-BR-01) — whichever run
 results/current points at, resolved dynamically by resolve_run_label() below.
 Do not restate a run id here; a hardcoded one goes stale silently. The builder reads
 the export-native contracts created by code/R/build_ate_summary_from_export.R:
-  * results/current/aim3_ate_summary.csv
-  * results/current/aim3_ate_summary_virus.csv
+  * results/current/aim3_ate_summary.csv          (deep severity trees)
+  * results/current/aim3_ate_summary_virus.csv    (deep virus trees)
+  * results/current/aim3_ate_summary_root.csv     (whole-cohort root)
+  * results/current/aim3_ate_summary_sevvirus.csv (severity -> virus)
+  * results/current/aim3_ate_summary_virsev.csv   (virus -> severity)
 
 It does not read legacy interactive-tree files or serialized tree objects.
 
@@ -38,6 +42,7 @@ VIRUS_CSV = os.path.join(RESULTS_CURRENT, "aim3_ate_summary_virus.csv")
 # Descriptive-reframe additions (manuscript trees #1 root-only + #3 sev->virus).
 ROOT_CSV = os.path.join(RESULTS_CURRENT, "aim3_ate_summary_root.csv")
 SEVVIRUS_CSV = os.path.join(RESULTS_CURRENT, "aim3_ate_summary_sevvirus.csv")
+VIRSEV_CSV = os.path.join(RESULTS_CURRENT, "aim3_ate_summary_virsev.csv")
 OUT_PATH = os.path.join(SITE_DIR, "results_by_node.json")
 
 
@@ -71,6 +76,7 @@ STRATUM_LABEL = {
     "others": "Other viruses",
     "root": "Overall cohort",
     "sevvirus": "Severity then virus",
+    "virsev": "Virus then severity",
 }
 
 TITLE_TO_VAR = {
@@ -214,10 +220,20 @@ def build_family(rows, win, stratum):
     # Match the static workbook: root first, then stable within depth.
     sub.sort(key=lambda item: parse_int(item[1].get("depth")) or 0)
     path_maps = [path_map_of(row.get("node_path")) for _, row in sub]
-    present = [
-        var for var in VAR_ORDER
-        if any(var in path_map for path_map in path_maps)
-    ]
+    # Order the split columns by the depth at which each variable first splits,
+    # so a virus-rooted-then-severity tree (virsev) shows Virus before Severity.
+    # For every other family the first-split depth already matches VAR_ORDER, so
+    # this is behavior-preserving there (VAR_ORDER breaks ties).
+    first_depth = {}
+    for (_, row), path_map in zip(sub, path_maps):
+        d = parse_int(row.get("depth")) or 0
+        for var in path_map:
+            if var not in first_depth or d < first_depth[var]:
+                first_depth[var] = d
+    present = sorted(
+        (var for var in VAR_ORDER if var in first_depth),
+        key=lambda v: (first_depth[v], VAR_ORDER.index(v)),
+    )
 
     out_rows = []
     for node_idx, ((_, row), path_map) in enumerate(zip(sub, path_maps), start=1):
@@ -348,14 +364,17 @@ def main():
     virus_rows = read_csv(VIRUS_CSV)
     root_rows = read_csv(ROOT_CSV)
     sevvirus_rows = read_csv(SEVVIRUS_CSV)
+    virsev_rows = read_csv(VIRSEV_CSV)
 
     # Family order per window matches the revised manuscript's tree list:
-    # (1) root-only, (3) severity->virus, then the deep severity + virus trees.
+    # (1) root-only, (2) virus->severity, (3) severity->virus, then the deep
+    # severity + virus trees.
     families = []
     total_nodes = 0
     for win in WINDOWS:
         for fam in (
             build_family(root_rows, win, "root"),
+            build_family(virsev_rows, win, "virsev"),
             build_family(sevvirus_rows, win, "sevvirus"),
             merge_severity_families(severity_rows, win),
             merge_virus_families(virus_rows, win),
@@ -369,9 +388,11 @@ def main():
     virus_n = depth0_n(families, ["virus"])
     root_n = depth0_n(families, ["root"])
     sevvirus_n = depth0_n(families, ["sevvirus"])
-    if not (severity_n == virus_n == root_n == sevvirus_n):
-        sys.exit("Depth-0 cohort mismatch: severity=%d virus=%d root=%d sevvirus=%d"
-                 % (severity_n, virus_n, root_n, sevvirus_n))
+    virsev_n = depth0_n(families, ["virsev"])
+    if not (severity_n == virus_n == root_n == sevvirus_n == virsev_n):
+        sys.exit("Depth-0 cohort mismatch: severity=%d virus=%d root=%d "
+                 "sevvirus=%d virsev=%d"
+                 % (severity_n, virus_n, root_n, sevvirus_n, virsev_n))
 
     out = {
         "run": RUN_LABEL,

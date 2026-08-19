@@ -13106,6 +13106,534 @@
         }
       ]
     },
+    "virsev=virsev_outcome=30day_depth=0": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 1080
+      },
+      "nodes": [
+        {
+          "node_id": "Overall cohort (30-day mortality)",
+          "slug": "virsev__root",
+          "is_terminal_in_view": true,
+          "is_root": true,
+          "bbox_px": {
+            "x": 317,
+            "y": 5,
+            "w": 1221,
+            "h": 1031
+          },
+          "label": "Overall cohort (30-day mortality)",
+          "N": 130265,
+          "abx_pct": 0.85,
+          "ate": -0.005,
+          "ate_abx": 0.0631,
+          "ate_no_abx": 0.0681
+        }
+      ]
+    },
+    "virsev=virsev_outcome=30day_depth=1": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 1901
+      },
+      "nodes": [
+        {
+          "node_id": "Overall cohort (30-day mortality) > Influenza",
+          "slug": "virsev__influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 1623,
+            "w": 450,
+            "h": 190
+          },
+          "label": "Influenza",
+          "N": 3517,
+          "abx_pct": 0.821,
+          "ate": -0.0168,
+          "ate_abx": 0.0302,
+          "ate_no_abx": 0.047
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > RSV",
+          "slug": "virsev__rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 1235,
+            "w": 450,
+            "h": 190
+          },
+          "label": "RSV",
+          "N": 1625,
+          "abx_pct": 0.829,
+          "ate": -0.017,
+          "ate_abx": 0.0434,
+          "ate_no_abx": 0.0604
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > COVID",
+          "slug": "virsev__covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 847,
+            "w": 450,
+            "h": 190
+          },
+          "label": "COVID",
+          "N": 14373,
+          "abx_pct": 0.713,
+          "ate": -0.0003,
+          "ate_abx": 0.0824,
+          "ate_no_abx": 0.0827
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > Other Viruses",
+          "slug": "virsev__other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 459,
+            "w": 450,
+            "h": 190
+          },
+          "label": "Other Viruses",
+          "N": 3766,
+          "abx_pct": 0.906,
+          "ate": -0.0069,
+          "ate_abx": 0.0428,
+          "ate_no_abx": 0.0497
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > None",
+          "slug": "virsev__none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 71,
+            "w": 450,
+            "h": 190
+          },
+          "label": "No virus",
+          "N": 106984,
+          "abx_pct": 0.867,
+          "ate": -0.005,
+          "ate_abx": 0.0626,
+          "ate_no_abx": 0.0676
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality)",
+          "slug": "virsev__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 258,
+            "y": 847,
+            "w": 450,
+            "h": 190
+          },
+          "label": "Overall cohort (30-day mortality)",
+          "N": 130265,
+          "abx_pct": 0.85,
+          "ate": -0.005,
+          "ate_abx": 0.0631,
+          "ate_no_abx": 0.0681
+        }
+      ]
+    },
+    "virsev=virsev_outcome=30day_depth=2": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 5033
+      },
+      "nodes": [
+        {
+          "node_id": "Overall cohort (30-day mortality) > Influenza",
+          "slug": "virsev__influenza",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 730,
+            "y": 4332,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Influenza",
+          "N": 3517,
+          "abx_pct": 0.821,
+          "ate": -0.0168,
+          "ate_abx": 0.0302,
+          "ate_no_abx": 0.047
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > RSV",
+          "slug": "virsev__rsv",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 730,
+            "y": 3383,
+            "w": 267,
+            "h": 153
+          },
+          "label": "RSV",
+          "N": 1625,
+          "abx_pct": 0.829,
+          "ate": -0.017,
+          "ate_abx": 0.0434,
+          "ate_no_abx": 0.0604
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > COVID",
+          "slug": "virsev__covid",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 730,
+            "y": 2434,
+            "w": 267,
+            "h": 153
+          },
+          "label": "COVID",
+          "N": 14373,
+          "abx_pct": 0.713,
+          "ate": -0.0003,
+          "ate_abx": 0.0824,
+          "ate_no_abx": 0.0827
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > Other Viruses",
+          "slug": "virsev__other_viruses",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 730,
+            "y": 1484,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Other Viruses",
+          "N": 3766,
+          "abx_pct": 0.906,
+          "ate": -0.0069,
+          "ate_abx": 0.0428,
+          "ate_no_abx": 0.0497
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > None",
+          "slug": "virsev__none",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 730,
+            "y": 535,
+            "w": 267,
+            "h": 153
+          },
+          "label": "No virus",
+          "N": 106984,
+          "abx_pct": 0.867,
+          "ate": -0.005,
+          "ate_abx": 0.0626,
+          "ate_no_abx": 0.0676
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > COVID > Mild",
+          "slug": "virsev__covid_mild",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 2750,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Mild",
+          "N": 3326,
+          "abx_pct": 0.627,
+          "ate": 0.0002,
+          "ate_abx": 0.0062,
+          "ate_no_abx": 0.006
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > COVID > Moderate",
+          "slug": "virsev__covid_moderate",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 2434,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Moderate",
+          "N": 9012,
+          "abx_pct": 0.725,
+          "ate": -0.0072,
+          "ate_abx": 0.0745,
+          "ate_no_abx": 0.0817
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > COVID > Severe",
+          "slug": "virsev__covid_severe",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 2117,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Severe",
+          "N": 2035,
+          "abx_pct": 0.804,
+          "ate": 0.0296,
+          "ate_abx": 0.242,
+          "ate_no_abx": 0.2124
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > Influenza > Mild",
+          "slug": "virsev__influenza_mild",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 4649,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Mild",
+          "N": 1049,
+          "abx_pct": 0.74,
+          "ate": -0.0005,
+          "ate_abx": 0.003,
+          "ate_no_abx": 0.0035
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > Influenza > Moderate",
+          "slug": "virsev__influenza_moderate",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 4332,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Moderate",
+          "N": 2070,
+          "abx_pct": 0.838,
+          "ate": -0.0177,
+          "ate_abx": 0.0248,
+          "ate_no_abx": 0.0425
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > Influenza > Severe",
+          "slug": "virsev__influenza_severe",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 4016,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Severe",
+          "N": 398,
+          "abx_pct": 0.947,
+          "ate": -0.0547,
+          "ate_abx": 0.1302,
+          "ate_no_abx": 0.1849
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > None > Mild",
+          "slug": "virsev__none_mild",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 851,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Mild",
+          "N": 29268,
+          "abx_pct": 0.832,
+          "ate": -0.0015,
+          "ate_abx": 0.0048,
+          "ate_no_abx": 0.0063
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > None > Moderate",
+          "slug": "virsev__none_moderate",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 535,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Moderate",
+          "N": 66144,
+          "abx_pct": 0.873,
+          "ate": -0.01,
+          "ate_abx": 0.0667,
+          "ate_no_abx": 0.0767
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > None > Severe",
+          "slug": "virsev__none_severe",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 219,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Severe",
+          "N": 11572,
+          "abx_pct": 0.924,
+          "ate": 0.0149,
+          "ate_abx": 0.1856,
+          "ate_no_abx": 0.1707
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > Other Viruses > Mild",
+          "slug": "virsev__other_viruses_mild",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 1801,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Mild",
+          "N": 938,
+          "abx_pct": 0.835,
+          "ate": 0.0003,
+          "ate_abx": 0.0054,
+          "ate_no_abx": 0.0051
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > Other Viruses > Moderate",
+          "slug": "virsev__other_viruses_moderate",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 1484,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Moderate",
+          "N": 2352,
+          "abx_pct": 0.922,
+          "ate": -0.0174,
+          "ate_abx": 0.0363,
+          "ate_no_abx": 0.0537
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > Other Viruses > Severe",
+          "slug": "virsev__other_viruses_severe",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 1168,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Severe",
+          "N": 476,
+          "abx_pct": 0.966,
+          "ate": 0.0312,
+          "ate_abx": 0.1487,
+          "ate_no_abx": 0.1176
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > RSV > Mild",
+          "slug": "virsev__rsv_mild",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 3699,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Mild",
+          "N": 437,
+          "abx_pct": 0.778,
+          "ate": -0.0021,
+          "ate_abx": 0.0039,
+          "ate_no_abx": 0.006
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > RSV > Moderate",
+          "slug": "virsev__rsv_moderate",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 3383,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Moderate",
+          "N": 1002,
+          "abx_pct": 0.833,
+          "ate": -0.0228,
+          "ate_abx": 0.0441,
+          "ate_no_abx": 0.0669
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality) > RSV > Severe",
+          "slug": "virsev__rsv_severe",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1216,
+            "y": 3067,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Severe",
+          "N": 186,
+          "abx_pct": 0.925,
+          "ate": -0.0207,
+          "ate_abx": 0.1325,
+          "ate_no_abx": 0.1532
+        },
+        {
+          "node_id": "Overall cohort (30-day mortality)",
+          "slug": "virsev__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 244,
+            "y": 2434,
+            "w": 267,
+            "h": 153
+          },
+          "label": "Overall cohort (30-day mortality)",
+          "N": 130265,
+          "abx_pct": 0.85,
+          "ate": -0.005,
+          "ate_abx": 0.0631,
+          "ate_no_abx": 0.0681
+        }
+      ]
+    },
     "severity=mild_outcome=90day_depth=0": {
       "image": {
         "width_px": 1600,
@@ -26202,6 +26730,534 @@
             "y": 2232,
             "w": 268,
             "h": 140
+          },
+          "label": "Overall cohort (90-day mortality)",
+          "N": 130265,
+          "abx_pct": 0.85,
+          "ate": -0.0169,
+          "ate_abx": 0.1209,
+          "ate_no_abx": 0.1378
+        }
+      ]
+    },
+    "virsev=virsev_outcome=90day_depth=0": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 1080
+      },
+      "nodes": [
+        {
+          "node_id": "Overall cohort (90-day mortality)",
+          "slug": "virsev__root",
+          "is_terminal_in_view": true,
+          "is_root": true,
+          "bbox_px": {
+            "x": 317,
+            "y": 5,
+            "w": 1221,
+            "h": 1031
+          },
+          "label": "Overall cohort (90-day mortality)",
+          "N": 130265,
+          "abx_pct": 0.85,
+          "ate": -0.0169,
+          "ate_abx": 0.1209,
+          "ate_no_abx": 0.1378
+        }
+      ]
+    },
+    "virsev=virsev_outcome=90day_depth=1": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 1901
+      },
+      "nodes": [
+        {
+          "node_id": "Overall cohort (90-day mortality) > Influenza",
+          "slug": "virsev__influenza",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 1623,
+            "w": 450,
+            "h": 190
+          },
+          "label": "Influenza",
+          "N": 3517,
+          "abx_pct": 0.821,
+          "ate": -0.0358,
+          "ate_abx": 0.051,
+          "ate_no_abx": 0.0868
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > RSV",
+          "slug": "virsev__rsv",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 1235,
+            "w": 450,
+            "h": 190
+          },
+          "label": "RSV",
+          "N": 1625,
+          "abx_pct": 0.829,
+          "ate": -0.0392,
+          "ate_abx": 0.0744,
+          "ate_no_abx": 0.1136
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > COVID",
+          "slug": "virsev__covid",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 847,
+            "w": 450,
+            "h": 190
+          },
+          "label": "COVID",
+          "N": 14373,
+          "abx_pct": 0.713,
+          "ate": 0.0105,
+          "ate_abx": 0.1383,
+          "ate_no_abx": 0.1278
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > Other Viruses",
+          "slug": "virsev__other_viruses",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 459,
+            "w": 450,
+            "h": 190
+          },
+          "label": "Other Viruses",
+          "N": 3766,
+          "abx_pct": 0.906,
+          "ate": -0.0392,
+          "ate_abx": 0.0765,
+          "ate_no_abx": 0.1157
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > None",
+          "slug": "virsev__none",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1076,
+            "y": 71,
+            "w": 450,
+            "h": 190
+          },
+          "label": "No virus",
+          "N": 106984,
+          "abx_pct": 0.867,
+          "ate": -0.0188,
+          "ate_abx": 0.1231,
+          "ate_no_abx": 0.1419
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality)",
+          "slug": "virsev__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 258,
+            "y": 847,
+            "w": 450,
+            "h": 190
+          },
+          "label": "Overall cohort (90-day mortality)",
+          "N": 130265,
+          "abx_pct": 0.85,
+          "ate": -0.0169,
+          "ate_abx": 0.1209,
+          "ate_no_abx": 0.1378
+        }
+      ]
+    },
+    "virsev=virsev_outcome=90day_depth=2": {
+      "image": {
+        "width_px": 1600,
+        "height_px": 5033
+      },
+      "nodes": [
+        {
+          "node_id": "Overall cohort (90-day mortality) > Influenza",
+          "slug": "virsev__influenza",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 732,
+            "y": 4332,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Influenza",
+          "N": 3517,
+          "abx_pct": 0.821,
+          "ate": -0.0358,
+          "ate_abx": 0.051,
+          "ate_no_abx": 0.0868
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > RSV",
+          "slug": "virsev__rsv",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 732,
+            "y": 3383,
+            "w": 268,
+            "h": 153
+          },
+          "label": "RSV",
+          "N": 1625,
+          "abx_pct": 0.829,
+          "ate": -0.0392,
+          "ate_abx": 0.0744,
+          "ate_no_abx": 0.1136
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > COVID",
+          "slug": "virsev__covid",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 732,
+            "y": 2434,
+            "w": 268,
+            "h": 153
+          },
+          "label": "COVID",
+          "N": 14373,
+          "abx_pct": 0.713,
+          "ate": 0.0105,
+          "ate_abx": 0.1383,
+          "ate_no_abx": 0.1278
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > Other Viruses",
+          "slug": "virsev__other_viruses",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 732,
+            "y": 1484,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Other Viruses",
+          "N": 3766,
+          "abx_pct": 0.906,
+          "ate": -0.0392,
+          "ate_abx": 0.0765,
+          "ate_no_abx": 0.1157
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > None",
+          "slug": "virsev__none",
+          "is_terminal_in_view": false,
+          "is_root": false,
+          "bbox_px": {
+            "x": 732,
+            "y": 535,
+            "w": 268,
+            "h": 153
+          },
+          "label": "No virus",
+          "N": 106984,
+          "abx_pct": 0.867,
+          "ate": -0.0188,
+          "ate_abx": 0.1231,
+          "ate_no_abx": 0.1419
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > COVID > Mild",
+          "slug": "virsev__covid_mild",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 2750,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Mild",
+          "N": 3326,
+          "abx_pct": 0.627,
+          "ate": 0.0041,
+          "ate_abx": 0.0155,
+          "ate_no_abx": 0.0114
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > COVID > Moderate",
+          "slug": "virsev__covid_moderate",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 2434,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Moderate",
+          "N": 9012,
+          "abx_pct": 0.725,
+          "ate": 0.0079,
+          "ate_abx": 0.1373,
+          "ate_no_abx": 0.1294
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > COVID > Severe",
+          "slug": "virsev__covid_severe",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 2117,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Severe",
+          "N": 2035,
+          "abx_pct": 0.804,
+          "ate": 0.0323,
+          "ate_abx": 0.3435,
+          "ate_no_abx": 0.3112
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > Influenza > Mild",
+          "slug": "virsev__influenza_mild",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 4649,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Mild",
+          "N": 1049,
+          "abx_pct": 0.74,
+          "ate": -0.0046,
+          "ate_abx": 0.0083,
+          "ate_no_abx": 0.0129
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > Influenza > Moderate",
+          "slug": "virsev__influenza_moderate",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 4332,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Moderate",
+          "N": 2070,
+          "abx_pct": 0.838,
+          "ate": -0.0353,
+          "ate_abx": 0.0444,
+          "ate_no_abx": 0.0798
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > Influenza > Severe",
+          "slug": "virsev__influenza_severe",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 4016,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Severe",
+          "N": 398,
+          "abx_pct": 0.947,
+          "ate": -0.1208,
+          "ate_abx": 0.1974,
+          "ate_no_abx": 0.3183
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > None > Mild",
+          "slug": "virsev__none_mild",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 851,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Mild",
+          "N": 29268,
+          "abx_pct": 0.832,
+          "ate": -0.0022,
+          "ate_abx": 0.0174,
+          "ate_no_abx": 0.0196
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > None > Moderate",
+          "slug": "virsev__none_moderate",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 535,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Moderate",
+          "N": 66144,
+          "abx_pct": 0.873,
+          "ate": -0.0269,
+          "ate_abx": 0.1388,
+          "ate_no_abx": 0.1657
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > None > Severe",
+          "slug": "virsev__none_severe",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 219,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Severe",
+          "N": 11572,
+          "abx_pct": 0.924,
+          "ate": -0.0143,
+          "ate_abx": 0.3011,
+          "ate_no_abx": 0.3154
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > Other Viruses > Mild",
+          "slug": "virsev__other_viruses_mild",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 1801,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Mild",
+          "N": 938,
+          "abx_pct": 0.835,
+          "ate": -0.0018,
+          "ate_abx": 0.0137,
+          "ate_no_abx": 0.0156
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > Other Viruses > Moderate",
+          "slug": "virsev__other_viruses_moderate",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 1484,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Moderate",
+          "N": 2352,
+          "abx_pct": 0.922,
+          "ate": -0.0469,
+          "ate_abx": 0.0769,
+          "ate_no_abx": 0.1238
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > Other Viruses > Severe",
+          "slug": "virsev__other_viruses_severe",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 1168,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Severe",
+          "N": 476,
+          "abx_pct": 0.966,
+          "ate": -0.0746,
+          "ate_abx": 0.1978,
+          "ate_no_abx": 0.2724
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > RSV > Mild",
+          "slug": "virsev__rsv_mild",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 3699,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Mild",
+          "N": 437,
+          "abx_pct": 0.778,
+          "ate": -0.0006,
+          "ate_abx": 0.0115,
+          "ate_no_abx": 0.0121
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > RSV > Moderate",
+          "slug": "virsev__rsv_moderate",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 3383,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Moderate",
+          "N": 1002,
+          "abx_pct": 0.833,
+          "ate": -0.0441,
+          "ate_abx": 0.0818,
+          "ate_no_abx": 0.1259
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality) > RSV > Severe",
+          "slug": "virsev__rsv_severe",
+          "is_terminal_in_view": true,
+          "is_root": false,
+          "bbox_px": {
+            "x": 1219,
+            "y": 3067,
+            "w": 268,
+            "h": 153
+          },
+          "label": "Severe",
+          "N": 186,
+          "abx_pct": 0.925,
+          "ate": -0.1036,
+          "ate_abx": 0.1827,
+          "ate_no_abx": 0.2863
+        },
+        {
+          "node_id": "Overall cohort (90-day mortality)",
+          "slug": "virsev__root",
+          "is_terminal_in_view": false,
+          "is_root": true,
+          "bbox_px": {
+            "x": 244,
+            "y": 2434,
+            "w": 268,
+            "h": 153
           },
           "label": "Overall cohort (90-day mortality)",
           "N": 130265,

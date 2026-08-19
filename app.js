@@ -86,11 +86,12 @@ function rootValueOptions(root_var) {
   // root_value slot repeats the root_var so treeKey() resolves.
   if (root_var === "root") return ["root"];
   if (root_var === "sevvirus") return ["sevvirus"];
+  if (root_var === "virsev") return ["virsev"];
   return ["mild", "moderate", "severe"];
 }
 
 // severity/virus trees have a root-value picker (which stratum); the whole-
-// cohort trees (root, sevvirus) do not.
+// cohort trees (root, sevvirus, virsev) do not.
 function rootVarHasValue(root_var) {
   return root_var === "severity" || root_var === "virus";
 }
@@ -107,6 +108,7 @@ function defaultRootValue(root_var) {
   if (root_var === "virus") return "flu";
   if (root_var === "root") return "root";
   if (root_var === "sevvirus") return "sevvirus";
+  if (root_var === "virsev") return "virsev";
   return "moderate";
 }
 
@@ -759,7 +761,7 @@ function setRootValue(v) {
 }
 
 function setRootVar(rv) {
-  if (!["severity", "virus", "root", "sevvirus"].includes(rv)) return;
+  if (!["severity", "virus", "root", "sevvirus", "virsev"].includes(rv)) return;
   if (rv === state.root_var) return;
   state.root_var = rv;
   state.root_value = defaultRootValue(rv);
@@ -894,7 +896,7 @@ function applyDeepLinkFromParams() {
   if (!row) return;
 
   let root_var, root_value;
-  if (family.stratum === "root" || family.stratum === "sevvirus") {
+  if (["root", "sevvirus", "virsev"].includes(family.stratum)) {
     // Whole-cohort trees: root_value repeats root_var; no label lookup.
     root_var = family.stratum;
     root_value = family.stratum;

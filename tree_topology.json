@@ -221,6 +221,23 @@
       }
     }
   },
+  "virsev=virsev_outcome=30day": {
+    "max_depth": 2,
+    "depths": {
+      "0": {
+        "outline_columns": "Overall Cohort",
+        "visible_terminal_node_ids": "Overall cohort (30-day mortality)"
+      },
+      "1": {
+        "outline_columns": ["Overall Cohort", "Virus"],
+        "visible_terminal_node_ids": ["Overall cohort (30-day mortality) > Influenza", "Overall cohort (30-day mortality) > RSV", "Overall cohort (30-day mortality) > COVID", "Overall cohort (30-day mortality) > Other Viruses", "Overall cohort (30-day mortality) > None"]
+      },
+      "2": {
+        "outline_columns": ["Overall Cohort", "Virus", "Severity"],
+        "visible_terminal_node_ids": ["Overall cohort (30-day mortality) > COVID > Mild", "Overall cohort (30-day mortality) > COVID > Moderate", "Overall cohort (30-day mortality) > COVID > Severe", "Overall cohort (30-day mortality) > Influenza > Mild", "Overall cohort (30-day mortality) > Influenza > Moderate", "Overall cohort (30-day mortality) > Influenza > Severe", "Overall cohort (30-day mortality) > None > Mild", "Overall cohort (30-day mortality) > None > Moderate", "Overall cohort (30-day mortality) > None > Severe", "Overall cohort (30-day mortality) > Other Viruses > Mild", "Overall cohort (30-day mortality) > Other Viruses > Moderate", "Overall cohort (30-day mortality) > Other Viruses > Severe", "Overall cohort (30-day mortality) > RSV > Mild", "Overall cohort (30-day mortality) > RSV > Moderate", "Overall cohort (30-day mortality) > RSV > Severe"]
+      }
+    }
+  },
   "severity=mild_outcome=90day": {
     "max_depth": 3,
     "depths": {
@@ -440,6 +457,23 @@
       "2": {
         "outline_columns": ["Overall Cohort", "Severity", "Virus"],
         "visible_terminal_node_ids": ["Overall cohort (90-day mortality) > Mild > Influenza", "Overall cohort (90-day mortality) > Mild > COVID", "Overall cohort (90-day mortality) > Mild > RSV", "Overall cohort (90-day mortality) > Mild > None", "Overall cohort (90-day mortality) > Mild > Other Viruses", "Overall cohort (90-day mortality) > Moderate > Influenza", "Overall cohort (90-day mortality) > Moderate > COVID", "Overall cohort (90-day mortality) > Moderate > RSV", "Overall cohort (90-day mortality) > Moderate > None", "Overall cohort (90-day mortality) > Moderate > Other Viruses", "Overall cohort (90-day mortality) > Severe > Influenza", "Overall cohort (90-day mortality) > Severe > COVID", "Overall cohort (90-day mortality) > Severe > RSV", "Overall cohort (90-day mortality) > Severe > None", "Overall cohort (90-day mortality) > Severe > Other Viruses"]
+      }
+    }
+  },
+  "virsev=virsev_outcome=90day": {
+    "max_depth": 2,
+    "depths": {
+      "0": {
+        "outline_columns": "Overall Cohort",
+        "visible_terminal_node_ids": "Overall cohort (90-day mortality)"
+      },
+      "1": {
+        "outline_columns": ["Overall Cohort", "Virus"],
+        "visible_terminal_node_ids": ["Overall cohort (90-day mortality) > Influenza", "Overall cohort (90-day mortality) > RSV", "Overall cohort (90-day mortality) > COVID", "Overall cohort (90-day mortality) > Other Viruses", "Overall cohort (90-day mortality) > None"]
+      },
+      "2": {
+        "outline_columns": ["Overall Cohort", "Virus", "Severity"],
+        "visible_terminal_node_ids": ["Overall cohort (90-day mortality) > COVID > Mild", "Overall cohort (90-day mortality) > COVID > Moderate", "Overall cohort (90-day mortality) > COVID > Severe", "Overall cohort (90-day mortality) > Influenza > Mild", "Overall cohort (90-day mortality) > Influenza > Moderate", "Overall cohort (90-day mortality) > Influenza > Severe", "Overall cohort (90-day mortality) > None > Mild", "Overall cohort (90-day mortality) > None > Moderate", "Overall cohort (90-day mortality) > None > Severe", "Overall cohort (90-day mortality) > Other Viruses > Mild", "Overall cohort (90-day mortality) > Other Viruses > Moderate", "Overall cohort (90-day mortality) > Other Viruses > Severe", "Overall cohort (90-day mortality) > RSV > Mild", "Overall cohort (90-day mortality) > RSV > Moderate", "Overall cohort (90-day mortality) > RSV > Severe"]
       }
     }
   }
