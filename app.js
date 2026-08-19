@@ -82,7 +82,17 @@ function treeKey() {
 
 function rootValueOptions(root_var) {
   if (root_var === "virus") return ["flu", "rsv", "covid", "others", "none"];
+  // Whole-cohort trees have no user-facing root value; the tree_key's
+  // root_value slot repeats the root_var so treeKey() resolves.
+  if (root_var === "root") return ["root"];
+  if (root_var === "sevvirus") return ["sevvirus"];
   return ["mild", "moderate", "severe"];
+}
+
+// severity/virus trees have a root-value picker (which stratum); the whole-
+// cohort trees (root, sevvirus) do not.
+function rootVarHasValue(root_var) {
+  return root_var === "severity" || root_var === "virus";
 }
 
 function rootValueLabel(v) {
@@ -94,7 +104,10 @@ function rootValueLabel(v) {
 }
 
 function defaultRootValue(root_var) {
-  return root_var === "virus" ? "flu" : "moderate";
+  if (root_var === "virus") return "flu";
+  if (root_var === "root") return "root";
+  if (root_var === "sevvirus") return "sevvirus";
+  return "moderate";
 }
 
 function stateKey() {
@@ -746,7 +759,7 @@ function setRootValue(v) {
 }
 
 function setRootVar(rv) {
-  if (!["severity", "virus"].includes(rv)) return;
+  if (!["severity", "virus", "root", "sevvirus"].includes(rv)) return;
   if (rv === state.root_var) return;
   state.root_var = rv;
   state.root_value = defaultRootValue(rv);
@@ -766,10 +779,16 @@ function setOutcome(o) {
 }
 
 function refreshRootValueSelect() {
+  // Whole-cohort trees (root, sevvirus) have no root value: hide the picker.
+  const group = document.getElementById("root-value-group");
+  const hasValue = rootVarHasValue(state.root_var);
+  if (group) group.hidden = !hasValue;
+
   const sel = document.getElementById("root-value");
   if (!sel) return;
-  const opts = rootValueOptions(state.root_var);
   sel.innerHTML = "";
+  if (!hasValue) return;
+  const opts = rootValueOptions(state.root_var);
   opts.forEach(v => {
     const opt = document.createElement("option");
     opt.value = v;
@@ -874,10 +893,17 @@ function applyDeepLinkFromParams() {
   const row = family.rows.find(r => r.node_id === targetId);
   if (!row) return;
 
-  const root_var = family.stratum === "virus" ? "virus" : "severity";
-  const rootLabel = row.splits && row.splits[family.root_column];
-  const root_value = rootValueSlugFromLabel(root_var, rootLabel);
-  if (!root_value) return;
+  let root_var, root_value;
+  if (family.stratum === "root" || family.stratum === "sevvirus") {
+    // Whole-cohort trees: root_value repeats root_var; no label lookup.
+    root_var = family.stratum;
+    root_value = family.stratum;
+  } else {
+    root_var = family.stratum === "virus" ? "virus" : "severity";
+    const rootLabel = row.splits && row.splits[family.root_column];
+    root_value = rootValueSlugFromLabel(root_var, rootLabel);
+    if (!root_value) return;
+  }
 
   state.outcome = family.window;
   state.root_var = root_var;

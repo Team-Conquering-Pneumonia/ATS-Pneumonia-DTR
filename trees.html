@@ -55,10 +55,18 @@
           <input type="radio" name="root_var" value="virus" />
           Virus
         </label>
+        <label class="radio">
+          <input type="radio" name="root_var" value="root" />
+          Whole cohort
+        </label>
+        <label class="radio">
+          <input type="radio" name="root_var" value="sevvirus" />
+          Severity &rarr; virus
+        </label>
       </div>
     </div>
 
-    <div class="control-group">
+    <div class="control-group" id="root-value-group">
       <label class="control-label" for="root-value">Root value</label>
       <select id="root-value" aria-label="Root value">
         <option value="mild">Mild</option>
@@ -164,6 +172,6 @@
 
   <script src="vendor/panzoom.min.js"></script>
   <script src="viz-info.js?v=reframe"></script>
-  <script src="app.js?v=reframe"></script>
+  <script src="app.js?v=reframe2"></script>
 </body>
 </html>

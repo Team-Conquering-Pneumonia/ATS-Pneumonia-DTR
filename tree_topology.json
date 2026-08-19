@@ -195,6 +195,32 @@
       }
     }
   },
+  "root=root_outcome=30day": {
+    "max_depth": 0,
+    "depths": {
+      "0": {
+        "outline_columns": "Overall Cohort",
+        "visible_terminal_node_ids": "Overall cohort (30-day mortality)"
+      }
+    }
+  },
+  "sevvirus=sevvirus_outcome=30day": {
+    "max_depth": 2,
+    "depths": {
+      "0": {
+        "outline_columns": "Overall Cohort",
+        "visible_terminal_node_ids": "Overall cohort (30-day mortality)"
+      },
+      "1": {
+        "outline_columns": ["Overall Cohort", "Severity"],
+        "visible_terminal_node_ids": ["Overall cohort (30-day mortality) > Mild", "Overall cohort (30-day mortality) > Moderate", "Overall cohort (30-day mortality) > Severe"]
+      },
+      "2": {
+        "outline_columns": ["Overall Cohort", "Severity", "Virus"],
+        "visible_terminal_node_ids": ["Overall cohort (30-day mortality) > Mild > Influenza", "Overall cohort (30-day mortality) > Mild > COVID", "Overall cohort (30-day mortality) > Mild > RSV", "Overall cohort (30-day mortality) > Mild > None", "Overall cohort (30-day mortality) > Mild > Other Viruses", "Overall cohort (30-day mortality) > Moderate > Influenza", "Overall cohort (30-day mortality) > Moderate > COVID", "Overall cohort (30-day mortality) > Moderate > RSV", "Overall cohort (30-day mortality) > Moderate > None", "Overall cohort (30-day mortality) > Moderate > Other Viruses", "Overall cohort (30-day mortality) > Severe > Influenza", "Overall cohort (30-day mortality) > Severe > COVID", "Overall cohort (30-day mortality) > Severe > RSV", "Overall cohort (30-day mortality) > Severe > None", "Overall cohort (30-day mortality) > Severe > Other Viruses"]
+      }
+    }
+  },
   "severity=mild_outcome=90day": {
     "max_depth": 3,
     "depths": {
@@ -388,6 +414,32 @@
       "4": {
         "outline_columns": ["No Virus", "Severity", "Hypoxemia / Sepsis / Shock", "Lung Comorbidities", "Other Comorbidities"],
         "visible_terminal_node_ids": ["No virus detected (90-day mortality) > Mild > Lung Disease", "No virus detected (90-day mortality) > Mild > No Lung Disease > Other Comorbidities", "No virus detected (90-day mortality) > Mild > No Lung Disease > No Comorbidity", "No virus detected (90-day mortality) > Moderate > Hypoxemia (No Sepsis) > Lung Disease", "No virus detected (90-day mortality) > Moderate > Hypoxemia and Sepsis > Lung Disease", "No virus detected (90-day mortality) > Moderate > No Sepsis / No Hypoxemia > Lung Disease", "No virus detected (90-day mortality) > Moderate > Sepsis (No Hypoxemia) > Lung Disease", "No virus detected (90-day mortality) > Severe > No Shock / No S. Hypoxemia > Lung Disease", "No virus detected (90-day mortality) > Severe > Severe Hypoxemia (No Shock) > Lung Disease", "No virus detected (90-day mortality) > Severe > Severe Hypoxemia and Shock > Lung Disease", "No virus detected (90-day mortality) > Severe > Shock (No S. Hypoxemia) > Lung Disease", "No virus detected (90-day mortality) > Moderate > Hypoxemia (No Sepsis) > No Lung Disease > Other Comorbidities", "No virus detected (90-day mortality) > Moderate > Hypoxemia (No Sepsis) > No Lung Disease > No Comorbidity", "No virus detected (90-day mortality) > Moderate > Hypoxemia and Sepsis > No Lung Disease > Other Comorbidities", "No virus detected (90-day mortality) > Moderate > Hypoxemia and Sepsis > No Lung Disease > No Comorbidity", "No virus detected (90-day mortality) > Moderate > No Sepsis / No Hypoxemia > No Lung Disease > Other Comorbidities", "No virus detected (90-day mortality) > Moderate > No Sepsis / No Hypoxemia > No Lung Disease > No Comorbidity", "No virus detected (90-day mortality) > Moderate > Sepsis (No Hypoxemia) > No Lung Disease > Other Comorbidities", "No virus detected (90-day mortality) > Moderate > Sepsis (No Hypoxemia) > No Lung Disease > No Comorbidity", "No virus detected (90-day mortality) > Severe > No Shock / No S. Hypoxemia > No Lung Disease > Other Comorbidities", "No virus detected (90-day mortality) > Severe > No Shock / No S. Hypoxemia > No Lung Disease > No Comorbidity", "No virus detected (90-day mortality) > Severe > Severe Hypoxemia (No Shock) > No Lung Disease > Other Comorbidities", "No virus detected (90-day mortality) > Severe > Severe Hypoxemia (No Shock) > No Lung Disease > No Comorbidity", "No virus detected (90-day mortality) > Severe > Severe Hypoxemia and Shock > No Lung Disease > Other Comorbidities", "No virus detected (90-day mortality) > Severe > Severe Hypoxemia and Shock > No Lung Disease > No Comorbidity", "No virus detected (90-day mortality) > Severe > Shock (No S. Hypoxemia) > No Lung Disease > Other Comorbidities", "No virus detected (90-day mortality) > Severe > Shock (No S. Hypoxemia) > No Lung Disease > No Comorbidity"]
+      }
+    }
+  },
+  "root=root_outcome=90day": {
+    "max_depth": 0,
+    "depths": {
+      "0": {
+        "outline_columns": "Overall Cohort",
+        "visible_terminal_node_ids": "Overall cohort (90-day mortality)"
+      }
+    }
+  },
+  "sevvirus=sevvirus_outcome=90day": {
+    "max_depth": 2,
+    "depths": {
+      "0": {
+        "outline_columns": "Overall Cohort",
+        "visible_terminal_node_ids": "Overall cohort (90-day mortality)"
+      },
+      "1": {
+        "outline_columns": ["Overall Cohort", "Severity"],
+        "visible_terminal_node_ids": ["Overall cohort (90-day mortality) > Mild", "Overall cohort (90-day mortality) > Moderate", "Overall cohort (90-day mortality) > Severe"]
+      },
+      "2": {
+        "outline_columns": ["Overall Cohort", "Severity", "Virus"],
+        "visible_terminal_node_ids": ["Overall cohort (90-day mortality) > Mild > Influenza", "Overall cohort (90-day mortality) > Mild > COVID", "Overall cohort (90-day mortality) > Mild > RSV", "Overall cohort (90-day mortality) > Mild > None", "Overall cohort (90-day mortality) > Mild > Other Viruses", "Overall cohort (90-day mortality) > Moderate > Influenza", "Overall cohort (90-day mortality) > Moderate > COVID", "Overall cohort (90-day mortality) > Moderate > RSV", "Overall cohort (90-day mortality) > Moderate > None", "Overall cohort (90-day mortality) > Moderate > Other Viruses", "Overall cohort (90-day mortality) > Severe > Influenza", "Overall cohort (90-day mortality) > Severe > COVID", "Overall cohort (90-day mortality) > Severe > RSV", "Overall cohort (90-day mortality) > Severe > None", "Overall cohort (90-day mortality) > Severe > Other Viruses"]
       }
     }
   }
