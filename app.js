@@ -462,6 +462,12 @@ function setMissingContour(message) {
   wrapper.appendChild(fb);
 }
 
+// Same colors as the contour legend (VIRUS_PALETTE in code/R/figure_contour_overlay.R).
+const VIRUS_COLORS = {
+  "Influenza": "#E76F51", "SARS-CoV-2": "#264653", "COVID": "#264653",
+  "RSV": "#2A9D8F", "Other": "#F4A261", "None": "#7E7E7E",
+};
+
 function contourByvirusTableHtml(byVirus) {
   if (!Array.isArray(byVirus) || byVirus.length === 0) return "";
   const rows = byVirus.map(row => {
@@ -475,7 +481,7 @@ function contourByvirusTableHtml(byVirus) {
       : "—";
     return `
       <tr class="${rowClass}">
-        <td class="varname">${escapeHtml(row.virus)}</td>
+        <td class="varname"><span class="virus-label">${VIRUS_COLORS[row.virus] ? `<span class="virus-dot" style="background:${VIRUS_COLORS[row.virus]}" aria-hidden="true"></span>` : ""}${escapeHtml(row.virus)}</span></td>
         <td>${fmtN(row.n)}</td>
         <td class="${ateClass}">${fmtAte(row.ate)}</td>
         <td class="ci">${ci}</td>

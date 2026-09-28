@@ -938,3 +938,14 @@ select#root-value {
 .data-table.results-by-node tr.row-target-highlight td {
   box-shadow: inset 0 0 0 2px var(--color-accent);
 }
+
+/* Per-virus table: legend-colored dot so each row matches its contour. */
+.virus-label { white-space: nowrap; }
+.virus-dot {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+  margin-right: 0.45em;
+  vertical-align: 0.05em;
+}
