@@ -297,23 +297,24 @@ select#root-value {
   position: absolute;
   pointer-events: auto;
   background: transparent;
-  border: 2px solid transparent;
+  /* Selection is a tint behind the node, not an outline: multiply keeps the
+     figure's text and bars legible, and a borderless tint forgives the
+     few-pixel slack in the renderer's click boxes. */
+  background-clip: content-box;
+  mix-blend-mode: multiply;
   border-radius: 8px;
   cursor: pointer;
-  /* Mobile hit-target padding (visual border remains tight to bbox). */
+  /* Mobile hit-target padding (visual tint remains tight to bbox). */
   box-sizing: content-box;
-  transition: background-color 120ms ease, border-color 120ms ease;
+  transition: background-color 120ms ease;
 }
 .node-hotzone:hover,
 .node-hotzone:focus {
-  background-color: rgba(30, 64, 175, 0.08);
-  border-color: rgba(30, 64, 175, 0.45);
+  background-color: rgba(30, 64, 175, 0.07);
   outline: none;
 }
 .node-hotzone.selected {
-  background-color: transparent;
-  border-color: var(--color-accent);
-  border-width: 3px;
+  background-color: rgba(30, 64, 175, 0.16);
 }
 
 /* Tooltip — single shared element, positioned absolutely within wrapper. */
@@ -738,6 +739,8 @@ select#root-value {
   }
   .tree-panel { flex: 1 1 60%; }
   .contour-panel { flex: 1 1 40%; }
+  .main-panels.topdown .tree-panel { flex: 1 1 70%; min-width: 0; }
+  .main-panels.topdown .contour-panel { flex: 1 1 30%; min-width: 0; }
   .site-header h1 { font-size: 1.4rem; }
 }
 

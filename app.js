@@ -545,7 +545,9 @@ function renderContourPanel() {
 
   const slug = state.selected_slug;
   const node = currentNodes().find(n => n.slug === slug);
-  const idxEntry = contourEntryForNode(node);
+  // Positivity-blanked nodes (node_suppression.R) show no treatment effect, so
+  // no contour either: the contour IS the blanked contrast.
+  const idxEntry = node && node.effect_blanked ? null : contourEntryForNode(node);
   updateReportLink(node);
 
   if (!slug) {
@@ -645,7 +647,12 @@ function renderDepthDisplay() {
 
 function renderTreeImage() {
   const key = treeKey();
-  const treeSrc = `assets/trees/${key}_depth=${state.depth}.png`;
+  const st = coordinates && coordinates.states ? coordinates.states[stateKey()] : null;
+  const treeDir = (st && st.image_dir) || "assets/trees";
+  const treeSrc = `${treeDir}/${key}_depth=${state.depth}.png`;
+  // Top-down trees are wide rather than tall: give the tree more of the row.
+  const panels = document.querySelector(".main-panels");
+  if (panels) panels.classList.toggle("topdown", !!(st && st.image_dir));
   const treeImg = document.getElementById("tree-img");
   setImage(
     treeImg,
@@ -954,6 +961,14 @@ async function init() {
   coordinates = await loadJsonOrNull("tree_coordinates.json");
   if (!coordinates) {
     coordinates = await loadJsonOrNull("tests/fixtures/tree_coordinates.sample.json");
+  }
+  // Severity trees use the manuscript's top-down layout; its states replace
+  // the inline-forest ones and point at their own image folder.
+  const topdown = await loadJsonOrNull("tree_coordinates_topdown.json");
+  if (coordinates && topdown && topdown.states) {
+    for (const [k, v] of Object.entries(topdown.states)) {
+      coordinates.states[k] = { ...v, image_dir: "assets/trees-topdown" };
+    }
   }
   contourIndex = await loadJsonOrNull("node_contours_byvirus_index.json");
   resultsByNode = await loadJsonOrNull("results_by_node.json");
