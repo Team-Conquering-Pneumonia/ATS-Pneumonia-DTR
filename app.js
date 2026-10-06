@@ -19,7 +19,8 @@ const state = {
   root_var: "severity",
   root_value: "moderate",
   depth: 0,
-  selected_slug: null,
+  selected_slug: null,     // node shown in the right panel (the root when nothing is chosen)
+  selection_active: false, // true once the user picks a node; Esc / click-away clears it
   highlight_virus: null,   // virus row to highlight in the by-virus table (deep link)
   highlight_node_id: null, // Report node_id of that virus-level row
   interactive: true
@@ -302,9 +303,9 @@ function renderHotzones() {
 
   const dims = currentImageDims();
   const nodes = currentNodes();
-  // With more than one node on screen, the unselected ones are faded so the
-  // selected node stands out at full strength.
-  layer.classList.toggle("dim-unselected", nodes.length > 1);
+  // While a node is selected (and there is more than one), the others are
+  // faded so the selected node stands out at full strength.
+  layer.classList.toggle("dim-unselected", state.selection_active && nodes.length > 1);
   if (!dims || !dims.width_px || nodes.length === 0) return;
 
   // The hot-zone layer is sized to the natural img client size — pan/zoom is
@@ -333,7 +334,7 @@ function renderHotzones() {
 
     const hz = document.createElement("div");
     hz.className = "node-hotzone";
-    if (node.slug === state.selected_slug) hz.classList.add("selected");
+    if (state.selection_active && node.slug === state.selected_slug) hz.classList.add("selected");
     hz.style.left = (x - padX) + "px";
     hz.style.top = (y - padY) + "px";
     hz.style.width = w + "px";
@@ -631,14 +632,33 @@ function parseCi(ci) {
 
 // --- selection -------------------------------------------------------------
 
+// Update hot-zone selection classes without re-rendering the tree.
+function applySelectionClasses() {
+  const layer = document.getElementById("hotzone-layer");
+  const zones = document.querySelectorAll(".node-hotzone");
+  if (layer) layer.classList.toggle("dim-unselected", state.selection_active && zones.length > 1);
+  zones.forEach(el => {
+    el.classList.toggle("selected", state.selection_active && el.dataset.slug === state.selected_slug);
+  });
+}
+
 function selectNode(slug) {
   if (!slug) return;
   state.selected_slug = slug;
+  state.selection_active = true;
   state.highlight_virus = null;
-  // Update hot-zone selection class without full re-render.
-  document.querySelectorAll(".node-hotzone").forEach(el => {
-    el.classList.toggle("selected", el.dataset.slug === slug);
-  });
+  applySelectionClasses();
+  renderContourPanel();
+  syncUrl();
+}
+
+// Back to no selection: nothing faded, the right panel shows the root.
+function clearSelection() {
+  if (!state.selection_active) return;
+  state.selection_active = false;
+  state.highlight_virus = null;
+  state.selected_slug = rootSlugForCurrentState();
+  applySelectionClasses();
   renderContourPanel();
   syncUrl();
 }
@@ -648,6 +668,7 @@ function ensureSelectionValid() {
   const slugs = new Set(nodes.map(n => n.slug));
   if (!state.selected_slug || !slugs.has(state.selected_slug)) {
     state.selected_slug = rootSlugForCurrentState();
+    state.selection_active = false;
   }
 }
 
@@ -976,7 +997,7 @@ function wireUp() {
     if (e.target && (e.target.tagName === "SELECT" || e.target.tagName === "INPUT")) return;
     if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); advanceDepth(); }
     else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); retreatDepth(); }
-    else if (e.key === "Escape") { hideTooltip(); }
+    else if (e.key === "Escape") { hideTooltip(); clearSelection(); }
   });
 
   // Re-layout hot-zones on resize (debounced).
@@ -986,9 +1007,19 @@ function wireUp() {
     resizeT = setTimeout(() => { renderHotzones(); fitTree(); }, 80);
   });
 
-  // Hide tooltip when interacting outside the tree.
+  // A click that isn't on a node hides the tooltip and clears the selection,
+  // unless it lands on a control or in the right panel (which shows the
+  // selection) or ends a drag-to-pan.
+  let downAt = null;
+  document.addEventListener("pointerdown", (e) => { downAt = { x: e.clientX, y: e.clientY }; });
   document.addEventListener("click", (e) => {
-    if (!e.target.closest(".node-hotzone")) hideTooltip();
+    if (e.target.closest(".node-hotzone")) return;
+    hideTooltip();
+    const dragged = downAt && Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y) > 5;
+    if (dragged) return;
+    if (e.target.closest(".contour-panel, .control-bar, .tree-outline, .zoom-controls, " +
+                        ".info-anchor, a, button, input, select, label")) return;
+    clearSelection();
   });
 }
 
@@ -1062,6 +1093,7 @@ function applyDeepLinkFromParams(params) {
   state.depth = Math.max(0, Math.min(depth, maxDepth()));
 
   state.selected_slug = null;
+  state.selection_active = false;
   if (row) {
     state.selected_slug = findSlugForRow(row);
     const virus = row.splits && row.splits.Virus;
@@ -1073,6 +1105,7 @@ function applyDeepLinkFromParams(params) {
         state.highlight_node_id = row.node_id;
       }
     }
+    state.selection_active = !!state.selected_slug;
   }
 
   syncControls();
@@ -1098,7 +1131,7 @@ function syncUrl() {
   const row = node ? matchingResultRow(node) : null;
   if (state.highlight_virus && state.highlight_node_id !== null) {
     params.set("node", String(state.highlight_node_id));
-  } else if (row) {
+  } else if (row && state.selection_active) {
     params.set("node", String(row.node_id));
   }
   if (!state.interactive) params.set("view", "figure");
