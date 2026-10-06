@@ -302,6 +302,9 @@ function renderHotzones() {
 
   const dims = currentImageDims();
   const nodes = currentNodes();
+  // With more than one node on screen, the unselected ones are faded so the
+  // selected node stands out at full strength.
+  layer.classList.toggle("dim-unselected", nodes.length > 1);
   if (!dims || !dims.width_px || nodes.length === 0) return;
 
   // The hot-zone layer is sized to the natural img client size — pan/zoom is

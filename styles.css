@@ -312,24 +312,26 @@ a { color: var(--color-accent); }
   position: absolute;
   pointer-events: auto;
   background: transparent;
-  /* Selection is a tint behind the node, not an outline: multiply keeps the
-     figure's text and bars legible, and a borderless tint forgives the
-     few-pixel slack in the renderer's click boxes. */
+  /* The fade covers the node's box only, not the padding added to reach the
+     mobile minimum tap target. */
   background-clip: content-box;
-  mix-blend-mode: multiply;
   border-radius: 8px;
   cursor: pointer;
-  /* Mobile hit-target padding (visual tint remains tight to bbox). */
   box-sizing: content-box;
   transition: background-color 120ms ease;
 }
-.node-hotzone:hover,
-.node-hotzone:focus {
-  background-color: rgba(30, 64, 175, 0.07);
-  outline: none;
+/* Selection: unselected nodes fade behind a white veil; the selected node is
+   left untouched so nothing covers it. */
+.hotzone-layer.dim-unselected .node-hotzone:not(.selected) {
+  background-color: rgba(255, 255, 255, 0.6);
 }
-.node-hotzone.selected {
-  background-color: rgba(30, 64, 175, 0.16);
+.hotzone-layer.dim-unselected .node-hotzone:not(.selected):hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.node-hotzone:focus { outline: none; }
+.node-hotzone:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 /* Tooltip — single shared element, positioned absolutely within wrapper. */
@@ -371,6 +373,7 @@ a { color: var(--color-accent); }
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-text);
+  white-space: nowrap;
 }
 .panel-hint {
   flex: 1 1 auto;
