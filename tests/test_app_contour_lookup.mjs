@@ -43,6 +43,7 @@ global.console = {
 // functions directly via globalThis.__appTest instead.
 global.document = { readyState: "loading", addEventListener() {} };
 
+new Function(fs.readFileSync(path.join(SITE, "site-nav.js"), "utf8")).call(globalThis);
 const src = fs.readFileSync(path.join(SITE, "app.js"), "utf8");
 new Function(src).call(globalThis);
 const api = globalThis.__appTest;
@@ -57,10 +58,10 @@ const results = [];
 function check(name, cond, detail) {
   results.push({ name, pass: !!cond, detail });
 }
+// By-virus table cells are signed percentage points without the "pp" suffix
+// (the column header carries the unit).
 function fmtAteLocal(v) {
-  if (typeof v !== "number" || !isFinite(v)) return "—";
-  const sign = v >= 0 ? "+" : "−";
-  return sign + (Math.abs(v) * 100).toFixed(1) + " pp";
+  return globalThis.SiteNav.fmtPp(v);
 }
 function fmtNLocal(v) {
   if (typeof v !== "number" || !isFinite(v)) return "—";

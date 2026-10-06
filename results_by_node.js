@@ -27,35 +27,43 @@ const SUPP = "<20";
 // `key` indexes the row object; `type` controls sort comparison; `label` is the
 // header text. Sorting/filtering key off `key`, not position, so this is a pure
 // display reorder.
+// Node ID is not shown, but stays the default sort (tree order).
+const NODE_ID_COL = { key: "node_id", label: "Node ID", type: "num" };
 const ID_COLS = [
-  { key: "node_id",      label: "Node ID",                   type: "num" },
-  { key: "path",         label: "Node (covariate path)",     type: "str" },
+  { key: "path",         label: "Subgroup",                  type: "str" },
 ];
 const OBS_COLS = [
   { key: "n",            label: "N",                         type: "supp" },
-  { key: "pct_obs_abx",  label: "% obs. abx *",              type: "supp" },
-  { key: "pct_obs_mort", label: "% obs. mortality *",        type: "supp" },
+  { key: "pct_obs_abx",  label: "Given antibiotics (%)",     type: "supp" },
+  { key: "pct_obs_mort", label: "Observed mortality (%)",    type: "supp" },
 ];
+// `scale`: "pp" = probability shown as signed percentage points,
+// "pct" = probability shown as percent.
 const EST_COLS = [
-  { key: "ate",          label: "ATE",                       type: "num" },
-  { key: "ci",           label: "95% CI",                    type: "str" },
+  { key: "ate",          label: "Effect (pp)",               type: "num", scale: "pp" },
+  { key: "ci",           label: "95% CI (pp)",               type: "str" },
   { key: "signal",       label: "Signal",                    type: "str" },
-  { key: "p_noabx",      label: "p(mort) WITHOUT abx",       type: "num" },
-  { key: "p_abx",        label: "p(mort) WITH abx",          type: "num" },
+  { key: "p_abx",        label: "Est. mortality with antibiotics (%)",    type: "num", scale: "pct" },
+  { key: "p_noabx",      label: "Est. mortality without antibiotics (%)", type: "num", scale: "pct" },
 ];
 const DEPTH_COL = [
-  { key: "depth",        label: "Depth",                     type: "num" },
+  { key: "depth",        label: "Level",                     type: "num" },
 ];
 
 // Numeric fields that get a min/max range filter (keys index the row object).
 const NUMERIC_FIELDS = [
   { key: "n",            label: "N" },
-  { key: "pct_obs_abx",  label: "% obs. abx" },
-  { key: "pct_obs_mort", label: "% obs. mortality" },
-  { key: "p_abx",        label: "p(mort) WITH abx" },
-  { key: "p_noabx",      label: "p(mort) WITHOUT abx" },
-  { key: "ate",          label: "ATE" },
+  { key: "pct_obs_abx",  label: "Given antibiotics (%)" },
+  { key: "pct_obs_mort", label: "Observed mortality (%)" },
+  { key: "p_abx",        label: "Est. mortality with antibiotics (%)", scale: "pct" },
+  { key: "p_noabx",      label: "Est. mortality without antibiotics (%)", scale: "pct" },
+  { key: "ate",          label: "Effect (pp)", scale: "pp" },
 ];
+const NUMERIC_SCALE = {};
+NUMERIC_FIELDS.forEach((f) => { NUMERIC_SCALE[f.key] = f.scale || null; });
+
+const DEFAULT_FAMILY = "90day_severity";
+const BLANK = "\u2014";
 
 let DATA = null;            // parsed results_by_node.json
 let currentFamily = null;   // family object
@@ -84,25 +92,38 @@ function numericValue(row, key) {
 }
 
 // --- value formatting ------------------------------------------------------
+// Blank (missing / not reported) values show as an em dash.
 function fmtCell(row, col) {
   const v = row[col.key];
-  if (v === null || v === undefined || v === "") return "";
+  if (v === null || v === undefined || v === "") return BLANK;
   if (col.type === "supp") {
-    // Either the suppression flag "<20" (string) or a numeric value.
-    return v === SUPP ? SUPP : String(v);
+    // Either the suppression flag "<20" (string) or a numeric value: counts get
+    // thousands separators, observed percents one decimal.
+    if (v === SUPP) return SUPP;
+    const num = Number(v);
+    if (!isFinite(num)) return String(v);
+    return col.key === "n" ? num.toLocaleString("en-US") : num.toFixed(1);
   }
+  if (col.scale === "pp") return SiteNav.fmtPp(Number(v));
+  if (col.scale === "pct") return SiteNav.fmtPct(Number(v));
   return String(v);
+}
+
+// "(-0.034, -0.013)" -> "−3.4 to −1.3"
+function fmtCi(ci) {
+  const m = String(ci || "").match(/\(\s*(-?[\d.]+)\s*,\s*(-?[\d.]+)\s*\)/);
+  return m ? SiteNav.fmtPpRange(Number(m[1]), Number(m[2])) : BLANK;
 }
 
 // Build the active column list for the current family (fixed + split + tail).
 function activeColumns() {
   const rootCol = currentFamily.root_column ? [{
     key: "split:" + currentFamily.root_column,
-    label: currentFamily.root_column,
+    label: SiteNav.levelLabel(currentFamily.root_column),
     type: "str",
   }] : [];
   const splitCols = (currentFamily.split_columns || []).map((name) => ({
-    key: "split:" + name, label: name, type: "str",
+    key: "split:" + name, label: SiteNav.levelLabel(name), type: "str",
   }));
   return ID_COLS
     .concat(OBS_COLS, EST_COLS, DEPTH_COL, rootCol, splitCols);
@@ -136,10 +157,9 @@ function treeNavUrl(row) {
   return `trees.html?family=${encodeURIComponent(currentFamily.key)}&node=${row.node_id}`;
 }
 
-// The interactive Trees view is image-based and only renders the deep severity
-// and virus trees. The root-only and severity->virus families have no tree image,
-// so their rows carry no "View in tree" deep-link (it would load a wrong/blank
-// tree). They live in this report view only.
+// Subgroup names link to the Trees view for the Severity and Virus trees,
+// where each row resolves to a node. The whole-cohort trees' rows don't
+// resolve to a node yet, so they stay plain text.
 function familyHasTreeView() {
   return currentFamily.stratum === "severity" || currentFamily.stratum === "virus";
 }
@@ -148,7 +168,6 @@ function familyHasTreeView() {
 function renderHead(cols) {
   const thead = document.getElementById("results-thead");
   const tr = document.createElement("tr");
-  tr.appendChild(document.createElement("th"));
   cols.forEach((col) => {
     const th = document.createElement("th");
     th.textContent = col.label;
@@ -183,16 +202,6 @@ function renderBody(cols, rows) {
     if (highlightNodeId !== null && row.node_id === highlightNodeId) {
       tr.classList.add("row-target-highlight");
     }
-    const navTd = document.createElement("td");
-    navTd.className = "nav-cell";
-    if (familyHasTreeView()) {
-      const navLink = document.createElement("a");
-      navLink.className = "tree-nav-link";
-      navLink.href = treeNavUrl(row);
-      navLink.textContent = "View in tree";
-      navTd.appendChild(navLink);
-    }
-    tr.appendChild(navTd);
     cols.forEach((col) => {
       const td = document.createElement("td");
       if (col.key.startsWith("split:")) {
@@ -201,10 +210,20 @@ function renderBody(cols, rows) {
         td.textContent = val;
         td.classList.add("split-col");
       } else if (col.key === "path") {
-        td.textContent = row.path || row.label || "";
+        const text = row.path || row.label || "";
+        if (familyHasTreeView()) {
+          const link = document.createElement("a");
+          link.className = "tree-nav-link";
+          link.href = treeNavUrl(row);
+          link.title = "View in tree";
+          link.textContent = text;
+          td.appendChild(link);
+        } else {
+          td.textContent = text;
+        }
         td.classList.add("varname", "node-path");
       } else if (col.key === "ci") {
-        td.textContent = row.ci || "";
+        td.textContent = fmtCi(row.ci);
         td.classList.add("ci");
       } else if (col.key === "ate") {
         td.textContent = fmtCell(row, col);
@@ -212,12 +231,12 @@ function renderBody(cols, rows) {
         if (row.signal === "Benefit") td.classList.add("ate-benefit");
         else if (row.signal === "Harm") td.classList.add("ate-harm");
       } else if (col.key === "signal") {
-        td.textContent = row.signal || "";
+        td.textContent = SiteNav.SIGNAL_LABELS[row.signal] || row.signal || "";
         if (row.signal) td.classList.add("signal-" + row.signal.toLowerCase());
       } else {
         const txt = fmtCell(row, col);
         td.textContent = txt;
-        if (txt === SUPP) td.classList.add("cell-suppressed");
+        if (txt === SUPP || txt === BLANK) td.classList.add("cell-suppressed");
       }
       tr.appendChild(td);
     });
@@ -271,7 +290,8 @@ function filteredRows(exceptNumericKey) {
 function visibleRows() {
   const rows = filteredRows();
   const cols = activeColumns();
-  const sortCol = cols.find((c) => c.key === sortKey) || cols[0];
+  const sortCol = cols.find((c) => c.key === sortKey) ||
+    (sortKey === NODE_ID_COL.key ? NODE_ID_COL : cols[0]);
   rows.sort((a, b) => compareRows(a, b, sortCol));
   return rows;
 }
@@ -282,12 +302,10 @@ function render() {
   renderHead(cols);
   renderBody(cols, rows);
   document.getElementById("row-count").textContent =
-    rows.length + " / " + currentFamily.rows.length + " nodes";
+    "Showing " + rows.length + " of " + currentFamily.rows.length + " subgroups";
   document.getElementById("table-foot").textContent =
-    "Showing tree family “" + currentFamily.label + "”. " +
-    "Cells showing “<20” are VA small-cell suppressed; * columns (% observed) " +
-    "show “<20” for small cells. Rows shaded green = " +
-    "credible benefit (95% CI below 0), red = credible harm (CI above 0).";
+    "“<20”: a count below 20, withheld under the VA small-cell rule. " +
+    "“—”: not reported.";
 }
 
 // --- dynamic filter controls ----------------------------------------------
@@ -298,12 +316,13 @@ function depthLevels(family) {
   const maxD = family.rows.reduce((m, r) => Math.max(m, r.depth || 0), 0);
   const rootRows = family.rows.filter((r) => r.depth === 0);
   const rootName = rootRows.length === 1 ?
-    ((rootRows[0].path || rootRows[0].label) || "Root") : "Root";
+    ((rootRows[0].path || rootRows[0].label) || "Whole cohort") :
+    (family.root_column || "Whole cohort");
   const splitCols = family.split_columns || [];
   const levels = [];
   for (let d = 0; d <= maxD; d++) {
-    const label = d === 0 ? rootName : (splitCols[d - 1] || "Depth " + d);
-    levels.push({ depth: d, label: label });
+    const label = d === 0 ? rootName : (splitCols[d - 1] || "Level " + d);
+    levels.push({ depth: d, label: SiteNav.levelLabel(label) });
   }
   return levels;
 }
@@ -318,7 +337,7 @@ function buildDepthControls(family) {
     levels.forEach((lvl) => {
       const opt = document.createElement("option");
       opt.value = String(lvl.depth);
-      opt.textContent = lvl.depth + " · " + lvl.label;
+      opt.textContent = lvl.label;
       if (lvl.depth === selectedDepth) opt.selected = true;
       sel.appendChild(opt);
     });
@@ -357,7 +376,7 @@ function updateValueFilterSummary(col) {
   if (!el) return;
   const total = valueFilterOptions[col].length;
   const n = valueFilters[col].size;
-  el.summary.textContent = col + (n === total ? " (all)" : " (" + n + "/" + total + ")");
+  el.summary.textContent = SiteNav.levelLabel(col) + (n === total ? " (all)" : " (" + n + "/" + total + ")");
 }
 
 // Gray out (disable) value-filter groups whose column has no row within the
@@ -460,7 +479,9 @@ function sliderStep(key, span) {
 function fmtBound(key, v) {
   if (v === null || v === undefined) return "";
   if (key === "n") return String(Math.round(v));
-  return (Math.round(v * 1000) / 1000).toString();
+  if (NUMERIC_SCALE[key] === "pp") return SiteNav.fmtPp(v);
+  if (NUMERIC_SCALE[key] === "pct") return SiteNav.fmtPct(v);
+  return (Math.round(v * 10) / 10).toString();
 }
 
 // Refresh one field's slider extent from its current domain, keeping any active
@@ -609,10 +630,12 @@ function setFamily(key) {
   currentFamily = fam;
   // Reset sort if the previous sort column doesn't exist in this family.
   const cols = activeColumns();
-  if (!cols.some((c) => c.key === sortKey)) {
-    sortKey = "node_id";
+  if (sortKey !== NODE_ID_COL.key && !cols.some((c) => c.key === sortKey)) {
+    sortKey = NODE_ID_COL.key;
     sortDir = 1;
   }
+  syncFamilyControls();
+  syncFamilyUrl();
   // Rebuild the family-specific dynamic filter controls.
   buildDepthControls(fam);
   buildValueFilters(fam);
@@ -620,16 +643,49 @@ function setFamily(key) {
   render();
 }
 
-function wireControls() {
-  const sel = document.getElementById("family-select");
-  DATA.families.forEach((fam) => {
-    const opt = document.createElement("option");
-    opt.value = fam.key;
-    opt.textContent = fam.label;
-    sel.appendChild(opt);
+// Family keys are "<outcome>_<tree>", e.g. "90day_severity".
+function familyParts(key) {
+  const i = key.indexOf("_");
+  return { outcome: key.slice(0, i), tree: key.slice(i + 1) };
+}
+
+function syncFamilyControls() {
+  const parts = familyParts(currentFamily.key);
+  document.querySelectorAll('input[name="outcome"]').forEach((r) => {
+    r.checked = r.value === parts.outcome;
   });
-  sel.value = currentFamily.key;
-  sel.addEventListener("change", (e) => setFamily(e.target.value));
+  const treeSel = document.getElementById("tree-select");
+  if (treeSel) treeSel.value = parts.tree;
+}
+
+// Address bar, Trees tab link, and cross-tab memory follow the chosen tree.
+function syncFamilyUrl() {
+  const params = new URLSearchParams();
+  params.set("family", currentFamily.key);
+  if (highlightNodeId !== null) params.set("node", String(highlightNodeId));
+  SiteNav.replaceQuery(params);
+  SiteNav.remember("family", currentFamily.key);
+  const tab = document.getElementById("trees-tab");
+  if (tab) {
+    tab.href = "trees.html?family=" + encodeURIComponent(currentFamily.key) +
+      (highlightNodeId !== null && familyHasTreeView() ? "&node=" + highlightNodeId : "");
+  }
+}
+
+function familyFromControls() {
+  const checked = Array.from(document.querySelectorAll('input[name="outcome"]')).find((r) => r.checked);
+  const outcome = checked ? checked.value : familyParts(currentFamily.key).outcome;
+  const treeSel = document.getElementById("tree-select");
+  const tree = treeSel && treeSel.value ? treeSel.value : familyParts(currentFamily.key).tree;
+  return outcome + "_" + tree;
+}
+
+function wireControls() {
+  syncFamilyControls();
+  document.querySelectorAll('input[name="outcome"]').forEach((r) => {
+    r.addEventListener("change", (e) => { if (e.target.checked) setFamily(familyFromControls()); });
+  });
+  document.getElementById("tree-select").addEventListener("change", () => setFamily(familyFromControls()));
 
   document.querySelectorAll('input[name="signal"]').forEach((r) => {
     r.addEventListener("change", (e) => {
@@ -682,18 +738,19 @@ async function init() {
     console.error("results_by_node.json has no families");
     return;
   }
-  currentFamily = DATA.families[0];
-
   const params = (typeof window !== "undefined" && window.location)
     ? new URLSearchParams(window.location.search)
     : new URLSearchParams("");
-  const familyParam = params.get("family");
-  const matchedFamily = familyParam && DATA.families.find((f) => f.key === familyParam);
-  if (matchedFamily) currentFamily = matchedFamily;
+  // Open on the tree named in the address bar, else the last tree this tab
+  // showed (Trees or Report), else 90-day Severity.
+  const findFamily = (key) => key && DATA.families.find((f) => f.key === key);
+  currentFamily = findFamily(params.get("family")) || findFamily(SiteNav.recall("family")) ||
+    findFamily(DEFAULT_FAMILY) || DATA.families[0];
   const nodeParam = params.get("node");
-  if (nodeParam !== null) highlightNodeId = Number(nodeParam);
+  if (nodeParam !== null && findFamily(params.get("family"))) highlightNodeId = Number(nodeParam);
 
   wireControls();
+  syncFamilyUrl();
   // Build the dynamic filter controls for the initial family, then render.
   buildDepthControls(currentFamily);
   buildValueFilters(currentFamily);
@@ -703,7 +760,7 @@ async function init() {
   if (highlightNodeId !== null && typeof document.querySelector === "function") {
     const targetRow = document.querySelector('tr[data-node-id="' + highlightNodeId + '"]');
     if (targetRow && typeof targetRow.scrollIntoView === "function") {
-      targetRow.scrollIntoView({ block: "center", behavior: "smooth" });
+      targetRow.scrollIntoView({ block: "center" });
     }
   }
 }

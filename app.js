@@ -20,6 +20,8 @@ const state = {
   root_value: "moderate",
   depth: 0,
   selected_slug: null,
+  highlight_virus: null,   // virus row to highlight in the by-virus table (deep link)
+  highlight_node_id: null, // Report node_id of that virus-level row
   interactive: true
 };
 
@@ -44,7 +46,11 @@ const PANZOOM_OPTS = {
   smoothScroll: false,
   bounds: false,
   boundsPadding: 0.1,
-  zoomDoubleClickSpeed: 1 // disable panzoom's double-click zoom
+  zoomDoubleClickSpeed: 1, // disable panzoom's double-click zoom
+  // A plain scroll wheel scrolls the page; Ctrl/Cmd + wheel (and trackpad
+  // pinch, which browsers report as Ctrl + wheel) zooms. Returning true tells
+  // panzoom to ignore the event.
+  beforeWheel: (e) => !(e.ctrlKey || e.metaKey)
 };
 
 function initPanzoom(targetEl) {
@@ -59,6 +65,81 @@ function resetPanzoom(pz) {
   if (!pz) return;
   pz.moveTo(0, 0);
   pz.zoomAbs(0, 0, 1);
+}
+
+// --- fit the tree to its panel -----------------------------------------------
+// Tree images share one canvas across depths, so a shallow tree can sit small in
+// a wide, mostly blank image. Find the drawn (non-white) region once per image
+// and zoom/pan so that region fills the panel.
+
+const FIT_PAD_PX = 16;
+const FIT_MAX_ZOOM = 2.5;
+const contentBoxCache = {};
+
+// Drawn-content box in the image's natural pixel coordinates, or null when the
+// pixels can't be read (e.g. a file:// page taints the canvas).
+function imageContentBox(img) {
+  if (!img || !img.naturalWidth) return null;
+  if (contentBoxCache[img.src] !== undefined) return contentBoxCache[img.src];
+  let box = null;
+  try {
+    const w = Math.min(400, img.naturalWidth);
+    const h = Math.max(1, Math.round(img.naturalHeight * w / img.naturalWidth));
+    const canvas = document.createElement("canvas");
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    ctx.drawImage(img, 0, 0, w, h);
+    const px = ctx.getImageData(0, 0, w, h).data;
+    let x0 = w, y0 = h, x1 = -1, y1 = -1;
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const i = (y * w + x) * 4;
+        if (px[i + 3] > 16 && (px[i] < 240 || px[i + 1] < 240 || px[i + 2] < 240)) {
+          if (x < x0) x0 = x;
+          if (x > x1) x1 = x;
+          if (y < y0) y0 = y;
+          if (y > y1) y1 = y;
+        }
+      }
+    }
+    if (x1 >= x0 && y1 >= y0) {
+      const k = img.naturalWidth / w;
+      box = { x: x0 * k, y: y0 * k, w: (x1 - x0 + 1) * k, h: (y1 - y0 + 1) * k };
+    }
+  } catch (err) {
+    box = null;
+  }
+  contentBoxCache[img.src] = box;
+  return box;
+}
+
+function fitTree() {
+  const pz = treePanzoom;
+  const wrapper = document.getElementById("tree-wrapper");
+  const stage = document.getElementById("tree-stage");
+  const img = document.getElementById("tree-img");
+  if (!pz || !wrapper || !stage || !img || !img.clientWidth) return;
+  resetPanzoom(pz);
+  const box = imageContentBox(img);
+  if (!box) return;
+  const k = img.clientWidth / img.naturalWidth;          // natural -> rendered px
+  const cw = box.w * k, ch = box.h * k;
+  const cx = (box.x + box.w / 2) * k, cy = (box.y + box.h / 2) * k;
+  const wr = wrapper.getBoundingClientRect();
+  const scale = Math.max(1, Math.min(
+    (wr.width - 2 * FIT_PAD_PX) / cw,
+    (wr.height - 2 * FIT_PAD_PX) / ch,
+    FIT_MAX_ZOOM
+  ));
+  // panzoom applies its transform on the next frame, so place the content
+  // centre analytically rather than by measuring: with transform-origin 0 0,
+  // a stage point p lands at stage offset + translate + scale * p.
+  pz.zoomAbs(0, 0, scale);
+  pz.moveTo(
+    wr.width / 2 - stage.offsetLeft - scale * cx,
+    wr.height / 2 - stage.offsetTop - scale * cy
+  );
 }
 
 function ensurePanzooms() {
@@ -96,12 +177,9 @@ function rootVarHasValue(root_var) {
   return root_var === "severity" || root_var === "virus";
 }
 
+// Subgroup picker labels: the same spellings the Report view's data uses.
 function rootValueLabel(v) {
-  const labels = {
-    mild: "Mild", moderate: "Moderate", severe: "Severe",
-    flu: "Flu", rsv: "RSV", covid: "COVID", others: "Other virus", none: "No virus"
-  };
-  return labels[v] || v;
+  return rootValueColumnLabel(v);
 }
 
 function defaultRootValue(root_var) {
@@ -126,7 +204,7 @@ function familyKey() {
 function rootValueColumnLabel(v) {
   const labels = {
     mild: "Mild", moderate: "Moderate", severe: "Severe",
-    flu: "Influenza", rsv: "RSV", covid: "COVID", others: "Other viruses", none: "No virus"
+    flu: "Influenza", rsv: "RSV", covid: "SARS-CoV-2", others: "Other viruses", none: "No virus"
   };
   return labels[v] || v;
 }
@@ -190,7 +268,7 @@ function setImage(imgEl, wrapperId, src, altText, onLoaded) {
 
   imgEl.onload = () => {
     spinner.classList.remove("active");
-    if (imgEl.id === "tree-img") resetPanzoom(treePanzoom);
+    if (imgEl.id === "tree-img") fitTree();
     if (imgEl.id === "contour-img") resetPanzoom(contourPanzoom);
     if (typeof onLoaded === "function") onLoaded();
   };
@@ -288,12 +366,11 @@ let tooltipHideTimer = null;
 
 function fmtPct(v) {
   if (typeof v !== "number" || !isFinite(v)) return "—";
-  return (v * 100).toFixed(1) + "%";
+  return SiteNav.fmtPct(v) + "%";
 }
 function fmtAte(v) {
   if (typeof v !== "number" || !isFinite(v)) return "—";
-  const sign = v >= 0 ? "+" : "−";
-  return sign + (Math.abs(v) * 100).toFixed(1) + " pp";
+  return SiteNav.fmtPp(v) + " pp";
 }
 function fmtN(v) {
   if (typeof v !== "number" || !isFinite(v)) return "—";
@@ -305,10 +382,10 @@ function showTooltip(node, hzEl) {
   const wrapper = document.getElementById("tree-wrapper");
   if (!tt || !wrapper) return;
   tt.innerHTML = `
-    <div class="tt-label">${escapeHtml(node.label || node.node_id)}</div>
+    <div class="tt-label">${escapeHtml(SiteNav.levelLabel(node.label || node.node_id))}</div>
     <div class="tt-row"><span class="tt-key">N</span><span>${fmtN(node.N)}</span></div>
-    <div class="tt-row"><span class="tt-key">% abx</span><span>${fmtPct(node.abx_pct)}</span></div>
-    <div class="tt-row"><span class="tt-key">ATE</span><span>${fmtAte(node.ate)}</span></div>
+    <div class="tt-row"><span class="tt-key">Given antibiotics</span><span>${fmtPct(node.abx_pct)}</span></div>
+    <div class="tt-row"><span class="tt-key">Effect</span><span>${fmtAte(node.ate)}</span></div>
   `;
   // Anchor tooltip beside the hot-zone (right preferred, then left, then below)
   // so the node stays visible. Coordinates are relative to the wrapper.
@@ -468,41 +545,50 @@ const VIRUS_COLORS = {
   "RSV": "#2A9D8F", "Other": "#F4A261", "None": "#7E7E7E",
 };
 
-function contourByvirusTableHtml(byVirus) {
+// Virus names differ slightly between files ("Other" vs "Other Viruses").
+function virusKey(v) {
+  const k = String(v || "").toLowerCase();
+  if (k.startsWith("other")) return "other";
+  if (k === "none" || k === "no virus") return "none";
+  if (k === "covid") return "sars-cov-2";
+  return k;
+}
+
+function contourByvirusTableHtml(byVirus, highlightVirus) {
   if (!Array.isArray(byVirus) || byVirus.length === 0) return "";
+  const target = highlightVirus ? virusKey(highlightVirus) : null;
   const rows = byVirus.map(row => {
     const lo = typeof row.ate_ci_lower === "number" ? row.ate_ci_lower : null;
     const hi = typeof row.ate_ci_upper === "number" ? row.ate_ci_upper : null;
     const signal = (lo == null || hi == null) ? "" : (hi < 0 ? "Benefit" : (lo > 0 ? "Harm" : "Inconclusive"));
-    const rowClass = signal === "Benefit" ? "row-benefit" : (signal === "Harm" ? "row-harm" : "");
+    const classes = [signal === "Benefit" ? "row-benefit" : (signal === "Harm" ? "row-harm" : "")];
+    if (target && virusKey(row.virus) === target) classes.push("row-target-highlight");
     const ateClass = signal === "Benefit" ? "ate-benefit" : (signal === "Harm" ? "ate-harm" : "");
-    const ci = row.ate_ci_lower != null && row.ate_ci_upper != null
-      ? `${fmtAte(row.ate_ci_lower)} to ${fmtAte(row.ate_ci_upper)}`
-      : "—";
+    const ci = SiteNav.fmtPpRange(lo, hi);
     return `
-      <tr class="${rowClass}">
+      <tr class="${classes.join(" ").trim()}">
         <td class="varname"><span class="virus-label">${VIRUS_COLORS[row.virus] ? `<span class="virus-dot" style="background:${VIRUS_COLORS[row.virus]}" aria-hidden="true"></span>` : ""}${escapeHtml(row.virus)}</span></td>
         <td>${fmtN(row.n)}</td>
-        <td class="${ateClass}">${fmtAte(row.ate)}</td>
+        <td class="${ateClass}">${SiteNav.fmtPp(row.ate)}</td>
         <td class="ci">${ci}</td>
       </tr>`;
   }).join("");
   return `
     <div class="table-scroll">
-      <table class="data-table results-by-node" aria-label="Per-virus ATE estimates for selected node">
+      <table class="data-table results-by-node byvirus-table" aria-label="Treatment effect by virus for the selected subgroup">
         <thead>
-          <tr><th>Virus</th><th>N</th><th>ATE</th><th>95% CI</th></tr>
+          <tr><th>Virus</th><th>N</th><th>Effect (pp)</th><th>95% CI</th></tr>
         </thead>
         <tbody>${rows}</tbody>
       </table>
     </div>
-    <p class="table-foot">Model-based posterior ATE estimates per virus subgroup; 95% credible intervals use the same draw scale as the pooled node above.</p>`;
+    <p class="table-foot">Effect: mortality with antibiotics minus without, in percentage points.</p>`;
 }
 
 function renderContourByvirusTable(idxEntry) {
   const table = document.getElementById("contour-byvirus-table");
   if (!table) return;
-  const html = contourByvirusTableHtml(idxEntry && idxEntry.by_virus);
+  const html = contourByvirusTableHtml(idxEntry && idxEntry.by_virus, state.highlight_virus);
   table.innerHTML = html;
   table.hidden = html === "";
 }
@@ -521,16 +607,37 @@ function updateReportLink(node) {
   link.hidden = false;
 }
 
+// "Moderate pneumonia (90-day mortality) > Sepsis (No Hypoxemia)" ->
+// "Moderate pneumonia › Sepsis (No Hypoxemia)".
+function nodePathLabel(node) {
+  const raw = String((node && (node.node_id || node.label)) || "");
+  const parts = raw.split(" > ").map(p => p.trim()).filter(Boolean);
+  if (parts.length === 0) return "";
+  let root = parts[0].replace(/\s*\(\d+-day mortality\)\s*$/i, "");
+  root = SiteNav.levelLabel(root);
+  if (/^overall cohort$/i.test(root)) root = "Whole cohort";
+  parts[0] = root.charAt(0).toUpperCase() + root.slice(1);
+  return parts.join(" \u203A ");
+}
+
+// Parse a Report-row CI string "(-0.034, -0.013)" into numbers.
+function parseCi(ci) {
+  const m = String(ci || "").match(/\(\s*(-?[\d.]+)\s*,\s*(-?[\d.]+)\s*\)/);
+  return m ? { lo: Number(m[1]), hi: Number(m[2]) } : null;
+}
+
 // --- selection -------------------------------------------------------------
 
 function selectNode(slug) {
   if (!slug) return;
   state.selected_slug = slug;
+  state.highlight_virus = null;
   // Update hot-zone selection class without full re-render.
   document.querySelectorAll(".node-hotzone").forEach(el => {
     el.classList.toggle("selected", el.dataset.slug === slug);
   });
   renderContourPanel();
+  syncUrl();
 }
 
 function ensureSelectionValid() {
@@ -564,32 +671,31 @@ function renderContourPanel() {
     return;
   }
 
-  const breadcrumbText = (idxEntry && idxEntry.node_id) || (node && node.node_id) || slug;
+  const breadcrumbText = nodePathLabel(node) || slug;
   breadcrumb.textContent = breadcrumbText;
   breadcrumb.title = breadcrumbText;
 
+  // Effect and CI come from the Report row when there is one, so both pages
+  // show the same rounded numbers; otherwise from the contour index / node.
+  const row = matchingResultRow(node);
+  const rowCi = row ? parseCi(row.ci) : null;
   const N = node ? node.N : null;
-  const ate = idxEntry ? idxEntry.ate : (node ? node.ate : null);
-  const ci = idxEntry && idxEntry.ate_ci_lower != null && idxEntry.ate_ci_upper != null
-    ? `${fmtAte(idxEntry.ate_ci_lower)} to ${fmtAte(idxEntry.ate_ci_upper)}`
-    : null;
-  const viruses = idxEntry && Array.isArray(idxEntry.viruses) ? idxEntry.viruses.join(", ") : null;
+  const ate = row && typeof row.ate === "number" ? row.ate
+    : (idxEntry ? idxEntry.ate : (node ? node.ate : null));
+  const ci = rowCi ? SiteNav.fmtPpRange(rowCi.lo, rowCi.hi)
+    : (idxEntry && idxEntry.ate_ci_lower != null && idxEntry.ate_ci_upper != null
+      ? SiteNav.fmtPpRange(idxEntry.ate_ci_lower, idxEntry.ate_ci_upper) : null);
   meta.innerHTML = [
     N != null ? `<span><span class="meta-key">N</span>${fmtN(N)}</span>` : "",
-    ate != null ? `<span><span class="meta-key">ATE</span>${fmtAte(ate)}</span>` : "",
-    ci != null ? `<span><span class="meta-key">95% CI</span>${ci}</span>` : "",
-    viruses != null ? `<span><span class="meta-key">Viruses</span>${escapeHtml(viruses)}</span>` : ""
+    ate != null ? `<span><span class="meta-key">Effect</span>${fmtAte(ate)}${ci != null ? ` <span class="meta-ci">(95% CI ${ci})</span>` : ""}</span>` : ""
   ].filter(Boolean).join("");
   renderContourByvirusTable(idxEntry);
 
   if (!idxEntry || !idxEntry.image) {
-    // Run label sourced from the loaded results data, not hardcoded, so it
-    // tracks whatever run the site was ingested against.
-    const runLabel = (resultsByNode && resultsByNode.run) || "run-20260723";
     setMissingContour(
       state.root_var === "severity"
-        ? `By-virus contour is not available for this suppressed or unmapped node in the ${runLabel} export.`
-        : `By-virus contour overlays are available for severity-rooted tree nodes only in this ${runLabel} site contract.`
+        ? "Virus breakdown isn't available for this subgroup."
+        : "Virus breakdown is available for severity trees only."
     );
     return;
   }
@@ -600,6 +706,9 @@ function renderContourPanel() {
 
 // --- outline + depth display ----------------------------------------------
 
+// One button per tree level. Shown levels are filled; clicking one collapses
+// the tree back to it. Hidden levels are outlined with a "+"; clicking one
+// expands the tree down to it.
 function renderOutline() {
   const container = document.getElementById("outline-columns");
   container.innerHTML = "";
@@ -609,46 +718,37 @@ function renderOutline() {
   const pending = full.slice(cur.length);
 
   cur.forEach((label, idx) => {
-    const el = document.createElement("div");
+    const name = SiteNav.levelLabel(label);
+    const el = document.createElement("button");
+    el.type = "button";
     el.className = "outline-col active";
-    el.textContent = label;
-    el.setAttribute("role", "button");
-    el.setAttribute("tabindex", "0");
+    el.textContent = name;
     el.dataset.depth = String(idx);
+    const isLast = idx === cur.length - 1;
+    el.setAttribute("aria-pressed", "true");
+    el.title = isLast ? "Shown" : `Collapse the tree back to ${name}`;
     el.addEventListener("click", () => setDepth(idx));
-    el.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setDepth(idx); }
-    });
     container.appendChild(el);
   });
 
-  if (pending.length > 0) {
-    const gap = document.createElement("div");
-    gap.className = "outline-gap";
-    gap.setAttribute("aria-hidden", "true");
-    container.appendChild(gap);
-
-    pending.forEach((label, i) => {
-      const targetDepth = cur.length + i;
-      const el = document.createElement("div");
-      el.className = "outline-col pending";
-      el.textContent = label;
-      el.setAttribute("role", "button");
-      el.setAttribute("tabindex", "0");
-      el.dataset.depth = String(targetDepth);
-      el.addEventListener("click", () => setDepth(targetDepth));
-      el.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setDepth(targetDepth); }
-      });
-      container.appendChild(el);
-    });
-  }
-}
-
-function renderDepthDisplay() {
-  document.getElementById("depth-display").textContent = `${state.depth} / ${maxDepth()}`;
-  document.getElementById("depth-minus").disabled = state.depth <= 0;
-  document.getElementById("depth-plus").disabled = state.depth >= maxDepth();
+  pending.forEach((label, i) => {
+    const name = SiteNav.levelLabel(label);
+    const targetDepth = cur.length + i;
+    const el = document.createElement("button");
+    el.type = "button";
+    el.className = "outline-col pending";
+    el.dataset.depth = String(targetDepth);
+    el.setAttribute("aria-pressed", "false");
+    el.title = `Show the tree down to ${name}`;
+    const plus = document.createElement("span");
+    plus.className = "outline-plus";
+    plus.setAttribute("aria-hidden", "true");
+    plus.textContent = "+";
+    el.appendChild(plus);
+    el.appendChild(document.createTextNode(name));
+    el.addEventListener("click", () => setDepth(targetDepth));
+    container.appendChild(el);
+  });
 }
 
 function renderTreeImage() {
@@ -673,13 +773,14 @@ function render() {
   applyViewMode();
   if (!state.interactive) {
     renderStaticView();
+    syncUrl();
     return;
   }
   ensureSelectionValid();
   renderOutline();
-  renderDepthDisplay();
   renderTreeImage();
   renderContourPanel();
+  syncUrl();
 }
 
 // --- interactive / static view toggle -------------------------------------
@@ -692,10 +793,8 @@ function applyViewMode() {
   const setHidden = (sel, hidden) =>
     document.querySelectorAll(sel).forEach((el) => { el.hidden = hidden; });
   setHidden(".legend", !interactive);
-  setHidden(".instructions", !interactive);
   setHidden(".tree-outline", !interactive);
   setHidden(".main-panels", !interactive);
-  setHidden(".depth-group", !interactive);
   const sp = document.getElementById("static-panel");
   if (sp) sp.hidden = interactive;
 }
@@ -731,8 +830,7 @@ function renderStaticView() {
   const src = staticFigureSrc();
   if (!src) {
     setMissingStatic(
-      "The static integrated figure for this tree is not yet available for the " +
-      "current analysis. Turn on “Interactive” above to explore it node by node."
+      "The full figure for this tree isn't available. Switch View to Explore to step through it."
     );
     return;
   }
@@ -742,8 +840,7 @@ function renderStaticView() {
   img.onload = () => { if (spinner) spinner.classList.remove("active"); };
   img.onerror = () => {
     setMissingStatic(
-      "The static integrated figure for this tree is not yet available for the " +
-      "current analysis. Turn on “Interactive” above to explore it node by node."
+      "The full figure for this tree isn't available. Switch View to Explore to step through it."
     );
   };
   img.src = src;
@@ -759,6 +856,7 @@ function setDepth(d) {
   // Reset selection to root of the new view; ensureSelectionValid in render()
   // will repick if the previous slug is gone.
   state.selected_slug = null;
+  state.highlight_virus = null;
   render();
 }
 
@@ -770,16 +868,18 @@ function setRootValue(v) {
   state.root_value = v;
   state.depth = 0;
   state.selected_slug = null;
+  state.highlight_virus = null;
   render();
 }
 
 function setRootVar(rv) {
-  if (!["severity", "virus", "root", "sevvirus", "virsev"].includes(rv)) return;
+  if (!SiteNav.TREE_ORDER.includes(rv)) return;
   if (rv === state.root_var) return;
   state.root_var = rv;
   state.root_value = defaultRootValue(rv);
   state.depth = 0;
   state.selected_slug = null;
+  state.highlight_virus = null;
   refreshRootValueSelect();
   render();
 }
@@ -790,19 +890,27 @@ function setOutcome(o) {
   state.outcome = o;
   state.depth = 0;
   state.selected_slug = null;
+  state.highlight_virus = null;
   render();
 }
 
 function refreshRootValueSelect() {
-  // Whole-cohort trees (root, sevvirus) have no root value: hide the picker.
-  const group = document.getElementById("root-value-group");
+  // Whole-cohort trees (root, sevvirus, virsev) have no subgroup: keep the
+  // picker in place, disabled, so the controls don't shift.
   const hasValue = rootVarHasValue(state.root_var);
-  if (group) group.hidden = !hasValue;
+  const treeSel = document.getElementById("tree-select");
+  if (treeSel) treeSel.value = state.root_var;
 
   const sel = document.getElementById("root-value");
   if (!sel) return;
   sel.innerHTML = "";
-  if (!hasValue) return;
+  sel.disabled = !hasValue;
+  if (!hasValue) {
+    const opt = document.createElement("option");
+    opt.textContent = "All patients";
+    sel.appendChild(opt);
+    return;
+  }
   const opts = rootValueOptions(state.root_var);
   opts.forEach(v => {
     const opt = document.createElement("option");
@@ -829,22 +937,17 @@ function wireUp() {
     });
   });
 
-  document.querySelectorAll('input[name="root_var"]').forEach(r => {
-    r.addEventListener("change", (e) => {
-      if (e.target.checked) setRootVar(e.target.value);
-    });
+  document.getElementById("tree-select").addEventListener("change", (e) => {
+    setRootVar(e.target.value);
   });
 
-  document.getElementById("depth-plus").addEventListener("click", advanceDepth);
-  document.getElementById("depth-minus").addEventListener("click", retreatDepth);
-
-  const interactiveToggle = document.getElementById("interactive-toggle");
-  if (interactiveToggle) {
-    interactiveToggle.addEventListener("change", (e) => {
-      state.interactive = e.target.checked;
+  document.querySelectorAll('input[name="view"]').forEach(r => {
+    r.addEventListener("change", (e) => {
+      if (!e.target.checked) return;
+      state.interactive = e.target.value === "explore";
       render();
     });
-  }
+  });
 
   // Zoom-control buttons for both panels.
   document.querySelectorAll(".zoom-controls button").forEach((btn) => {
@@ -860,7 +963,9 @@ function wireUp() {
       const cy = rect.height / 2;
       if (action === "in") pz.smoothZoom(cx, cy, 1.5);
       else if (action === "out") pz.smoothZoom(cx, cy, 1 / 1.5);
-      else if (action === "reset") resetPanzoom(pz);
+      else if (action === "reset") {
+        if (target === "tree") fitTree(); else resetPanzoom(pz);
+      }
     });
   });
 
@@ -875,7 +980,7 @@ function wireUp() {
   let resizeT = null;
   window.addEventListener("resize", () => {
     if (resizeT) clearTimeout(resizeT);
-    resizeT = setTimeout(renderHotzones, 80);
+    resizeT = setTimeout(() => { renderHotzones(); fitTree(); }, 80);
   });
 
   // Hide tooltip when interacting outside the tree.
@@ -895,18 +1000,37 @@ function findSlugForRow(row) {
   return null;
 }
 
-function applyDeepLinkFromParams() {
-  if (typeof window === "undefined" || !window.location) return;
-  const params = new URLSearchParams(window.location.search);
-  const familyParam = params.get("family");
-  const nodeParam = params.get("node");
-  if (!familyParam || nodeParam === null) return;
-  if (!resultsByNode || !Array.isArray(resultsByNode.families)) return;
-  const family = resultsByNode.families.find(f => f.key === familyParam);
+// Address-bar state:
+//   family=<outcome>_<tree>   which tree (same keys as the Report view)
+//   sub=<root value>          subgroup, for Severity and Virus trees
+//   depth=<n>                 levels shown
+//   node=<Report node_id>     selected subgroup (as numbered in the Report view)
+// A Report "View in tree" link sends only family + node.
+
+function familyFromKey(key) {
+  if (!resultsByNode || !Array.isArray(resultsByNode.families)) return null;
+  return resultsByNode.families.find(f => f.key === key) || null;
+}
+
+// Report rows for virus-level subgroups of a severity tree have no node of
+// their own: the virus split is the contour panel. Resolve them to their
+// parent subgroup and remember which virus row to highlight.
+function parentRow(family, row) {
+  const parts = String(row.path || "").split(" > ");
+  if (parts.length < 2) return null;
+  const parentPath = parts.slice(0, -1).join(" > ");
+  return family.rows.find(r => r.path === parentPath) || null;
+}
+
+function applyDeepLinkFromParams(params) {
+  if (!params) {
+    if (typeof window === "undefined" || !window.location) return;
+    params = new URLSearchParams(window.location.search);
+  }
+  const family = familyFromKey(params.get("family"));
   if (!family) return;
-  const targetId = Number(nodeParam);
-  const row = family.rows.find(r => r.node_id === targetId);
-  if (!row) return;
+  const nodeParam = params.get("node");
+  const row = nodeParam !== null ? family.rows.find(r => r.node_id === Number(nodeParam)) : null;
 
   let root_var, root_value;
   if (["root", "sevvirus", "virsev"].includes(family.stratum)) {
@@ -915,21 +1039,91 @@ function applyDeepLinkFromParams() {
     root_value = family.stratum;
   } else {
     root_var = family.stratum === "virus" ? "virus" : "severity";
-    const rootLabel = row.splits && row.splits[family.root_column];
-    root_value = rootValueSlugFromLabel(root_var, rootLabel);
-    if (!root_value) return;
+    if (row) {
+      const rootLabel = row.splits && row.splits[family.root_column];
+      root_value = rootValueSlugFromLabel(root_var, rootLabel);
+    } else {
+      root_value = params.get("sub");
+    }
+    if (!rootValueOptions(root_var).includes(root_value)) root_value = defaultRootValue(root_var);
   }
 
   state.outcome = family.window;
   state.root_var = root_var;
   state.root_value = root_value;
-  const depth = rowSplitDepth(row, family);
-  state.depth = Math.max(0, Math.min(depth, maxDepth()));
-  state.selected_slug = findSlugForRow(row);
+  state.highlight_virus = null;
 
+  let depth = row ? rowSplitDepth(row, family) : 0;
+  const depthParam = params.get("depth");
+  if (depthParam !== null && isFinite(Number(depthParam))) depth = Math.max(depth, Number(depthParam));
+  state.depth = Math.max(0, Math.min(depth, maxDepth()));
+
+  state.selected_slug = null;
+  if (row) {
+    state.selected_slug = findSlugForRow(row);
+    const virus = row.splits && row.splits.Virus;
+    if (!state.selected_slug && family.stratum === "severity" && virus) {
+      const parent = parentRow(family, row);
+      if (parent) {
+        state.selected_slug = findSlugForRow(parent);
+        state.highlight_virus = virus;
+        state.highlight_node_id = row.node_id;
+      }
+    }
+  }
+
+  syncControls();
+}
+
+function syncControls() {
+  if (typeof document === "undefined" || !document.querySelectorAll) return;
   document.querySelectorAll('input[name="outcome"]').forEach(r => { r.checked = r.value === state.outcome; });
-  document.querySelectorAll('input[name="root_var"]').forEach(r => { r.checked = r.value === state.root_var; });
+  document.querySelectorAll('input[name="view"]').forEach(r => {
+    r.checked = r.value === (state.interactive ? "explore" : "figure");
+  });
   refreshRootValueSelect();
+}
+
+// Keep the address bar, the Report tab link, and the cross-tab memory in step
+// with what's on screen.
+function syncUrl() {
+  const params = new URLSearchParams();
+  params.set("family", familyKey());
+  if (rootVarHasValue(state.root_var)) params.set("sub", state.root_value);
+  params.set("depth", String(state.depth));
+  const node = currentNodes().find(n => n.slug === state.selected_slug);
+  const row = node ? matchingResultRow(node) : null;
+  if (state.highlight_virus && state.highlight_node_id !== null) {
+    params.set("node", String(state.highlight_node_id));
+  } else if (row) {
+    params.set("node", String(row.node_id));
+  }
+  if (!state.interactive) params.set("view", "figure");
+  SiteNav.replaceQuery(params);
+  SiteNav.remember("family", familyKey());
+  SiteNav.remember("trees-query", params.toString());
+
+  const tab = document.getElementById("report-tab");
+  if (tab) {
+    tab.href = `results_by_node.html?family=${encodeURIComponent(familyKey())}` +
+      (params.get("node") ? `&node=${params.get("node")}` : "");
+  }
+}
+
+// What to open with: the address bar if it names a tree; otherwise the last
+// Trees view this tab showed, unless the Report view has since moved to a
+// different tree, in which case that tree.
+function startupParams() {
+  const fromUrl = new URLSearchParams(window.location.search);
+  if (fromUrl.get("family")) return fromUrl;
+  const lastFamily = SiteNav.recall("family");
+  const lastQuery = SiteNav.recall("trees-query");
+  if (lastQuery) {
+    const q = new URLSearchParams(lastQuery);
+    if (!lastFamily || q.get("family") === lastFamily) return q;
+  }
+  if (lastFamily) return new URLSearchParams({ family: lastFamily });
+  return null;
 }
 
 // --- init ------------------------------------------------------------------
@@ -982,7 +1176,11 @@ async function init() {
   if (!contourIndex) contourIndex = { nodes: {} };
   if (!resultsByNode) resultsByNode = { families: [] };
 
-  applyDeepLinkFromParams();
+  const params = startupParams();
+  if (params) {
+    if (params.get("view") === "figure") state.interactive = false;
+    applyDeepLinkFromParams(params);
+  }
 
   wireUp();
   ensurePanzooms();

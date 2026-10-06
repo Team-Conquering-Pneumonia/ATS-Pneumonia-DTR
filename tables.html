@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Summary Tables — Empiric Antibiotics and Mortality in CAP</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Summary tables — Empiric Antibiotics and Mortality in CAP</title>
+  <meta name="analysis-run" content="run-20260819" />
+  <link rel="stylesheet" href="styles.css?v=uireview2" />
 </head>
 <body>
   <header class="site-header">
-    <h1>Summary Tables</h1>
-    <p class="subtitle">Empiric Antibiotics and Mortality in Community-Acquired Pneumonia — ATS 2026 poster companion</p>
-    <p class="provenance">Tables 1 and 2 are generated from run-20260819, the currently promoted analysis run. Mortality is on a scale where lower is better.</p>
+    <h1><a href="index.html">Empiric Antibiotics and Mortality in Community-Acquired Pneumonia</a></h1>
+    <p class="subtitle">A Decision Tree Analysis of 120 U.S. Veterans Affairs Medical Centers &middot; ATS 2026 poster companion</p>
   </header>
 
   <nav class="view-tabs" aria-label="Primary views">
@@ -33,7 +33,12 @@
         <h2 id="t1-heading">Table 1 — Cohort characteristics by empiric antibiotics within 24h</h2>
         <button type="button" class="info-btn" data-info="table1"></button>
       </div>
-      <p class="table-desc">Cohort: 130,265 ED encounters (empiric abx within 24h: 110,666 / 85.0%; no empiric abx: 19,599 / 15.0%). Columns report n (%), mean (SD) or median (IQR) as pre-specified per variable, split by antibiotic group. Variables are organized by clinical domain (demographics, illness severity, comorbidities, viral testing, processes of care, outcomes, additional confounders); row shading indicates model-stage membership (green = Stage 2 decision covariate, blue = Stage 1 confounder, yellow = other). Counts below 20 are suppressed. Generated from run-20260819.</p>
+      <p class="table-desc">Cohort: 130,265 ED encounters (empiric abx within 24h: 110,666 / 85.0%; no empiric abx: 19,599 / 15.0%). Columns report n (%), mean (SD) or median (IQR) as pre-specified per variable, split by antibiotic group. Variables are organized by clinical domain (demographics, illness severity, comorbidities, viral testing, processes of care, outcomes, additional confounders). Counts below 20 are suppressed.</p>
+      <div class="stage-legend" aria-label="Row shading">
+        <span class="stage-key stage-key--s2">Stage 2 decision covariate</span>
+        <span class="stage-key stage-key--s1">Stage 1 confounder</span>
+        <span class="stage-key stage-key--rem">Other</span>
+      </div>
       <div class="table-scroll">
         <table class="data-table t1">
           <thead>
@@ -259,13 +264,13 @@
         <h2 id="t2-heading">Table 2 — Population regime comparison</h2>
         <button type="button" class="info-btn" data-info="table2"></button>
       </div>
-      <p class="table-desc">Population mean mortality (posterior mean + 95% credible interval over 1,000 draws) and population antibiotic-use fraction under three population strategies (observed care, antibiotics for all, antibiotics for none), by mortality window. Generated from run-20260819.</p>
+      <p class="table-desc">Population mean mortality (posterior mean + 95% credible interval over 1,000 draws) and population antibiotic-use fraction under three population strategies (observed care, antibiotics for all, antibiotics for none), by mortality window.</p>
 
       <h3 class="window-heading">30-day mortality</h3>
       <div class="table-scroll">
         <table class="data-table">
           <thead>
-            <tr><th>Regime</th><th>Mortality % (95% CrI)</th><th>Abx use</th></tr>
+            <tr><th>Regime</th><th>Mortality, % (95% CI)</th><th>Abx use</th></tr>
           </thead>
           <tbody>
 <tr><td class="varname">Observed care</td><td>6.32 (6.22&ndash;6.44)</td><td>85.0%</td></tr>
@@ -279,7 +284,7 @@
       <div class="table-scroll">
         <table class="data-table">
           <thead>
-            <tr><th>Regime</th><th>Mortality % (95% CrI)</th><th>Abx use</th></tr>
+            <tr><th>Regime</th><th>Mortality, % (95% CI)</th><th>Abx use</th></tr>
           </thead>
           <tbody>
 <tr><td class="varname">Observed care</td><td>12.09 (11.94&ndash;12.26)</td><td>85.0%</td></tr>
@@ -293,9 +298,9 @@
   </main>
 
   <footer class="site-footer">
-    <p>Team Conquering Pneumonia &middot; <a href="trees.html">Interactive trees</a> &middot; <a href="https://github.com/Team-Conquering-Pneumonia/ATS-Pneumonia-DTR">GitHub</a></p>
+    <p>Team Conquering Pneumonia &middot; <a href="https://github.com/Team-Conquering-Pneumonia/ATS-Pneumonia-DTR">GitHub</a></p>
   </footer>
-  <script src="viz-info.js?v=reframe"></script>
+  <script src="viz-info.js?v=uireview2"></script>
 </body>
 </html>
 

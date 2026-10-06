@@ -33,13 +33,15 @@ html, body {
 a { color: var(--color-accent); }
 
 .site-header {
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 1rem;
   border-bottom: 1px solid var(--color-border);
 }
 .site-header h1 {
-  font-size: 1.1rem;
-  margin: 0 0 0.15rem;
+  font-size: 1.05rem;
+  margin: 0 0 0.1rem;
 }
+.site-header h1 a { color: inherit; text-decoration: none; }
+.site-header h1 a:hover { text-decoration: underline; }
 .subtitle {
   margin: 0;
   font-size: 0.85rem;
@@ -66,7 +68,7 @@ a { color: var(--color-accent); }
   overflow-x: auto;
 }
 .view-tab {
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 0.9rem;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-muted);
@@ -85,7 +87,7 @@ a { color: var(--color-accent); }
 .control-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap);
+  gap: var(--gap) 1.25rem;
   padding: 0.75rem 1rem;
   background: var(--color-card);
   border-bottom: 1px solid var(--color-border);
@@ -107,55 +109,53 @@ a { color: var(--color-accent); }
   display: flex;
   gap: 0.5rem;
 }
-.radio {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-.radio.disabled {
-  color: var(--color-disabled);
-  cursor: not-allowed;
-}
-.checkbox {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-select#root-value {
-  padding: 0.4rem 0.6rem;
+.control-group--end { margin-left: auto; }
+.control-select {
+  height: 2.25rem;
+  padding: 0 0.6rem;
   font-size: 0.95rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   background: white;
+  color: var(--color-text);
 }
-.depth-controls {
+.control-select:disabled {
+  color: var(--color-muted);
+  background: var(--color-card);
+}
+
+/* Segmented control: a row of radio buttons drawn as one joined button group.
+   The radios stay in the DOM (keyboard + screen readers) but are hidden. */
+.segmented {
+  display: inline-flex;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: white;
+  overflow: hidden;
+}
+.segmented label { position: relative; cursor: pointer; }
+.segmented input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+}
+.segmented span {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  height: 2.25rem;
+  padding: 0 0.85rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  white-space: nowrap;
 }
-.depth-controls button {
-  width: 2rem;
-  height: 2rem;
-  font-size: 1.1rem;
-  border: 1px solid var(--color-border);
-  background: white;
-  border-radius: var(--radius);
-  cursor: pointer;
-}
-.depth-controls button:disabled {
-  color: var(--color-disabled);
-  cursor: not-allowed;
-}
-#depth-display {
-  font-variant-numeric: tabular-nums;
-  font-size: 0.95rem;
-  min-width: 3rem;
-  text-align: center;
-}
+.segmented label + label span { border-left: 1px solid var(--color-border); }
+.segmented label:hover span { color: var(--color-text); background: #f3f4f6; }
+.segmented input:checked + span { background: var(--color-accent); color: white; }
+.segmented input:focus-visible + span { outline: 2px solid var(--color-accent); outline-offset: -4px; }
+.segmented--small span { height: 2rem; padding: 0 0.65rem; font-size: 0.85rem; }
 
 /* Legend */
 .legend {
@@ -182,20 +182,35 @@ select#root-value {
 .swatch-uncertain  { background: var(--color-uncertain); }
 .bar-explain { color: var(--color-muted); }
 
-/* Tree outline header */
+/* Tree levels: shown levels filled, levels you can add outlined with "+". */
 .tree-outline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   padding: 0.5rem 1rem;
   border-bottom: 1px solid var(--color-border);
   overflow-x: auto;
 }
+.outline-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+  flex: 0 0 auto;
+}
 .outline-columns {
   display: flex;
   align-items: stretch;
-  gap: 0.25rem;
+  gap: 0.35rem;
   min-width: max-content;
 }
 .outline-col {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
   padding: 0.4rem 0.8rem;
+  font: inherit;
   font-size: 0.85rem;
   font-weight: 600;
   background: white;
@@ -205,23 +220,20 @@ select#root-value {
   white-space: nowrap;
   user-select: none;
 }
+.outline-col:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 .outline-col.active {
   background: var(--color-accent);
   color: white;
   border-color: var(--color-accent);
 }
+.outline-col.active:hover { background: #1e3a8a; }
 .outline-col.pending {
-  color: var(--color-disabled);
-  background: var(--color-card);
-  border-style: dashed;
-  cursor: not-allowed;
+  color: var(--color-accent);
+  background: white;
+  border-color: #93a5d8;
 }
-.outline-gap {
-  width: 1.5rem;
-  flex: 0 0 1.5rem;
-  border-left: 2px dashed var(--color-border);
-  margin: 0 0.25rem;
-}
+.outline-col.pending:hover { background: #eef2ff; border-color: var(--color-accent); }
+.outline-plus { font-size: 1rem; line-height: 1; }
 
 /* Main panels */
 .main-panels {
@@ -284,6 +296,9 @@ select#root-value {
 .tree-stage > #tree-img {
   display: block;
   max-width: 100%;
+  /* Fit the whole tree on screen below the header and controls. */
+  max-height: max(300px, calc(100vh - 380px));
+  width: auto;
   height: auto;
 }
 
@@ -345,11 +360,10 @@ select#root-value {
 }
 .node-tooltip .tt-key { color: #c7d2fe; }
 
-/* Panel header (title + info button), used on the tree panel. */
+/* Panel header (title, hint, zoom buttons, info button). */
 .panel-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 0.5rem;
   padding: 0.15rem 0.25rem 0.5rem;
 }
@@ -358,6 +372,24 @@ select#root-value {
   font-weight: 600;
   color: var(--color-text);
 }
+.panel-hint {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.panel-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 0.25rem 0.5rem;
+}
+.panel-toolbar .zoom-controls,
+.panel-header .zoom-controls { margin-left: auto; }
 
 /* Right panel — single contour. */
 .contour-header {
@@ -367,9 +399,11 @@ select#root-value {
   gap: 0.5rem;
   padding: 0.25rem 0.25rem 0.5rem;
 }
+.contour-header {
+  align-items: flex-start;
+}
 .contour-header .contour-breadcrumb { flex: 1 1 auto; min-width: 0; }
 .contour-header .info-btn { flex: 0 0 auto; }
-.contour-header .view-in-report-link { flex: 0 0 auto; }
 .view-in-report-link {
   font-size: 0.8rem;
   font-weight: 600;
@@ -383,12 +417,10 @@ select#root-value {
 }
 .view-in-report-link:hover { background: #eef2ff; }
 .contour-breadcrumb {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--color-text);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.35;
 }
 .contour-meta {
   margin-top: 0.5rem;
@@ -403,47 +435,45 @@ select#root-value {
   font-variant-numeric: tabular-nums;
 }
 .contour-meta .meta-key { color: var(--color-muted); margin-right: 0.25rem; }
+.contour-meta .meta-ci { color: var(--color-muted); }
 
-/* Zoom control cluster, corner-anchored */
+/* By-virus table under the contour: compact so it fits the narrow panel. */
+.byvirus-table th, .byvirus-table td { padding: 0.3rem 0.45rem; }
+.byvirus-table .ci { font-size: 0.78rem; }
+
+/* Zoom buttons: a small joined group in the panel header / toolbar, so they
+   never sit on top of the figure. */
 .zoom-controls {
-  position: absolute;
-  top: 0.4rem;
-  right: 0.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  z-index: 5;
+  display: inline-flex;
+  flex: 0 0 auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: white;
+  overflow: hidden;
 }
 .zoom-controls button {
-  width: 1.9rem;
-  height: 1.9rem;
-  font-size: 0.95rem;
+  min-width: 1.9rem;
+  height: 1.75rem;
+  padding: 0 0.45rem;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
   line-height: 1;
-  border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: var(--radius);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-.zoom-controls button:hover { background: white; }
-.tap-hint {
-  margin: 0.4rem 0 0;
-  font-size: 0.8rem;
-  color: var(--color-muted);
-  text-align: center;
-}
-
-.instructions {
-  margin: 0;
-  padding: 0.6rem 1rem;
-  font-size: 0.9rem;
   color: var(--color-text);
-  background: var(--color-card);
+  border: 0;
+  background: white;
+  cursor: pointer;
+}
+.zoom-controls button + button { border-left: 1px solid var(--color-border); }
+.zoom-controls button:hover { background: #eef2ff; }
+
+/* One-line page introduction under the tabs (Report view). */
+.page-intro {
+  margin: 0;
+  padding: 0.55rem 1rem;
+  font-size: 0.85rem;
+  color: var(--color-muted);
   border-bottom: 1px solid var(--color-border);
-  text-align: center;
 }
 
 /* About page */
@@ -452,6 +482,7 @@ select#root-value {
   max-width: 820px;
   margin: 0 auto;
 }
+.about-byline { margin: 0 0 1.25rem; }
 .about-caveat {
   margin: 0 0 1.5rem;
   padding: 0.6rem 0.8rem;
@@ -630,8 +661,17 @@ select#root-value {
 }
 .tables-main {
   padding: 1rem;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
+}
+/* Report view: the table uses the full width. */
+.tables-main.report-main { max-width: 1600px; }
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 0 0 0.5rem;
 }
 .tables-toc {
   display: flex;
@@ -724,11 +764,32 @@ select#root-value {
   border-top: 2px solid var(--color-border);
   position: static;
 }
-/* Table 1 stage-group row fills (green=Stage 2, blue=Stage 1, yellow=Other).
-   Placed after the zebra rule so they take precedence. */
-.data-table.t1 tr.stage-s2 td  { background: #e2efda; }
-.data-table.t1 tr.stage-s1 td  { background: #ddeeff; }
-.data-table.t1 tr.stage-rem td { background: #fff2cc; }
+/* Table 1 stage-group rows (green=Stage 2, blue=Stage 1, yellow=Other): a light
+   tint plus a colored bar on the first cell, keyed by .stage-legend above the
+   table. Placed after the zebra rule so they take precedence. */
+.data-table.t1 tr.stage-s2 td  { background: #f1f8ee; }
+.data-table.t1 tr.stage-s1 td  { background: #f0f6ff; }
+.data-table.t1 tr.stage-rem td { background: #fffaeb; }
+.data-table.t1 tr.stage-s2 td:first-child  { box-shadow: inset 4px 0 0 #7fb069; }
+.data-table.t1 tr.stage-s1 td:first-child  { box-shadow: inset 4px 0 0 #6fa3e0; }
+.data-table.t1 tr.stage-rem td:first-child { box-shadow: inset 4px 0 0 #e8c25a; }
+.stage-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  margin: 0 0 0.6rem;
+  font-size: 0.82rem;
+}
+.stage-key { display: inline-flex; align-items: center; gap: 0.4rem; }
+.stage-key::before {
+  content: "";
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 3px;
+}
+.stage-key--s2::before  { background: #f1f8ee; box-shadow: inset 4px 0 0 #7fb069; border: 1px solid #cfe3c4; }
+.stage-key--s1::before  { background: #f0f6ff; box-shadow: inset 4px 0 0 #6fa3e0; border: 1px solid #c9dcf3; }
+.stage-key--rem::before { background: #fffaeb; box-shadow: inset 4px 0 0 #e8c25a; border: 1px solid #efdfae; }
 .data-table.t1 tr.subhdr td.varname { font-weight: 600; font-style: italic; }
 
 /* Desktop: side-by-side panels */
@@ -741,7 +802,16 @@ select#root-value {
   .contour-panel { flex: 1 1 40%; }
   .main-panels.topdown .tree-panel { flex: 1 1 70%; min-width: 0; }
   .main-panels.topdown .contour-panel { flex: 1 1 30%; min-width: 0; }
-  .site-header h1 { font-size: 1.4rem; }
+  .site-header h1 { font-size: 1.25rem; }
+}
+
+/* Phones: keep all four tabs on screen. */
+@media (max-width: 480px) {
+  .view-tabs { padding: 0 0.5rem; }
+  .view-tab { padding: 0.55rem 0.5rem; font-size: 0.88rem; }
+  .control-group--end { margin-left: 0; }
+  .panel-hint { display: none; }
+  .tree-stage > #tree-img { max-height: 65vh; }
 }
 
 /* Report-view dynamic filters bar */
@@ -762,7 +832,9 @@ select#root-value {
   border-radius: var(--radius);
   background: white;
 }
-.value-filters-group { flex: 1 1 auto; }
+.value-filters-group { flex: 0 1 auto; }
+.filters-bar .reset-btn { align-self: flex-end; }
+.filters-bar .numeric-filters { align-self: flex-end; }
 .value-filters {
   display: flex;
   flex-wrap: wrap;
@@ -900,6 +972,9 @@ select#root-value {
   cursor: pointer;
   user-select: none;
 }
+/* Long, plain-language headers wrap instead of widening the table. */
+#results-table thead th { white-space: normal; min-width: 4.5rem; max-width: 9rem; }
+#results-table thead th:first-child { min-width: 14rem; max-width: none; }
 .data-table.results-by-node thead th.sortable:hover { background: #2b50c9; }
 .data-table.results-by-node thead th.sort-asc::after  { content: " \25B2"; font-size: 0.7em; }
 .data-table.results-by-node thead th.sort-desc::after { content: " \25BC"; font-size: 0.7em; }
@@ -926,17 +1001,19 @@ select#root-value {
 .data-table.results-by-node td.signal-harm    { color: #922b21; }
 .data-table.results-by-node td.signal-inconclusive { color: var(--color-muted); }
 
-.data-table.results-by-node td.nav-cell { text-align: center; white-space: nowrap; }
 .data-table.results-by-node a.tree-nav-link {
-  font-size: 0.8rem;
-  font-weight: 600;
   color: var(--color-accent);
   text-decoration: none;
-  white-space: nowrap;
 }
 .data-table.results-by-node a.tree-nav-link:hover { text-decoration: underline; }
-.data-table.results-by-node tr.row-target-highlight td {
-  box-shadow: inset 0 0 0 2px var(--color-accent);
+/* Row opened from a link: one outline around the whole row plus a left bar,
+   keeping its benefit/harm tint. */
+.data-table.results-by-node tr.row-target-highlight {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+.data-table.results-by-node tr.row-target-highlight td:first-child {
+  box-shadow: inset 5px 0 0 var(--color-accent);
 }
 
 /* Per-virus table: legend-colored dot so each row matches its contour. */

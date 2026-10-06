@@ -4,91 +4,96 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Report view — Empiric Antibiotics and Mortality in CAP</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=uireview2" />
 </head>
 <body>
   <header class="site-header">
-    <h1>Report view</h1>
-    <p class="subtitle">Empiric Antibiotics and Mortality in Community-Acquired Pneumonia — ATS 2026 poster companion</p>
-    <p class="provenance">
-      Each row is a subgroup in the selected decision tree. Mortality is on a scale where
-      lower is better. The average treatment effect (ATE) is the estimated probability of
-      death with antibiotics minus the probability without; an ATE below 0 means
-      antibiotics are estimated to reduce mortality.
-    </p>
+    <h1><a href="index.html">Empiric Antibiotics and Mortality in Community-Acquired Pneumonia</a></h1>
+    <p class="subtitle">A Decision Tree Analysis of 120 U.S. Veterans Affairs Medical Centers &middot; ATS 2026 poster companion</p>
   </header>
 
   <nav class="view-tabs" aria-label="Primary views">
     <a class="view-tab" href="index.html">About</a>
-    <a class="view-tab" href="trees.html">Trees</a>
+    <a class="view-tab" id="trees-tab" href="trees.html">Trees</a>
     <a class="view-tab" href="tables.html">Summary tables</a>
     <a class="view-tab active" href="results_by_node.html" aria-current="page">Report view</a>
   </nav>
 
+  <p class="page-intro">
+    Each row is a subgroup of the selected tree. Effect is mortality with antibiotics minus
+    mortality without, in percentage points (pp); below 0 means antibiotics are estimated to
+    lower mortality.
+  </p>
+
   <section class="control-bar" aria-label="Table controls">
     <div class="control-group">
-      <label class="control-label" for="family-select">Tree family (window &times; stratum)</label>
-      <select id="family-select" aria-label="Tree family"></select>
-    </div>
-
-    <div class="control-group">
-      <span class="control-label">Signal</span>
-      <div class="control-options" role="radiogroup" aria-label="Signal filter">
-        <label class="radio"><input type="radio" name="signal" value="all" checked /> All</label>
-        <label class="radio"><input type="radio" name="signal" value="Benefit" /> Benefit</label>
-        <label class="radio"><input type="radio" name="signal" value="Harm" /> Harm</label>
-        <label class="radio"><input type="radio" name="signal" value="Inconclusive" /> Inconclusive</label>
+      <span class="control-label" id="outcome-label">Mortality</span>
+      <div class="segmented" role="radiogroup" aria-labelledby="outcome-label">
+        <label><input type="radio" name="outcome" value="30day" /><span>30-day</span></label>
+        <label><input type="radio" name="outcome" value="90day" checked /><span>90-day</span></label>
       </div>
     </div>
 
     <div class="control-group">
-      <span class="control-label">Row count</span>
-      <span id="row-count" class="row-count" aria-live="polite">&nbsp;</span>
+      <label class="control-label" for="tree-select">Tree</label>
+      <select id="tree-select" class="control-select">
+        <option value="severity" selected>Severity</option>
+        <option value="virus">Virus</option>
+        <option value="root">Whole cohort</option>
+        <option value="sevvirus">Severity &rarr; virus</option>
+        <option value="virsev">Virus &rarr; severity</option>
+      </select>
     </div>
 
     <div class="control-group">
-      <span class="control-label">&nbsp;</span>
-      <button type="button" class="info-btn" data-info="report"></button>
+      <span class="control-label" id="signal-label">Signal</span>
+      <div class="segmented segmented--small" role="radiogroup" aria-labelledby="signal-label">
+        <label><input type="radio" name="signal" value="all" checked /><span>All</span></label>
+        <label><input type="radio" name="signal" value="Benefit" /><span>Benefit</span></label>
+        <label><input type="radio" name="signal" value="Harm" /><span>Harm</span></label>
+        <label><input type="radio" name="signal" value="Inconclusive" /><span>Uncertain</span></label>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="min-depth">From level</label>
+      <select id="min-depth" class="control-select" aria-label="Shallowest level shown"></select>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="max-depth">To level</label>
+      <select id="max-depth" class="control-select" aria-label="Deepest level shown"></select>
     </div>
   </section>
 
-  <!-- Dynamic filters (Tableau-style): depth range, per-level values, numeric ranges -->
+  <!-- Per-split value filters, numeric ranges, reset: in reading order -->
   <section class="filters-bar" aria-label="Report filters">
-    <div class="control-group">
-      <label class="control-label" for="min-depth">Min depth (from)</label>
-      <select id="min-depth" aria-label="Minimum depth level"></select>
-    </div>
-    <div class="control-group">
-      <label class="control-label" for="max-depth">Max depth (to)</label>
-      <select id="max-depth" aria-label="Maximum depth level"></select>
-    </div>
-
     <div class="control-group value-filters-group">
-      <span class="control-label">Node values</span>
+      <span class="control-label">Filter by split</span>
       <div id="value-filters" class="value-filters"></div>
     </div>
 
     <details class="numeric-filters">
-      <summary>Numeric filters</summary>
+      <summary>More filters</summary>
       <div id="numeric-filter-grid" class="numeric-filter-grid"></div>
     </details>
 
-    <div class="control-group">
-      <span class="control-label">&nbsp;</span>
-      <button type="button" id="reset-filters" class="reset-btn">Reset filters</button>
-    </div>
+    <button type="button" id="reset-filters" class="reset-btn">Reset filters</button>
   </section>
 
   <section class="legend" aria-label="Legend">
-    <div class="legend-item"><span class="swatch swatch-signal-benefit"></span>Potential Benefit (95% CI entirely below 0)</div>
-    <div class="legend-item"><span class="swatch swatch-signal-harm"></span>Potential Harm (95% CI entirely above 0)</div>
-    <div class="legend-item"><span class="swatch swatch-signal-incon"></span>Inconclusive (CI crosses 0)</div>
+    <div class="legend-item"><span class="swatch swatch-signal-benefit"></span>Benefit: antibiotics lower mortality (95% CI below 0)</div>
+    <div class="legend-item"><span class="swatch swatch-signal-harm"></span>Harm: antibiotics raise mortality (95% CI above 0)</div>
+    <div class="legend-item"><span class="swatch swatch-signal-incon"></span>Uncertain: 95% CI crosses 0</div>
     <div class="legend-item legend-bar">
-      <span class="bar-explain">Cells showing <code>&lt;20</code> are VA small-cell suppressed; click a column header to sort.</span>
+      <span class="bar-explain">Click a column header to sort.</span>
     </div>
   </section>
 
-  <main class="tables-main">
+  <main class="tables-main report-main">
+    <div class="table-toolbar">
+      <span id="row-count" class="row-count" aria-live="polite">&nbsp;</span>
+      <button type="button" class="info-btn" data-info="report"></button>
+    </div>
     <div class="table-scroll" id="table-scroll">
       <table class="data-table results-by-node" id="results-table">
         <thead id="results-thead"></thead>
@@ -102,7 +107,8 @@
     <p>Team Conquering Pneumonia &middot; <a href="https://github.com/Team-Conquering-Pneumonia/ATS-Pneumonia-DTR">GitHub</a></p>
   </footer>
 
-  <script src="viz-info.js?v=reframe"></script>
-  <script src="results_by_node.js?v=reframe"></script>
+  <script src="viz-info.js?v=uireview2"></script>
+  <script src="site-nav.js?v=uireview2"></script>
+  <script src="results_by_node.js?v=uireview2"></script>
 </body>
 </html>
