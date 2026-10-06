@@ -779,11 +779,34 @@ a { color: var(--color-accent); }
 .stage-legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem 1.25rem;
+  align-items: center;
+  gap: 0.4rem 0.5rem;
   margin: 0 0 0.6rem;
   font-size: 0.82rem;
 }
-.stage-key { display: inline-flex; align-items: center; gap: 0.4rem; }
+/* Each key is also a filter button. */
+.stage-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.6rem 0.25rem 0.45rem;
+  font: inherit;
+  color: var(--color-text);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+}
+.stage-key:hover { border-color: var(--color-accent); }
+.stage-key:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.stage-key[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  background: #eef2ff;
+  font-weight: 600;
+}
+.stage-legend.is-filtered .stage-key[aria-pressed="false"] { opacity: 0.55; }
+.stage-legend-hint { color: var(--color-muted); font-size: 0.78rem; margin-left: 0.25rem; }
 .stage-key::before {
   content: "";
   width: 0.9rem;
