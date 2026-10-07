@@ -464,7 +464,7 @@ function setMissingContour(message) {
 
 // Same colors as the contour legend (VIRUS_PALETTE in code/R/figure_contour_overlay.R).
 const VIRUS_COLORS = {
-  "Influenza": "#E76F51", "SARS-CoV-2": "#264653", "COVID": "#264653",
+  "SARS-CoV-2": "#264653", "COVID": "#264653", "Influenza": "#C1272D",
   "RSV": "#2A9D8F", "Other": "#F4A261", "None": "#7E7E7E",
 };
 
