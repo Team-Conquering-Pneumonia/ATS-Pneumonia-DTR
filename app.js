@@ -28,6 +28,7 @@ const state = {
 
 let topology = null;          // tree_topology.json (depth/columns metadata)
 let coordinates = null;       // tree_coordinates.json (node bboxes per state)
+const IMG_VERSION = "20261007";  // bump when figures are re-rendered
 let contourIndex = null;      // node_contours_byvirus_index.json
 let resultsByNode = null;     // results_by_node.json, used as a slug -> node_id bridge
 let treePanzoom = null;
@@ -282,7 +283,8 @@ function setImage(imgEl, wrapperId, src, altText, onLoaded) {
     fb.style.whiteSpace = "pre-line";
     wrapper.appendChild(fb);
   };
-  imgEl.src = src;
+  // Version tag so browsers refetch figures re-rendered under the same filename.
+  imgEl.src = src + (src.includes("?") ? "&" : "?") + "v=" + IMG_VERSION;
 }
 
 // --- hot-zones -------------------------------------------------------------
