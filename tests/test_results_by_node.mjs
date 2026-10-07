@@ -81,6 +81,7 @@ const dataJson = JSON.parse(fs.readFileSync(path.join(SITE, "results_by_node.jso
 global.fetch = async () => ({ ok: true, status: 200, json: async () => dataJson });
 
 // --- load the real script --------------------------------------------------
+new Function(fs.readFileSync(path.join(SITE, "site-nav.js"), "utf8")).call(globalThis);
 const src = fs.readFileSync(path.join(SITE, "results_by_node.js"), "utf8");
 // The script defines top-level functions + auto-inits at the bottom. Wrap so we
 // can reach the internals (setFamily/setSort + globals) after init runs.
@@ -99,8 +100,8 @@ await (async () => {
   await new Promise((r) => setTimeout(r, 50));
   const t = globalThis.__t;
 
-  check("data loaded: 4 families / 750 nodes",
-        t.DATA && t.DATA.families.length === 4 && t.DATA.n_nodes === 750,
+  check("data loaded: 10 families / 828 nodes",
+        t.DATA && t.DATA.families.length === 10 && t.DATA.n_nodes === 828,
         `families=${t.DATA?.families?.length} nodes=${t.DATA?.n_nodes}`);
 
   const severity30 = t.DATA.families.find((f) => f.key === "30day_severity");

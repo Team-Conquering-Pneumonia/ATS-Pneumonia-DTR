@@ -33,8 +33,8 @@ window.VIZ_INFO = {
         "Each tree divides the cohort into clinically meaningful subgroups using a " +
         "small set of factors chosen before the analysis: pneumonia severity, severe " +
         "hypoxemia or shock, hypoxemia or sepsis, lung disease, other comorbidities, " +
-        "and viral test result. Use the depth control to reveal successive levels of " +
-        "the tree." },
+        "and viral test result. Use the level buttons above the tree to reveal " +
+        "successive levels." },
       { status: "pending", text:
         "Inside each node, two bars show the estimated probability of death <em>with</em> " +
         "antibiotics (orange) and <em>without</em> antibiotics (blue), along with the " +
@@ -112,7 +112,7 @@ window.VIZ_INFO = {
         "95% credible interval." },
       { status: "pending", text:
         "The Signal column flags whether antibiotics are a credible benefit, credible " +
-        "harm, or inconclusive for each subgroup. Cells showing “&lt;20” are suppressed " +
+        "harm, or uncertain for each subgroup. Cells showing “&lt;20” are suppressed " +
         "under VA small-cell rules." },
     ],
   },

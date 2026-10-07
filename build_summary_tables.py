@@ -349,16 +349,16 @@ def main():
         "%s / %s%%). Columns report n (%%), mean (SD) or median (IQR) as pre-specified "
         "per variable, split by antibiotic group. Variables are organized by clinical "
         "domain (demographics, illness severity, comorbidities, viral testing, "
-        "processes of care, outcomes, additional confounders); row shading indicates "
-        "model-stage membership (green = Stage 2 decision covariate, blue = Stage 1 "
-        "confounder, yellow = other). Counts below 20 are suppressed. Generated from "
-        "%s."
+        "processes of care, outcomes, additional confounders). Counts below 20 are "
+        "suppressed."
         % (fmt_count(n_all), fmt_count(n_abx), fmt_num(pct_abx, 1),
-           fmt_count(n_no), fmt_num(pct_no, 1), label)
+           fmt_count(n_no), fmt_num(pct_no, 1))
     )
 
+    # The row-shading key is a static legend (<div class="stage-legend">)
+    # between this description and the table.
     text = replace_between(
-        text, r'<p class="table-desc">', r'</p>\s*\n\s*<div class="table-scroll">',
+        text, r'<p class="table-desc">', r'</p>\s*\n\s*<div class="(?:stage-legend|table-scroll)"',
         desc, "Table 1 description")
 
     head = (
@@ -376,10 +376,10 @@ def main():
 
     # Table 2 — two windows, in document order
     t2_desc = (
-        "Population mean mortality (posterior mean + 95%% credible interval over 1,000 "
+        "Population mean mortality (posterior mean + 95% credible interval over 1,000 "
         "draws) and population antibiotic-use fraction under three population "
         "strategies (observed care, antibiotics for all, antibiotics for none), by "
-        "mortality window. Generated from %s." % label
+        "mortality window."
     )
     text = replace_between(
         text,
@@ -392,9 +392,9 @@ def main():
             r'<h3 class="window-heading">%s</h3>.*?<tbody>\s*\n' % re.escape(heading),
             r"\n\s*</tbody>", build_table2(window), "Table 2 %s body" % window)
 
-    prov = ("Tables 1 and 2 are generated from %s, the currently promoted analysis run. "
-            "Mortality is on a scale where lower is better." % label)
-    text = replace_between(text, r'<p class="provenance">', r"</p>", prov, "provenance line")
+    # The run id stays machine-readable for provenance audits but off the page.
+    text = replace_between(text, r'<meta name="analysis-run" content="', r'"', label,
+                           "analysis-run meta tag")
 
     if args.check:
         if text != original:
