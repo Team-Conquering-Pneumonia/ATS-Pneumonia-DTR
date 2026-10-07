@@ -6,25 +6,25 @@
       "node_id": 1,
       "mortality_window": "30day",
       "subgroup_label": "mild pneumonia",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0013,
       "ate_ci_lower": -0.0033,
       "ate_ci_upper": 0.0008,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 1049,
-          "ate": -0.0005,
-          "ate_ci_lower": -0.0062,
-          "ate_ci_upper": 0.0028
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 3326,
           "ate": 0.0002,
           "ate_ci_lower": -0.0038,
           "ate_ci_upper": 0.0046
+        },
+        {
+          "virus": "Influenza",
+          "n": 1049,
+          "ate": -0.0005,
+          "ate_ci_lower": -0.0062,
+          "ate_ci_upper": 0.0028
         },
         {
           "virus": "RSV",
@@ -58,25 +58,25 @@
       "node_id": 2,
       "mortality_window": "30day",
       "subgroup_label": "lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0002,
       "ate_ci_lower": -0.0023,
       "ate_ci_upper": 0.0014,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 771,
-          "ate": -0,
-          "ate_ci_lower": -0.0051,
-          "ate_ci_upper": 0.0032
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 2363,
           "ate": 0.0012,
           "ate_ci_lower": -0.0029,
           "ate_ci_upper": 0.0048
+        },
+        {
+          "virus": "Influenza",
+          "n": 771,
+          "ate": -0,
+          "ate_ci_lower": -0.0051,
+          "ate_ci_upper": 0.0032
         },
         {
           "virus": "RSV",
@@ -110,25 +110,25 @@
       "node_id": 3,
       "mortality_window": "30day",
       "subgroup_label": "lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0033,
       "ate_ci_lower": -0.008,
       "ate_ci_upper": 0.0007,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 278,
-          "ate": -0.0019,
-          "ate_ci_lower": -0.0087,
-          "ate_ci_upper": 0.0023
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 963,
           "ate": -0.0021,
           "ate_ci_lower": -0.0092,
           "ate_ci_upper": 0.0054
+        },
+        {
+          "virus": "Influenza",
+          "n": 278,
+          "ate": -0.0019,
+          "ate_ci_lower": -0.0087,
+          "ate_ci_upper": 0.0023
         },
         {
           "virus": "RSV",
@@ -162,25 +162,25 @@
       "node_id": 4,
       "mortality_window": "30day",
       "subgroup_label": "lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": 0.0004,
       "ate_ci_lower": -0.0022,
       "ate_ci_upper": 0.0024,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 360,
-          "ate": 0.0004,
-          "ate_ci_lower": -0.0066,
-          "ate_ci_upper": 0.0044
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1202,
           "ate": 0.0019,
           "ate_ci_lower": -0.0034,
           "ate_ci_upper": 0.0066
+        },
+        {
+          "virus": "Influenza",
+          "n": 360,
+          "ate": 0.0004,
+          "ate_ci_lower": -0.0066,
+          "ate_ci_upper": 0.0044
         },
         {
           "virus": "RSV",
@@ -214,25 +214,25 @@
       "node_id": 5,
       "mortality_window": "30day",
       "subgroup_label": "lung comorbidities = 0 ; other comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0008,
       "ate_ci_lower": -0.0034,
       "ate_ci_upper": 0.0014,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 411,
-          "ate": -0.0004,
-          "ate_ci_lower": -0.0047,
-          "ate_ci_upper": 0.0024
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1161,
           "ate": 0.0004,
           "ate_ci_lower": -0.0033,
           "ate_ci_upper": 0.0038
+        },
+        {
+          "virus": "Influenza",
+          "n": 411,
+          "ate": -0.0004,
+          "ate_ci_lower": -0.0047,
+          "ate_ci_upper": 0.0024
         },
         {
           "virus": "RSV",
@@ -626,25 +626,25 @@
       "node_id": 1,
       "mortality_window": "30day",
       "subgroup_label": "moderate pneumonia",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0102,
       "ate_ci_lower": -0.0167,
       "ate_ci_upper": -0.0039,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 2070,
-          "ate": -0.0177,
-          "ate_ci_lower": -0.0399,
-          "ate_ci_upper": 0.0009
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 9012,
           "ate": -0.0072,
           "ate_ci_lower": -0.017,
           "ate_ci_upper": 0.0027
+        },
+        {
+          "virus": "Influenza",
+          "n": 2070,
+          "ate": -0.0177,
+          "ate_ci_lower": -0.0399,
+          "ate_ci_upper": 0.0009
         },
         {
           "virus": "RSV",
@@ -678,25 +678,25 @@
       "node_id": 2,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.sepsis",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0155,
       "ate_ci_lower": -0.0317,
       "ate_ci_upper": -0.0022,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 583,
-          "ate": -0.0272,
-          "ate_ci_lower": -0.0578,
-          "ate_ci_upper": 0.0001
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 2306,
           "ate": -0.009,
           "ate_ci_lower": -0.0277,
           "ate_ci_upper": 0.0088
+        },
+        {
+          "virus": "Influenza",
+          "n": 583,
+          "ate": -0.0272,
+          "ate_ci_lower": -0.0578,
+          "ate_ci_upper": 0.0001
         },
         {
           "virus": "RSV",
@@ -730,25 +730,25 @@
       "node_id": 3,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.no sepsis",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0052,
       "ate_ci_lower": -0.0144,
       "ate_ci_upper": 0.0034,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 349,
-          "ate": -0.0175,
-          "ate_ci_lower": -0.04,
-          "ate_ci_upper": 0.0011
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1692,
           "ate": -0.0053,
           "ate_ci_lower": -0.0182,
           "ate_ci_upper": 0.0074
+        },
+        {
+          "virus": "Influenza",
+          "n": 349,
+          "ate": -0.0175,
+          "ate_ci_lower": -0.04,
+          "ate_ci_upper": 0.0011
         },
         {
           "virus": "RSV",
@@ -782,25 +782,25 @@
       "node_id": 4,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.sepsis",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0112,
       "ate_ci_lower": -0.0198,
       "ate_ci_upper": -0.0028,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 843,
-          "ate": -0.0133,
-          "ate_ci_lower": -0.032,
-          "ate_ci_upper": 0.0013
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 3181,
           "ate": -0.0081,
           "ate_ci_lower": -0.02,
           "ate_ci_upper": 0.0031
+        },
+        {
+          "virus": "Influenza",
+          "n": 843,
+          "ate": -0.0133,
+          "ate_ci_lower": -0.032,
+          "ate_ci_upper": 0.0013
         },
         {
           "virus": "RSV",
@@ -834,25 +834,25 @@
       "node_id": 5,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.no sepsis",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0063,
       "ate_ci_lower": -0.0134,
       "ate_ci_upper": 0.0019,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 295,
-          "ate": -0.0116,
-          "ate_ci_lower": -0.0345,
-          "ate_ci_upper": 0.0055
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1833,
           "ate": -0.005,
           "ate_ci_lower": -0.0144,
           "ate_ci_upper": 0.0069
+        },
+        {
+          "virus": "Influenza",
+          "n": 295,
+          "ate": -0.0116,
+          "ate_ci_lower": -0.0345,
+          "ate_ci_upper": 0.0055
         },
         {
           "virus": "RSV",
@@ -886,25 +886,25 @@
       "node_id": 6,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.sepsis ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0122,
       "ate_ci_lower": -0.0322,
       "ate_ci_upper": 0.0049,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 297,
-          "ate": -0.0291,
-          "ate_ci_lower": -0.0648,
-          "ate_ci_upper": 0.0024
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1273,
           "ate": -0.0043,
           "ate_ci_lower": -0.0283,
           "ate_ci_upper": 0.0181
+        },
+        {
+          "virus": "Influenza",
+          "n": 297,
+          "ate": -0.0291,
+          "ate_ci_lower": -0.0648,
+          "ate_ci_upper": 0.0024
         },
         {
           "virus": "RSV",
@@ -938,25 +938,25 @@
       "node_id": 7,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.no sepsis ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0014,
       "ate_ci_lower": -0.0138,
       "ate_ci_upper": 0.0112,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 163,
-          "ate": -0.0162,
-          "ate_ci_lower": -0.0404,
-          "ate_ci_upper": 0.0036
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 894,
           "ate": -0.0028,
           "ate_ci_lower": -0.0199,
           "ate_ci_upper": 0.0141
+        },
+        {
+          "virus": "Influenza",
+          "n": 163,
+          "ate": -0.0162,
+          "ate_ci_lower": -0.0404,
+          "ate_ci_upper": 0.0036
         },
         {
           "virus": "RSV",
@@ -990,25 +990,25 @@
       "node_id": 8,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.sepsis ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0121,
       "ate_ci_lower": -0.0216,
       "ate_ci_upper": -0.0031,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 580,
-          "ate": -0.014,
-          "ate_ci_lower": -0.0323,
-          "ate_ci_upper": 0.0011
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 2109,
           "ate": -0.0083,
           "ate_ci_lower": -0.0206,
           "ate_ci_upper": 0.0034
+        },
+        {
+          "virus": "Influenza",
+          "n": 580,
+          "ate": -0.014,
+          "ate_ci_lower": -0.0323,
+          "ate_ci_upper": 0.0011
         },
         {
           "virus": "RSV",
@@ -1042,25 +1042,25 @@
       "node_id": 9,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.no sepsis ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0056,
       "ate_ci_lower": -0.014,
       "ate_ci_upper": 0.0036,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 210,
-          "ate": -0.0126,
-          "ate_ci_lower": -0.0366,
-          "ate_ci_upper": 0.0051
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1303,
           "ate": -0.0044,
           "ate_ci_lower": -0.0151,
           "ate_ci_upper": 0.0084
+        },
+        {
+          "virus": "Influenza",
+          "n": 210,
+          "ate": -0.0126,
+          "ate_ci_lower": -0.0366,
+          "ate_ci_upper": 0.0051
         },
         {
           "virus": "RSV",
@@ -1094,25 +1094,25 @@
       "node_id": 10,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.sepsis ; lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.018,
       "ate_ci_lower": -0.0356,
       "ate_ci_upper": -0.0027,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 286,
-          "ate": -0.0252,
-          "ate_ci_lower": -0.0549,
-          "ate_ci_upper": 0.0002
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1033,
           "ate": -0.0148,
           "ate_ci_lower": -0.0332,
           "ate_ci_upper": 0.0032
+        },
+        {
+          "virus": "Influenza",
+          "n": 286,
+          "ate": -0.0252,
+          "ate_ci_lower": -0.0549,
+          "ate_ci_upper": 0.0002
         },
         {
           "virus": "RSV",
@@ -1146,25 +1146,25 @@
       "node_id": 11,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.no sepsis ; lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0078,
       "ate_ci_lower": -0.0183,
       "ate_ci_upper": 0.0014,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 186,
-          "ate": -0.0186,
-          "ate_ci_lower": -0.0428,
-          "ate_ci_upper": -0.0002
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 798,
           "ate": -0.0081,
           "ate_ci_lower": -0.0214,
           "ate_ci_upper": 0.0046
+        },
+        {
+          "virus": "Influenza",
+          "n": 186,
+          "ate": -0.0186,
+          "ate_ci_lower": -0.0428,
+          "ate_ci_upper": -0.0002
         },
         {
           "virus": "RSV",
@@ -1198,25 +1198,25 @@
       "node_id": 12,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.sepsis ; lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0097,
       "ate_ci_lower": -0.02,
       "ate_ci_upper": 0.0011,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 263,
-          "ate": -0.0117,
-          "ate_ci_lower": -0.0308,
-          "ate_ci_upper": 0.0025
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1072,
           "ate": -0.0078,
           "ate_ci_lower": -0.021,
           "ate_ci_upper": 0.0056
+        },
+        {
+          "virus": "Influenza",
+          "n": 263,
+          "ate": -0.0117,
+          "ate_ci_lower": -0.0308,
+          "ate_ci_upper": 0.0025
         },
         {
           "virus": "RSV",
@@ -1250,25 +1250,25 @@
       "node_id": 13,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.no sepsis ; lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0075,
       "ate_ci_lower": -0.0171,
       "ate_ci_upper": 0.0026,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 85,
-          "ate": -0.009,
-          "ate_ci_lower": -0.0323,
-          "ate_ci_upper": 0.0077
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 530,
           "ate": -0.0063,
           "ate_ci_lower": -0.0186,
           "ate_ci_upper": 0.0074
+        },
+        {
+          "virus": "Influenza",
+          "n": 85,
+          "ate": -0.009,
+          "ate_ci_lower": -0.0323,
+          "ate_ci_upper": 0.0077
         },
         {
           "virus": "RSV",
@@ -1302,25 +1302,25 @@
       "node_id": 14,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.sepsis ; lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0107,
       "ate_ci_lower": -0.0328,
       "ate_ci_upper": 0.0082,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 206,
-          "ate": -0.0276,
-          "ate_ci_lower": -0.0671,
-          "ate_ci_upper": 0.0063
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 941,
           "ate": -0.0046,
           "ate_ci_lower": -0.0296,
           "ate_ci_upper": 0.0195
+        },
+        {
+          "virus": "Influenza",
+          "n": 206,
+          "ate": -0.0276,
+          "ate_ci_lower": -0.0671,
+          "ate_ci_upper": 0.0063
         },
         {
           "virus": "RSV",
@@ -1354,25 +1354,25 @@
       "node_id": 15,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.sepsis ; lung comorbidities = 0 ; other comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0166,
       "ate_ci_lower": -0.0393,
       "ate_ci_upper": 0.0044,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 91,
-          "ate": -0.0326,
-          "ate_ci_lower": -0.0698,
-          "ate_ci_upper": -0.0016
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 332,
           "ate": -0.0036,
           "ate_ci_lower": -0.0306,
           "ate_ci_upper": 0.0238
+        },
+        {
+          "virus": "Influenza",
+          "n": 91,
+          "ate": -0.0326,
+          "ate_ci_lower": -0.0698,
+          "ate_ci_upper": -0.0016
         },
         {
           "virus": "RSV",
@@ -1406,25 +1406,25 @@
       "node_id": 16,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.no sepsis ; lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0009,
       "ate_ci_lower": -0.0146,
       "ate_ci_upper": 0.013,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 90,
-          "ate": -0.0154,
-          "ate_ci_lower": -0.0398,
-          "ate_ci_upper": 0.0042
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 581,
           "ate": -0.0018,
           "ate_ci_lower": -0.0198,
           "ate_ci_upper": 0.0178
+        },
+        {
+          "virus": "Influenza",
+          "n": 90,
+          "ate": -0.0154,
+          "ate_ci_lower": -0.0398,
+          "ate_ci_upper": 0.0042
         },
         {
           "virus": "RSV",
@@ -1458,25 +1458,25 @@
       "node_id": 17,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.no sepsis ; lung comorbidities = 0 ; other comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0026,
       "ate_ci_lower": -0.0165,
       "ate_ci_upper": 0.011,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 73,
-          "ate": -0.0173,
-          "ate_ci_lower": -0.047,
-          "ate_ci_upper": 0.0048
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 313,
           "ate": -0.0044,
           "ate_ci_lower": -0.0244,
           "ate_ci_upper": 0.0153
+        },
+        {
+          "virus": "Influenza",
+          "n": 73,
+          "ate": -0.0173,
+          "ate_ci_lower": -0.047,
+          "ate_ci_upper": 0.0048
         },
         {
           "virus": "RSV",
@@ -1510,25 +1510,25 @@
       "node_id": 18,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.sepsis ; lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0127,
       "ate_ci_lower": -0.0235,
       "ate_ci_upper": -0.0014,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 335,
-          "ate": -0.0174,
-          "ate_ci_lower": -0.0403,
-          "ate_ci_upper": 0.0015
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1480,
           "ate": -0.0091,
           "ate_ci_lower": -0.0234,
           "ate_ci_upper": 0.0045
+        },
+        {
+          "virus": "Influenza",
+          "n": 335,
+          "ate": -0.0174,
+          "ate_ci_lower": -0.0403,
+          "ate_ci_upper": 0.0015
         },
         {
           "virus": "RSV",
@@ -1562,25 +1562,25 @@
       "node_id": 19,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.sepsis ; lung comorbidities = 0 ; other comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0108,
       "ate_ci_lower": -0.0218,
       "ate_ci_upper": -0.0013,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 245,
-          "ate": -0.0094,
-          "ate_ci_lower": -0.0238,
-          "ate_ci_upper": 0.0013
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 629,
           "ate": -0.0066,
           "ate_ci_lower": -0.0211,
           "ate_ci_upper": 0.0063
+        },
+        {
+          "virus": "Influenza",
+          "n": 245,
+          "ate": -0.0094,
+          "ate_ci_lower": -0.0238,
+          "ate_ci_upper": 0.0013
         },
         {
           "virus": "RSV",
@@ -1614,25 +1614,25 @@
       "node_id": 20,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.no sepsis ; lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0065,
       "ate_ci_lower": -0.0144,
       "ate_ci_upper": 0.0031,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 151,
-          "ate": -0.0136,
-          "ate_ci_lower": -0.0382,
-          "ate_ci_upper": 0.0054
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 922,
           "ate": -0.0049,
           "ate_ci_lower": -0.0161,
           "ate_ci_upper": 0.0085
+        },
+        {
+          "virus": "Influenza",
+          "n": 151,
+          "ate": -0.0136,
+          "ate_ci_lower": -0.0382,
+          "ate_ci_upper": 0.0054
         },
         {
           "virus": "RSV",
@@ -1666,25 +1666,25 @@
       "node_id": 21,
       "mortality_window": "30day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.no sepsis ; lung comorbidities = 0 ; other comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0031,
       "ate_ci_lower": -0.015,
       "ate_ci_upper": 0.0097,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 59,
-          "ate": -0.0102,
-          "ate_ci_lower": -0.0355,
-          "ate_ci_upper": 0.0081
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 381,
           "ate": -0.0033,
           "ate_ci_lower": -0.018,
           "ate_ci_upper": 0.0118
+        },
+        {
+          "virus": "Influenza",
+          "n": 59,
+          "ate": -0.0102,
+          "ate_ci_lower": -0.0355,
+          "ate_ci_upper": 0.0081
         },
         {
           "virus": "RSV",
@@ -3158,25 +3158,25 @@
       "node_id": 1,
       "mortality_window": "30day",
       "subgroup_label": "severe pneumonia",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": 0.0151,
       "ate_ci_lower": -0.0176,
       "ate_ci_upper": 0.0445,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 398,
-          "ate": -0.0547,
-          "ate_ci_lower": -0.1422,
-          "ate_ci_upper": 0.0204
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 2035,
           "ate": 0.0296,
           "ate_ci_lower": -0.017,
           "ate_ci_upper": 0.0733
+        },
+        {
+          "virus": "Influenza",
+          "n": 398,
+          "ate": -0.0547,
+          "ate_ci_lower": -0.1422,
+          "ate_ci_upper": 0.0204
         },
         {
           "virus": "RSV",
@@ -3210,25 +3210,25 @@
       "node_id": 2,
       "mortality_window": "30day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.shock",
-      "viruses": ["Influenza", "SARS-CoV-2", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "Other", "None"],
       "contour_method": "hdr95",
       "ate": 0.0493,
       "ate_ci_lower": -0.0787,
       "ate_ci_upper": 0.1488,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 40,
-          "ate": -0.0397,
-          "ate_ci_lower": -0.217,
-          "ate_ci_upper": 0.1098
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 149,
           "ate": 0.0676,
           "ate_ci_lower": -0.0687,
           "ate_ci_upper": 0.193
+        },
+        {
+          "virus": "Influenza",
+          "n": 40,
+          "ate": -0.0397,
+          "ate_ci_lower": -0.217,
+          "ate_ci_upper": 0.1098
         },
         {
           "virus": "Other",
@@ -3255,25 +3255,25 @@
       "node_id": 3,
       "mortality_window": "30day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.no shock",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": 0.0213,
       "ate_ci_lower": -0.0108,
       "ate_ci_upper": 0.0482,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 232,
-          "ate": -0.0459,
-          "ate_ci_lower": -0.1272,
-          "ate_ci_upper": 0.0216
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1192,
           "ate": 0.0381,
           "ate_ci_lower": -0.0081,
           "ate_ci_upper": 0.0806
+        },
+        {
+          "virus": "Influenza",
+          "n": 232,
+          "ate": -0.0459,
+          "ate_ci_lower": -0.1272,
+          "ate_ci_upper": 0.0216
         },
         {
           "virus": "RSV",
@@ -3307,25 +3307,25 @@
       "node_id": 4,
       "mortality_window": "30day",
       "subgroup_label": "severe hypoxemia/shock = no s. hypoxemia.shock",
-      "viruses": ["Influenza", "SARS-CoV-2", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "Other", "None"],
       "contour_method": "hdr95",
       "ate": 0.0166,
       "ate_ci_lower": -0.0843,
       "ate_ci_upper": 0.0979,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 33,
-          "ate": -0.0787,
-          "ate_ci_lower": -0.2464,
-          "ate_ci_upper": 0.0584
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 173,
           "ate": 0.0295,
           "ate_ci_lower": -0.0845,
           "ate_ci_upper": 0.1246
+        },
+        {
+          "virus": "Influenza",
+          "n": 33,
+          "ate": -0.0787,
+          "ate_ci_lower": -0.2464,
+          "ate_ci_upper": 0.0584
         },
         {
           "virus": "Other",
@@ -3352,25 +3352,25 @@
       "node_id": 5,
       "mortality_window": "30day",
       "subgroup_label": "severe hypoxemia/shock = no s. hypoxemia.no shock",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0147,
       "ate_ci_lower": -0.0568,
       "ate_ci_upper": 0.0236,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 93,
-          "ate": -0.0745,
-          "ate_ci_lower": -0.1713,
-          "ate_ci_upper": 0.0137
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 521,
           "ate": -0.0007,
           "ate_ci_lower": -0.0557,
           "ate_ci_upper": 0.0508
+        },
+        {
+          "virus": "Influenza",
+          "n": 93,
+          "ate": -0.0745,
+          "ate_ci_lower": -0.1713,
+          "ate_ci_upper": 0.0137
         },
         {
           "virus": "RSV",
@@ -3404,25 +3404,25 @@
       "node_id": 6,
       "mortality_window": "30day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.shock ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "Other", "None"],
       "contour_method": "hdr95",
       "ate": 0.0586,
       "ate_ci_lower": -0.0756,
       "ate_ci_upper": 0.1688,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 24,
-          "ate": -0.0555,
-          "ate_ci_lower": -0.2419,
-          "ate_ci_upper": 0.1061
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 85,
           "ate": 0.0588,
           "ate_ci_lower": -0.0887,
           "ate_ci_upper": 0.195
+        },
+        {
+          "virus": "Influenza",
+          "n": 24,
+          "ate": -0.0555,
+          "ate_ci_lower": -0.2419,
+          "ate_ci_upper": 0.1061
         },
         {
           "virus": "Other",
@@ -3449,25 +3449,25 @@
       "node_id": 7,
       "mortality_window": "30day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.no shock ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": 0.0329,
       "ate_ci_lower": -0.0047,
       "ate_ci_upper": 0.0665,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 109,
-          "ate": -0.0473,
-          "ate_ci_lower": -0.1409,
-          "ate_ci_upper": 0.0346
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 634,
           "ate": 0.0483,
           "ate_ci_lower": -0.0079,
           "ate_ci_upper": 0.1005
+        },
+        {
+          "virus": "Influenza",
+          "n": 109,
+          "ate": -0.0473,
+          "ate_ci_lower": -0.1409,
+          "ate_ci_upper": 0.0346
         },
         {
           "virus": "RSV",
@@ -3539,25 +3539,25 @@
       "node_id": 9,
       "mortality_window": "30day",
       "subgroup_label": "severe hypoxemia/shock = no s. hypoxemia.no shock ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0037,
       "ate_ci_lower": -0.0552,
       "ate_ci_upper": 0.041,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 53,
-          "ate": -0.0688,
-          "ate_ci_lower": -0.1766,
-          "ate_ci_upper": 0.02
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 288,
           "ate": 0.0061,
           "ate_ci_lower": -0.0582,
           "ate_ci_upper": 0.0652
+        },
+        {
+          "virus": "Influenza",
+          "n": 53,
+          "ate": -0.0688,
+          "ate_ci_lower": -0.1766,
+          "ate_ci_upper": 0.02
         },
         {
           "virus": "RSV",
@@ -3622,25 +3622,25 @@
       "node_id": 11,
       "mortality_window": "30day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.no shock ; lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": 0.0137,
       "ate_ci_lower": -0.0219,
       "ate_ci_upper": 0.0455,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 123,
-          "ate": -0.0447,
-          "ate_ci_lower": -0.1204,
-          "ate_ci_upper": 0.0152
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 558,
           "ate": 0.0265,
           "ate_ci_lower": -0.0248,
           "ate_ci_upper": 0.0744
+        },
+        {
+          "virus": "Influenza",
+          "n": 123,
+          "ate": -0.0447,
+          "ate_ci_lower": -0.1204,
+          "ate_ci_upper": 0.0152
         },
         {
           "virus": "RSV",
@@ -3705,25 +3705,25 @@
       "node_id": 13,
       "mortality_window": "30day",
       "subgroup_label": "severe hypoxemia/shock = no s. hypoxemia.no shock ; lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.025,
       "ate_ci_lower": -0.0714,
       "ate_ci_upper": 0.0166,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 40,
-          "ate": -0.0821,
-          "ate_ci_lower": -0.1942,
-          "ate_ci_upper": 0.0109
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 233,
           "ate": -0.0092,
           "ate_ci_lower": -0.0678,
           "ate_ci_upper": 0.044
+        },
+        {
+          "virus": "Influenza",
+          "n": 40,
+          "ate": -0.0821,
+          "ate_ci_lower": -0.1942,
+          "ate_ci_upper": 0.0109
         },
         {
           "virus": "RSV",
@@ -3819,25 +3819,25 @@
       "node_id": 16,
       "mortality_window": "30day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.no shock ; lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": 0.0391,
       "ate_ci_lower": -0.0029,
       "ate_ci_upper": 0.0759,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 71,
-          "ate": -0.0358,
-          "ate_ci_lower": -0.1328,
-          "ate_ci_upper": 0.0541
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 437,
           "ate": 0.0584,
           "ate_ci_lower": -0.0027,
           "ate_ci_upper": 0.1188
+        },
+        {
+          "virus": "Influenza",
+          "n": 71,
+          "ate": -0.0358,
+          "ate_ci_lower": -0.1328,
+          "ate_ci_upper": 0.0541
         },
         {
           "virus": "RSV",
@@ -3871,25 +3871,25 @@
       "node_id": 17,
       "mortality_window": "30day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.no shock ; lung comorbidities = 0 ; other comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "Other", "None"],
       "contour_method": "hdr95",
       "ate": 0.0163,
       "ate_ci_lower": -0.0332,
       "ate_ci_upper": 0.0596,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 38,
-          "ate": -0.0686,
-          "ate_ci_lower": -0.1821,
-          "ate_ci_upper": 0.0288
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 197,
           "ate": 0.026,
           "ate_ci_lower": -0.0413,
           "ate_ci_upper": 0.0881
+        },
+        {
+          "virus": "Influenza",
+          "n": 38,
+          "ate": -0.0686,
+          "ate_ci_lower": -0.1821,
+          "ate_ci_upper": 0.0288
         },
         {
           "virus": "Other",
@@ -3985,25 +3985,25 @@
       "node_id": 20,
       "mortality_window": "30day",
       "subgroup_label": "severe hypoxemia/shock = no s. hypoxemia.no shock ; lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0011,
       "ate_ci_lower": -0.0515,
       "ate_ci_upper": 0.0424,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 42,
-          "ate": -0.0741,
-          "ate_ci_lower": -0.1919,
-          "ate_ci_upper": 0.0199
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 233,
           "ate": 0.0111,
           "ate_ci_lower": -0.0588,
           "ate_ci_upper": 0.0704
+        },
+        {
+          "virus": "Influenza",
+          "n": 42,
+          "ate": -0.0741,
+          "ate_ci_lower": -0.1919,
+          "ate_ci_upper": 0.0199
         },
         {
           "virus": "Other",
@@ -4973,25 +4973,25 @@
       "node_id": 1,
       "mortality_window": "90day",
       "subgroup_label": "mild pneumonia",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0016,
       "ate_ci_lower": -0.0056,
       "ate_ci_upper": 0.0027,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 1049,
-          "ate": -0.0046,
-          "ate_ci_lower": -0.0141,
-          "ate_ci_upper": 0.0068
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 3326,
           "ate": 0.0041,
           "ate_ci_lower": -0.0025,
           "ate_ci_upper": 0.0104
+        },
+        {
+          "virus": "Influenza",
+          "n": 1049,
+          "ate": -0.0046,
+          "ate_ci_lower": -0.0141,
+          "ate_ci_upper": 0.0068
         },
         {
           "virus": "RSV",
@@ -5025,25 +5025,25 @@
       "node_id": 2,
       "mortality_window": "90day",
       "subgroup_label": "lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0003,
       "ate_ci_lower": -0.0046,
       "ate_ci_upper": 0.0039,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 771,
-          "ate": -0.0035,
-          "ate_ci_lower": -0.0127,
-          "ate_ci_upper": 0.0068
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 2363,
           "ate": 0.0049,
           "ate_ci_lower": -0.0009,
           "ate_ci_upper": 0.0106
+        },
+        {
+          "virus": "Influenza",
+          "n": 771,
+          "ate": -0.0035,
+          "ate_ci_lower": -0.0127,
+          "ate_ci_upper": 0.0068
         },
         {
           "virus": "RSV",
@@ -5077,25 +5077,25 @@
       "node_id": 3,
       "mortality_window": "90day",
       "subgroup_label": "lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0042,
       "ate_ci_lower": -0.0123,
       "ate_ci_upper": 0.0026,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 278,
-          "ate": -0.0076,
-          "ate_ci_lower": -0.0211,
-          "ate_ci_upper": 0.008
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 963,
           "ate": 0.0023,
           "ate_ci_lower": -0.0099,
           "ate_ci_upper": 0.0121
+        },
+        {
+          "virus": "Influenza",
+          "n": 278,
+          "ate": -0.0076,
+          "ate_ci_lower": -0.0211,
+          "ate_ci_upper": 0.008
         },
         {
           "virus": "RSV",
@@ -5129,25 +5129,25 @@
       "node_id": 4,
       "mortality_window": "90day",
       "subgroup_label": "lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": 0.0025,
       "ate_ci_lower": -0.0039,
       "ate_ci_upper": 0.0083,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 360,
-          "ate": -0.0027,
-          "ate_ci_lower": -0.0156,
-          "ate_ci_upper": 0.0108
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1202,
           "ate": 0.0082,
           "ate_ci_lower": 0.0008,
           "ate_ci_upper": 0.0154
+        },
+        {
+          "virus": "Influenza",
+          "n": 360,
+          "ate": -0.0027,
+          "ate_ci_lower": -0.0156,
+          "ate_ci_upper": 0.0108
         },
         {
           "virus": "RSV",
@@ -5181,25 +5181,25 @@
       "node_id": 5,
       "mortality_window": "90day",
       "subgroup_label": "lung comorbidities = 0 ; other comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0029,
       "ate_ci_lower": -0.0071,
       "ate_ci_upper": 0.0013,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 411,
-          "ate": -0.0041,
-          "ate_ci_lower": -0.0116,
-          "ate_ci_upper": 0.0031
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1161,
           "ate": 0.0014,
           "ate_ci_lower": -0.004,
           "ate_ci_upper": 0.006
+        },
+        {
+          "virus": "Influenza",
+          "n": 411,
+          "ate": -0.0041,
+          "ate_ci_lower": -0.0116,
+          "ate_ci_upper": 0.0031
         },
         {
           "virus": "RSV",
@@ -5593,25 +5593,25 @@
       "node_id": 1,
       "mortality_window": "90day",
       "subgroup_label": "moderate pneumonia",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.024,
       "ate_ci_lower": -0.0322,
       "ate_ci_upper": -0.0152,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 2070,
-          "ate": -0.0353,
-          "ate_ci_lower": -0.0634,
-          "ate_ci_upper": -0.0087
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 9012,
           "ate": 0.0079,
           "ate_ci_lower": -0.008,
           "ate_ci_upper": 0.0228
+        },
+        {
+          "virus": "Influenza",
+          "n": 2070,
+          "ate": -0.0353,
+          "ate_ci_lower": -0.0634,
+          "ate_ci_upper": -0.0087
         },
         {
           "virus": "RSV",
@@ -5645,25 +5645,25 @@
       "node_id": 2,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.sepsis",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0459,
       "ate_ci_lower": -0.0654,
       "ate_ci_upper": -0.0278,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 583,
-          "ate": -0.0548,
-          "ate_ci_lower": -0.0954,
-          "ate_ci_upper": -0.0171
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 2306,
           "ate": -0.009,
           "ate_ci_lower": -0.0359,
           "ate_ci_upper": 0.0154
+        },
+        {
+          "virus": "Influenza",
+          "n": 583,
+          "ate": -0.0548,
+          "ate_ci_lower": -0.0954,
+          "ate_ci_upper": -0.0171
         },
         {
           "virus": "RSV",
@@ -5697,25 +5697,25 @@
       "node_id": 3,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.no sepsis",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0136,
       "ate_ci_lower": -0.0259,
       "ate_ci_upper": -0.0006,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 349,
-          "ate": -0.0317,
-          "ate_ci_lower": -0.0624,
-          "ate_ci_upper": -0.0036
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1692,
           "ate": 0.0148,
           "ate_ci_lower": -0.0048,
           "ate_ci_upper": 0.0316
+        },
+        {
+          "virus": "Influenza",
+          "n": 349,
+          "ate": -0.0317,
+          "ate_ci_lower": -0.0624,
+          "ate_ci_upper": -0.0036
         },
         {
           "virus": "RSV",
@@ -5749,25 +5749,25 @@
       "node_id": 4,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.sepsis",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0234,
       "ate_ci_lower": -0.0343,
       "ate_ci_upper": -0.0135,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 843,
-          "ate": -0.0266,
-          "ate_ci_lower": -0.0499,
-          "ate_ci_upper": -0.0049
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 3181,
           "ate": 0.007,
           "ate_ci_lower": -0.0088,
           "ate_ci_upper": 0.0233
+        },
+        {
+          "virus": "Influenza",
+          "n": 843,
+          "ate": -0.0266,
+          "ate_ci_lower": -0.0499,
+          "ate_ci_upper": -0.0049
         },
         {
           "virus": "RSV",
@@ -5801,25 +5801,25 @@
       "node_id": 5,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.no sepsis",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.008,
       "ate_ci_lower": -0.0216,
       "ate_ci_upper": 0.0033,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 295,
-          "ate": -0.0261,
-          "ate_ci_lower": -0.0571,
-          "ate_ci_upper": 0.0011
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1833,
           "ate": 0.0242,
           "ate_ci_lower": 0.006,
           "ate_ci_upper": 0.0399
+        },
+        {
+          "virus": "Influenza",
+          "n": 295,
+          "ate": -0.0261,
+          "ate_ci_lower": -0.0571,
+          "ate_ci_upper": 0.0011
         },
         {
           "virus": "RSV",
@@ -5853,25 +5853,25 @@
       "node_id": 6,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.sepsis ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0406,
       "ate_ci_lower": -0.0647,
       "ate_ci_upper": -0.0174,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 297,
-          "ate": -0.0568,
-          "ate_ci_lower": -0.1029,
-          "ate_ci_upper": -0.0178
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1273,
           "ate": -0.0066,
           "ate_ci_lower": -0.0361,
           "ate_ci_upper": 0.0212
+        },
+        {
+          "virus": "Influenza",
+          "n": 297,
+          "ate": -0.0568,
+          "ate_ci_lower": -0.1029,
+          "ate_ci_upper": -0.0178
         },
         {
           "virus": "RSV",
@@ -5905,25 +5905,25 @@
       "node_id": 7,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.no sepsis ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0098,
       "ate_ci_lower": -0.0251,
       "ate_ci_upper": 0.0054,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 163,
-          "ate": -0.0293,
-          "ate_ci_lower": -0.0611,
-          "ate_ci_upper": -0.0019
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 894,
           "ate": 0.0168,
           "ate_ci_lower": -0.005,
           "ate_ci_upper": 0.036
+        },
+        {
+          "virus": "Influenza",
+          "n": 163,
+          "ate": -0.0293,
+          "ate_ci_lower": -0.0611,
+          "ate_ci_upper": -0.0019
         },
         {
           "virus": "RSV",
@@ -5957,25 +5957,25 @@
       "node_id": 8,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.sepsis ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0231,
       "ate_ci_lower": -0.0341,
       "ate_ci_upper": -0.012,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 580,
-          "ate": -0.0263,
-          "ate_ci_lower": -0.0508,
-          "ate_ci_upper": -0.0051
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 2109,
           "ate": 0.007,
           "ate_ci_lower": -0.0107,
           "ate_ci_upper": 0.0233
+        },
+        {
+          "virus": "Influenza",
+          "n": 580,
+          "ate": -0.0263,
+          "ate_ci_lower": -0.0508,
+          "ate_ci_upper": -0.0051
         },
         {
           "virus": "RSV",
@@ -6009,25 +6009,25 @@
       "node_id": 9,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.no sepsis ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0061,
       "ate_ci_lower": -0.0222,
       "ate_ci_upper": 0.0064,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 210,
-          "ate": -0.0262,
-          "ate_ci_lower": -0.0572,
-          "ate_ci_upper": 0.0011
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1303,
           "ate": 0.0251,
           "ate_ci_lower": 0.0052,
           "ate_ci_upper": 0.0419
+        },
+        {
+          "virus": "Influenza",
+          "n": 210,
+          "ate": -0.0262,
+          "ate_ci_lower": -0.0572,
+          "ate_ci_upper": 0.0011
         },
         {
           "virus": "RSV",
@@ -6061,25 +6061,25 @@
       "node_id": 10,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.sepsis ; lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.05,
       "ate_ci_lower": -0.0714,
       "ate_ci_upper": -0.0289,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 286,
-          "ate": -0.0528,
-          "ate_ci_lower": -0.0972,
-          "ate_ci_upper": -0.0136
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1033,
           "ate": -0.0119,
           "ate_ci_lower": -0.0395,
           "ate_ci_upper": 0.0156
+        },
+        {
+          "virus": "Influenza",
+          "n": 286,
+          "ate": -0.0528,
+          "ate_ci_lower": -0.0972,
+          "ate_ci_upper": -0.0136
         },
         {
           "virus": "RSV",
@@ -6113,25 +6113,25 @@
       "node_id": 11,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.no sepsis ; lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0162,
       "ate_ci_lower": -0.033,
       "ate_ci_upper": -0,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 186,
-          "ate": -0.0339,
-          "ate_ci_lower": -0.0687,
-          "ate_ci_upper": -0.0032
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 798,
           "ate": 0.0126,
           "ate_ci_lower": -0.0106,
           "ate_ci_upper": 0.0321
+        },
+        {
+          "virus": "Influenza",
+          "n": 186,
+          "ate": -0.0339,
+          "ate_ci_lower": -0.0687,
+          "ate_ci_upper": -0.0032
         },
         {
           "virus": "RSV",
@@ -6165,25 +6165,25 @@
       "node_id": 12,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.sepsis ; lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.024,
       "ate_ci_lower": -0.0381,
       "ate_ci_upper": -0.0087,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 263,
-          "ate": -0.0274,
-          "ate_ci_lower": -0.0526,
-          "ate_ci_upper": -0.0039
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1072,
           "ate": 0.0071,
           "ate_ci_lower": -0.011,
           "ate_ci_upper": 0.0268
+        },
+        {
+          "virus": "Influenza",
+          "n": 263,
+          "ate": -0.0274,
+          "ate_ci_lower": -0.0526,
+          "ate_ci_upper": -0.0039
         },
         {
           "virus": "RSV",
@@ -6217,25 +6217,25 @@
       "node_id": 13,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.no sepsis ; lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0116,
       "ate_ci_lower": -0.0268,
       "ate_ci_upper": 0.0027,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 85,
-          "ate": -0.0259,
-          "ate_ci_lower": -0.0585,
-          "ate_ci_upper": 0.0034
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 530,
           "ate": 0.0219,
           "ate_ci_lower": 0.0018,
           "ate_ci_upper": 0.0402
+        },
+        {
+          "virus": "Influenza",
+          "n": 85,
+          "ate": -0.0259,
+          "ate_ci_lower": -0.0585,
+          "ate_ci_upper": 0.0034
         },
         {
           "virus": "RSV",
@@ -6269,25 +6269,25 @@
       "node_id": 14,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.sepsis ; lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.042,
       "ate_ci_lower": -0.0669,
       "ate_ci_upper": -0.0161,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 206,
-          "ate": -0.0618,
-          "ate_ci_lower": -0.1108,
-          "ate_ci_upper": -0.0181
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 941,
           "ate": -0.0077,
           "ate_ci_lower": -0.0378,
           "ate_ci_upper": 0.0213
+        },
+        {
+          "virus": "Influenza",
+          "n": 206,
+          "ate": -0.0618,
+          "ate_ci_lower": -0.1108,
+          "ate_ci_upper": -0.0181
         },
         {
           "virus": "RSV",
@@ -6321,25 +6321,25 @@
       "node_id": 15,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.sepsis ; lung comorbidities = 0 ; other comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0365,
       "ate_ci_lower": -0.0613,
       "ate_ci_upper": -0.0121,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 91,
-          "ate": -0.0456,
-          "ate_ci_lower": -0.0866,
-          "ate_ci_upper": -0.0113
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 332,
           "ate": -0.0033,
           "ate_ci_lower": -0.0332,
           "ate_ci_upper": 0.0255
+        },
+        {
+          "virus": "Influenza",
+          "n": 91,
+          "ate": -0.0456,
+          "ate_ci_lower": -0.0866,
+          "ate_ci_upper": -0.0113
         },
         {
           "virus": "RSV",
@@ -6373,25 +6373,25 @@
       "node_id": 16,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.no sepsis ; lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0112,
       "ate_ci_lower": -0.0283,
       "ate_ci_upper": 0.0055,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 90,
-          "ate": -0.0278,
-          "ate_ci_lower": -0.0635,
-          "ate_ci_upper": 0.0023
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 581,
           "ate": 0.0196,
           "ate_ci_lower": -0.003,
           "ate_ci_upper": 0.0416
+        },
+        {
+          "virus": "Influenza",
+          "n": 90,
+          "ate": -0.0278,
+          "ate_ci_lower": -0.0635,
+          "ate_ci_upper": 0.0023
         },
         {
           "virus": "RSV",
@@ -6425,25 +6425,25 @@
       "node_id": 17,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = hypoxemia.no sepsis ; lung comorbidities = 0 ; other comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0066,
       "ate_ci_lower": -0.024,
       "ate_ci_upper": 0.0094,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 73,
-          "ate": -0.0311,
-          "ate_ci_lower": -0.0628,
-          "ate_ci_upper": -0.0035
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 313,
           "ate": 0.0117,
           "ate_ci_lower": -0.012,
           "ate_ci_upper": 0.0329
+        },
+        {
+          "virus": "Influenza",
+          "n": 73,
+          "ate": -0.0311,
+          "ate_ci_lower": -0.0628,
+          "ate_ci_upper": -0.0035
         },
         {
           "virus": "RSV",
@@ -6477,25 +6477,25 @@
       "node_id": 18,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.sepsis ; lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0251,
       "ate_ci_lower": -0.0388,
       "ate_ci_upper": -0.0123,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 335,
-          "ate": -0.0343,
-          "ate_ci_lower": -0.0646,
-          "ate_ci_upper": -0.0058
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1480,
           "ate": 0.0075,
           "ate_ci_lower": -0.0125,
           "ate_ci_upper": 0.0264
+        },
+        {
+          "virus": "Influenza",
+          "n": 335,
+          "ate": -0.0343,
+          "ate_ci_lower": -0.0646,
+          "ate_ci_upper": -0.0058
         },
         {
           "virus": "RSV",
@@ -6529,25 +6529,25 @@
       "node_id": 19,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.sepsis ; lung comorbidities = 0 ; other comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0186,
       "ate_ci_lower": -0.0302,
       "ate_ci_upper": -0.007,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 245,
-          "ate": -0.0153,
-          "ate_ci_lower": -0.032,
-          "ate_ci_upper": -0.0026
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 629,
           "ate": 0.0056,
           "ate_ci_lower": -0.009,
           "ate_ci_upper": 0.0203
+        },
+        {
+          "virus": "Influenza",
+          "n": 245,
+          "ate": -0.0153,
+          "ate_ci_lower": -0.032,
+          "ate_ci_upper": -0.0026
         },
         {
           "virus": "RSV",
@@ -6581,25 +6581,25 @@
       "node_id": 20,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.no sepsis ; lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0079,
       "ate_ci_lower": -0.0253,
       "ate_ci_upper": 0.0057,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 151,
-          "ate": -0.0284,
-          "ate_ci_lower": -0.0613,
-          "ate_ci_upper": 0.0004
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 922,
           "ate": 0.0242,
           "ate_ci_lower": 0.004,
           "ate_ci_upper": 0.041
+        },
+        {
+          "virus": "Influenza",
+          "n": 151,
+          "ate": -0.0284,
+          "ate_ci_lower": -0.0613,
+          "ate_ci_upper": 0.0004
         },
         {
           "virus": "RSV",
@@ -6633,25 +6633,25 @@
       "node_id": 21,
       "mortality_window": "90day",
       "subgroup_label": "hypoxemia/sepsis = no hypoxemia.no sepsis ; lung comorbidities = 0 ; other comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0008,
       "ate_ci_lower": -0.0186,
       "ate_ci_upper": 0.0153,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 59,
-          "ate": -0.0203,
-          "ate_ci_lower": -0.0506,
-          "ate_ci_upper": 0.0053
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 381,
           "ate": 0.0274,
           "ate_ci_lower": 0.0062,
           "ate_ci_upper": 0.046
+        },
+        {
+          "virus": "Influenza",
+          "n": 59,
+          "ate": -0.0203,
+          "ate_ci_lower": -0.0506,
+          "ate_ci_upper": 0.0053
         },
         {
           "virus": "RSV",
@@ -8125,25 +8125,25 @@
       "node_id": 1,
       "mortality_window": "90day",
       "subgroup_label": "severe pneumonia",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0138,
       "ate_ci_lower": -0.0501,
       "ate_ci_upper": 0.0218,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 398,
-          "ate": -0.1208,
-          "ate_ci_lower": -0.2441,
-          "ate_ci_upper": -0.0285
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 2035,
           "ate": 0.0323,
           "ate_ci_lower": -0.0152,
           "ate_ci_upper": 0.0831
+        },
+        {
+          "virus": "Influenza",
+          "n": 398,
+          "ate": -0.1208,
+          "ate_ci_lower": -0.2441,
+          "ate_ci_upper": -0.0285
         },
         {
           "virus": "RSV",
@@ -8177,25 +8177,25 @@
       "node_id": 2,
       "mortality_window": "90day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.shock",
-      "viruses": ["Influenza", "SARS-CoV-2", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0094,
       "ate_ci_lower": -0.1288,
       "ate_ci_upper": 0.1064,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 40,
-          "ate": -0.1379,
-          "ate_ci_lower": -0.3246,
-          "ate_ci_upper": 0.0267
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 149,
           "ate": 0.0545,
           "ate_ci_lower": -0.0718,
           "ate_ci_upper": 0.1726
+        },
+        {
+          "virus": "Influenza",
+          "n": 40,
+          "ate": -0.1379,
+          "ate_ci_lower": -0.3246,
+          "ate_ci_upper": 0.0267
         },
         {
           "virus": "Other",
@@ -8222,25 +8222,25 @@
       "node_id": 3,
       "mortality_window": "90day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.no shock",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.013,
       "ate_ci_lower": -0.0511,
       "ate_ci_upper": 0.0224,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 232,
-          "ate": -0.1112,
-          "ate_ci_lower": -0.2254,
-          "ate_ci_upper": -0.0134
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 1192,
           "ate": 0.033,
           "ate_ci_lower": -0.0187,
           "ate_ci_upper": 0.0878
+        },
+        {
+          "virus": "Influenza",
+          "n": 232,
+          "ate": -0.1112,
+          "ate_ci_lower": -0.2254,
+          "ate_ci_upper": -0.0134
         },
         {
           "virus": "RSV",
@@ -8274,25 +8274,25 @@
       "node_id": 4,
       "mortality_window": "90day",
       "subgroup_label": "severe hypoxemia/shock = no s. hypoxemia.shock",
-      "viruses": ["Influenza", "SARS-CoV-2", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0432,
       "ate_ci_lower": -0.1421,
       "ate_ci_upper": 0.0563,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 33,
-          "ate": -0.1883,
-          "ate_ci_lower": -0.3723,
-          "ate_ci_upper": -0.0314
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 173,
           "ate": 0.0035,
           "ate_ci_lower": -0.1092,
           "ate_ci_upper": 0.1118
+        },
+        {
+          "virus": "Influenza",
+          "n": 33,
+          "ate": -0.1883,
+          "ate_ci_lower": -0.3723,
+          "ate_ci_upper": -0.0314
         },
         {
           "virus": "Other",
@@ -8319,25 +8319,25 @@
       "node_id": 5,
       "mortality_window": "90day",
       "subgroup_label": "severe hypoxemia/shock = no s. hypoxemia.no shock",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0033,
       "ate_ci_lower": -0.0468,
       "ate_ci_upper": 0.0451,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 93,
-          "ate": -0.1134,
-          "ate_ci_lower": -0.2533,
-          "ate_ci_upper": -0.0127
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 521,
           "ate": 0.0341,
           "ate_ci_lower": -0.0218,
           "ate_ci_upper": 0.0925
+        },
+        {
+          "virus": "Influenza",
+          "n": 93,
+          "ate": -0.1134,
+          "ate_ci_lower": -0.2533,
+          "ate_ci_upper": -0.0127
         },
         {
           "virus": "RSV",
@@ -8371,25 +8371,25 @@
       "node_id": 6,
       "mortality_window": "90day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.shock ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0115,
       "ate_ci_lower": -0.136,
       "ate_ci_upper": 0.114,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 24,
-          "ate": -0.1395,
-          "ate_ci_lower": -0.3391,
-          "ate_ci_upper": 0.0379
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 85,
           "ate": 0.0461,
           "ate_ci_lower": -0.0836,
           "ate_ci_upper": 0.1681
+        },
+        {
+          "virus": "Influenza",
+          "n": 24,
+          "ate": -0.1395,
+          "ate_ci_lower": -0.3391,
+          "ate_ci_upper": 0.0379
         },
         {
           "virus": "Other",
@@ -8416,25 +8416,25 @@
       "node_id": 7,
       "mortality_window": "90day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.no shock ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0098,
       "ate_ci_lower": -0.0518,
       "ate_ci_upper": 0.034,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 109,
-          "ate": -0.1109,
-          "ate_ci_lower": -0.2306,
-          "ate_ci_upper": -0.0007
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 634,
           "ate": 0.036,
           "ate_ci_lower": -0.0248,
           "ate_ci_upper": 0.0975
+        },
+        {
+          "virus": "Influenza",
+          "n": 109,
+          "ate": -0.1109,
+          "ate_ci_lower": -0.2306,
+          "ate_ci_upper": -0.0007
         },
         {
           "virus": "RSV",
@@ -8506,25 +8506,25 @@
       "node_id": 9,
       "mortality_window": "90day",
       "subgroup_label": "severe hypoxemia/shock = no s. hypoxemia.no shock ; lung comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": 0.0038,
       "ate_ci_lower": -0.047,
       "ate_ci_upper": 0.058,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 53,
-          "ate": -0.1042,
-          "ate_ci_lower": -0.2433,
-          "ate_ci_upper": 0.0008
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 288,
           "ate": 0.0378,
           "ate_ci_lower": -0.0268,
           "ate_ci_upper": 0.1071
+        },
+        {
+          "virus": "Influenza",
+          "n": 53,
+          "ate": -0.1042,
+          "ate_ci_lower": -0.2433,
+          "ate_ci_upper": 0.0008
         },
         {
           "virus": "RSV",
@@ -8589,25 +8589,25 @@
       "node_id": 11,
       "mortality_window": "90day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.no shock ; lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.015,
       "ate_ci_lower": -0.0624,
       "ate_ci_upper": 0.0286,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 123,
-          "ate": -0.1116,
-          "ate_ci_lower": -0.2256,
-          "ate_ci_upper": -0.0141
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 558,
           "ate": 0.0297,
           "ate_ci_lower": -0.0321,
           "ate_ci_upper": 0.0922
+        },
+        {
+          "virus": "Influenza",
+          "n": 123,
+          "ate": -0.1116,
+          "ate_ci_lower": -0.2256,
+          "ate_ci_upper": -0.0141
         },
         {
           "virus": "RSV",
@@ -8672,25 +8672,25 @@
       "node_id": 13,
       "mortality_window": "90day",
       "subgroup_label": "severe hypoxemia/shock = no s. hypoxemia.no shock ; lung comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0099,
       "ate_ci_lower": -0.0632,
       "ate_ci_upper": 0.0399,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 40,
-          "ate": -0.1252,
-          "ate_ci_lower": -0.2814,
-          "ate_ci_upper": -0.0099
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 233,
           "ate": 0.0294,
           "ate_ci_lower": -0.035,
           "ate_ci_upper": 0.0911
+        },
+        {
+          "virus": "Influenza",
+          "n": 40,
+          "ate": -0.1252,
+          "ate_ci_lower": -0.2814,
+          "ate_ci_upper": -0.0099
         },
         {
           "virus": "RSV",
@@ -8786,25 +8786,25 @@
       "node_id": 16,
       "mortality_window": "90day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.no shock ; lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "RSV", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "RSV", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0039,
       "ate_ci_lower": -0.0456,
       "ate_ci_upper": 0.0423,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 71,
-          "ate": -0.0959,
-          "ate_ci_lower": -0.225,
-          "ate_ci_upper": 0.0224
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 437,
           "ate": 0.044,
           "ate_ci_lower": -0.0181,
           "ate_ci_upper": 0.107
+        },
+        {
+          "virus": "Influenza",
+          "n": 71,
+          "ate": -0.0959,
+          "ate_ci_lower": -0.225,
+          "ate_ci_upper": 0.0224
         },
         {
           "virus": "RSV",
@@ -8838,25 +8838,25 @@
       "node_id": 17,
       "mortality_window": "90day",
       "subgroup_label": "severe hypoxemia/shock = severe hypoxemia.no shock ; lung comorbidities = 0 ; other comorbidities = 0",
-      "viruses": ["Influenza", "SARS-CoV-2", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "Other", "None"],
       "contour_method": "hdr95",
       "ate": -0.0254,
       "ate_ci_lower": -0.0882,
       "ate_ci_upper": 0.0267,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 38,
-          "ate": -0.139,
-          "ate_ci_lower": -0.2791,
-          "ate_ci_upper": -0.0273
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 197,
           "ate": 0.0183,
           "ate_ci_lower": -0.0539,
           "ate_ci_upper": 0.0898
+        },
+        {
+          "virus": "Influenza",
+          "n": 38,
+          "ate": -0.139,
+          "ate_ci_lower": -0.2791,
+          "ate_ci_upper": -0.0273
         },
         {
           "virus": "Other",
@@ -8952,25 +8952,25 @@
       "node_id": 20,
       "mortality_window": "90day",
       "subgroup_label": "severe hypoxemia/shock = no s. hypoxemia.no shock ; lung comorbidities = 0 ; other comorbidities = 1",
-      "viruses": ["Influenza", "SARS-CoV-2", "Other", "None"],
+      "viruses": ["SARS-CoV-2", "Influenza", "Other", "None"],
       "contour_method": "hdr95",
       "ate": 0.008,
       "ate_ci_lower": -0.0436,
       "ate_ci_upper": 0.0612,
       "by_virus": [
         {
-          "virus": "Influenza",
-          "n": 42,
-          "ate": -0.112,
-          "ate_ci_lower": -0.2547,
-          "ate_ci_upper": -0.0006
-        },
-        {
           "virus": "SARS-CoV-2",
           "n": 233,
           "ate": 0.0404,
           "ate_ci_lower": -0.0269,
           "ate_ci_upper": 0.1139
+        },
+        {
+          "virus": "Influenza",
+          "n": 42,
+          "ate": -0.112,
+          "ate_ci_lower": -0.2547,
+          "ate_ci_upper": -0.0006
         },
         {
           "virus": "Other",
