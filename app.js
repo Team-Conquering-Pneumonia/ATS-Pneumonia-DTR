@@ -385,11 +385,17 @@ function showTooltip(node, hzEl) {
   const tt = document.getElementById("node-tooltip");
   const wrapper = document.getElementById("tree-wrapper");
   if (!tt || !wrapper) return;
+  // Crude mortality and the 95% CI come from the Report row, as in the node panel.
+  const row = matchingResultRow(node);
+  const mort = row && row.pct_obs_mort !== "" && row.pct_obs_mort != null ? Number(row.pct_obs_mort) / 100 : null;  // percent -> proportion for fmtPct
+  const rowCi = row ? parseCi(row.ci) : null;
+  const ci = rowCi ? SiteNav.fmtPpRange(rowCi.lo, rowCi.hi) : null;
   tt.innerHTML = `
     <div class="tt-label">${escapeHtml(SiteNav.levelLabel(node.label || node.node_id))}</div>
     <div class="tt-row"><span class="tt-key">N</span><span>${fmtN(node.N)}</span></div>
-    <div class="tt-row"><span class="tt-key">Given antibiotics</span><span>${fmtPct(node.abx_pct)}</span></div>
-    <div class="tt-row"><span class="tt-key">Effect</span><span>${fmtAte(node.ate)}</span></div>
+    <div class="tt-row"><span class="tt-key">Received antibiotics</span><span>${fmtPct(node.abx_pct)}</span></div>
+    <div class="tt-row"><span class="tt-key">Crude mortality</span><span>${fmtPct(mort)}</span></div>
+    <div class="tt-row"><span class="tt-key">Treatment effect</span><span>${fmtAte(node.ate)}${ci != null ? ` (${ci})` : ""}</span></div>
   `;
   // Anchor tooltip beside the hot-zone (right preferred, then left, then below)
   // so the node stays visible. Coordinates are relative to the wrapper.
