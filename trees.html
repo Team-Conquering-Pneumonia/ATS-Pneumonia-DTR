@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Trees — Initial Antibiotics and Mortality in CAP</title>
-  <link rel="stylesheet" href="styles.css?v=ps8" />
+  <link rel="stylesheet" href="styles.css?v=ps11" />
 </head>
 <body>
   <header class="site-header">
@@ -122,14 +122,14 @@
           <label><input type="radio" name="panel" value="main" checked /><span id="panel-main-label">Contours</span></label>
           <label><input type="radio" name="panel" value="alt" /><span id="panel-alt-label">Propensity</span></label>
         </div>
-        <div class="zoom-controls" aria-label="Contour zoom controls">
+      </div>
+      <div class="image-wrapper zoom-wrapper" id="contour-wrapper">
+        <img id="contour-img" alt="Contour overlay" />
+        <div class="zoom-controls zoom-controls--overlay" aria-label="Contour zoom controls">
           <button type="button" data-zoom-target="contour" data-zoom-action="in" aria-label="Zoom in" title="Zoom in">+</button>
           <button type="button" data-zoom-target="contour" data-zoom-action="out" aria-label="Zoom out" title="Zoom out">&minus;</button>
           <button type="button" data-zoom-target="contour" data-zoom-action="reset" aria-label="Fit to panel" title="Fit to panel">Fit</button>
         </div>
-      </div>
-      <div class="image-wrapper zoom-wrapper" id="contour-wrapper">
-        <img id="contour-img" alt="Contour overlay" />
         <div class="loading-spinner" id="contour-spinner" aria-hidden="true"></div>
       </div>
       <div class="contour-meta" id="contour-meta"></div>
@@ -158,6 +158,6 @@
   <script src="viz-info.js?v=uireview5"></script>
   <script src="site-nav.js?v=uireview5"></script>
   <script src="ps.js?v=ps9"></script>
-  <script src="app.js?v=ps5"></script>
+  <script src="app.js?v=ps10"></script>
 </body>
 </html>

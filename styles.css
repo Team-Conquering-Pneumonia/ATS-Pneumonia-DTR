@@ -1090,6 +1090,18 @@ a { color: var(--color-accent); }
 }
 .ps-chip-anchor .ps-chip { font-size: 1em; margin: 0; box-shadow: 0 0 0 1px #fff; }
 
+/* Contour zoom buttons sit on the image's top-right corner, leaving the panel
+   toolbar to the report link and the panel switch. */
+.zoom-controls--overlay {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  z-index: 2;
+  opacity: 0.9;
+}
+.panel-switch { flex: 0 0 auto; margin-left: auto; }
+.contour-panel .panel-toolbar { flex-wrap: wrap; }
+
 #legend-ps .legend-item { flex-wrap: wrap; row-gap: 0.25rem; }
 
 .ps-cutoffs {

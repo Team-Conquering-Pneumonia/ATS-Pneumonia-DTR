@@ -738,8 +738,7 @@ function renderContourPanel() {
   // Right panel: propensity content (the grade rule in the Propensity view, the
   // density plot as the Outcomes view's alternative) or the outcome contours.
   const showPs = (state.mode === "ps") !== state.panel_alt;
-  document.querySelectorAll("#contour-wrapper, #contour-meta, #contour-byvirus-table, " +
-                            ".contour-panel .panel-toolbar .zoom-controls")
+  document.querySelectorAll("#contour-wrapper, #contour-meta, #contour-byvirus-table")
     .forEach((el) => { el.hidden = showPs; });
   const psDetail = document.getElementById("ps-detail");
   if (psDetail) psDetail.hidden = !showPs;
