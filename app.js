@@ -24,7 +24,8 @@ const state = {
   highlight_virus: null,   // virus row to highlight in the by-virus table (deep link)
   highlight_node_id: null, // Report node_id of that virus-level row
   interactive: true,
-  mode: "outcome"          // "outcome" | "ps" (Propensity view, ps.js)
+  mode: "outcome",         // "outcome" | "ps" (Propensity view, ps.js)
+  panel_alt: false         // right panel shows the other mode's content (density / outcomes)
 };
 
 let topology = null;          // tree_topology.json (depth/columns metadata)
@@ -734,10 +735,20 @@ function renderContourPanel() {
   breadcrumb.textContent = breadcrumbText;
   breadcrumb.title = breadcrumbText;
 
-  if (state.mode === "ps") {
+  // Right panel: propensity content (the grade rule in the Propensity view, the
+  // density plot as the Outcomes view's alternative) or the outcome contours.
+  const showPs = (state.mode === "ps") !== state.panel_alt;
+  document.querySelectorAll("#contour-wrapper, #contour-meta, #contour-byvirus-table, " +
+                            ".contour-panel .panel-toolbar .zoom-controls")
+    .forEach((el) => { el.hidden = showPs; });
+  const psDetail = document.getElementById("ps-detail");
+  if (psDetail) psDetail.hidden = !showPs;
+  if (showPs) {
     meta.innerHTML = "";
     renderContourByvirusTable(null);
-    if (typeof PsView !== "undefined") PsView.renderDetail(document.getElementById("ps-detail"), node, state);
+    if (typeof PsView !== "undefined") {
+      PsView.renderDetail(psDetail, node, state, state.mode === "ps" ? "rule" : "density");
+    }
     return;
   }
 
@@ -864,8 +875,13 @@ function applyViewMode() {
   setHidden("#legend-outcome", !interactive || ps);
   setHidden("#legend-ps", !ps);
   setHidden("#ps-cutoffs", !ps);
-  setHidden("#ps-detail", !ps);
-  setHidden("#contour-wrapper, #contour-meta, #contour-byvirus-table, .contour-panel .panel-toolbar .zoom-controls", ps);
+  const mainLabel = document.getElementById("panel-main-label");
+  const altLabel = document.getElementById("panel-alt-label");
+  if (mainLabel) mainLabel.textContent = ps ? "Grade rule" : "Contours";
+  if (altLabel) altLabel.textContent = ps ? "Outcomes" : "Propensity";
+  document.querySelectorAll('input[name="panel"]').forEach((r) => {
+    r.checked = r.value === (state.panel_alt ? "alt" : "main");
+  });
   document.querySelectorAll('input[name="view"]').forEach((r) => { r.disabled = ps; });
   const panels = document.querySelector(".main-panels");
   if (panels) panels.classList.toggle("ps", ps);
@@ -1030,8 +1046,18 @@ function wireUp() {
     r.addEventListener("change", (e) => {
       if (!e.target.checked) return;
       state.mode = e.target.value === "ps" ? "ps" : "outcome";
+      state.panel_alt = false;  // each view opens on its own panel content
       syncControls();
       render();
+    });
+  });
+
+  // Right panel: this view's content or the other view's for the same subgroup.
+  document.querySelectorAll('input[name="panel"]').forEach(r => {
+    r.addEventListener("change", (e) => {
+      if (!e.target.checked) return;
+      state.panel_alt = e.target.value === "alt";
+      renderContourPanel();
     });
   });
 

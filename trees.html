@@ -118,6 +118,10 @@
       </header>
       <div class="panel-toolbar">
         <a class="view-in-report-link" id="view-in-report-link" href="results_by_node.html" hidden>View in report</a>
+        <div class="segmented segmented--small panel-switch" role="radiogroup" aria-label="Panel content">
+          <label><input type="radio" name="panel" value="main" checked /><span id="panel-main-label">Contours</span></label>
+          <label><input type="radio" name="panel" value="alt" /><span id="panel-alt-label">Propensity</span></label>
+        </div>
         <div class="zoom-controls" aria-label="Contour zoom controls">
           <button type="button" data-zoom-target="contour" data-zoom-action="in" aria-label="Zoom in" title="Zoom in">+</button>
           <button type="button" data-zoom-target="contour" data-zoom-action="out" aria-label="Zoom out" title="Zoom out">&minus;</button>
@@ -153,7 +157,7 @@
   <script src="vendor/panzoom.min.js"></script>
   <script src="viz-info.js?v=uireview5"></script>
   <script src="site-nav.js?v=uireview5"></script>
-  <script src="ps.js?v=ps4"></script>
-  <script src="app.js?v=ps3"></script>
+  <script src="ps.js?v=ps5"></script>
+  <script src="app.js?v=ps5"></script>
 </body>
 </html>

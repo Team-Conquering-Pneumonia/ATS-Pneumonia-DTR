@@ -261,7 +261,10 @@ const PsView = (() => {
       </table>`;
   }
 
-  function renderDetail(el, siteNode, state) {
+  // variant "rule": the Propensity view's panel (grade rule, statistics; the tree
+  // already shows the densities). "density": the Outcomes view's alternative
+  // (grade and the subgroup's density plot).
+  function renderDetail(el, siteNode, state, variant = "rule") {
     if (!el) return;
     if (!data) { el.innerHTML = `<p class="ps-msg">Propensity data could not be loaded.</p>`; return; }
     if (!treeFor(state)) {
@@ -282,10 +285,15 @@ const PsView = (() => {
       el.innerHTML = `${head}<p class="ps-msg">${esc(why)}</p>${byVirusHtml(n)}`;
       return;
     }
+    const arms = `<div class="ps-arms"><span class="ps-abx">${fN(n.n_abx)} antibiotics</span> / <span class="ps-noabx">${fN(n.n_noabx)} no antibiotics</span></div>`;
+    if (variant === "density") {
+      el.innerHTML = `${head}${arms}
+        <img class="ps-panel-img" src="${esc(n.img)}" alt="Propensity score densities, antibiotics vs no antibiotics" />
+        <p class="table-foot">Propensity score, P(antibiotics | covariates). OVL ${f3(n.ovl[0])}, BC ${f3(n.bc[0])}. Grade: proposed rule; see the Propensity view.</p>`;
+      return;
+    }
     const { html, r } = ruleHtml(n);
-    el.innerHTML = `${head}
-      <div class="ps-arms"><span class="ps-abx">${fN(n.n_abx)} antibiotics</span> / <span class="ps-noabx">${fN(n.n_noabx)} no antibiotics</span></div>
-      <img class="ps-panel-img" src="${esc(n.img)}" alt="Propensity score densities, antibiotics vs no antibiotics" />
+    el.innerHTML = `${head}${arms}
       ${html}
       ${metricsHtml(n, r)}
       ${byVirusHtml(n)}`;
