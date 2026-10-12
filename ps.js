@@ -27,12 +27,12 @@ const PsView = (() => {
 
   // [key, label, step, min, max, unit]
   const FIELDS = [
-    ["c3_substantial", "C3 substantial: % treated above untreated 99th percentile, at least", 0.5, 0, 50, "%"],
-    ["c3_small", "C3 small tail: ... at least", 0.5, 0, 30, "%"],
-    ["c2_many", "C2 many: % treated with PS > 0.95, at least", 1, 0, 100, "%"],
-    ["c2_some", "C2 some: ... at least", 1, 0, 50, "%"],
-    ["c4_ratio", "C4 rare: untreated share above 0.95 below this x treated share", 0.05, 0, 2, "x"],
-    ["c1_shift", "C1 shifted: gap between the arms' median PS, at least", 0.01, 0, 0.5, ""],
+    ["c3_substantial", "Substantial tail: % treated above untreated 99th percentile, at least", 0.5, 0, 50, "%"],
+    ["c3_small", "Small tail: ... at least", 0.5, 0, 30, "%"],
+    ["c2_many", "Many near 1: % treated with PS > 0.95, at least", 1, 0, 100, "%"],
+    ["c2_some", "Some near 1: ... at least", 1, 0, 50, "%"],
+    ["c4_ratio", "Untreated rare near 1: untreated share above 0.95 below this x treated share", 0.05, 0, 2, "x"],
+    ["c1_shift", "Shifted centers: gap between the arms' median PS, at least", 0.01, 0, 0.5, ""],
   ];
   const fmtCut = (k, v) => {
     const f = FIELDS.find((x) => x[0] === k);
@@ -245,10 +245,10 @@ const PsView = (() => {
       <table class="data-table ps-metrics" aria-label="Overlap statistics for the selected subgroup">
         <thead><tr><th>Criterion</th><th>Value</th><th>Answer</th></tr></thead>
         <tbody>
-          <tr><td>C1 median PS, treated vs untreated</td><td>${f2(n.med_abx)} vs ${f2(n.med_noabx)}</td><td>${esc(r.C1)}</td></tr>
-          <tr><td>C2 treated with PS &gt; 0.95</td><td>${f1(n.gt95_abx)}</td><td>${esc(r.C2)}</td></tr>
-          <tr><td>C3 treated above untreated 99th percentile</td><td>${f1(n.tail_p99)}</td><td>${esc(r.C3)}</td></tr>
-          <tr><td>C4 untreated with PS &gt; 0.95</td><td>${f1(n.gt95_noabx)}</td><td>${esc(r.C4)}</td></tr>
+          <tr><td>Median PS, treated vs untreated</td><td>${f2(n.med_abx)} vs ${f2(n.med_noabx)}</td><td>${esc(r.C1)}</td></tr>
+          <tr><td>Treated with PS &gt; 0.95</td><td>${f1(n.gt95_abx)}</td><td>${esc(r.C2)}</td></tr>
+          <tr><td>Treated above untreated 99th percentile</td><td>${f1(n.tail_p99)}</td><td>${esc(r.C3)}</td></tr>
+          <tr><td>Untreated with PS &gt; 0.95</td><td>${f1(n.gt95_noabx)}</td><td>${esc(r.C4)}</td></tr>
           <tr><td>OVL, shared density area</td><td colspan="2">${f3(n.ovl[0])} (${f3(n.ovl[1])} to ${f3(n.ovl[2])})</td></tr>
           <tr><td>BC, Bhattacharyya coefficient</td><td colspan="2">${f3(n.bc[0])} (${f3(n.bc[1])} to ${f3(n.bc[2])})</td></tr>
         </tbody>
@@ -260,7 +260,7 @@ const PsView = (() => {
     const kids = children[`${n.tree}|${n.node_id}`];
     if (!kids || !kids.length) return "";
     const rows = kids.map((k) => `
-      <tr><td>${esc(k.title)}</td><td>${k.n < 20 ? "&lt;20" : fN(k.n)}</td><td>${chipHtml(gradeOf(k), "ps-chip--inline") || "-"}</td></tr>`).join("");
+      <tr><td>${esc(k.title)}</td><td>${k.status === "small" ? "&lt;20" : fN(k.n)}</td><td>${chipHtml(gradeOf(k), "ps-chip--inline") || "-"}</td></tr>`).join("");
     return `
       <table class="data-table ps-byvirus" aria-label="Overlap grade by virus">
         <thead><tr><th>Virus</th><th>N</th><th>Grade</th></tr></thead><tbody>${rows}</tbody>
@@ -284,7 +284,7 @@ const PsView = (() => {
       <span class="ps-counts">N ${fN(n.n)} &middot; ${n.pct_abx.toFixed(0)}% given antibiotics</span></div>`;
     if (n.status !== "graded") {
       const why = {
-        no_untreated: "No patient in this subgroup went without antibiotics, so every treated patient is outside the untreated range (C3 = 100%): poor.",
+        no_untreated: "No patient in this subgroup went without antibiotics, so every treated patient is outside the untreated range: poor.",
         not_assessed: "One arm has fewer than 20 patients, so its propensity scores were not exported and the subgroup is not graded.",
         small: "Fewer than 20 patients.",
       }[n.status];
