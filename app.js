@@ -29,6 +29,7 @@ const state = {
 
 let topology = null;          // tree_topology.json (depth/columns metadata)
 let coordinates = null;       // tree_coordinates.json (node bboxes per state)
+let psCoordinates = null;     // tree_coordinates_ps.json (Propensity view density trees)
 const IMG_VERSION = "20261007";  // bump when figures are re-rendered
 let contourIndex = null;      // node_contours_byvirus_index.json
 let resultsByNode = null;     // results_by_node.json, used as a slug -> node_id bridge
@@ -236,16 +237,25 @@ function fullColumns() {
   return d ? asArray(d.outline_columns) : [];
 }
 
+// The tree image's state entry: the propensity density tree in the Propensity
+// view (same slugs as the outcome tree, so the selection carries over), else the
+// outcome tree.
+function currentState() {
+  if (state.mode === "ps" && psCoordinates && psCoordinates.states[stateKey()]) {
+    return psCoordinates.states[stateKey()];
+  }
+  if (!coordinates || !coordinates.states) return null;
+  return coordinates.states[stateKey()] || null;
+}
+
 function currentNodes() {
-  if (!coordinates || !coordinates.states) return [];
-  const s = coordinates.states[stateKey()];
+  const s = currentState();
   if (!s) return [];
   return Array.isArray(s.nodes) ? s.nodes : [];
 }
 
 function currentImageDims() {
-  if (!coordinates || !coordinates.states) return null;
-  const s = coordinates.states[stateKey()];
+  const s = currentState();
   return s ? s.image : null;
 }
 
@@ -809,12 +819,12 @@ function renderOutline() {
 
 function renderTreeImage() {
   const key = treeKey();
-  const st = coordinates && coordinates.states ? coordinates.states[stateKey()] : null;
+  const st = currentState();
   const treeDir = (st && st.image_dir) || "assets/trees";
-  const treeSrc = `${treeDir}/${key}_depth=${state.depth}.png`;
+  const treeSrc = (st && st.image_file) || `${treeDir}/${key}_depth=${state.depth}.png`;
   // Top-down trees are wide rather than tall: give the tree more of the row.
   const panels = document.querySelector(".main-panels");
-  if (panels) panels.classList.toggle("topdown", !!(st && st.image_dir));
+  if (panels) panels.classList.toggle("topdown", !!(st && (st.image_dir || st.image_file)));
   const treeImg = document.getElementById("tree-img");
   setImage(
     treeImg,
@@ -1022,8 +1032,6 @@ function wireUp() {
       state.mode = e.target.value === "ps" ? "ps" : "outcome";
       syncControls();
       render();
-      // Same tree image, so no reload to redraw the chips: redraw them here.
-      renderHotzones();
     });
   });
 
@@ -1269,6 +1277,8 @@ async function init() {
   if (!resultsByNode) resultsByNode = { families: [] };
 
   if (typeof PsView !== "undefined") {
+    psCoordinates = await loadJsonOrNull("tree_coordinates_ps.json");
+    if (!psCoordinates || !psCoordinates.states) psCoordinates = null;
     await PsView.load();
     PsView.onChange(() => { renderHotzones(); renderContourPanel(); });
   }

@@ -153,9 +153,12 @@ const PsView = (() => {
       if (!g) continue;
       const el = document.createElement("div");
       el.className = "ps-chip-anchor";
-      el.style.left = (bb.x + bb.w / 2) * scale + "px";
-      el.style.top = (bb.y + bb.h) * scale + 3 * scale + "px";
-      el.style.fontSize = fontPx + "px";
+      // Density trees reserve a chip slot (ps_chip); otherwise sit under the node.
+      const slot = node.ps_chip;
+      el.style.left = (slot ? slot.x : bb.x + bb.w / 2) * scale + "px";
+      el.style.top = (slot ? slot.y : bb.y + bb.h + 3) * scale + "px";
+      // In a chip slot the chip scales with the image, like the text around it.
+      el.style.fontSize = (slot ? 10 * scale : fontPx) + "px";
       el.dataset.slug = node.slug;
       el.innerHTML = chipHtml(g);
       layer.appendChild(el);
