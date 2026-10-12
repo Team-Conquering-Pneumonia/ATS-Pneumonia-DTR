@@ -25,14 +25,20 @@ const PsView = (() => {
   let listener = null;
   const STORE_KEY = "ps-cutoffs";
 
+  // [key, label, step, min, max, unit]
   const FIELDS = [
-    ["c3_substantial", "C3 substantial: % treated above untreated 99th percentile, at least", 0.5],
-    ["c3_small", "C3 small tail: ... at least", 0.5],
-    ["c2_many", "C2 many: % treated with PS > 0.95, at least", 1],
-    ["c2_some", "C2 some: ... at least", 1],
-    ["c4_ratio", "C4 rare: untreated share above 0.95 below this x treated share", 0.05],
-    ["c1_shift", "C1 shifted: gap between the arms' median PS, at least", 0.01],
+    ["c3_substantial", "C3 substantial: % treated above untreated 99th percentile, at least", 0.5, 0, 50, "%"],
+    ["c3_small", "C3 small tail: ... at least", 0.5, 0, 30, "%"],
+    ["c2_many", "C2 many: % treated with PS > 0.95, at least", 1, 0, 100, "%"],
+    ["c2_some", "C2 some: ... at least", 1, 0, 50, "%"],
+    ["c4_ratio", "C4 rare: untreated share above 0.95 below this x treated share", 0.05, 0, 2, "x"],
+    ["c1_shift", "C1 shifted: gap between the arms' median PS, at least", 0.01, 0, 0.5, ""],
   ];
+  const fmtCut = (k, v) => {
+    const f = FIELDS.find((x) => x[0] === k);
+    const s = f[2] < 0.1 ? Number(v).toFixed(2) : f[2] < 1 ? Number(v).toFixed(1) : String(v);
+    return f[5] === "%" ? `${s}%` : f[5] === "x" ? `${s}x` : s;
+  };
   const GRADE_LABEL = { good: "Good", moderate: "Moderate", poor: "Poor", na: "Not assessed" };
 
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => (
@@ -322,8 +328,10 @@ const PsView = (() => {
   function renderCutoffs() {
     const fields = document.getElementById("ps-cutoff-fields");
     if (!fields || !data) return;
-    fields.innerHTML = FIELDS.map(([k, l, s]) =>
-      `<label>${esc(l)} <input type="number" step="${s}" data-k="${k}" value="${T[k]}"></label>`).join("");
+    fields.innerHTML = FIELDS.map(([k, l, s, lo, hi]) => `
+      <label><span class="ps-cut-name">${esc(l)}</span>
+        <input type="range" min="${lo}" max="${hi}" step="${s}" data-k="${k}" value="${T[k]}" aria-label="${esc(l)}">
+        <output class="ps-cut-val" data-for="${k}">${fmtCut(k, T[k])}</output></label>`).join("");
     renderTally();
   }
 
@@ -338,15 +346,18 @@ const PsView = (() => {
   function wireCutoffs() {
     const fields = document.getElementById("ps-cutoff-fields");
     const reset = document.getElementById("ps-cutoff-reset");
-    if (fields) fields.addEventListener("change", (e) => {
+    // Live while dragging; saved when the slider is released.
+    if (fields) fields.addEventListener("input", (e) => {
       const k = e.target.dataset.k;
       const v = Number(e.target.value);
       if (!k || !Number.isFinite(v)) return;
       T = { ...T, [k]: v };
-      saveCutoffs();
+      const out = fields.querySelector(`output[data-for="${k}"]`);
+      if (out) out.textContent = fmtCut(k, v);
       renderTally();
       if (listener) listener();
     });
+    if (fields) fields.addEventListener("change", saveCutoffs);
     if (reset) reset.addEventListener("click", () => {
       T = { ...data.defaults };
       try { localStorage.removeItem(STORE_KEY); } catch (err) { /* private window */ }
