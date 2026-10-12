@@ -23,7 +23,8 @@ const state = {
   selection_active: false, // true once the user picks a node; Esc / click-away clears it
   highlight_virus: null,   // virus row to highlight in the by-virus table (deep link)
   highlight_node_id: null, // Report node_id of that virus-level row
-  interactive: true
+  interactive: true,
+  mode: "outcome"          // "outcome" | "ps" (Propensity view, ps.js)
 };
 
 let topology = null;          // tree_topology.json (depth/columns metadata)
@@ -364,6 +365,19 @@ function renderHotzones() {
 
     layer.appendChild(hz);
   }
+  renderPsChips(nodes, scale);
+}
+
+// Grade chips over the tree (Propensity view); the layer pans with the stage.
+function renderPsChips(nodes, scale) {
+  const chips = document.getElementById("ps-chip-layer");
+  if (!chips) return;
+  chips.innerHTML = "";
+  if (state.mode !== "ps" || typeof PsView === "undefined") return;
+  const treeImg = document.getElementById("tree-img");
+  chips.style.width = treeImg.clientWidth + "px";
+  chips.style.height = treeImg.clientHeight + "px";
+  PsView.renderChips(chips, nodes, scale, state);
 }
 
 // --- tooltip ---------------------------------------------------------------
@@ -392,12 +406,15 @@ function showTooltip(node, hzEl) {
   const mort = row && row.pct_obs_mort !== "" && row.pct_obs_mort != null ? Number(row.pct_obs_mort) / 100 : null;  // percent -> proportion for fmtPct
   const rowCi = row ? parseCi(row.ci) : null;
   const ci = rowCi ? SiteNav.fmtPpRange(rowCi.lo, rowCi.hi) : null;
+  const outcomeRows = state.mode === "ps" && typeof PsView !== "undefined"
+    ? PsView.tooltipRows(node, state)
+    : `<div class="tt-row"><span class="tt-key">Crude mortality</span><span>${fmtPct(mort)}</span></div>
+    <div class="tt-row"><span class="tt-key">Treatment effect</span><span>${fmtAte(node.ate)}${ci != null ? ` (${ci})` : ""}</span></div>`;
   tt.innerHTML = `
     <div class="tt-label">${escapeHtml(SiteNav.levelLabel(node.label || node.node_id))}</div>
     <div class="tt-row"><span class="tt-key">N</span><span>${fmtN(node.N)}</span></div>
     <div class="tt-row"><span class="tt-key">Received antibiotics</span><span>${fmtPct(node.abx_pct)}</span></div>
-    <div class="tt-row"><span class="tt-key">Crude mortality</span><span>${fmtPct(mort)}</span></div>
-    <div class="tt-row"><span class="tt-key">Treatment effect</span><span>${fmtAte(node.ate)}${ci != null ? ` (${ci})` : ""}</span></div>
+    ${outcomeRows}
   `;
   // Anchor tooltip beside the hot-zone (right preferred, then left, then below)
   // so the node stays visible. Coordinates are relative to the wrapper.
@@ -707,6 +724,13 @@ function renderContourPanel() {
   breadcrumb.textContent = breadcrumbText;
   breadcrumb.title = breadcrumbText;
 
+  if (state.mode === "ps") {
+    meta.innerHTML = "";
+    renderContourByvirusTable(null);
+    if (typeof PsView !== "undefined") PsView.renderDetail(document.getElementById("ps-detail"), node, state);
+    return;
+  }
+
   // Effect and CI come from the Report row when there is one, so both pages
   // show the same rounded numbers; otherwise from the contour index / node.
   const row = matchingResultRow(node);
@@ -821,10 +845,20 @@ function render() {
 // shown; the control bar (outcome / root / root value) still selects which
 // figure to display.
 function applyViewMode() {
+  const ps = state.mode === "ps";
+  // The Propensity view has no full figure: it always explores.
+  if (ps) state.interactive = true;
   const interactive = state.interactive;
   const setHidden = (sel, hidden) =>
     document.querySelectorAll(sel).forEach((el) => { el.hidden = hidden; });
-  setHidden(".legend", !interactive);
+  setHidden("#legend-outcome", !interactive || ps);
+  setHidden("#legend-ps", !ps);
+  setHidden("#ps-cutoffs", !ps);
+  setHidden("#ps-detail", !ps);
+  setHidden("#contour-wrapper, #contour-meta, #contour-byvirus-table, .contour-panel .panel-toolbar .zoom-controls", ps);
+  document.querySelectorAll('input[name="view"]').forEach((r) => { r.disabled = ps; });
+  const panels = document.querySelector(".main-panels");
+  if (panels) panels.classList.toggle("ps", ps);
   setHidden(".tree-outline", !interactive);
   setHidden(".main-panels", !interactive);
   const sp = document.getElementById("static-panel");
@@ -981,6 +1015,18 @@ function wireUp() {
     });
   });
 
+  // Outcomes / Propensity: everything else on the page (tree, depth, selection) stays.
+  document.querySelectorAll('input[name="mode"]').forEach(r => {
+    r.addEventListener("change", (e) => {
+      if (!e.target.checked) return;
+      state.mode = e.target.value === "ps" ? "ps" : "outcome";
+      syncControls();
+      render();
+      // Same tree image, so no reload to redraw the chips: redraw them here.
+      renderHotzones();
+    });
+  });
+
   // Zoom-control buttons for both panels.
   document.querySelectorAll(".zoom-controls button").forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -1125,6 +1171,7 @@ function syncControls() {
   document.querySelectorAll('input[name="view"]').forEach(r => {
     r.checked = r.value === (state.interactive ? "explore" : "figure");
   });
+  document.querySelectorAll('input[name="mode"]').forEach(r => { r.checked = r.value === state.mode; });
   refreshRootValueSelect();
 }
 
@@ -1143,6 +1190,7 @@ function syncUrl() {
     params.set("node", String(row.node_id));
   }
   if (!state.interactive) params.set("view", "figure");
+  if (state.mode === "ps") params.set("mode", "ps");
   SiteNav.replaceQuery(params);
   SiteNav.remember("family", familyKey());
   SiteNav.remember("trees-query", params.toString());
@@ -1220,9 +1268,15 @@ async function init() {
   if (!contourIndex) contourIndex = { nodes: {} };
   if (!resultsByNode) resultsByNode = { families: [] };
 
+  if (typeof PsView !== "undefined") {
+    await PsView.load();
+    PsView.onChange(() => { renderHotzones(); renderContourPanel(); });
+  }
+
   const params = startupParams();
   if (params) {
     if (params.get("view") === "figure") state.interactive = false;
+    if (params.get("mode") === "ps") state.mode = "ps";
     applyDeepLinkFromParams(params);
   }
 

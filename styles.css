@@ -1052,3 +1052,96 @@ a { color: var(--color-accent); }
   margin-right: 0.45em;
   vertical-align: 0.05em;
 }
+
+/* --- Propensity view (ps.js) --------------------------------------------- */
+:root {
+  --ps-good: #3b8c4a;
+  --ps-moderate: #e3a92b;
+  --ps-poor: #c0392b;
+  --ps-na: #9ca3af;
+}
+.ps-chip {
+  display: inline-block;
+  padding: 0.1em 0.55em;
+  border-radius: 0.3em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #fff;
+  white-space: nowrap;
+  margin-right: 0.35rem;
+}
+.ps-chip--good { background: var(--ps-good); }
+.ps-chip--moderate { background: var(--ps-moderate); color: #1a1a1a; }
+.ps-chip--poor { background: var(--ps-poor); }
+.ps-chip--na { background: #e5e7eb; color: #4b5563; font-weight: 600; }
+.ps-chip--large { font-size: 0.95rem; }
+.ps-chip--inline { font-size: 0.7rem; }
+
+.ps-chip-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+.ps-chip-anchor {
+  position: absolute;
+  transform: translateX(-50%);
+}
+.ps-chip-anchor .ps-chip { font-size: 1em; margin: 0; box-shadow: 0 0 0 1px #fff; }
+
+.ps-cutoffs {
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.ps-cutoffs summary { cursor: pointer; font-weight: 600; }
+.ps-cutoff-tally { font-weight: 400; color: var(--color-muted); margin-left: 0.5rem; }
+.ps-cutoff-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 0.35rem 1.25rem;
+  margin: 0.5rem 0;
+}
+.ps-cutoff-fields label { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.ps-cutoff-fields input { width: 5rem; font-size: 0.9rem; padding: 0.1rem 0.3rem; }
+.ps-cutoff-reset {
+  border: 1px solid var(--color-border);
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 0.2rem 0.7rem;
+  cursor: pointer;
+}
+
+.ps-detail { font-size: 0.85rem; }
+.ps-head { display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0; }
+.ps-counts { color: var(--color-muted); }
+.ps-arms { margin: 0.2rem 0 0.4rem; }
+.ps-abx { color: #c0612b; font-weight: 600; }
+.ps-noabx { color: #4a7aa8; font-weight: 600; }
+.ps-panel-img { display: block; width: 100%; max-width: 460px; border: 1px solid #eee; }
+.ps-msg { color: var(--color-muted); }
+.ps-metrics, .ps-byvirus { margin-top: 0.6rem; width: 100%; font-size: 0.78rem; }
+.ps-metrics th, .ps-metrics td, .ps-byvirus th, .ps-byvirus td { white-space: normal; padding: 0.3rem 0.4rem; }
+
+.ps-rule { display: block; width: 100%; max-width: 560px; height: auto; margin-top: 0.6rem; }
+.ps-rule text { font-size: 14px; fill: #1a1a1a; }
+.ps-rule .q rect { fill: #f3f4f6; stroke: #9ca3af; stroke-width: 1.2; }
+.ps-rule .q .c { font-weight: 700; }
+.ps-rule .q .val { font-size: 13px; fill: var(--color-accent); font-weight: 700; }
+.ps-rule .q.on rect { stroke: var(--color-accent); stroke-width: 2.5; fill: #e0e7ff; }
+.ps-rule .o rect { opacity: 0.25; }
+.ps-rule .o text { font-size: 14px; font-weight: 700; fill: #fff; }
+.ps-rule .o.on rect { opacity: 1; }
+.ps-rule .good rect { fill: var(--ps-good); }
+.ps-rule .moderate rect { fill: var(--ps-moderate); }
+.ps-rule .poor rect { fill: var(--ps-poor); }
+.ps-rule .e { stroke: #c4c8cf; stroke-width: 1.5; fill: none; marker-end: url(#ps-arr); }
+.ps-rule .e.on { stroke: var(--color-accent); stroke-width: 3.5; marker-end: url(#ps-arrOn); }
+.ps-rule .lab { font-size: 12px; fill: #6b7280; font-style: italic; }
+
+@media (min-width: 768px) {
+  .main-panels.ps .tree-panel, .main-panels.ps .contour-panel { min-width: 0; }
+  .main-panels.topdown.ps .tree-panel { flex: 1 1 60%; }
+  .main-panels.topdown.ps .contour-panel { flex: 1 1 40%; }
+}

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Trees — Initial Antibiotics and Mortality in CAP</title>
-  <link rel="stylesheet" href="styles.css?v=uireview5" />
+  <link rel="stylesheet" href="styles.css?v=ps2" />
 </head>
 <body>
   <header class="site-header">
@@ -45,6 +45,14 @@
       <select id="root-value" class="control-select"></select>
     </div>
 
+    <div class="control-group">
+      <span class="control-label" id="mode-label">Results</span>
+      <div class="segmented" role="radiogroup" aria-labelledby="mode-label">
+        <label><input type="radio" name="mode" value="outcome" checked /><span>Outcomes</span></label>
+        <label><input type="radio" name="mode" value="ps" /><span>Propensity</span></label>
+      </div>
+    </div>
+
     <div class="control-group control-group--end">
       <span class="control-label" id="view-label">View</span>
       <div class="segmented segmented--small" role="radiogroup" aria-labelledby="view-label">
@@ -55,10 +63,23 @@
   </section>
 
   <!-- Region 2: Legend -->
-  <section class="legend" aria-label="Legend">
+  <section class="legend" id="legend-outcome" aria-label="Legend">
     <div class="legend-item"><span class="swatch swatch-beneficial"></span>Benefit: antibiotics lower mortality (95% CI below 0)</div>
     <div class="legend-item"><span class="swatch swatch-harmful"></span>Harm: antibiotics raise mortality (95% CI above 0)</div>
     <div class="legend-item"><span class="swatch swatch-uncertain"></span>Uncertain: 95% CI crosses 0</div>
+  </section>
+  <section class="legend" id="legend-ps" aria-label="Propensity legend" hidden>
+    <div class="legend-item"><span class="ps-chip ps-chip--good">Good</span><span class="ps-chip ps-chip--moderate">Moderate</span><span class="ps-chip ps-chip--poor">Poor</span>Proposed overlap grade of the propensity scores, antibiotics vs no antibiotics (draft)</div>
+    <div class="legend-item"><span class="ps-chip ps-chip--na">Not assessed</span>One arm has fewer than 20 patients</div>
+  </section>
+
+  <!-- Region 2b: Grade cutoffs (Propensity only) -->
+  <section class="ps-cutoffs" id="ps-cutoffs" aria-label="Grade cutoffs" hidden>
+    <details>
+      <summary>Grade cutoffs <span class="ps-cutoff-tally" id="ps-cutoff-tally"></span></summary>
+      <div class="ps-cutoff-fields" id="ps-cutoff-fields"></div>
+      <button type="button" class="ps-cutoff-reset" id="ps-cutoff-reset">Reset to defaults</button>
+    </details>
   </section>
 
   <!-- Region 3: Tree levels (add a level / collapse back to one) -->
@@ -84,6 +105,7 @@
         <div class="tree-stage" id="tree-stage">
           <img id="tree-img" alt="Decision tree" />
           <div class="hotzone-layer" id="hotzone-layer" aria-label="Tree node hot-zones"></div>
+          <div class="ps-chip-layer" id="ps-chip-layer" aria-hidden="true"></div>
         </div>
         <div class="loading-spinner" id="tree-spinner" aria-hidden="true"></div>
         <div class="node-tooltip" id="node-tooltip" role="tooltip" aria-hidden="true"></div>
@@ -108,6 +130,7 @@
       </div>
       <div class="contour-meta" id="contour-meta"></div>
       <div class="contour-byvirus-table" id="contour-byvirus-table"></div>
+      <div class="ps-detail" id="ps-detail" hidden></div>
     </section>
   </main>
 
@@ -130,6 +153,7 @@
   <script src="vendor/panzoom.min.js"></script>
   <script src="viz-info.js?v=uireview5"></script>
   <script src="site-nav.js?v=uireview5"></script>
-  <script src="app.js?v=uireview7"></script>
+  <script src="ps.js?v=ps1"></script>
+  <script src="app.js?v=ps2"></script>
 </body>
 </html>
