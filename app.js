@@ -130,7 +130,7 @@ function fitTree() {
   if (!box) return;
   const k = img.clientWidth / img.naturalWidth;          // natural -> rendered px
   const cw = box.w * k, ch = box.h * k;
-  const cx = (box.x + box.w / 2) * k, cy = (box.y + box.h / 2) * k;
+  const cx = (box.x + box.w / 2) * k;
   const wr = wrapper.getBoundingClientRect();
   const scale = Math.max(1, Math.min(
     (wr.width - 2 * FIT_PAD_PX) / cw,
@@ -138,12 +138,13 @@ function fitTree() {
     FIT_MAX_ZOOM
   ));
   // panzoom applies its transform on the next frame, so place the content
-  // centre analytically rather than by measuring: with transform-origin 0 0,
-  // a stage point p lands at stage offset + translate + scale * p.
+  // analytically rather than by measuring: with transform-origin 0 0, a stage
+  // point p lands at stage offset + translate + scale * p. Centred across, top
+  // of the panel down (the panel can be taller than the tree).
   pz.zoomAbs(0, 0, scale);
   pz.moveTo(
     wr.width / 2 - stage.offsetLeft - scale * cx,
-    wr.height / 2 - stage.offsetTop - scale * cy
+    FIT_PAD_PX - stage.offsetTop - scale * box.y * k
   );
 }
 
@@ -1287,7 +1288,7 @@ async function init() {
   if (!coordinates) {
     coordinates = await loadJsonOrNull("tests/fixtures/tree_coordinates.sample.json");
   }
-  // Severity trees use the manuscript's top-down layout; its states replace
+  // Severity and virus trees use the manuscript's top-down layout; its states replace
   // the inline-forest ones and point at their own image folder.
   const topdown = await loadJsonOrNull("tree_coordinates_topdown.json");
   if (coordinates && topdown && topdown.states) {

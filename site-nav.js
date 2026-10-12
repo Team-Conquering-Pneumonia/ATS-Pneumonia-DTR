@@ -15,7 +15,7 @@
 
 (function (g) {
   // Tree choices, in the order both pages list them.
-  const TREE_ORDER = ["severity", "virus", "root", "sevvirus", "virsev"];
+  const TREE_ORDER = ["severity", "virus", "root"];
   const TREE_LABELS = {
     severity: "Severity",
     virus: "Virus",

@@ -822,9 +822,11 @@ a { color: var(--color-accent); }
 @media (min-width: 768px) {
   .main-panels {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: stretch;
   }
-  .tree-panel { flex: 1 1 60%; }
+  /* The tree panel is at least as tall as the detail panel beside it. */
+  .tree-panel { flex: 1 1 60%; display: flex; flex-direction: column; }
+  .tree-panel > #tree-wrapper { flex: 1 1 auto; align-items: flex-start; }
   .contour-panel { flex: 1 1 40%; }
   .main-panels.topdown .tree-panel { flex: 1 1 70%; min-width: 0; }
   .main-panels.topdown .contour-panel { flex: 1 1 30%; min-width: 0; }
