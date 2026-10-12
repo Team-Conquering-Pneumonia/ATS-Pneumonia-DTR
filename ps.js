@@ -180,7 +180,7 @@ const PsView = (() => {
     <marker id="ps-arrOn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1e40af"/></marker>
   </defs>
   <g class="q" data-id="q1"><rect x="150" y="8" width="260" height="62" rx="8"/>
-    <text x="280" y="28"><tspan class="c">C3</tspan> Treated above the untreated</text>
+    <text x="280" y="28">Treated above the untreated</text>
     <text x="280" y="46">99th percentile: at least <tspan data-t="c3_substantial"></tspan>%?</text>
     <text class="val" x="280" y="64" data-v="q1"></text></g>
   <path class="e" data-id="e1yes" d="M410,39 L448,39"/><text class="lab" x="429" y="32">yes</text>
@@ -188,7 +188,7 @@ const PsView = (() => {
   <path class="e" data-id="e1no" d="M280,70 L280,106"/><text class="lab" x="292" y="92">no</text>
 
   <g class="q" data-id="q2"><rect x="150" y="108" width="260" height="62" rx="8"/>
-    <text x="280" y="128"><tspan class="c">C2</tspan> Treated with PS above 0.95</text>
+    <text x="280" y="128">Treated with PS above 0.95</text>
     <text x="280" y="146">(many &#8805; <tspan data-t="c2_many"></tspan>%, some &#8805; <tspan data-t="c2_some"></tspan>%)</text>
     <text class="val" x="280" y="164" data-v="q2"></text></g>
   <path class="e" data-id="e2some" d="M410,139 L448,139"/><text class="lab" x="429" y="132">some</text>
@@ -197,7 +197,7 @@ const PsView = (() => {
   <path class="e" data-id="e2few" d="M280,170 L280,206"/><text class="lab" x="294" y="192">few</text>
 
   <g class="q" data-id="q4"><rect x="150" y="208" width="260" height="62" rx="8"/>
-    <text x="280" y="228"><tspan class="c">C1</tspan> Median PS of the two arms</text>
+    <text x="280" y="228">Median PS of the two arms</text>
     <text x="280" y="246">differ by less than <tspan data-t="c1_shift"></tspan>?</text>
     <text class="val" x="280" y="264" data-v="q4"></text></g>
   <path class="e" data-id="e4no" d="M410,239 L448,239"/><text class="lab" x="429" y="232">no</text>
@@ -205,7 +205,7 @@ const PsView = (() => {
   <path class="e" data-id="e4yes" d="M280,270 L280,306"/><text class="lab" x="292" y="292">yes</text>
 
   <g class="q" data-id="q5"><rect x="150" y="308" width="260" height="62" rx="8"/>
-    <text x="280" y="328"><tspan class="c">C3</tspan> Treated above the untreated</text>
+    <text x="280" y="328">Treated above the untreated</text>
     <text x="280" y="346">99th percentile: under <tspan data-t="c3_small"></tspan>%?</text>
     <text class="val" x="280" y="364" data-v="q5"></text></g>
   <path class="e" data-id="e5no" d="M410,339 L448,339"/><text class="lab" x="429" y="332">no</text>
@@ -214,7 +214,7 @@ const PsView = (() => {
   <g class="o good" data-id="oG"><rect x="210" y="406" width="140" height="28" rx="14"/><text x="280" y="425">Good</text></g>
 
   <g class="q" data-id="q3"><rect x="10" y="468" width="280" height="62" rx="8"/>
-    <text x="150" y="488"><tspan class="c">C4</tspan> Untreated with PS above 0.95</text>
+    <text x="150" y="488">Untreated with PS above 0.95</text>
     <text x="150" y="506">less than <tspan data-t="c4_ratio"></tspan> x the treated share?</text>
     <text class="val" x="150" y="524" data-v="q3"></text></g>
   <path class="e" data-id="e3yes" d="M290,499 L448,499"/><text class="lab" x="370" y="492">yes</text>
